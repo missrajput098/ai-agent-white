@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENTSPACE - Custom AI Agents For Your Business</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">INITIALIZING NEURAL AGENTS</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#ai-agents">AI Agents</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#about-us">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Sticky Scroll Image Sequence -->
+    <section class="hero-scroll-track" id="home">
+        <div class="hero-sticky-wrapper">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <div class="sub-tag">CUSTOM AI AGENTS FOR YOUR BUSINESS</div>
+                    <h1 class="hero-title">
+                        Your Business Is Unique. <br>
+                        Your <span class="text-glow">AI Should Be Too.</span>
+                    </h1>
+                    <p class="hero-description">
+                        We design and build custom AI agents around your business — trained on your workflows, connected to your tools, and built to work exactly the way you need.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#build" class="btn btn-primary btn-glow">
+                            Build My AI Agent
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#demo" class="btn btn-secondary">
+                            <span class="play-icon-wrapper">
+                                <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            See What We Build
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual Showcase -->
+                <div class="hero-visual">
+                    <div class="robot-wrapper">
+                        <!-- Glowing Background Orb -->
+                        <div class="glow-orb"></div>
+                        <div class="cyber-ring"></div>
+                        
+                        <!-- Main Female Robot Image Sequence (robot-hero -> robot-hero2 -> robot-hero3) -->
+                        <div class="robot-img-sequence">
+                            <img src="assets/images/robot-hero.jpg" alt="AI Agent Robot Phase 1" class="robot-hero-img seq-img active" id="heroImg1">
+                            <img src="assets/images/robot-hero2.png" alt="AI Agent Robot Phase 2" class="robot-hero-img seq-img" id="heroImg2">
+                            <img src="assets/images/robot-hero3.png" alt="AI Agent Robot Phase 3" class="robot-hero-img seq-img" id="heroImg3">
+                        </div>
+
+                        <!-- Floating Badges Left -->
+                        <div class="floating-badge badge-content">
+                            <span class="badge-icon insta-bg">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Content</strong>
+                                <span>Creation</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-insta">
+                            <span class="badge-icon insta-bg">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Instagram</strong>
+                                <span>Automation</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-whatsapp">
+                            <span class="badge-icon wa-bg">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l.399.635-1.157 4.228 4.321-1.133.58.337z"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>WhatsApp</strong>
+                                <span>Support</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-leads">
+                            <span class="badge-icon blue-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Lead</strong>
+                                <span>Generation</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badges Right -->
+                        <div class="floating-badge badge-crm">
+                            <span class="badge-icon cyan-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>CRM</strong>
+                                <span>Automation</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-email">
+                            <span class="badge-icon blue-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Email</strong>
+                                <span>Management</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-sales">
+                            <span class="badge-icon cyan-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Sales</strong>
+                                <span>Follow-ups</span>
+                            </div>
+                        </div>
+
+                        <div class="floating-badge badge-analytics">
+                            <span class="badge-icon blue-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </span>
+                            <div class="badge-text">
+                                <strong>Analytics</strong>
+                                <span>& Reports</span>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Workflow Process Indicator Pill -->
+                        <div class="workflow-pillar-bar">
+                            <div class="pill-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+                                <span>Your Business</span>
+                            </div>
+                            <span class="pill-arrow">→</span>
+                            <div class="pill-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                                <span>Your Data</span>
+                            </div>
+                            <span class="pill-arrow">→</span>
+                            <div class="pill-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                <span>Your Workflow</span>
+                            </div>
+                            <span class="pill-arrow">→</span>
+                            <div class="pill-item active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+                                <span>Your AI Agent</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="mouse-icon">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Client Logo Bar -->
+    <section class="logo-bar">
+        <div class="container">
+            <p class="logo-bar-title">Trusted by Forward Thinking Businesses</p>
+            <div class="logos-wrapper">
+                <span class="logo-item brand-amazon">amazon</span>
+                <span class="logo-item brand-google">Google</span>
+                <span class="logo-item brand-meta"><svg viewBox="0 0 24 24" fill="currentColor" class="inline-logo"><path d="M16.48 4.2C14.4 4.2 12.8 5.6 12 6.9C11.2 5.6 9.6 4.2 7.52 4.2C3.9 4.2 1 7.2 1 11.2C1 16 5.8 20.8 12 23.8C18.2 20.8 23 16 23 11.2C23 7.2 20.1 4.2 16.48 4.2Z"/></svg> Meta</span>
+                <span class="logo-item brand-airbnb">airbnb</span>
+                <span class="logo-item brand-microsoft"><svg viewBox="0 0 24 24" fill="currentColor" class="inline-logo"><path d="M1 1h10v10H1zM13 1h10v10H13zM1 13h10v10H1zM13 13h10v10H1z"/></svg> Microsoft</span>
+                <span class="logo-item brand-cocacola">Coca-Cola</span>
+                <span class="logo-item brand-tesla">T</span>
+                <span class="logo-item brand-adobe">Adobe</span>
+                <span class="logo-item brand-shopify">shopify</span>
+                <span class="logo-item brand-zara">ZARA</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Stats Counter Bar -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item card-3d">
+                <div class="stat-num-wrapper">
+                    <h3 class="stat-number" data-target="500">0</h3><span class="stat-plus">+</span>
+                </div>
+                <p class="stat-label">Custom AI Agents Deployed</p>
+            </div>
+
+            <div class="stat-item card-3d">
+                <div class="stat-num-wrapper">
+                    <h3 class="stat-number" data-target="99">0</h3><span class="stat-plus">.8%</span>
+                </div>
+                <p class="stat-label">Automation Accuracy Score</p>
+            </div>
+
+            <div class="stat-item card-3d">
+                <div class="stat-num-wrapper">
+                    <h3 class="stat-number" data-target="2">0</h3><span class="stat-plus">.4M+</span>
+                </div>
+                <p class="stat-label">Inquiries Handled 24/7</p>
+            </div>
+
+            <div class="stat-item card-3d">
+                <div class="stat-num-wrapper">
+                    <h3 class="stat-number" data-target="10">0</h3><span class="stat-plus">x</span>
+                </div>
+                <p class="stat-label">Faster Customer Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Factonix Process Section -->
+    <section class="section process-section" id="solutions">
+        <!-- Background Video -->
+        <div class="video-bg-container">
+            <video class="bg-video" autoplay loop muted playsinline preload="auto">
+                <source src="assets/bg-video.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="container">
+            <div class="section-label">THE FACTONIX PROCESS</div>
+            <h2 class="section-title">
+                One Business. One Workflow.<br>
+                One <span class="text-glow">Custom AI.</span>
+            </h2>
+            <p class="section-subtitle">
+                You tell us what you need. We study your business, understand your workflows, and build a custom AI agent that fits your exact requirements.
+            </p>
+
+            <div class="process-grid">
+                <!-- User Speech Bubble Card -->
+                <div class="speech-bubble-card card-3d">
+                    <div class="user-pill">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <span>You Tell Us</span>
+                    </div>
+                    <blockquote class="speech-quote">
+                        "I need an AI that handles my Instagram, replies to customers and sends qualified leads to my sales team."
+                    </blockquote>
+
+                    <!-- Animated Typing Terminal Box -->
+                    <div class="process-terminal-box">
+                        <div class="terminal-header">
+                            <span class="term-dot red"></span>
+                            <span class="term-dot yellow"></span>
+                            <span class="term-dot green"></span>
+                            <span class="term-title">FACTONIX_AI_ENGINE.log</span>
+                        </div>
+                        <div class="terminal-body" id="terminalBody">
+                            <p class="term-line"><span class="term-cyan">> Initializing Factonix AI Architecture...</span></p>
+                            <p class="term-line"><span class="term-blue">> Connecting Instagram & WhatsApp Webhooks...</span> [OK]</p>
+                            <p class="term-line"><span class="term-purple">> Training Model on Workflows...</span> [100%]</p>
+                            <p class="term-line"><span class="term-green">> Status: AI AGENT DEPLOYED & LIVE ⚡</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horizontal Process Steps -->
+                <div class="process-steps-row">
+                    <div class="step-card">
+                        <div class="step-icon-box glow-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a9 9 0 0 1 9 9c0 3.6-2.1 6.7-5.2 8.1L12 22l-3.8-2.9C5.1 17.7 3 14.6 3 11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+                        </div>
+                        <h4 class="step-name">We Build</h4>
+                        <p class="step-desc">Design the right architecture</p>
+                    </div>
+                    <span class="step-connector">→</span>
+
+                    <div class="step-card">
+                        <div class="step-icon-box glow-cyan">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <h4 class="step-name">Connect</h4>
+                        <p class="step-desc">Integrate your tools & data</p>
+                    </div>
+                    <span class="step-connector">→</span>
+
+                    <div class="step-card">
+                        <div class="step-icon-box glow-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
+                        <h4 class="step-name">Train</h4>
+                        <p class="step-desc">Teach your workflows</p>
+                    </div>
+                    <span class="step-connector">→</span>
+
+                    <div class="step-card">
+                        <div class="step-icon-box glow-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71.79-1.81.2-2.55L4.5 16.5z"/><path d="M12 15l-3-3 7.5-7.5.78.78c.88.88.88 2.3 0 3.18L12 15z"/></svg>
+                        </div>
+                        <h4 class="step-name">Deploy</h4>
+                        <p class="step-desc">Your AI agent is ready</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5A: AI Agent Solutions (Sticky Scroll Feature Showcase with Alternating Vertical Patti) -->
+    <section class="section solutions-scroll-section" id="ai-solutions">
+        <div class="container text-center">
+            <div class="cap-badge">
+                <span class="sparkle-icon">✦</span>
+                <span>AI AGENT SOLUTIONS</span>
+            </div>
+            <h2 class="section-title">What Should Your <span class="text-glow">AI Do?</span></h2>
+            <p class="section-subtitle text-center">Scroll to experience the intelligent capabilities engineered for your business.</p>
+        </div>
+
+        <div class="solutions-scroll-track">
+            <div class="solutions-sticky-wrapper">
+                <div class="container solutions-stage-wrapper">
+                    
+                    <!-- Step 0 (Left Vertical Patti + Right Content) -->
+                    <div class="sol-step-stage step-left glow-blue active" data-step="0">
+                        <div class="sol-vertical-patti patti-left">
+                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+                            <div class="patti-title-box">
+                                <span class="patti-step-num">01</span>
+                                <h3 class="patti-title">CREATE</h3>
+                            </div>
+                            <div class="patti-accent-bar"></div>
+                        </div>
+                        <div class="sol-stage-content">
+                            <div class="sol-stage-text">
+                                <h3>Content & Design Generation</h3>
+                                <p>Generate high-converting social posts, images, reels, captions, and graphics on autopilot tailored to your brand voice.</p>
+                            </div>
+                            <div class="sol-preview-box glow-blue active">
+                                <div class="sol-preview-header">
+                                    <span class="sol-dot"></span>
+                                    <span>Content Generation Engine</span>
+                                </div>
+                                <div class="sol-preview-body">
+                                    <div class="mock-card">
+                                        <div class="mock-tag">AI CREATOR</div>
+                                        <p class="mock-text">"Generating Instagram reel caption & graphic design..."</p>
+                                        <div class="mock-bar"><div class="mock-fill blue-fill"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1 (Right Vertical Patti + Left Content) -->
+                    <div class="sol-step-stage step-right glow-cyan" data-step="1">
+                        <div class="sol-stage-content">
+                            <div class="sol-stage-text">
+                                <h3>Lead Capture & Conversions</h3>
+                                <p>Qualify inbound prospects 24/7, conduct automated sales outreach, manage follow-ups, and close deals faster.</p>
+                            </div>
+                            <div class="sol-preview-box glow-cyan active">
+                                <div class="sol-preview-header">
+                                    <span class="sol-dot"></span>
+                                    <span>Sales Lead Conversion Pipeline</span>
+                                </div>
+                                <div class="sol-preview-body">
+                                    <div class="mock-card">
+                                        <div class="mock-tag">LEAD QUALIFIED</div>
+                                        <p class="mock-text">"Prospect booked meeting via CRM automation"</p>
+                                        <div class="mock-bar"><div class="mock-fill cyan-fill"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sol-vertical-patti patti-right">
+                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg></div>
+                            <div class="patti-title-box">
+                                <span class="patti-step-num">02</span>
+                                <h3 class="patti-title">SELL</h3>
+                            </div>
+                            <div class="patti-accent-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 (Left Vertical Patti + Right Content) -->
+                    <div class="sol-step-stage step-left glow-purple" data-step="2">
+                        <div class="sol-vertical-patti patti-left">
+                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+                            <div class="patti-title-box">
+                                <span class="patti-step-num">03</span>
+                                <h3 class="patti-title">SUPPORT</h3>
+                            </div>
+                            <div class="patti-accent-bar"></div>
+                        </div>
+                        <div class="sol-stage-content">
+                            <div class="sol-stage-text">
+                                <h3>24/7 Customer Care</h3>
+                                <p>Instantly resolve customer inquiries, answer FAQs, troubleshoot issues, and elevate user satisfaction across all channels.</p>
+                            </div>
+                            <div class="sol-preview-box glow-purple active">
+                                <div class="sol-preview-header">
+                                    <span class="sol-dot"></span>
+                                    <span>24/7 AI Customer Agent</span>
+                                </div>
+                                <div class="sol-preview-body">
+                                    <div class="mock-card">
+                                        <div class="mock-tag">TICKET RESOLVED</div>
+                                        <p class="mock-text">"Resolved query in 1.2s with 99.4% satisfaction score"</p>
+                                        <div class="mock-bar"><div class="mock-fill purple-fill"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 (Right Vertical Patti + Left Content) -->
+                    <div class="sol-step-stage step-right glow-orange" data-step="3">
+                        <div class="sol-stage-content">
+                            <div class="sol-stage-text">
+                                <h3>Workflow Optimization</h3>
+                                <p>Streamline complex multi-step processes, schedule background jobs, sync databases, and eliminate manual overhead.</p>
+                            </div>
+                            <div class="sol-preview-box glow-orange active">
+                                <div class="sol-preview-header">
+                                    <span class="sol-dot"></span>
+                                    <span>Workflow Automation Hub</span>
+                                </div>
+                                <div class="sol-preview-body">
+                                    <div class="mock-card">
+                                        <div class="mock-tag">WORKFLOW ACTIVE</div>
+                                        <p class="mock-text">"Synchronizing API data across Shopify & WhatsApp"</p>
+                                        <div class="mock-bar"><div class="mock-fill orange-fill"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sol-vertical-patti patti-right">
+                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+                            <div class="patti-title-box">
+                                <span class="patti-step-num">04</span>
+                                <h3 class="patti-title">AUTOMATE</h3>
+                            </div>
+                            <div class="patti-accent-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 (Left Vertical Patti + Right Content) -->
+                    <div class="sol-step-stage step-left glow-pink" data-step="4">
+                        <div class="sol-vertical-patti patti-left">
+                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                            <div class="patti-title-box">
+                                <span class="patti-step-num">05</span>
+                                <h3 class="patti-title">ANALYZE</h3>
+                            </div>
+                            <div class="patti-accent-bar"></div>
+                        </div>
+                        <div class="sol-stage-content">
+                            <div class="sol-stage-text">
+                                <h3>Predictive Analytics & Reports</h3>
+                                <p>Transform raw business metrics into actionable intelligence, predictive forecasts, and automated executive reports.</p>
+                            </div>
+                            <div class="sol-preview-box glow-pink active">
+                                <div class="sol-preview-header">
+                                    <span class="sol-dot"></span>
+                                    <span>Analytics & Business Intelligence</span>
+                                </div>
+                                <div class="sol-preview-body">
+                                    <div class="mock-card">
+                                        <div class="mock-tag">INSIGHT GENERATED</div>
+                                        <p class="mock-text">"+38% Conversion Increase this month"</p>
+                                        <div class="mock-bar"><div class="mock-fill pink-fill"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Step Controller Pills -->
+                <div class="solutions-step-nav" id="solutionsStepNav">
+                    <button class="step-nav-btn active" data-step="0"><span class="nav-dot"></span>01 CREATE</button>
+                    <button class="step-nav-btn" data-step="1"><span class="nav-dot"></span>02 SELL</button>
+                    <button class="step-nav-btn" data-step="2"><span class="nav-dot"></span>03 SUPPORT</button>
+                    <button class="step-nav-btn" data-step="3"><span class="nav-dot"></span>04 AUTOMATE</button>
+                    <button class="step-nav-btn" data-step="4"><span class="nav-dot"></span>05 ANALYZE</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Agent Showcase (Meet What Your AI Could Become) -->
+    <section class="section showcase-section" id="ai-agents">
+        <div class="container">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">🤖</span>
+                    <span>AI AGENT MODELS</span>
+                </div>
+                <h2 class="section-title text-center">Meet What Your <span class="text-glow">AI Could Become</span></h2>
+                <p class="section-subtitle text-center">Different businesses. Different needs. Infinite possibilities.</p>
+            </div>
+
+            <div class="agents-grid">
+                
+                <!-- Social AI -->
+                <div class="agent-card card-3d glow-blue-card">
+                    <div class="agent-status-badge">
+                        <span class="status-dot green-pulse"></span>
+                        <span>ONLINE</span>
+                    </div>
+                    <div class="agent-img-box">
+                        <div class="scan-line"></div>
+                        <img src="assets/images/avatar-social.jpg" alt="Social AI Cyber Avatar">
+                    </div>
+                    <div class="agent-card-body">
+                        <h3>Social AI</h3>
+                        <p>Creates, schedules and manages your content across all social media platforms on autopilot.</p>
+                        <button class="agent-arrow-btn" aria-label="Learn more about Social AI">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sales AI -->
+                <div class="agent-card card-3d glow-cyan-card">
+                    <div class="agent-status-badge">
+                        <span class="status-dot cyan-pulse"></span>
+                        <span>AUTO-PILOT</span>
+                    </div>
+                    <div class="agent-img-box">
+                        <div class="scan-line"></div>
+                        <img src="assets/images/avatar-sales.jpg" alt="Sales AI Cyborg Avatar">
+                    </div>
+                    <div class="agent-card-body">
+                        <h3>Sales AI</h3>
+                        <p>Qualifies inbound prospects, conducts intelligent outreach, and books meetings automatically.</p>
+                        <button class="agent-arrow-btn" aria-label="Learn more about Sales AI">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Support AI -->
+                <div class="agent-card card-3d glow-purple-card">
+                    <div class="agent-status-badge">
+                        <span class="status-dot purple-pulse"></span>
+                        <span>24/7 LIVE</span>
+                    </div>
+                    <div class="agent-img-box">
+                        <div class="scan-line"></div>
+                        <img src="assets/images/avatar-support.jpg" alt="Support AI Specialist Avatar">
+                    </div>
+                    <div class="agent-card-body">
+                        <h3>Support AI</h3>
+                        <p>Handles complex customer conversations, resolves inquiries 24/7, and elevates satisfaction.</p>
+                        <button class="agent-arrow-btn" aria-label="Learn more about Support AI">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Operations AI -->
+                <div class="agent-card card-3d glow-orange-card">
+                    <div class="agent-status-badge">
+                        <span class="status-dot orange-pulse"></span>
+                        <span>WORKFLOW ACTIVE</span>
+                    </div>
+                    <div class="agent-img-box">
+                        <div class="scan-line"></div>
+                        <img src="assets/images/avatar-ops.jpg" alt="Operations AI Robot Avatar">
+                    </div>
+                    <div class="agent-card-body">
+                        <h3>Operations AI</h3>
+                        <p>Automates repetitive business tasks, coordinates API pipelines, and synchronizes databases.</p>
+                        <button class="agent-arrow-btn" aria-label="Learn more about Operations AI">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Action Card -->
+                <div class="agent-card custom-build-card card-3d glow-pink-card">
+                    <div class="custom-card-inner">
+                        <div class="plus-icon-circle glowing-pulse">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        </div>
+                        <p class="custom-card-text">And if you need something different, we build custom robotic agents from scratch.</p>
+                        <a href="#contact" class="btn btn-primary btn-sm btn-glow">
+                            Discuss Your Idea
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Timeline (How It Works) -->
+    <section class="section timeline-section" id="how-it-works">
+        <div class="container">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">⚡</span>
+                    <span>AUTOMATED PIPELINE</span>
+                </div>
+                <h2 class="section-title text-center">How It <span class="text-glow">Works</span></h2>
+                <p class="section-subtitle text-center">Simple 5-step robotic deployment process. Powerful results.</p>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-line">
+                    <div class="laser-beam"></div>
+                </div>
+
+                <div class="timeline-grid">
+                    <div class="timeline-item card-3d">
+                        <div class="step-num glow-blue-ring">01</div>
+                        <h4>Tell Us Your Workflow</h4>
+                        <p>Share your business goals, tools, and exact requirements.</p>
+                    </div>
+
+                    <div class="timeline-item card-3d">
+                        <div class="step-num glow-cyan-ring">02</div>
+                        <h4>We Design Your Agent</h4>
+                        <p>Create a custom robotic AI architecture tailored to your business.</p>
+                    </div>
+
+                    <div class="timeline-item card-3d">
+                        <div class="step-num glow-purple-ring">03</div>
+                        <h4>Connect Your Tools</h4>
+                        <p>Integrate your apps, APIs, databases, and communication channels.</p>
+                    </div>
+
+                    <div class="timeline-item card-3d">
+                        <div class="step-num glow-orange-ring">04</div>
+                        <h4>Train & Test</h4>
+                        <p>Fine-tune model prompts with real company data and edge-case scenarios.</p>
+                    </div>
+
+                    <div class="timeline-item card-3d">
+                        <div class="step-num glow-pink-ring">05</div>
+                        <h4>Deploy Your AI Employee</h4>
+                        <p>Go live 24/7 and watch your business scale automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-bg-glow"></div>
+                
+                <div class="cta-content-wrapper">
+                    <!-- Left Column -->
+                    <div class="cta-text-left">
+                        <div class="cta-badge">
+                            <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="4" y="4" width="16" height="16" rx="2"/>
+                                <rect x="9" y="9" width="6" height="6"/>
+                                <line x1="9" y1="1" x2="9" y2="4"/>
+                                <line x1="15" y1="1" x2="15" y2="4"/>
+                                <line x1="9" y1="20" x2="9" y2="23"/>
+                                <line x1="15" y1="20" x2="15" y2="23"/>
+                                <line x1="20" y1="9" x2="23" y2="9"/>
+                                <line x1="20" y1="15" x2="23" y2="15"/>
+                                <line x1="1" y1="9" x2="4" y2="9"/>
+                                <line x1="1" y1="15" x2="4" y2="15"/>
+                            </svg>
+                            <span>AI POWERED SOLUTIONS</span>
+                        </div>
+
+                        <h2 class="cta-heading">
+                            Stop Adapting Your<br>
+                            Business to AI.<br>
+                            <span class="text-glow">Make AI Adapt to Your<br>Business.</span>
+                        </h2>
+
+                        <p class="cta-sub">Custom AI agents. Real business impact. Built for you.</p>
+                        
+                        <!-- Benefit Pills Row -->
+                        <div class="benefit-pills-row">
+                            <div class="benefit-pill">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                <span>Smarter Workflows</span>
+                            </div>
+                            <div class="benefit-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                <span>Higher Productivity</span>
+                            </div>
+                            <div class="benefit-pill">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                <span>Faster Growth</span>
+                            </div>
+                        </div>
+
+                        <div class="cta-btns">
+                            <a href="#" class="btn btn-primary btn-glow">
+                                Build My Custom AI Agent
+                                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                            <a href="#" class="btn btn-secondary">
+                                <span class="play-icon-wrapper">
+                                    <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                </span>
+                                Watch How It Works
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Glassmorphism Info Card) -->
+                    <div class="cta-card-right">
+                        <div class="cta-card-header">
+                            MORE THAN JUST AI.<br>
+                            IT'S YOUR BUSINESS CO-PILOT.
+                        </div>
+
+                        <div class="cta-feature-list">
+                            <div class="cta-feature-item">
+                                <div class="cta-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a9 9 0 0 1 9 9c0 3.6-2.1 6.7-5.2 8.1L12 22l-3.8-2.9C5.1 17.7 3 14.6 3 11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+                                </div>
+                                <div class="cta-feature-info">
+                                    <h4>Custom AI Agents</h4>
+                                    <p>Tailored to your unique business needs.</p>
+                                </div>
+                            </div>
+
+                            <div class="cta-feature-item">
+                                <div class="cta-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                </div>
+                                <div class="cta-feature-info">
+                                    <h4>Real Business Impact</h4>
+                                    <p>Save time, cut costs, boost revenue.</p>
+                                </div>
+                            </div>
+
+                            <div class="cta-feature-item">
+                                <div class="cta-icon-box">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <div class="cta-feature-info">
+                                    <h4>Built for You</h4>
+                                    <p>Secure, scalable and future-ready.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#ai-agents">AI Agents</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#about-us">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+                <p class="copyright">© 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Hello! 👋 Welcome to AGENTSPACE! How can I help build your custom AI Agent today?
+            </div>
+            <div class="speech-actions">
+                <a href="#contact" class="speech-btn">Book Demo</a>
+                <a href="#ai-solutions" class="speech-btn speech-btn-sec">Solutions</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Sci-Fi Holographic Crosshair Cursor Overlay & Target Lock -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <!-- Cursor Spark Trail Canvas -->
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
