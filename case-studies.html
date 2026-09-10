@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies | AGENTSPACE 3D Robotics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">FETCHING TELEMETRY METRICS</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html" class="active">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subpage Hero Header Banner -->
+    <section class="subpage-hero">
+        <div class="container subpage-hero-grid">
+            <div class="subpage-hero-content">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Home</a> <span>/</span> <span>CASE STUDIES & METRICS</span>
+                </div>
+                <h1 class="subpage-hero-title">
+                    Empirical Proven <span class="text-glow">Business Impact</span>
+                </h1>
+                <p class="subpage-hero-desc">
+                    Discover how fast-growing brands, fintech companies, and global logistics providers scale operations with AGENTSPACE 3D robotics neural agents.
+                </p>
+                <div class="hero-btns">
+                    <a href="#case-studies-list" class="btn btn-primary btn-glow">View Verified Metrics</a>
+                    <a href="contact.html" class="btn btn-secondary">Request Custom ROI Study</a>
+                </div>
+            </div>
+
+            <div class="subpage-hero-visual">
+                <div class="subpage-robot-card card-3d">
+                    <img src="assets/images/cta-robot-hologram.png" alt="3D Case Studies Telemetry Visual" class="subpage-robot-img">
+                    <div class="subpage-hud-badge">
+                        <div class="hud-pulse-dot"></div>
+                        <span>VERIFIED CLIENT IMPACT: 10X AVG ROI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Case Studies Section -->
+    <section class="section" id="case-studies-list">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 50px;">
+                <div class="section-label">TELEMETRY PROOF</div>
+                <h2 class="section-title">Before & After AI Deployment Results</h2>
+            </div>
+
+            <!-- Case Study 1 -->
+            <div class="case-study-card card-3d">
+                <div class="case-study-content">
+                    <span class="case-study-badge">E-COMMERCE & RETAIL</span>
+                    <h3 class="case-study-title">Global Apparel Brand Automates 40,000 Monthly DMs & Support Tickets</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                        Facing massive inquiry volume on Instagram and Shopify support, the brand deployed INSTAGUARD DM agents and SUPPORTR-X customer service pods to handle 24/7 order tracking, returns, and promo code distribution.
+                    </p>
+                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: INSTAGUARD DM + SHOPIFY API + META GRAPH</div>
+                </div>
+
+                <div class="case-study-metrics-grid">
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Response Time:</span>
+                        <div><span class="metric-before">4.5 Hours</span> <span class="metric-after">12 Seconds</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">First Contact Resolution:</span>
+                        <div><span class="metric-before">34%</span> <span class="metric-after">91%</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Monthly Support Overhead:</span>
+                        <div><span class="metric-before">$42,000/mo</span> <span class="metric-after">$8,500/mo</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 2 -->
+            <div class="case-study-card card-3d">
+                <div class="case-study-content">
+                    <span class="case-study-badge">FINTECH & SAAS</span>
+                    <h3 class="case-study-title">FinTech Platform Boosts Lead Conversion Rate by 3.4x</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                        High-value inbound lead requests were going cold over weekends. By deploying LEADR-3000, incoming prospects were qualified within 10 seconds and instantly scheduled into executive calendars.
+                    </p>
+                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: LEADR-3000 + HUBSPOT CRM + CALENDLY API</div>
+                </div>
+
+                <div class="case-study-metrics-grid">
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Lead Contact Speed:</span>
+                        <div><span class="metric-before">22 Hours</span> <span class="metric-after">8 Seconds</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Demo Booking Rate:</span>
+                        <div><span class="metric-before">11%</span> <span class="metric-after">38%</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">ARR Impact:</span>
+                        <div><span class="metric-before">Baseline</span> <span class="metric-after">+$1.4M ARR</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study 3 -->
+            <div class="case-study-card card-3d">
+                <div class="case-study-content">
+                    <span class="case-study-badge">LOGISTICS & FREIGHT</span>
+                    <h3 class="case-study-title">Automated Bill of Lading Document Extraction Saves 14,000 Hours</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
+                        The operations team spent thousands of hours manually copying data from PDF bills of lading into ERP systems. DISPATCH-BOT autonomous OCR parsing reduced processing time to seconds.
+                    </p>
+                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: DISPATCH-BOT + MULTI-PAGE VISION OCR + REST API</div>
+                </div>
+
+                <div class="case-study-metrics-grid">
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Doc Processing Time:</span>
+                        <div><span class="metric-before">25 Mins</span> <span class="metric-after">1.2 Seconds</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Data Entry Errors:</span>
+                        <div><span class="metric-before">8.4%</span> <span class="metric-after">0.02%</span></div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Staff Hours Reclaimed:</span>
+                        <div><span class="metric-before">0 hrs</span> <span class="metric-after">14,000 hrs/yr</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="contact.html" class="btn btn-primary btn-glow">Schedule Case Study Deep Dive →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <p class="copyright">© 2025 AGENTSPACE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Impressed by these metrics? Let's achieve similar results for your business!
+            </div>
+            <div class="speech-actions">
+                <a href="contact.html" class="speech-btn">Book Demo</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Holographic Crosshair Cursor Elements -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

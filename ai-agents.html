@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Showcase | AGENTSPACE 3D Robotics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">LOADING AI AGENT MATRIX</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html" class="active">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subpage Hero Header Banner -->
+    <section class="subpage-hero">
+        <div class="container subpage-hero-grid">
+            <div class="subpage-hero-content">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Home</a> <span>/</span> <span>AI AGENTS POD</span>
+                </div>
+                <h1 class="subpage-hero-title">
+                    Autonomous <span class="text-glow">AI Agent Matrix</span>
+                </h1>
+                <p class="subpage-hero-desc">
+                    Explore our specialized library of neural AI agents built for sales, omnichannel customer support, workflow automation, and voice intelligence. Fully customizable to your exact tools and data.
+                </p>
+                <div class="hero-btns">
+                    <a href="contact.html" class="btn btn-primary btn-glow">Build Custom Agent Pod</a>
+                    <a href="#agent-library" class="btn btn-secondary">Explore Catalog ↓</a>
+                </div>
+            </div>
+
+            <div class="subpage-hero-visual">
+                <div class="subpage-robot-card card-3d">
+                    <img src="assets/images/capabilities-robot.png" alt="3D AI Agent Pod Hologram" class="subpage-robot-img">
+                    <div class="subpage-hud-badge">
+                        <div class="hud-pulse-dot"></div>
+                        <span>AGENT POD MATRIX: ACTIVE (6 ONLINE)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Agents Filterable Catalog Section -->
+    <section class="section" id="agent-library">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 40px;">
+                <div class="section-label">NEURAL AGENT SPECIFICATIONS</div>
+                <h2 class="section-title">Select Your Business Intelligence Pod</h2>
+                <p class="section-subtitle" style="margin: 0 auto; max-width: 600px;">Filter through custom AI agent models trained for specific enterprise execution tasks.</p>
+            </div>
+
+            <!-- Category Tab Filter -->
+            <div class="filter-tab-wrapper">
+                <div class="filter-tab-bar">
+                    <button class="filter-btn active" data-filter="all">All Agent Pods</button>
+                    <button class="filter-btn" data-filter="sales">Sales & Leads</button>
+                    <button class="filter-btn" data-filter="support">Support & CX</button>
+                    <button class="filter-btn" data-filter="ops">Operations & Workflow</button>
+                    <button class="filter-btn" data-filter="social">Social & Voice</button>
+                </div>
+            </div>
+
+            <!-- Agents Grid -->
+            <div class="agents-full-grid">
+                <!-- Agent 1: Lead Gen -->
+                <div class="agent-pod-card card-3d" data-category="sales">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">LEADR-3000 (Sales Qualifier)</h3>
+                    <p class="agent-pod-desc">Engages incoming leads within 10 seconds, conducts qualification interviews, overcomes objections, and books meetings into your CRM Calendar.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> HubSpot, Salesforce & Calendly Sync</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3.4x Lead-to-Booked Demo Conversion</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-touch WhatsApp & Email Sequences</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy LEADR-3000</a>
+                </div>
+
+                <!-- Agent 2: Support -->
+                <div class="agent-pod-card card-3d" data-category="support">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">SUPPORTR-X (CX Support Agent)</h3>
+                    <p class="agent-pod-desc">Resolves tier 1-3 customer inquiries 24/7, accesses real-time shipping/order databases, and performs actions like refunds or address changes.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zendesk, Gorgias & Shopify Integration</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 92% First Contact Resolution Rate</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multilingual (50+ Languages)</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy SUPPORTR-X</a>
+                </div>
+
+                <!-- Agent 3: Social IG -->
+                <div class="agent-pod-card card-3d" data-category="social">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">INSTAGUARD (Social DM Agent)</h3>
+                    <p class="agent-pod-desc">Monitors Instagram DMs, comment triggers, and story replies. Automatically sends personalized discount links and collects opt-ins.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Meta API Official Integration</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Story Mention & Keyword Automation</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Human-like Conversational Pacing</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy INSTAGUARD</a>
+                </div>
+
+                <!-- Agent 4: Operations -->
+                <div class="agent-pod-card card-3d" data-category="ops">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">DISPATCH-BOT (Workflow Ops)</h3>
+                    <p class="agent-pod-desc">Automates internal operations: document processing, invoice extraction, cross-tool data sync, and emergency anomaly notifications.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zapier, Make & Custom Webhooks</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> OCR & Multi-page PDF Parsing</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Autonomous Slack/Teams Reporting</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy DISPATCH-BOT</a>
+                </div>
+
+                <!-- Agent 5: Voice -->
+                <div class="agent-pod-card card-3d" data-category="social">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">VOICE-NEXUS (AI Phone Agent)</h3>
+                    <p class="agent-pod-desc">Ultra-low latency sub-second conversational voice agent for inbound phone calls, appointment confirm calls, and customer dispatch.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Twilio & Retell AI Voice Pipeline</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ultra-realistic Human Voices & Accents</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Automatic Call Transcript Summaries</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy VOICE-NEXUS</a>
+                </div>
+
+                <!-- Agent 6: Enterprise Knowledge -->
+                <div class="agent-pod-card card-3d" data-category="ops">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
+                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                    </div>
+                    <h3 class="agent-pod-title">DATAFLEX (Enterprise SQL Agent)</h3>
+                    <p class="agent-pod-desc">Connects to your Postgres/Snowflake database and vector store. Enables natural language analytics queries for executive reporting.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> RAG Vector Database Architecture</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zero Data Leakage Guarantee</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Natural Language to SQL Execution</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy DATAFLEX</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <p class="copyright">© 2025 AGENTSPACE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Hello! 👋 Exploring our AI Agent Pods? Let's build one for your team!
+            </div>
+            <div class="speech-actions">
+                <a href="contact.html" class="speech-btn">Book Demo</a>
+                <a href="solutions.html" class="speech-btn speech-btn-sec">Solutions</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Holographic Crosshair Cursor Elements -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -482,38 +482,182 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCursor();
 
         // Target Lock Interactive Hover Listeners
-        const targetElements = document.querySelectorAll(
-            'a, button, .btn, .card-3d, .sol-card, .sol-vertical-patti, .step-nav-btn, .agent-card, .platform-badge, .timeline-item, .nav-links a, .corner-robot-avatar, .step-card, .action-card, input, textarea'
-        );
+        const bindTargetLockElements = () => {
+            const targetElements = document.querySelectorAll(
+                'a, button, .btn, .card-3d, .sol-card, .sol-vertical-patti, .step-nav-btn, .agent-card, .platform-badge, .timeline-item, .nav-links a, .corner-robot-avatar, .step-card, .action-card, input, textarea, .agent-pod-card, .filter-btn, .config-option-card, .tech-stack-card, .config-step-tab, .case-study-card'
+            );
 
-        targetElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorContainer.classList.add('locked');
-                
-                // Customize lock text based on target element
-                if (reticleTargetText) {
-                    if (el.classList.contains('btn-primary') || el.classList.contains('speech-btn')) {
-                        reticleTargetText.innerText = 'EXECUTE DEMO';
-                    } else if (el.classList.contains('agent-card')) {
-                        reticleTargetText.innerText = 'AI POD LOCKED';
-                    } else if (el.classList.contains('sol-vertical-patti') || el.classList.contains('step-nav-btn')) {
-                        reticleTargetText.innerText = 'CAPABILITY LOCK';
-                    } else if (el.classList.contains('card-3d') || el.classList.contains('sol-card')) {
-                        reticleTargetText.innerText = 'TARGET LOCKED';
-                    } else if (el.classList.contains('corner-robot-avatar')) {
-                        reticleTargetText.innerText = 'AI ASSISTANT';
-                    } else {
-                        reticleTargetText.innerText = 'SYSTEM LOCK';
+            targetElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorContainer.classList.add('locked');
+                    
+                    // Customize lock text based on target element
+                    if (reticleTargetText) {
+                        if (el.classList.contains('btn-primary') || el.classList.contains('speech-btn')) {
+                            reticleTargetText.innerText = 'EXECUTE DEMO';
+                        } else if (el.classList.contains('agent-card') || el.classList.contains('agent-pod-card')) {
+                            reticleTargetText.innerText = 'AI POD LOCKED';
+                        } else if (el.classList.contains('sol-vertical-patti') || el.classList.contains('step-nav-btn')) {
+                            reticleTargetText.innerText = 'CAPABILITY LOCK';
+                        } else if (el.classList.contains('card-3d') || el.classList.contains('sol-card')) {
+                            reticleTargetText.innerText = 'TARGET LOCKED';
+                        } else if (el.classList.contains('corner-robot-avatar')) {
+                            reticleTargetText.innerText = 'AI ASSISTANT';
+                        } else if (el.classList.contains('filter-btn')) {
+                            reticleTargetText.innerText = 'FILTER SPECS';
+                        } else if (el.classList.contains('config-option-card')) {
+                            reticleTargetText.innerText = 'SELECT MODULE';
+                        } else {
+                            reticleTargetText.innerText = 'SYSTEM LOCK';
+                        }
                     }
-                }
-            });
+                });
 
-            el.addEventListener('mouseleave', () => {
-                cursorContainer.classList.remove('locked');
+                el.addEventListener('mouseleave', () => {
+                    cursorContainer.classList.remove('locked');
+                });
+            });
+        };
+
+        bindTargetLockElements();
+    }
+
+    // ==========================================
+    // AI Agents Category Tab Filter (ai-agents.html)
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const agentPodCards = document.querySelectorAll('.agent-pod-card');
+
+    if (filterBtns.length > 0 && agentPodCards.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterCategory = btn.getAttribute('data-filter');
+
+                agentPodCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterCategory === 'all' || cardCategory === filterCategory) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(10px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
             });
         });
     }
 
-    console.log('AGENTSPACE AI Agency Website initialized successfully with Holographic Cursor!');
+    // ==========================================
+    // Interactive ROI Calculator (solutions.html)
+    // ==========================================
+    const teamSizeSlider = document.getElementById('teamSizeSlider');
+    const avgSalarySlider = document.getElementById('avgSalarySlider');
+    const hoursTaskSlider = document.getElementById('hoursTaskSlider');
+
+    const teamSizeVal = document.getElementById('teamSizeVal');
+    const avgSalaryVal = document.getElementById('avgSalaryVal');
+    const hoursTaskVal = document.getElementById('hoursTaskVal');
+
+    const annualSavingsVal = document.getElementById('annualSavingsVal');
+    const hoursSavedVal = document.getElementById('hoursSavedVal');
+    const roiSpeedVal = document.getElementById('roiSpeedVal');
+
+    function updateROICalculations() {
+        if (!teamSizeSlider || !avgSalarySlider || !hoursTaskSlider) return;
+
+        const teamSize = parseInt(teamSizeSlider.value) || 10;
+        const avgSalary = parseInt(avgSalarySlider.value) || 60000;
+        const hoursTask = parseInt(hoursTaskSlider.value) || 15;
+
+        if (teamSizeVal) teamSizeVal.innerText = `${teamSize} People`;
+        if (avgSalaryVal) avgSalaryVal.innerText = `$${avgSalary.toLocaleString()}/yr`;
+        if (hoursTaskVal) hoursTaskVal.innerText = `${hoursTask} hrs/wk`;
+
+        // Estimation logic: AI automates 65% of repetitive task hours
+        const hourlyRate = avgSalary / 2000; // ~2000 working hours/yr
+        const weeklyHoursSaved = teamSize * hoursTask * 0.65;
+        const annualHoursSaved = Math.round(weeklyHoursSaved * 52);
+        const annualCostSavings = Math.round(annualHoursSaved * hourlyRate);
+
+        if (annualSavingsVal) annualSavingsVal.innerText = `$${annualCostSavings.toLocaleString()}`;
+        if (hoursSavedVal) hoursSavedVal.innerText = `${annualHoursSaved.toLocaleString()} hrs`;
+        if (roiSpeedVal) roiSpeedVal.innerText = `${Math.max(1, Math.round(12 - (teamSize / 5)))} Weeks`;
+    }
+
+    if (teamSizeSlider && avgSalarySlider && hoursTaskSlider) {
+        teamSizeSlider.addEventListener('input', updateROICalculations);
+        avgSalarySlider.addEventListener('input', updateROICalculations);
+        hoursTaskSlider.addEventListener('input', updateROICalculations);
+        updateROICalculations();
+    }
+
+    // ==========================================
+    // 4-Step Interactive Agent Builder Configurator (contact.html)
+    // ==========================================
+    const stepTabs = document.querySelectorAll('.config-step-tab');
+    const stepContents = document.querySelectorAll('.config-step-content');
+    const prevBtn = document.getElementById('configPrevBtn');
+    const nextBtn = document.getElementById('configNextBtn');
+    const submitBtn = document.getElementById('configSubmitBtn');
+    let currentStep = 1;
+
+    function goToConfigStep(stepNumber) {
+        if (stepNumber < 1 || stepNumber > 4) return;
+        currentStep = stepNumber;
+
+        stepTabs.forEach((tab, index) => {
+            if (index + 1 === stepNumber) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        stepContents.forEach((content, index) => {
+            if (index + 1 === stepNumber) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
+        });
+
+        if (prevBtn) prevBtn.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+        if (nextBtn) nextBtn.style.display = currentStep === 4 ? 'none' : 'inline-flex';
+        if (submitBtn) submitBtn.style.display = currentStep === 4 ? 'inline-flex' : 'none';
+    }
+
+    stepTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const step = parseInt(tab.getAttribute('data-step'));
+            if (step) goToConfigStep(step);
+        });
+    });
+
+    if (nextBtn) nextBtn.addEventListener('click', () => goToConfigStep(currentStep + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => goToConfigStep(currentStep - 1));
+
+    // Option cards selection in configurator
+    const optionCards = document.querySelectorAll('.config-option-card');
+    optionCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const parentGrid = card.closest('.option-cards-grid');
+            if (parentGrid) {
+                parentGrid.querySelectorAll('.config-option-card').forEach(c => c.classList.remove('selected'));
+            }
+            card.classList.add('selected');
+        });
+    });
+
+    console.log('AGENTSPACE AI Agency Website initialized successfully across all subpages!');
 });
+
 

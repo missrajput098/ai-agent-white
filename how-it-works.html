@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | AGENTSPACE 3D Robotics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">COMPILING PROCESS LIFECYCLE</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html" class="active">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subpage Hero Header Banner -->
+    <section class="subpage-hero">
+        <div class="container subpage-hero-grid">
+            <div class="subpage-hero-content">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Home</a> <span>/</span> <span>DEVELOPMENT PROCESS</span>
+                </div>
+                <h1 class="subpage-hero-title">
+                    From Workflow Audit to <span class="text-glow">Autonomous Scaling</span>
+                </h1>
+                <p class="subpage-hero-desc">
+                    Our battle-tested 5-phase engineering methodology designs, trains, tests, and deploys custom AI agents tailored to your precise operational business workflows.
+                </p>
+                <div class="hero-btns">
+                    <a href="#process-timeline" class="btn btn-primary btn-glow">Explore 5-Phase Roadmap</a>
+                    <a href="#terminal-hud" class="btn btn-secondary">View Deployment Console ↓</a>
+                </div>
+            </div>
+
+            <div class="subpage-hero-visual">
+                <div class="subpage-robot-card card-3d">
+                    <img src="assets/images/robot-rules.jpg" alt="3D AI Engineering Rules Visual" class="subpage-robot-img" style="border-radius: 16px;">
+                    <div class="subpage-hud-badge">
+                        <div class="hud-pulse-dot"></div>
+                        <span>DEPLOYMENT VELOCITY: 14 DAYS AVG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5-Phase Engineering Roadmap -->
+    <section class="section" id="process-timeline">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 50px;">
+                <div class="section-label">THE 5-STEP ROADMAP</div>
+                <h2 class="section-title">How We Build & Train Your Custom AI Agents</h2>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 30px; max-width: 900px; margin: 0 auto;">
+                <!-- Step 1 -->
+                <div class="agent-pod-card card-3d" style="flex-direction: row; gap: 30px; align-items: center;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #0284c7; font-family: monospace; min-width: 70px;">01</div>
+                    <div>
+                        <h3 class="agent-pod-title" style="margin-bottom: 6px;">Discovery & Bottleneck Audit</h3>
+                        <p class="agent-pod-desc" style="margin-bottom: 0;">We analyze your team's repetitive tasks, software stack, and customer touchpoints to identify maximum ROI opportunities for AI automation.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="agent-pod-card card-3d" style="flex-direction: row; gap: 30px; align-items: center;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #2563eb; font-family: monospace; min-width: 70px;">02</div>
+                    <div>
+                        <h3 class="agent-pod-title" style="margin-bottom: 6px;">Neural Architecture & Prompt Design</h3>
+                        <p class="agent-pod-desc" style="margin-bottom: 0;">We construct the underlying agent logic, vector database retrieval schemas, decision trees, and strict enterprise safety guardrails.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="agent-pod-card card-3d" style="flex-direction: row; gap: 30px; align-items: center;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #38bdf8; font-family: monospace; min-width: 70px;">03</div>
+                    <div>
+                        <h3 class="agent-pod-title" style="margin-bottom: 6px;">Fine-Tuning & Knowledge Ingestion</h3>
+                        <p class="agent-pod-desc" style="margin-bottom: 0;">We ingest your SOPs, CRM records, and product documentation into a high-dimensional vector store, tuning responses to reflect your brand tone.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="agent-pod-card card-3d" style="flex-direction: row; gap: 30px; align-items: center;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #6366f1; font-family: monospace; min-width: 70px;">04</div>
+                    <div>
+                        <h3 class="agent-pod-title" style="margin-bottom: 6px;">Sandbox Testing & Edge Case Verification</h3>
+                        <p class="agent-pod-desc" style="margin-bottom: 0;">Before production launch, we simulate thousands of real customer edge cases, verifying 99%+ accuracy and human-escalation fallbacks.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="agent-pod-card card-3d" style="flex-direction: row; gap: 30px; align-items: center;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #16a34a; font-family: monospace; min-width: 70px;">05</div>
+                    <div>
+                        <h3 class="agent-pod-title" style="margin-bottom: 6px;">Production Deployment & Continuous Scaling</h3>
+                        <p class="agent-pod-desc" style="margin-bottom: 0;">Your AI agent goes live 24/7. Our automated telemetry dashboard monitors latency, token usage, resolution rates, and continuous model optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Deployment HUD Console Simulation -->
+    <section class="section" id="terminal-hud" style="background: rgba(15, 23, 42, 0.03);">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 40px;">
+                <div class="section-label">LIVE AGENT TELEMETRY TERMINAL</div>
+                <h2 class="section-title">Autonomous Deployment Console</h2>
+            </div>
+
+            <div class="terminal-card card-3d" style="max-width: 850px; margin: 0 auto; background: #0f172a; border-radius: 16px; border: 1px solid #0284c7; box-shadow: 0 20px 50px rgba(2, 132, 199, 0.2); overflow: hidden;">
+                <div style="background: #1e293b; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; gap: 8px;">
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #eab308; display: inline-block;"></span>
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+                    </div>
+                    <div style="font-family: monospace; font-size: 0.8rem; color: #94a3b8;">agentspace-terminal-v4.2.sh</div>
+                </div>
+                <div style="padding: 24px; font-family: monospace; font-size: 0.9rem; color: #38bdf8; line-height: 1.8;">
+                    <div><span style="color: #4ade80;">[SYSTEM]</span> Initiating AGENTSPACE Neural Deployment Pipeline...</div>
+                    <div><span style="color: #60a5fa;">[INFO]</span> Vector Database Indexing (Pinecone/Milvus): <span style="color: #4ade80;">100% COMPLETE</span></div>
+                    <div><span style="color: #60a5fa;">[INFO]</span> Fine-Tuned Guardrails Loaded: <span style="color: #4ade80;">ZERO HALLUCINATION VERIFIED</span></div>
+                    <div><span style="color: #60a5fa;">[INFO]</span> Webhook Latency: <span style="color: #f59e0b;">118ms</span> | Throughput: <span style="color: #4ade80;">5,000 req/sec</span></div>
+                    <div><span style="color: #a855f7;">[SUCCESS]</span> Neural AI Agent Pod initialized successfully. Ready to automate business workflows.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <p class="copyright">© 2025 AGENTSPACE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Ready to begin Phase 1 Discovery for your custom AI Agent?
+            </div>
+            <div class="speech-actions">
+                <a href="contact.html" class="speech-btn">Book Demo</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Holographic Crosshair Cursor Elements -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

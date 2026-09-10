@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions & Capabilities | AGENTSPACE 3D Robotics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">INITIALIZING SOLUTIONS MATRIX</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html" class="active">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subpage Hero Header Banner -->
+    <section class="subpage-hero">
+        <div class="container subpage-hero-grid">
+            <div class="subpage-hero-content">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Home</a> <span>/</span> <span>SOLUTIONS MATRIX</span>
+                </div>
+                <h1 class="subpage-hero-title">
+                    Enterprise <span class="text-glow">AI Architecture</span> & Capabilities
+                </h1>
+                <p class="subpage-hero-desc">
+                    Custom neural agent orchestration engineered to integrate into your existing tech stack, automate repetitive operations, and scale productivity exponentially.
+                </p>
+                <div class="hero-btns">
+                    <a href="#roi-calculator" class="btn btn-primary btn-glow">Calculate ROI Savings</a>
+                    <a href="#capabilities" class="btn btn-secondary">View Core Solutions ↓</a>
+                </div>
+            </div>
+
+            <div class="subpage-hero-visual">
+                <div class="subpage-robot-card card-3d">
+                    <img src="assets/images/capabilities-full.png" alt="3D Enterprise Solutions Diagram" class="subpage-robot-img">
+                    <div class="subpage-hud-badge">
+                        <div class="hud-pulse-dot"></div>
+                        <span>SYSTEM EFFICIENCY: 99.4% OPTIMIZED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive ROI Calculator Section -->
+    <section class="section" id="roi-calculator">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 40px;">
+                <div class="section-label">INTERACTIVE TELEMETRY CALCULATOR</div>
+                <h2 class="section-title">Calculate Your AI Automation ROI</h2>
+                <p class="section-subtitle" style="margin: 0 auto; max-width: 650px;">Drag the sliders below to estimate annual hours reclaimed and cost savings with AGENTSPACE custom AI agents.</p>
+            </div>
+
+            <div class="roi-calculator-container card-3d">
+                <div class="calc-inputs">
+                    <div class="calc-control-group">
+                        <div class="calc-label">
+                            <span>Team Size (Knowledge Workers):</span>
+                            <span class="calc-value" id="teamSizeVal">10 People</span>
+                        </div>
+                        <input type="range" min="2" max="100" value="10" class="calc-slider" id="teamSizeSlider">
+                    </div>
+
+                    <div class="calc-control-group">
+                        <div class="calc-label">
+                            <span>Average Annual Salary per Worker:</span>
+                            <span class="calc-value" id="avgSalaryVal">$60,000/yr</span>
+                        </div>
+                        <input type="range" min="30000" max="150000" step="5000" value="60000" class="calc-slider" id="avgSalarySlider">
+                    </div>
+
+                    <div class="calc-control-group">
+                        <div class="calc-label">
+                            <span>Repetitive Task Hours per Week (per Person):</span>
+                            <span class="calc-value" id="hoursTaskVal">15 hrs/wk</span>
+                        </div>
+                        <input type="range" min="5" max="35" value="15" class="calc-slider" id="hoursTaskSlider">
+                    </div>
+                </div>
+
+                <div class="roi-output-box">
+                    <div class="roi-output-label" style="font-size: 0.85rem; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase;">ESTIMATED ANNUAL COST SAVINGS</div>
+                    <div class="roi-output-number" id="annualSavingsVal">$152,100</div>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Projected net impact from 65% repetitive workflow automation.</p>
+
+                    <div class="roi-metrics-trio">
+                        <div class="roi-mini-metric">
+                            <div class="roi-mini-val" id="hoursSavedVal">5,070 hrs</div>
+                            <div class="roi-mini-lbl">Hours Saved/Yr</div>
+                        </div>
+                        <div class="roi-mini-metric">
+                            <div class="roi-mini-val">3.8x</div>
+                            <div class="roi-mini-lbl">Speed Up</div>
+                        </div>
+                        <div class="roi-mini-metric">
+                            <div class="roi-mini-val" id="roiSpeedVal">2 Weeks</div>
+                            <div class="roi-mini-lbl">Full Payback</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Solutions Showcase Grid -->
+    <section class="section" id="capabilities">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 50px;">
+                <div class="section-label">FOUR PILLARS OF INTEGRATION</div>
+                <h2 class="section-title">Built For Modern Enterprise Complexity</h2>
+            </div>
+
+            <div class="agents-full-grid">
+                <!-- Solution 1 -->
+                <div class="agent-pod-card card-3d">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="agent-pod-title">Multi-Tool API Integration</h3>
+                    <p class="agent-pod-desc">Connect AI agents directly into Salesforce, HubSpot, Stripe, Notion, Slack, Google Workspace, and custom REST/GraphQL APIs with zero friction.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 500+ Pre-built API Connectors</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Real-time Webhook Triggers</li>
+                    </ul>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="agent-pod-card card-3d">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="agent-pod-title">Custom LLM Fine-Tuning</h3>
+                    <p class="agent-pod-desc">We fine-tune open and closed LLMs (GPT-4o, Claude 3.5, Llama 3) on your exact company SOPs, domain glossaries, and brand tone guidelines.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zero Hallucination Guardrails</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Proprietary RAG Knowledge Engine</li>
+                    </ul>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="agent-pod-card card-3d">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="agent-pod-title">Multi-Agent Swarm Coordination</h3>
+                    <p class="agent-pod-desc">Deploy teams of specialized agents that hand off tasks dynamically — e.g. Researcher Agent -> Analyst Agent -> Execution Agent -> Verification Agent.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Autonomous Decision Routing</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Human-in-the-Loop Fallbacks</li>
+                    </ul>
+                </div>
+
+                <!-- Solution 4 -->
+                <div class="agent-pod-card card-3d">
+                    <div class="agent-pod-header">
+                        <div class="agent-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        </div>
+                    </div>
+                    <h3 class="agent-pod-title">Enterprise Security & Compliance</h3>
+                    <p class="agent-pod-desc">Bank-grade encryption, SOC2 readiness, HIPAA compliance, and isolated VPC deployment ensures your data never leaves your secure perimeter.</p>
+                    <ul class="agent-spec-list">
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> AES-256 Bit Encryption</li>
+                        <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Private On-Premise / VPC Hosting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="contact.html" class="btn btn-primary btn-glow">Request Custom Solution Blueprint →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <p class="copyright">© 2025 AGENTSPACE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Want to calculate your exact enterprise AI ROI savings? Let's chat!
+            </div>
+            <div class="speech-actions">
+                <a href="contact.html" class="speech-btn">Book Demo</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Holographic Crosshair Cursor Elements -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
