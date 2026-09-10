@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solutions & Capabilities | AGENTSPACE 3D Robotics</title>
+    <title>Solutions & Capabilities | AGENTSPACE Robotics Lab</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -39,13 +39,28 @@
     <!-- Fullscreen Connected Points Background Canvas -->
     <canvas id="constellationCanvas"></canvas>
 
+    <!-- Top HUD Live Status Bar -->
+    <div class="hud-status-bar">
+        <div class="container hud-status-container">
+            <div class="hud-ticker-text">
+                <span class="hud-status-item"><span class="status-dot"></span> SYSTEM: OPTIMAL</span>
+                <span class="hud-status-item">| NEURAL CORE v4.8 ACTIVE</span>
+                <span class="hud-status-item">| AGENTS DEPLOYED: 1,420</span>
+                <span class="hud-status-item">| LATENCY: 12ms</span>
+            </div>
+            <div class="hud-status-right">
+                <span>[ ROBOTICS MODE ENABLED ]</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Navigation -->
     <header class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
                 <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
                 </svg>
                 <span class="logo-text">AGENTSPACE</span>
             </a>
@@ -60,6 +75,7 @@
             </nav>
 
             <div class="nav-actions">
+                <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
