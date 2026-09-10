@@ -1,25 +1,33 @@
 /* ==========================================
-   AGENTSPACE - Premium Light Theme AI Agency Stylesheet
+   AGENTSPACE - Light Default + Robotics Mode Dual Theme
    ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
     --bg-dark: #f8fafc;
     --bg-surface: #ffffff;
-    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-card: rgba(255, 255, 255, 0.95);
     --bg-card-hover: #ffffff;
     
     --primary-blue: #2563eb;
     --primary-cyan: #0284c7;
+    --accent-violet: #6366f1;
+    --accent-green: #16a34a;
     --accent-glow: rgba(37, 99, 235, 0.15);
     
     --text-main: #0f172a;
-    --text-muted: #475569;
-    --text-dim: #64748b;
+    --text-muted: #334155;
+    --text-dim: #475569;
     
-    --border-color: rgba(226, 232, 240, 0.9);
-    --border-glow: rgba(37, 99, 235, 0.3);
+    --border-color: rgba(203, 213, 225, 0.85);
+    --border-glow: rgba(37, 99, 235, 0.35);
     
     --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-hud: 'Orbitron', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-tech: 'Rajdhani', sans-serif;
+    
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -27,6 +35,267 @@
 
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* SVG & Icon Safeguards */
+svg {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+
+.logo-icon { width: 34px; height: 34px; flex-shrink: 0; }
+.play-icon { width: 14px; height: 14px; margin-left: 2px; }
+.arrow-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.badge-icon { width: 30px; height: 30px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.badge-icon svg { width: 16px; height: 16px; }
+
+.agent-icon-box { width: 56px; height: 56px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(37, 99, 235, 0.2); color: var(--primary-blue); }
+.agent-icon-box svg { width: 28px; height: 28px; }
+
+.tech-icon-wrapper { width: 50px; height: 50px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 14px; flex-shrink: 0; background: rgba(2, 132, 199, 0.1); border: 1px solid rgba(2, 132, 199, 0.2); color: var(--primary-cyan); }
+.tech-icon-wrapper svg { width: 26px; height: 26px; }
+
+.subpage-hud-badge { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; color: var(--primary-blue); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; text-transform: uppercase; }
+.subpage-hud-badge svg { width: 16px; height: 16px; }
+
+.action-card-icon, .step-icon-box, .platform-icon { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.action-card-icon svg, .step-icon-box svg, .platform-icon svg { width: 24px; height: 24px; }
+.agent-spec-item svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--primary-cyan); }
+
+/* DEFAULT LIGHT THEME STYLING (Body & Containers) */
+body {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 40%, rgba(2, 132, 199, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 50%) !important;
+    background-attachment: fixed;
+}
+
+body::before {
+    display: none !important; /* Hide dark grid in light mode */
+}
+
+.hud-status-bar {
+    display: none !important; /* Hidden by default in light mode */
+}
+
+/* Light Theme Navigation Header */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 18px 0;
+    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom-color: rgba(37, 99, 235, 0.2);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+.logo-text { color: #0f172a; font-family: var(--font-hud); font-weight: 800; }
+.nav-links a { color: #475569; font-weight: 600; }
+.nav-links a:hover, .nav-links a.active { color: #2563eb; }
+
+/* Robotics Mode Toggle Button */
+.robotics-mode-toggle {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-tech);
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    white-space: nowrap;
+}
+
+.robotics-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+/* ==========================================
+   ROBOTICS DARK MODE OVERRIDES
+   ========================================== */
+body.robotics-mode {
+    --bg-dark: #030712;
+    --bg-surface: #080d1a;
+    --bg-card: rgba(11, 20, 38, 0.88);
+    --bg-card-hover: rgba(17, 30, 56, 0.95);
+    
+    --primary-blue: #00f0ff;
+    --primary-cyan: #00d8ff;
+    --accent-violet: #7000ff;
+    --accent-green: #00ff9d;
+    --accent-pink: #ff0055;
+    
+    --text-main: #ffffff;
+    --text-muted: #cbd5e1;
+    --text-dim: #94a3b8;
+    
+    --border-color: rgba(0, 240, 255, 0.25);
+    --border-glow: rgba(0, 240, 255, 0.7);
+    
+    --font-main: 'Space Grotesk', sans-serif;
+    background-color: #030712 !important;
+    color: #ffffff !important;
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 85% 40%, rgba(112, 0, 255, 0.1) 0%, transparent 45%),
+        radial-gradient(circle at 15% 80%, rgba(0, 255, 157, 0.08) 0%, transparent 45%) !important;
+}
+
+body.robotics-mode::before {
+    display: block !important;
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body.robotics-mode .hud-status-bar {
+    display: block !important;
+    background: rgba(5, 10, 22, 0.95);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+    color: var(--primary-cyan);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 6px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1001;
+}
+
+body.robotics-mode .navbar {
+    top: 31px;
+    background: rgba(5, 10, 22, 0.94) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.35) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .logo-text {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.6) !important;
+}
+
+body.robotics-mode .nav-links a {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .nav-links a:hover,
+body.robotics-mode .nav-links a.active {
+    color: #00f0ff !important;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+}
+
+body.robotics-mode .robotics-mode-toggle {
+    background: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
+}
+
+/* ALL BUTTONS IN ROBOTICS MODE GET ANGLED CLIPPED CORNERS */
+body.robotics-mode .btn,
+body.robotics-mode .btn-primary,
+body.robotics-mode .btn-secondary,
+body.robotics-mode .btn-sm,
+body.robotics-mode .robotics-mode-toggle {
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-tech) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 700 !important;
+}
+
+body.robotics-mode .btn-primary {
+    background: linear-gradient(135deg, #00f0ff 0%, #2563eb 100%) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.5) !important;
+}
+
+body.robotics-mode .btn-primary:hover {
+    background: linear-gradient(135deg, #00ff9d 0%, #00f0ff 100%) !important;
+    box-shadow: 0 0 35px rgba(0, 240, 255, 0.8) !important;
+}
+
+body.robotics-mode .btn-secondary {
+    background: rgba(13, 24, 46, 0.85) !important;
+    color: #00f0ff !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+}
+
+body.robotics-mode .btn-secondary:hover {
+    background: rgba(0, 240, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* Robotics Mode Card Overrides */
+body.robotics-mode .card,
+body.robotics-mode .hud-card,
+body.robotics-mode .sol-card,
+body.robotics-mode .agent-card,
+body.robotics-mode .step-card,
+body.robotics-mode .timeline-item,
+body.robotics-mode .case-card,
+body.robotics-mode .team-card,
+body.robotics-mode .action-card,
+body.robotics-mode .feature-card,
+body.robotics-mode .agent-pod-card,
+body.robotics-mode .tech-stack-card,
+body.robotics-mode .configurator-card,
+body.robotics-mode .sol-vertical-patti,
+body.robotics-mode .sol-stage-text,
+body.robotics-mode .sol-preview-box {
+    background: rgba(11, 20, 38, 0.88) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.robotics-mode h1, body.robotics-mode h2, body.robotics-mode h3, body.robotics-mode h4, body.robotics-mode h5, body.robotics-mode h6,
+body.robotics-mode .section-title, body.robotics-mode .hero-title, body.robotics-mode .patti-title {
+    color: #ffffff !important;
+    font-family: var(--font-hud) !important;
+}
+
+body.robotics-mode p, body.robotics-mode .section-subtitle, body.robotics-mode .hero-description {
+    color: #cbd5e1 !important;
+}
+
+
+/* ==========================================
+   AGENTSPACE - Premium Light Theme AI Agency Stylesheet
+   ========================================== */
+
+
 
 /* Reset & Global Base */
 *, *::before, *::after {
@@ -2761,3 +3030,419 @@ img {
     border-top: 1px solid var(--border-color);
 }
 
+
+
+
+/* ==========================================
+   100% COMPREHENSIVE DARK THEME OVERRIDES (body.robotics-mode)
+   ========================================== */
+
+/* Body & Sections */
+body.robotics-mode,
+body.robotics-mode section,
+body.robotics-mode .hero-scroll-track,
+body.robotics-mode .hero-sticky-wrapper,
+body.robotics-mode .solutions-scroll-track,
+body.robotics-mode .solutions-sticky-wrapper {
+    background-color: #030712 !important;
+    color: #ffffff !important;
+}
+
+/* Preloader Overlay */
+body.robotics-mode .preloader-overlay {
+    background: #030712 !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .preloader-content {
+    background: rgba(11, 20, 38, 0.95) !important;
+    border: 1px solid rgba(0, 240, 255, 0.4) !important;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .preloader-text-box,
+body.robotics-mode .preloader-typed-text {
+    color: #00f0ff !important;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.6) !important;
+}
+
+body.robotics-mode .preloader-progress-bar {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Footer Section */
+body.robotics-mode .footer,
+body.robotics-mode footer {
+    background: #030712 !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .footer-title {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .footer-links a,
+body.robotics-mode .footer a {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .footer-links a:hover,
+body.robotics-mode .footer a:hover {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .footer-desc,
+body.robotics-mode .copyright,
+body.robotics-mode .footer-bottom {
+    color: #94a3b8 !important;
+    border-top-color: rgba(0, 240, 255, 0.15) !important;
+}
+
+/* CTA Sections & Banners */
+body.robotics-mode .cta-section,
+body.robotics-mode .cta-banner,
+body.robotics-mode .cta-banner-full,
+body.robotics-mode .cta-card,
+body.robotics-mode .cta-card-right,
+body.robotics-mode .cta-container {
+    background: rgba(11, 20, 38, 0.92) !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* Stat Cards & Metric Boxes */
+body.robotics-mode .stat-card,
+body.robotics-mode .stat-item,
+body.robotics-mode .stat-box,
+body.robotics-mode .metrics-box,
+body.robotics-mode .metric-card,
+body.robotics-mode .subpage-robot-card,
+body.robotics-mode .floating-badge,
+body.robotics-mode .workflow-pillar-bar,
+body.robotics-mode .pill-item,
+body.robotics-mode .mock-card,
+body.robotics-mode .roi-output-box,
+body.robotics-mode .case-study-metrics-grid {
+    background: rgba(11, 20, 38, 0.9) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.2) !important;
+}
+
+/* Category Filter Tabs (AI Agents Page) */
+.filter-tab-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.filter-tab-bar {
+    display: inline-flex;
+    gap: 12px;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 22px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-tech);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover {
+    color: var(--primary-blue);
+    background: rgba(37, 99, 235, 0.06);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+body.robotics-mode .filter-tab-bar {
+    background: rgba(11, 20, 38, 0.9) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.2) !important;
+    border-radius: 4px !important;
+}
+
+body.robotics-mode .filter-btn {
+    color: #cbd5e1 !important;
+    border-radius: 0 !important;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px) !important;
+}
+
+body.robotics-mode .filter-btn:hover {
+    color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.12) !important;
+}
+
+body.robotics-mode .filter-btn.active {
+    background: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
+    font-weight: 800 !important;
+}
+
+/* Agent Pod Cards Animation */
+.agent-pod-card {
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+/* Floating Corner Robot Widget Speech Bubble */
+body.robotics-mode .robot-speech-bubble {
+    background: rgba(11, 20, 38, 0.95) !important;
+    border: 1px solid rgba(0, 240, 255, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .speech-text {
+    color: #cbd5e1 !important;
+}
+
+
+
+/* ==========================================
+   ROBOTICS MODE VIDEO OVERLAY & SOLUTIONS STEP NAV FIXES
+   ========================================== */
+
+body.robotics-mode .video-bg-container {
+    background: #030712 !important;
+}
+
+body.robotics-mode .video-overlay {
+    background: radial-gradient(circle at 50% 50%, rgba(3, 7, 18, 0.75) 0%, rgba(3, 7, 18, 0.95) 100%) !important;
+}
+
+body.robotics-mode .process-section {
+    background: #030712 !important;
+}
+
+body.robotics-mode .solutions-step-nav {
+    background: rgba(11, 20, 38, 0.92) !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25) !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+body.robotics-mode .step-nav-btn {
+    background: transparent !important;
+    color: #cbd5e1 !important;
+    border: none !important;
+    font-family: var(--font-tech) !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    padding: 8px 16px !important;
+}
+
+body.robotics-mode .step-nav-btn:hover {
+    color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.12) !important;
+}
+
+body.robotics-mode .step-nav-btn.active {
+    background: linear-gradient(135deg, #00f0ff 0%, #7000ff 100%) !important;
+    color: #030712 !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+    clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px) !important;
+    border-radius: 0 !important;
+    font-weight: 800 !important;
+}
+
+body.robotics-mode .step-nav-btn .nav-dot {
+    background: #00f0ff !important;
+    box-shadow: 0 0 8px #00f0ff !important;
+}
+
+body.robotics-mode .speech-bubble-card,
+body.robotics-mode .process-step,
+body.robotics-mode .cap-badge,
+body.robotics-mode .margin-bottom-40 {
+    background: rgba(11, 20, 38, 0.88) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+
+
+/* ==========================================
+   GENEROUS PADDING, SPACING & BREATHING ROOM REFINEMENTS
+   ========================================== */
+
+.section {
+    padding: 125px 0 !important;
+    position: relative;
+}
+
+.container {
+    padding: 0 32px !important;
+}
+
+.section-header {
+    margin-bottom: 52px !important;
+}
+
+.section-title {
+    margin-bottom: 22px !important;
+    line-height: 1.25 !important;
+}
+
+.section-subtitle {
+    margin-bottom: 56px !important;
+    line-height: 1.7 !important;
+}
+
+/* Card Padding & Grid Spacing */
+.card, .hud-card, .sol-card, .agent-card, .step-card, .timeline-item, .case-card, .team-card, .action-card, .feature-card, .agent-pod-card, .tech-stack-card, .case-study-content {
+    padding: 38px 34px !important;
+    border-radius: 18px !important;
+}
+
+.grid-2, .grid-3, .grid-4, .agents-grid, .agents-full-grid, .action-cards-grid, .tech-stack-grid {
+    gap: 34px !important;
+}
+
+/* Hero Section Spacing */
+.hero-scroll-track {
+    padding-top: 110px !important;
+}
+
+.hero-sticky-wrapper {
+    padding: 70px 0 !important;
+}
+
+.hero-content {
+    padding-right: 20px;
+}
+
+.hero-title {
+    margin-bottom: 28px !important;
+}
+
+.hero-description {
+    margin-bottom: 42px !important;
+}
+
+.hero-btns {
+    gap: 20px !important;
+}
+
+/* Contact Configurator Spacing */
+.configurator-body {
+    padding: 48px 40px !important;
+}
+
+.option-cards-grid {
+    gap: 22px !important;
+    margin-top: 28px !important;
+}
+
+.config-option-card {
+    padding: 24px 20px !important;
+}
+
+.config-actions-bar {
+    margin-top: 42px !important;
+    padding-top: 24px !important;
+}
+
+.config-step-tab {
+    padding: 18px 20px !important;
+}
+
+/* Footer Spacing */
+.footer {
+    padding: 95px 0 40px !important;
+}
+
+.footer-grid {
+    gap: 52px !important;
+    margin-bottom: 64px !important;
+}
+
+.footer-bottom {
+    padding-top: 36px !important;
+}
+
+
+
+/* ==========================================
+   AGENT CARD PADDING REDUCTION & TECH STACK SINGLE ROW LAYOUT
+   ========================================== */
+
+/* Reduced Padding for Agent Cards, 3D Cards & Orange Glow Cards */
+.agent-card, 
+.card-3d, 
+.glow-orange-card, 
+.glow-orange,
+.agent-pod-card, 
+.tech-stack-card, 
+.step-card {
+    padding: 24px 20px !important;
+}
+
+/* Frontier Machine Learning Stack 6-Card Single Row Layout */
+.tech-stack-grid {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 18px !important;
+    width: 100% !important;
+}
+
+.tech-stack-card {
+    padding: 22px 14px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.tech-title {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    margin-bottom: 4px !important;
+    line-height: 1.3 !important;
+}
+
+.tech-category {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.5px !important;
+}
+
+@media (max-width: 1100px) {
+    .tech-stack-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .tech-stack-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
