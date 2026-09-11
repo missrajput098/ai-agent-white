@@ -41,7 +41,7 @@
 
     <!-- Top HUD Live Status Bar -->
     <div class="hud-status-bar">
-        <div class="container hud-status-container">
+        <div class="container container-fluid hud-status-container">
             <div class="hud-ticker-text">
                 <span class="hud-status-item"><span class="status-dot"></span> SYSTEM: OPTIMAL</span>
                 <span class="hud-status-item">| NEURAL CORE v4.8 ACTIVE</span>
@@ -56,7 +56,7 @@
 
     <!-- Header Navigation -->
     <header class="navbar">
-        <div class="container nav-container">
+        <div class="container container-fluid nav-container">
             <a href="index.html" class="logo">
                 <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
@@ -72,9 +72,13 @@
                 <a href="how-it-works.html">How It Works</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="about-us.html">About Us</a>
+                <div class="offcanvas-actions">
+                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
+                </div>
             </nav>
 
             <div class="nav-actions">
+                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
                 <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -87,7 +91,7 @@
     <!-- Hero Section with Sticky Scroll Image Sequence -->
     <section class="hero-scroll-track" id="home">
         <div class="hero-sticky-wrapper">
-            <div class="container hero-grid">
+            <div class="container container-fluid hero-grid">
                 <div class="hero-content">
                     <div class="sub-tag">CUSTOM AI AGENTS FOR YOUR BUSINESS</div>
                     <h1 class="hero-title">
@@ -245,7 +249,7 @@
 
     <!-- Client Logo Bar -->
     <section class="logo-bar">
-        <div class="container">
+        <div class="container container-fluid">
             <p class="logo-bar-title">Trusted by Forward Thinking Businesses</p>
             <div class="logos-wrapper">
                 <span class="logo-item brand-amazon">amazon</span>
@@ -305,7 +309,7 @@
             <div class="video-overlay"></div>
         </div>
 
-        <div class="container">
+        <div class="container container-fluid">
             <div class="section-label">THE FACTONIX PROCESS</div>
             <h2 class="section-title">
                 One Business. One Workflow.<br>
@@ -384,6 +388,78 @@
         </div>
     </section>
 
+    <!-- Interactive Live AI Agent Simulator Section -->
+    <section class="section simulator-section" id="simulator">
+        <div class="container container-fluid sim-container">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">⚡</span>
+                    <span>LIVE AGENT SIMULATOR</span>
+                </div>
+                <h2 class="section-title text-center">Test Drive an <span class="text-glow">AI Agent Live</span></h2>
+                <p class="section-subtitle text-center">Select an agent profile below to watch real-time neural execution, API webhooks, and metric streaming.</p>
+            </div>
+
+            <div class="sim-terminal-wrapper">
+                <div class="sim-terminal-header">
+                    <div class="sim-dots">
+                        <span class="sim-dot red"></span>
+                        <span class="sim-dot yellow"></span>
+                        <span class="sim-dot green"></span>
+                        <span style="font-family:var(--font-mono); font-size:0.78rem; color:#94a3b8; margin-left:6px;">agent-space-neural-core.v4</span>
+                    </div>
+
+                    <div class="sim-tabs-bar">
+                        <button class="sim-tab-btn active" data-agent="sales">⚡ Sales AI</button>
+                        <button class="sim-tab-btn" data-agent="support">💬 Support AI</button>
+                        <button class="sim-tab-btn" data-agent="ops">⚙️ Operations AI</button>
+                        <button class="sim-tab-btn" data-agent="leadgen">🎯 LeadGen AI</button>
+                    </div>
+
+                    <div class="sim-status-live">
+                        <span class="status-dot green-pulse"></span> SYSTEM LIVE
+                    </div>
+                </div>
+
+                <div class="sim-terminal-grid">
+                    <div class="sim-console-pane">
+                        <div class="sim-console-logs" id="simConsoleLogs">
+                            <!-- Typewriter logs dynamically inserted via script.js -->
+                        </div>
+                        <div class="sim-log-prompt">
+                            <span style="color:#10b981;">agent@neural-core:~$</span> <span class="sim-typewriter-cursor"></span>
+                        </div>
+                    </div>
+
+                    <div class="sim-metrics-pane">
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Tokens Processed / Sec</div>
+                            <div class="sim-metric-val" id="simMetricTokens">14,820</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Average API Latency</div>
+                            <div class="sim-metric-val" id="simMetricLatency">14ms</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Model Accuracy Score</div>
+                            <div class="sim-metric-val" id="simMetricAccuracy">99.8%</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Automated Workflows / Day</div>
+                            <div class="sim-metric-val" id="simMetricTasks">1,420</div>
+                            <div class="sim-progress-bar">
+                                <div class="sim-progress-fill" id="simProgressFill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 5A: AI Agent Solutions (Sticky Scroll Feature Showcase with Alternating Vertical Patti) -->
     <section class="section solutions-scroll-section" id="ai-solutions">
         <div class="container text-center">
@@ -397,6 +473,16 @@
 
         <div class="solutions-scroll-track">
             <div class="solutions-sticky-wrapper">
+                
+                <!-- Top Step Controller Pills Row -->
+                <div class="solutions-step-nav" id="solutionsStepNav">
+                    <button class="step-nav-btn active" data-step="0"><span class="nav-dot"></span>01 CREATE</button>
+                    <button class="step-nav-btn" data-step="1"><span class="nav-dot"></span>02 SELL</button>
+                    <button class="step-nav-btn" data-step="2"><span class="nav-dot"></span>03 SUPPORT</button>
+                    <button class="step-nav-btn" data-step="3"><span class="nav-dot"></span>04 AUTOMATE</button>
+                    <button class="step-nav-btn" data-step="4"><span class="nav-dot"></span>05 ANALYZE</button>
+                </div>
+
                 <div class="container solutions-stage-wrapper">
                     
                     <!-- Step 0 (Left Vertical Patti + Right Content) -->
@@ -556,22 +642,13 @@
 
                 </div>
 
-                <!-- Bottom Step Controller Pills -->
-                <div class="solutions-step-nav" id="solutionsStepNav">
-                    <button class="step-nav-btn active" data-step="0"><span class="nav-dot"></span>01 CREATE</button>
-                    <button class="step-nav-btn" data-step="1"><span class="nav-dot"></span>02 SELL</button>
-                    <button class="step-nav-btn" data-step="2"><span class="nav-dot"></span>03 SUPPORT</button>
-                    <button class="step-nav-btn" data-step="3"><span class="nav-dot"></span>04 AUTOMATE</button>
-                    <button class="step-nav-btn" data-step="4"><span class="nav-dot"></span>05 ANALYZE</button>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- Section 6: Agent Showcase (Meet What Your AI Could Become) -->
     <section class="section showcase-section" id="ai-agents">
-        <div class="container">
+        <div class="container container-fluid">
             <div class="text-center margin-bottom-40">
                 <div class="cap-badge">
                     <span class="sparkle-icon">🤖</span>
@@ -679,7 +756,7 @@
 
     <!-- Section 7: Timeline (How It Works) -->
     <section class="section timeline-section" id="how-it-works">
-        <div class="container">
+        <div class="container container-fluid">
             <div class="text-center margin-bottom-40">
                 <div class="cap-badge">
                     <span class="sparkle-icon">⚡</span>
@@ -729,9 +806,71 @@
         </div>
     </section>
 
+    <!-- AI Automation Savings & ROI Calculator Section -->
+    <section class="section roi-section" id="roi-calculator">
+        <div class="container container-fluid">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">💰</span>
+                    <span>ROI CALCULATOR</span>
+                </div>
+                <h2 class="section-title text-center">Calculate Your <span class="text-glow">Automation ROI</span></h2>
+                <p class="section-subtitle text-center">See how much time and money your organization saves by deploying custom AI agents.</p>
+            </div>
+
+            <div class="roi-card">
+                <div class="roi-grid">
+                    <div class="roi-controls">
+                        <div class="roi-slider-group">
+                            <div class="roi-slider-label-row">
+                                <span>Team Size</span>
+                                <span class="roi-slider-val" id="teamSizeVal">10 Members</span>
+                            </div>
+                            <input type="range" min="1" max="100" value="10" class="roi-slider" id="teamSizeSlider">
+                        </div>
+
+                        <div class="roi-slider-group">
+                            <div class="roi-slider-label-row">
+                                <span>Average Employee Hourly Rate</span>
+                                <span class="roi-slider-val" id="hourlyRateVal">$45/hr</span>
+                            </div>
+                            <input type="range" min="15" max="150" value="45" class="roi-slider" id="hourlyRateSlider">
+                        </div>
+
+                        <div class="roi-slider-group">
+                            <div class="roi-slider-label-row">
+                                <span>Repetitive Task Hours / Week per Member</span>
+                                <span class="roi-slider-val" id="hoursPerWeekVal">12 hrs/wk</span>
+                            </div>
+                            <input type="range" min="2" max="30" value="12" class="roi-slider" id="hoursPerWeekSlider">
+                        </div>
+                    </div>
+
+                    <div class="roi-results-pane">
+                        <div class="roi-big-stat">
+                            <div class="roi-big-number" id="roiMonthlySavings">$17,537</div>
+                            <div class="roi-big-label">Estimated Monthly Cost Savings</div>
+                        </div>
+
+                        <div class="roi-stats-mini-grid">
+                            <div class="roi-mini-box">
+                                <div class="roi-mini-num" id="roiAnnualHours">4,680 hrs</div>
+                                <div class="roi-mini-lbl">Annual Hours Reclaimed</div>
+                            </div>
+                            <div class="roi-mini-box">
+                                <div class="roi-mini-num" id="roiEfficiency">1.7x</div>
+                                <div class="roi-mini-lbl">Team Speed Multiplier</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Banner Section -->
     <section class="cta-section" id="contact">
-        <div class="container">
+        <div class="container container-fluid">
             <div class="cta-banner">
                 <div class="cta-bg-glow"></div>
                 
