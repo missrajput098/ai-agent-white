@@ -41,26 +41,22 @@
 
     <!-- Top HUD Live Status Bar -->
     <div class="hud-status-bar">
-        <div class="container hud-status-container">
+        <div class="container container-fluid hud-status-container">
             <div class="hud-ticker-text">
                 <span class="hud-status-item"><span class="status-dot"></span> SYSTEM: OPTIMAL</span>
                 <span class="hud-status-item">| NEURAL CORE v4.8 ACTIVE</span>
-                <span class="hud-status-item">| AGENTS DEPLOYED: 1,420</span>
-                <span class="hud-status-item">| LATENCY: 12ms</span>
-            </div>
-            <div class="hud-status-right">
-                <span>[ ROBOTICS MODE ENABLED ]</span>
+                <span class="hud-status-item">| CATALOG: 12 AGENT MODELS</span>
             </div>
         </div>
     </div>
 
     <!-- Header Navigation -->
     <header class="navbar">
-        <div class="container nav-container">
+        <div class="container container-fluid nav-container">
             <a href="index.html" class="logo">
                 <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
                 </svg>
                 <span class="logo-text">AGENTSPACE</span>
             </a>
@@ -72,9 +68,13 @@
                 <a href="how-it-works.html">How It Works</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="about-us.html">About Us</a>
+                <div class="offcanvas-actions">
+                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
+                </div>
             </nav>
 
             <div class="nav-actions">
+                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
                 <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -86,7 +86,7 @@
 
     <!-- Subpage Hero Header Banner -->
     <section class="subpage-hero">
-        <div class="container subpage-hero-grid">
+        <div class="container container-fluid subpage-hero-grid">
             <div class="subpage-hero-content">
                 <div class="breadcrumb-nav">
                     <a href="index.html">Home</a> <span>/</span> <span>AI AGENTS POD</span>
@@ -117,7 +117,7 @@
 
     <!-- AI Agents Filterable Catalog Section -->
     <section class="section" id="agent-library">
-        <div class="container">
+        <div class="container container-fluid">
             <div class="section-header text-center" style="text-align: center; margin-bottom: 40px;">
                 <div class="section-label">NEURAL AGENT SPECIFICATIONS</div>
                 <h2 class="section-title">Select Your Business Intelligence Pod</h2>

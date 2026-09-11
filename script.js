@@ -120,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isON) {
             document.body.classList.add('robotics-mode');
             if (roboticsToggleBtn) {
-                roboticsToggleBtn.innerHTML = '⚡ ROBOTICS MODE: ON';
+                roboticsToggleBtn.setAttribute('title', 'Robotics Mode: ON');
+                roboticsToggleBtn.innerHTML = '<span class="mode-icon">⚡</span> <span class="mode-text">ROBOTICS MODE: ON</span>';
             }
             initAudio();
             audioEnabled = true;
@@ -128,7 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.body.classList.remove('robotics-mode');
             if (roboticsToggleBtn) {
-                roboticsToggleBtn.innerHTML = '🤖 ROBOTICS MODE: OFF';
+                roboticsToggleBtn.setAttribute('title', 'Robotics Mode: OFF');
+                roboticsToggleBtn.innerHTML = '<span class="mode-icon">🤖</span> <span class="mode-text">ROBOTICS MODE: OFF</span>';
             }
             audioEnabled = false;
         }
@@ -296,6 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 300);
             }
         }, intervalTime);
+
+        // Fallback safety timeout
+        setTimeout(() => {
+            if (preloaderOverlay) preloaderOverlay.classList.add('loaded');
+        }, 2200);
+    } else if (preloaderOverlay) {
+        preloaderOverlay.classList.add('loaded');
     }
 
     // Navbar Scroll Effect
@@ -316,11 +325,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-open');
+            mobileToggle.classList.toggle('active');
         });
 
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('mobile-open');
+                mobileToggle.classList.remove('active');
             });
         });
     }
@@ -556,4 +567,191 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==========================================
+    // Sound FX Toggle Control
+    // ==========================================
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const storedSound = localStorage.getItem('audioSoundEnabled');
+
+    function applySoundSetting(enabled) {
+        audioEnabled = enabled;
+        if (soundToggleBtn) {
+            soundToggleBtn.innerHTML = enabled ? '🔊 AUDIO FX: ON' : '🔇 AUDIO FX: OFF';
+        }
+    }
+
+    if (storedSound === 'true') {
+        applySoundSetting(true);
+    } else {
+        applySoundSetting(false);
+    }
+
+    if (soundToggleBtn) {
+        soundToggleBtn.addEventListener('click', () => {
+            initAudio();
+            audioEnabled = !audioEnabled;
+            localStorage.setItem('audioSoundEnabled', audioEnabled ? 'true' : 'false');
+            applySoundSetting(audioEnabled);
+            if (audioEnabled) playPowerUpSound();
+        });
+    }
+
+    // ==========================================
+    // Interactive Live AI Agent Execution Simulator Engine
+    // ==========================================
+    const simTabBtns = document.querySelectorAll('.sim-tab-btn');
+    const simConsoleLogs = document.getElementById('simConsoleLogs');
+    const simMetricTokens = document.getElementById('simMetricTokens');
+    const simMetricLatency = document.getElementById('simMetricLatency');
+    const simMetricAccuracy = document.getElementById('simMetricAccuracy');
+    const simMetricTasks = document.getElementById('simMetricTasks');
+    const simProgressFill = document.getElementById('simProgressFill');
+
+    const agentSimData = {
+        sales: {
+            logs: [
+                { time: '10:04:12', tag: 'tag-blue', text: 'Incoming lead inbound: "Need 50 enterprise licenses"' },
+                { time: '10:04:13', tag: 'tag-cyan', text: 'Parsing query against Salesforce CRM schema...' },
+                { time: '10:04:13', tag: 'tag-yellow', text: 'Executing BANT Lead Qualification algorithm...' },
+                { time: '10:04:14', tag: 'tag-green', text: 'Lead Qualified! Score: 98/100 (Enterprise Tier)' },
+                { time: '10:04:15', tag: 'tag-blue', text: 'Generating personalized pitch & booking Calendly slot...' },
+                { time: '10:04:15', tag: 'tag-green', text: 'STATUS: Meeting Booked & CRM Synced ⚡' }
+            ],
+            tokens: '14,820',
+            latency: '14ms',
+            accuracy: '99.8%',
+            tasks: '1,420',
+            progress: '95%'
+        },
+        support: {
+            logs: [
+                { time: '10:04:12', tag: 'tag-blue', text: 'Customer Ticket #8492: "Reset API Key and update billing"' },
+                { time: '10:04:13', tag: 'tag-cyan', text: 'Authenticating user token via Stripe & Auth0 API...' },
+                { time: '10:04:14', tag: 'tag-yellow', text: 'Executing secure key rotation workflow...' },
+                { time: '10:04:14', tag: 'tag-green', text: 'API Key rotated. Confirmation email dispatched via SendGrid.' },
+                { time: '10:04:15', tag: 'tag-green', text: 'STATUS: Ticket Closed in 1.8 seconds (Satisfaction: 5/5) ⚡' }
+            ],
+            tokens: '8,450',
+            latency: '9ms',
+            accuracy: '99.9%',
+            tasks: '3,890',
+            progress: '98%'
+        },
+        ops: {
+            logs: [
+                { time: '10:04:12', tag: 'tag-blue', text: 'Cron Triggered: Daily E-commerce Inventory Sync' },
+                { time: '10:04:13', tag: 'tag-cyan', text: 'Fetching 45,000 SKUs from Shopify API...' },
+                { time: '10:04:14', tag: 'tag-yellow', text: 'Cross-referencing ERP database & WhatsApp alerts...' },
+                { time: '10:04:15', tag: 'tag-green', text: 'Inventory reconciled. Low-stock alerts sent to Slack channel.' },
+                { time: '10:04:15', tag: 'tag-green', text: 'STATUS: Batch Job Execution Complete ⚡' }
+            ],
+            tokens: '24,190',
+            latency: '18ms',
+            accuracy: '100%',
+            tasks: '850',
+            progress: '92%'
+        },
+        leadgen: {
+            logs: [
+                { time: '10:04:12', tag: 'tag-blue', text: 'Scraping LinkedIn & Apollo for targeted CTO prospects...' },
+                { time: '10:04:13', tag: 'tag-cyan', text: 'Validating 500 decision-maker work emails via ZeroBounce...' },
+                { time: '10:04:14', tag: 'tag-yellow', text: 'Synthesizing hyper-personalized email cold sequences...' },
+                { time: '10:04:15', tag: 'tag-green', text: 'Sequences launched across 5 custom email domains.' },
+                { time: '10:04:15', tag: 'tag-green', text: 'STATUS: Outbound Sequence Active (Response Rate: +34%) ⚡' }
+            ],
+            tokens: '31,500',
+            latency: '12ms',
+            accuracy: '99.4%',
+            tasks: '2,100',
+            progress: '96%'
+        }
+    };
+
+    function runAgentSimulation(agentType) {
+        if (!simConsoleLogs || !agentSimData[agentType]) return;
+        const data = agentSimData[agentType];
+
+        simConsoleLogs.innerHTML = '';
+        if (simMetricTokens) simMetricTokens.innerText = data.tokens;
+        if (simMetricLatency) simMetricLatency.innerText = data.latency;
+        if (simMetricAccuracy) simMetricAccuracy.innerText = data.accuracy;
+        if (simMetricTasks) simMetricTasks.innerText = data.tasks;
+        if (simProgressFill) simProgressFill.style.width = data.progress;
+
+        data.logs.forEach((log, index) => {
+            setTimeout(() => {
+                const line = document.createElement('div');
+                line.className = 'sim-log-line';
+                line.innerHTML = `<span class="timestamp">[${log.time}]</span> <span class="${log.tag}">> ${log.text}</span>`;
+                simConsoleLogs.appendChild(line);
+                simConsoleLogs.scrollTop = simConsoleLogs.scrollHeight;
+            }, index * 250);
+        });
+    }
+
+    if (simTabBtns.length > 0) {
+        simTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                simTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const agent = btn.getAttribute('data-agent');
+                runAgentSimulation(agent);
+            });
+        });
+        // Initial run
+        runAgentSimulation('sales');
+    }
+
+    // ==========================================
+    // Interactive AI Automation Savings & ROI Calculator Engine
+    // ==========================================
+    const teamSizeSlider = document.getElementById('teamSizeSlider');
+    const hourlyRateSlider = document.getElementById('hourlyRateSlider');
+    const hoursPerWeekSlider = document.getElementById('hoursPerWeekSlider');
+
+    const teamSizeVal = document.getElementById('teamSizeVal');
+    const hourlyRateVal = document.getElementById('hourlyRateVal');
+    const hoursPerWeekVal = document.getElementById('hoursPerWeekVal');
+
+    const roiMonthlySavings = document.getElementById('roiMonthlySavings');
+    const roiAnnualHours = document.getElementById('roiAnnualHours');
+    const roiEfficiency = document.getElementById('roiEfficiency');
+
+    function calculateROISavings() {
+        if (!teamSizeSlider || !hourlyRateSlider || !hoursPerWeekSlider) return;
+
+        const team = parseInt(teamSizeSlider.value);
+        const rate = parseInt(hourlyRateSlider.value);
+        const hours = parseInt(hoursPerWeekSlider.value);
+
+        if (teamSizeVal) teamSizeVal.innerText = `${team} Members`;
+        if (hourlyRateVal) hourlyRateVal.innerText = `$${rate}/hr`;
+        if (hoursPerWeekVal) hoursPerWeekVal.innerText = `${hours} hrs/wk`;
+
+        // 75% automation efficiency rate
+        const weeklyHoursSaved = team * hours * 0.75;
+        const monthlySavings = Math.round(weeklyHoursSaved * rate * 4.33);
+        const annualHours = Math.round(weeklyHoursSaved * 52);
+        const efficiencyMult = (1 + (hours / 40) * 2.2).toFixed(1);
+
+        if (roiMonthlySavings) {
+            roiMonthlySavings.innerText = `$${monthlySavings.toLocaleString()}`;
+        }
+        if (roiAnnualHours) {
+            roiAnnualHours.innerText = `${annualHours.toLocaleString()} hrs`;
+        }
+        if (roiEfficiency) {
+            roiEfficiency.innerText = `${efficiencyMult}x`;
+        }
+    }
+
+    [teamSizeSlider, hourlyRateSlider, hoursPerWeekSlider].forEach(slider => {
+        if (slider) {
+            slider.addEventListener('input', calculateROISavings);
+        }
+    });
+
+    calculateROISavings();
+
 });
+
