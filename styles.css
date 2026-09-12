@@ -3098,7 +3098,15 @@ body.robotics-mode .footer-bottom {
 }
 
 /* CTA Sections & Banners */
-body.robotics-mode .cta-section,
+body.robotics-mode .cta-section {
+    background: linear-gradient(rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.88)), url('assets/images/bg-last.png') center/cover no-repeat !important;
+    background-attachment: fixed !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.35) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.35) !important;
+    color: #ffffff !important;
+    box-shadow: 0 15px 40px rgba(0, 240, 255, 0.2) !important;
+}
+
 body.robotics-mode .cta-banner,
 body.robotics-mode .cta-banner-full,
 body.robotics-mode .cta-card,
@@ -4309,9 +4317,24 @@ body.robotics-mode .robot-svg-core {
         gap: 8px !important;
     }
 
-    /* Hide hero-visual on mobile screens (<996px) */
+    /* Responsive Hero Visual Display (<996px) */
     .hero-visual {
-        display: none !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        margin: 24px auto 0 !important;
+    }
+
+    .robot-img-sequence {
+        width: 100% !important;
+        min-height: 260px !important;
+    }
+
+    .seq-img {
+        max-height: 260px !important;
+        object-fit: contain !important;
     }
 
     .hero-grid {
@@ -4543,6 +4566,829 @@ body.robotics-mode .robot-svg-core {
     .grid-2, .grid-3, .grid-4, .action-cards-grid, .team-grid, .case-studies-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE TRUSTED LOGOS, STATS & DARK ROBOT VISIBILITY ENHANCEMENTS
+   ========================================== */
+
+/* 1. Trusted By Forward Thinking Businesses Responsive Scroll */
+@media (max-width: 996px) {
+    .logo-bar {
+        padding: 24px 0 !important;
+        overflow: hidden !important;
+    }
+
+    .logos-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-snap-type: x mandatory !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        padding: 12px 6px !important;
+        gap: 28px !important;
+    }
+
+    .logos-wrapper::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .logo-item {
+        flex-shrink: 0 !important;
+        scroll-snap-align: start !important;
+        font-size: 1rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* 2. Below Section Boxes Responsive Grid Polish (Stats, Process & Simulator) */
+@media (max-width: 996px) {
+    .stats-bar {
+        padding: 32px 0 !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .stat-item {
+        padding: 18px 14px !important;
+    }
+
+    .stat-number {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .process-steps-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+
+    .step-connector {
+        transform: rotate(90deg) !important;
+        margin: 4px 0 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .step-card {
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+}
+
+/* 3. Live AI Simulator Clock Badge Styling */
+.sim-live-time {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+body.robotics-mode .sim-live-time {
+    color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.15) !important;
+    border-color: rgba(0, 240, 255, 0.45) !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.35) !important;
+}
+
+/* 4. Dark Theme Robot Visual Visibility Enhancements */
+body.robotics-mode .seq-img {
+    filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.65)) brightness(1.08) !important;
+}
+
+body.robotics-mode .subpage-robot-img {
+    filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.55)) !important;
+}
+
+body.robotics-mode .bouncing-agent-img,
+body.robotics-mode .corner-robot-avatar img {
+    filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.75)) !important;
+}
+
+body.robotics-mode::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 420px;
+    height: 420px;
+    background: url('assets/images/agent.png') no-repeat bottom right / contain;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ==========================================
+   HIGH-CONTRAST PREMIUM LIGHT THEME CARD UI ENHANCEMENTS
+   ========================================== */
+
+/* Universal Card Base Styling in Light Theme */
+.card,
+.hud-card,
+.sol-card,
+.agent-card,
+.step-card,
+.timeline-item,
+.case-card,
+.case-study-card,
+.team-card,
+.action-card,
+.feature-card,
+.agent-pod-card,
+.tech-stack-card,
+.configurator-card,
+.portfolio-card-item,
+.stat-item,
+.speech-bubble-card,
+.sol-stage-text,
+.sol-preview-box {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-top: 3px solid #2563eb !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(203, 213, 225, 0.5) !important;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+    position: relative !important;
+}
+
+/* Card Hover State - High Visibility Glow & Lift */
+.card:hover,
+.hud-card:hover,
+.sol-card:hover,
+.agent-card:hover,
+.step-card:hover,
+.timeline-item:hover,
+.case-card:hover,
+.case-study-card:hover,
+.team-card:hover,
+.action-card:hover,
+.feature-card:hover,
+.agent-pod-card:hover,
+.tech-stack-card:hover,
+.configurator-card:hover,
+.portfolio-card-item:hover,
+.stat-item:hover,
+.speech-bubble-card:hover {
+    transform: translateY(-6px) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.22), 0 8px 16px -4px rgba(37, 99, 235, 0.12), 0 0 0 1px #2563eb !important;
+}
+
+/* High Contrast Typography inside Light Theme Cards */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.portfolio-card-item h3, .stat-item .stat-number, .agent-card h3, .step-card h4, .case-study-title {
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.3px !important;
+}
+
+.card p, .portfolio-card-item p, .stat-label, .step-desc, .case-study-content p {
+    color: #334155 !important;
+    font-weight: 500 !important;
+    line-height: 1.6 !important;
+}
+
+/* Inner Mini-Cards & Stat Display Boxes (.mock-card) */
+.mock-card {
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 2px 4px rgba(15, 23, 42, 0.03) !important;
+}
+
+/* User Pill & Tech Badges in Light Theme Cards */
+.user-pill, .badge-icon {
+    background: rgba(37, 99, 235, 0.1) !important;
+    border: 1px solid rgba(37, 99, 235, 0.35) !important;
+    color: #1d4ed8 !important;
+    font-weight: 700 !important;
+}
+
+/* Robotics Dark Mode Overrides (Preserve High Contrast Dark Theme) */
+body.robotics-mode .card,
+body.robotics-mode .hud-card,
+body.robotics-mode .sol-card,
+body.robotics-mode .agent-card,
+body.robotics-mode .step-card,
+body.robotics-mode .timeline-item,
+body.robotics-mode .case-card,
+body.robotics-mode .case-study-card,
+body.robotics-mode .team-card,
+body.robotics-mode .action-card,
+body.robotics-mode .feature-card,
+body.robotics-mode .agent-pod-card,
+body.robotics-mode .tech-stack-card,
+body.robotics-mode .configurator-card,
+body.robotics-mode .portfolio-card-item,
+body.robotics-mode .stat-item,
+body.robotics-mode .speech-bubble-card,
+body.robotics-mode .sol-vertical-patti,
+body.robotics-mode .sol-stage-text,
+body.robotics-mode .sol-preview-box {
+    background: rgba(11, 20, 38, 0.94) !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    border-top: 3px solid #00f0ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .card:hover,
+body.robotics-mode .portfolio-card-item:hover,
+body.robotics-mode .stat-item:hover,
+body.robotics-mode .agent-card:hover,
+body.robotics-mode .step-card:hover {
+    border-color: #00f0ff !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.45) !important;
+}
+
+body.robotics-mode .mock-card {
+    background: rgba(5, 12, 26, 0.9) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+}
+
+body.robotics-mode .card p, 
+body.robotics-mode .portfolio-card-item p, 
+body.robotics-mode .stat-label, 
+body.robotics-mode .step-desc {
+    color: #cbd5e1 !important;
+}
+
+/* ==========================================
+   FUTURISTIC SCI-FI ROADMAP TIMELINE STYLING
+   ========================================== */
+.roadmap-section {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.roadmap-timeline-wrapper {
+    position: relative;
+    max-width: 1050px;
+    margin: 40px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Central Laser Beam Line & Dynamic Fill Track */
+.roadmap-laser-line {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: rgba(226, 232, 240, 0.6);
+    border-radius: 2px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.roadmap-laser-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, #2563eb 0%, #0284c7 35%, #7c3aed 70%, #10b981 100%);
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.8), 0 0 20px #00f0ff;
+    border-radius: 2px;
+    transition: height 0.25s ease-out;
+}
+
+.laser-pulse-glow {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 10px;
+    height: 60px;
+    background: linear-gradient(180deg, transparent, #ffffff, transparent);
+    box-shadow: 0 0 20px #00f0ff;
+    border-radius: 5px;
+    animation: laserScanDown 4s linear infinite;
+    z-index: 3;
+}
+
+@keyframes laserScanDown {
+    0% { top: 0%; opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { top: 92%; opacity: 0.2; }
+}
+
+/* Step Items Container & Scroll Reveal Animations */
+.roadmap-step-item {
+    position: relative;
+    display: flex;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Left & Right Step Positioning (>850px) */
+.roadmap-step-item.step-left {
+    justify-content: flex-start;
+    transform: translateX(-70px) translateY(30px);
+}
+
+.roadmap-step-item.step-right {
+    justify-content: flex-end;
+    transform: translateX(70px) translateY(30px);
+}
+
+.roadmap-step-item.step-left .roadmap-card {
+    width: 44%;
+    margin-right: auto;
+}
+
+.roadmap-step-item.step-right .roadmap-card {
+    width: 44%;
+    margin-left: auto;
+}
+
+/* Active Revealed State on Scroll */
+.roadmap-step-item.revealed {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+}
+
+.roadmap-step-item .node-circle {
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.roadmap-step-item.revealed .node-circle {
+    transform: scale(1) !important;
+}
+
+/* Central Node Badge */
+.roadmap-node-badge {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.node-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    transition: all 0.35s ease;
+}
+
+.node-num {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #0f172a;
+}
+
+.glow-blue-node   { border-color: #2563eb; box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); }
+.glow-cyan-node   { border-color: #0284c7; box-shadow: 0 0 20px rgba(2, 132, 199, 0.4); }
+.glow-purple-node { border-color: #7c3aed; box-shadow: 0 0 20px rgba(124, 58, 237, 0.4); }
+.glow-yellow-node { border-color: #d97706; box-shadow: 0 0 20px rgba(217, 119, 6, 0.4); }
+.glow-green-node  { border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
+
+.roadmap-step-item:hover .node-circle {
+    transform: scale(1.15);
+}
+
+/* Roadmap Card Design */
+.roadmap-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #2563eb;
+    border-radius: 16px;
+    padding: 24px 22px;
+    box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(203, 213, 225, 0.5);
+    transition: all 0.35s ease;
+}
+
+.roadmap-step-item:hover .roadmap-card {
+    transform: translateY(-6px);
+    border-color: #2563eb;
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.2), 0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+.roadmap-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.roadmap-phase-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.tag-blue   { background: rgba(37, 99, 235, 0.1); color: #2563eb; border: 1px solid rgba(37, 99, 235, 0.3); }
+.tag-cyan   { background: rgba(2, 132, 199, 0.1); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.3); }
+.tag-purple { background: rgba(124, 58, 237, 0.1); color: #7c3aed; border: 1px solid rgba(124, 58, 237, 0.3); }
+.tag-yellow { background: rgba(217, 119, 6, 0.1); color: #d97706; border: 1px solid rgba(217, 119, 6, 0.3); }
+.tag-green  { background: rgba(16, 185, 129, 0.1); color: #059669; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+.roadmap-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roadmap-icon-box svg {
+    width: 18px;
+    height: 18px;
+}
+
+.roadmap-step-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.roadmap-step-desc {
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.roadmap-tech-deliverables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.roadmap-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #1e40af;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+/* Dark Theme Overrides for Sci-Fi Roadmap */
+body.robotics-mode .roadmap-card {
+    background: rgba(11, 20, 38, 0.94) !important;
+    border: 1px solid rgba(0, 240, 255, 0.35) !important;
+    border-top: 3px solid #00f0ff !important;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .node-circle {
+    background: #080d1a !important;
+    border-color: #00f0ff !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6) !important;
+}
+
+body.robotics-mode .node-num {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .roadmap-step-title {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .roadmap-step-desc {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .roadmap-pill {
+    background: rgba(5, 12, 26, 0.9) !important;
+    border-color: rgba(0, 240, 255, 0.3) !important;
+    color: #00f0ff !important;
+}
+
+/* Responsive Roadmap Layout (<850px) */
+@media (max-width: 850px) {
+    .roadmap-laser-line {
+        left: 24px;
+        transform: none;
+    }
+
+    .roadmap-node-badge {
+        left: 24px;
+        transform: translateX(-50%);
+        top: 18px;
+    }
+
+    .node-circle {
+        width: 44px;
+        height: 44px;
+    }
+
+    .node-num {
+        font-size: 1rem;
+    }
+
+    .roadmap-step-item.step-left .roadmap-card,
+    .roadmap-step-item.step-right .roadmap-card {
+        width: calc(100% - 60px) !important;
+        margin-left: 60px !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* ==========================================
+   COMPREHENSIVE RESPONSIVE AUDIT & LAYOUT POLISH
+   ========================================== */
+
+/* 1. Subpage Hero Headings & Subtitles Fluid Typography */
+.subpage-hero-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+@media (max-width: 768px) {
+    .subpage-hero-title {
+        font-size: clamp(1.5rem, 6.5vw, 2.2rem) !important;
+        margin-bottom: 14px !important;
+    }
+    .subpage-hero-desc {
+        font-size: 0.92rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* 2. AI Agents Page Full Grid & Pod Card Layout */
+.agents-full-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.agent-pod-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.agent-status-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #059669;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.5px;
+}
+
+body.robotics-mode .agent-status-tag {
+    color: #00ff9d !important;
+    background: rgba(0, 255, 157, 0.15) !important;
+    border-color: rgba(0, 255, 157, 0.45) !important;
+}
+
+.agent-pod-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+.agent-pod-desc {
+    font-size: 0.88rem;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.agent-spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.agent-spec-item {
+    font-size: 0.82rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+body.robotics-mode .agent-pod-title { color: #ffffff !important; }
+body.robotics-mode .agent-pod-desc { color: #cbd5e1 !important; }
+body.robotics-mode .agent-spec-item { color: #94a3b8 !important; }
+
+@media (max-width: 1024px) {
+    .agents-full-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .agents-full-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+}
+
+/* 3. Configurator Option Cards & Form Grid */
+.option-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+}
+
+.config-option-card {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 18px 16px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.config-option-card:hover {
+    border-color: #2563eb;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.config-option-card.selected {
+    border-color: #2563eb;
+    background: rgba(37, 99, 235, 0.06);
+    box-shadow: 0 0 0 1px #2563eb, 0 8px 24px rgba(37, 99, 235, 0.2);
+}
+
+.config-option-title {
+    font-family: var(--font-tech);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.config-option-desc {
+    font-size: 0.85rem;
+    color: #334155;
+    line-height: 1.5;
+}
+
+body.robotics-mode .config-option-card {
+    background: rgba(11, 20, 38, 0.9) !important;
+    border-color: rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.robotics-mode .config-option-card:hover {
+    border-color: #00f0ff !important;
+    box-shadow: 0 8px 20px rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .config-option-card.selected {
+    border-color: #00f0ff !important;
+    background: rgba(0, 240, 255, 0.12) !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+}
+
+body.robotics-mode .config-option-title { color: #ffffff !important; }
+body.robotics-mode .config-option-desc { color: #cbd5e1 !important; }
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    .option-cards-grid,
+    .form-grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+}
+
+/* 4. Case Studies Mobile Padding & Metrics Layout */
+@media (max-width: 768px) {
+    .case-study-content,
+    .case-study-metrics-grid {
+        padding: 24px 18px !important;
+    }
+
+    .case-study-metrics-grid {
+        border-left: none !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .case-study-title {
+        font-size: 1.35rem !important;
+    }
+
+    .metric-comparison-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+        padding: 12px 0 !important;
+    }
+}
+
+/* 5. Mobile Category Filter Touch Bar & Architecture Modal Scroll */
+@media (max-width: 768px) {
+    .filter-tab-wrapper {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 8px !important;
+        justify-content: flex-start !important;
+    }
+
+    .filter-tab-bar {
+        flex-wrap: nowrap !important;
+        white-space: nowrap !important;
+        border-radius: var(--radius-md) !important;
+    }
+
+    .filter-btn {
+        padding: 8px 16px !important;
+        font-size: 0.82rem !important;
+        white-space: nowrap !important;
+    }
+}
+
+#archModalContent {
+    max-height: 88vh !important;
+    overflow-y: auto !important;
+}
+
+/* 6. Sci-Fi Laser Roadmap Mobile Polish (<480px) */
+@media (max-width: 480px) {
+    .roadmap-laser-line {
+        left: 18px !important;
+    }
+
+    .roadmap-node-badge {
+        left: 18px !important;
+        top: 16px !important;
+    }
+
+    .node-circle {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+    .node-num {
+        font-size: 0.9rem !important;
+    }
+
+    .roadmap-step-item.step-left .roadmap-card,
+    .roadmap-step-item.step-right .roadmap-card {
+        width: calc(100% - 46px) !important;
+        margin-left: 46px !important;
+        padding: 16px 12px !important;
     }
 }
 
