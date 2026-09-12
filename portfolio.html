@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio & Builds | AGENTSPACE Custom AI Agents</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">LOADING PORTFOLIO BUILDS & METRICS</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Top HUD Live Status Bar -->
+    <div class="hud-status-bar">
+        <div class="container container-fluid hud-status-container">
+            <div class="hud-ticker-text">
+                <span class="hud-status-item"><span class="status-dot"></span> SYSTEM: OPTIMAL</span>
+                <span class="hud-status-item">| NEURAL CORE v4.8 ACTIVE</span>
+                <span class="hud-status-item">| BUILDS DEPLOYED: 500+</span>
+                <span class="hud-status-item">| LATENCY: 12ms</span>
+            </div>
+            <div class="hud-status-right">
+                <span>[ ROBOTICS MODE ENABLED ]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container container-fluid nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="portfolio.html" class="active">Portfolio</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+                <div class="offcanvas-actions">
+                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
+                <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subpage Hero Header Banner -->
+    <section class="subpage-hero">
+        <div class="container container-fluid subpage-hero-grid">
+            <div class="subpage-hero-content">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Home</a> <span>/</span> <span>SEE WHAT WE BUILD</span>
+                </div>
+                <h1 class="subpage-hero-title">
+                    See What We Build: <br>
+                    <span class="text-glow">Custom AI Agents In Action</span>
+                </h1>
+                <p class="subpage-hero-desc">
+                    Explore our portfolio of custom neural workflows, enterprise CRM automations, 24/7 support pods, and real-time social media AI agents engineered for fast-growing businesses.
+                </p>
+                <div class="hero-btns">
+                    <a href="#portfolio-grid-section" class="btn btn-primary btn-glow">
+                        Explore Portfolio Builds
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">
+                        Build Your Custom AI
+                    </a>
+                </div>
+            </div>
+
+            <div class="subpage-hero-visual">
+                <div class="subpage-robot-card card-3d">
+                    <img src="assets/images/capabilities-full.png" alt="AGENTSPACE 3D AI Portfolio Architecture" class="subpage-robot-img">
+                    <div class="subpage-hud-badge">
+                        <div class="hud-pulse-dot"></div>
+                        <span>500+ AI AGENTS DEPLOYED & LIVE ⚡</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Category Filter & Grid Section -->
+    <section class="section" id="portfolio-grid-section">
+        <div class="container container-fluid">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">✦</span>
+                    <span>PORTFOLIO SHOWCASE</span>
+                </div>
+                <h2 class="section-title text-center">Engineered Solutions & <span class="text-glow">Live AI Deployments</span></h2>
+                <p class="section-subtitle text-center">Filter by business domain to view architecture breakdowns, performance metrics, and key technology integrations.</p>
+            </div>
+
+            <!-- Category Filter Tab Buttons -->
+            <div class="filter-tab-wrapper">
+                <div class="filter-tab-bar" id="portfolioFilterBar">
+                    <button class="filter-btn active" data-filter="all">⚡ All Builds</button>
+                    <button class="filter-btn" data-filter="sales">🎯 Sales & CRM AI</button>
+                    <button class="filter-btn" data-filter="support">💬 Support & Service AI</button>
+                    <button class="filter-btn" data-filter="ops">⚙️ Operations & Logistics</button>
+                    <button class="filter-btn" data-filter="social">📲 Social & Marketing AI</button>
+                    <button class="filter-btn" data-filter="ecommerce">🛍️ E-Commerce & Retail</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Cards Grid -->
+            <div class="grid-3 action-cards-grid" id="portfolioCardsGrid">
+                
+                <!-- Build Card 1: INSTAGUARD 360 -->
+                <div class="card card-3d portfolio-card-item" data-category="social ecommerce">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">INSTAGUARD 360</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/capabilities-robot.png" alt="Instagram AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Instagram & Shopify Conversational Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Python</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Meta Graph API</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Shopify Webhook</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">GPT-4o</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">40,000+</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">DMs / Mo</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">12 Sec</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Response</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">+38%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Sales Conv.</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="instaguard">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+                <!-- Build Card 2: PIPELINE-MAX -->
+                <div class="card card-3d portfolio-card-item" data-category="sales">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">PIPELINE-MAX</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/cta-banner-full.png" alt="Sales AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Enterprise B2B Lead Qualification Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Salesforce CRM</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Apollo API</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Calendly API</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Node.js</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">98/100</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Accuracy</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">14ms</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Latency</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">10x</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Meetings</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="pipelinemax">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+                <!-- Build Card 3: SUPPORTR-X -->
+                <div class="card card-3d portfolio-card-item" data-category="support">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">SUPPORTR-X</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/cta-robot-hologram.png" alt="Support AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Fintech Omnichannel Customer Support Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Auth0</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Stripe SDK</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Twilio</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Pinecone Vector</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">1.8 Sec</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Resolution</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">99.9%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Accuracy</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">5 / 5</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">CSAT Rating</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="supportrx">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+                <!-- Build Card 4: LOGI-FLOW -->
+                <div class="card card-3d portfolio-card-item" data-category="ops">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">LOGI-FLOW</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/robot-hero.jpg" alt="Logistics AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2)); border-radius: 12px;">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Warehouse & Inventory Sync Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Python Celery</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">PostgreSQL</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Slack API</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Shopify Admin API</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">45,000</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">SKUs Synced</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">100%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Uptime</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">850</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Auto POs/Day</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="logiflow">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+                <!-- Build Card 5: AUDIENCE-GEN -->
+                <div class="card card-3d portfolio-card-item" data-category="social sales">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">AUDIENCE-GEN</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/bg-last.png" alt="LeadGen AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2)); border-radius: 12px;">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Cold Email Outreach & Scraper Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Apollo Scraper</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">ZeroBounce</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">SendGrid SDK</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">LangChain</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">500 / Day</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Verified Leads</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">+34%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Reply Rate</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">4.5x</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Pipeline</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="audiencegen">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+                <!-- Build Card 6: WHATSAPP-FLOW -->
+                <div class="card card-3d portfolio-card-item" data-category="social ecommerce">
+                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">WHATSAPP-FLOW</span>
+                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                    </div>
+                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
+                        <img src="assets/images/agent.png" alt="WhatsApp AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">WhatsApp Conversational Commerce Agent</h3>
+                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+                        Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.
+                    </p>
+
+                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">WhatsApp Cloud API</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Stripe / Razorpay</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">MongoDB</span>
+                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">FastAPI</span>
+                    </div>
+
+                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">15,000</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Active Chats</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">88%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Open Rate</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">+25%</div>
+                            <div style="font-size: 0.68rem; color: var(--text-muted);">Cart Recovery</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="whatsappflow">
+                        ⚡ View Architecture Specs
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Embedded Live AI Agent Simulator Section -->
+    <section class="section simulator-section" id="simulator">
+        <div class="container container-fluid sim-container">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">⚡</span>
+                    <span>LIVE AGENT SIMULATOR</span>
+                </div>
+                <h2 class="section-title text-center">Test Drive an <span class="text-glow">AI Agent Live</span></h2>
+                <p class="section-subtitle text-center">Select an agent profile below to watch real-time neural execution, API webhooks, and metric streaming.</p>
+            </div>
+
+            <div class="sim-terminal-wrapper">
+                <div class="sim-terminal-header">
+                    <div class="sim-dots">
+                        <span class="sim-dot red"></span>
+                        <span class="sim-dot yellow"></span>
+                        <span class="sim-dot green"></span>
+                        <span style="font-family:var(--font-mono); font-size:0.78rem; color:#94a3b8; margin-left:6px;">agent-space-neural-core.v4</span>
+                    </div>
+
+                    <div class="sim-tabs-bar">
+                        <button class="sim-tab-btn active" data-agent="sales">⚡ Sales AI</button>
+                        <button class="sim-tab-btn" data-agent="support">💬 Support AI</button>
+                        <button class="sim-tab-btn" data-agent="ops">⚙️ Operations AI</button>
+                        <button class="sim-tab-btn" data-agent="leadgen">🎯 LeadGen AI</button>
+                    </div>
+
+                    <div class="sim-status-live">
+                        <span class="status-dot green-pulse"></span> SYSTEM LIVE <span id="simLiveTime" class="sim-live-time">[ --:--:-- ]</span>
+                    </div>
+                </div>
+
+                <div class="sim-terminal-grid">
+                    <div class="sim-console-pane">
+                        <div class="sim-console-logs" id="simConsoleLogs">
+                            <!-- Typewriter logs dynamically inserted via script.js -->
+                        </div>
+                        <div class="sim-log-prompt">
+                            <span style="color:#10b981;">agent@neural-core:~$</span> <span class="sim-typewriter-cursor"></span>
+                        </div>
+                    </div>
+
+                    <div class="sim-metrics-pane">
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Tokens Processed / Sec</div>
+                            <div class="sim-metric-val" id="simMetricTokens">14,820</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Average API Latency</div>
+                            <div class="sim-metric-val" id="simMetricLatency">14ms</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Model Accuracy Score</div>
+                            <div class="sim-metric-val" id="simMetricAccuracy">99.8%</div>
+                        </div>
+
+                        <div class="sim-metric-card">
+                            <div class="sim-metric-label">Automated Workflows / Day</div>
+                            <div class="sim-metric-val" id="simMetricTasks">1,420</div>
+                            <div class="sim-progress-bar">
+                                <div class="sim-progress-fill" id="simProgressFill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="cta-section">
+        <div class="container container-fluid">
+            <div class="cta-banner card-3d text-center" style="padding: 60px 24px;">
+                <div class="cap-badge margin-bottom-20">
+                    <span class="sparkle-icon">✦</span>
+                    <span>READY TO AUTOMATE YOUR BUSINESS?</span>
+                </div>
+                <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 20px;">
+                    Let's Build Your <span class="text-glow">Custom AI Agent</span>
+                </h2>
+                <p class="section-subtitle" style="max-width: 650px; margin: 0 auto 36px;">
+                    Schedule a live 1-on-1 strategy call with our AI engineers. We'll map your business workflows, design custom neural architecture, and build your prototype in days.
+                </p>
+                <div class="hero-btns" style="justify-content: center;">
+                    <a href="contact.html" class="btn btn-primary btn-glow">
+                        Book a Live Demo
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="contact.html#configurator" class="btn btn-secondary">
+                        Configure Your AI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Modal Popup Overlay -->
+    <div class="arch-modal-overlay" id="archModalOverlay" style="display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999999; opacity: 1; pointer-events: auto; justify-content: center; align-items: center;">
+        <div class="preloader-content" style="max-width: 680px; width: 92%; padding: 28px; text-align: left; position: relative;" id="archModalContent">
+            <button id="closeArchModal" style="position: absolute; top: 16px; right: 16px; background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; padding: 4px 8px; line-height: 1;">✕</button>
+            <div id="archModalBody">
+                <!-- Dynamically loaded via script.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container container-fluid footer-container">
+            <div class="footer-left">
+                <a href="index.html" class="logo margin-bottom-16">
+                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
+                        <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
+                    </svg>
+                    <span class="logo-text">AGENTSPACE</span>
+                </a>
+                <p class="footer-desc">
+                    Designing and deploying custom AI agents tailored for your business. Trained on your workflows, connected to your tools.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-right">
+                <div class="social-icons margin-bottom-16">
+                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
+                </div>
+                <div class="copyright">
+                    © 2026 AGENTSPACE Inc. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Corner Floating Robot Widget Assistant -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            "Welcome to our Portfolio! Click any project to view specs or filter by category."
+        </div>
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>

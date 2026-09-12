@@ -667,6 +667,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Live Current Clock Engine for "Test Drive an AI Agent Live" Section
+    function getFormattedCurrentTime(offsetSec = 0) {
+        const now = new Date(Date.now() + offsetSec * 1000);
+        const hours = String(now.getHours() % 12 || 12).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+        return `${hours}:${minutes}:${seconds} ${ampm}`;
+    }
+
+    function updateLiveSimClock() {
+        const clockEl = document.getElementById('simLiveTime');
+        if (clockEl) {
+            clockEl.innerText = `[ ${getFormattedCurrentTime(0)} ]`;
+        }
+    }
+
+    updateLiveSimClock();
+    setInterval(updateLiveSimClock, 1000);
+
     function runAgentSimulation(agentType) {
         if (!simConsoleLogs || !agentSimData[agentType]) return;
         const data = agentSimData[agentType];
@@ -682,7 +702,8 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const line = document.createElement('div');
                 line.className = 'sim-log-line';
-                line.innerHTML = `<span class="timestamp">[${log.time}]</span> <span class="${log.tag}">> ${log.text}</span>`;
+                const liveTimeStamp = getFormattedCurrentTime(index);
+                line.innerHTML = `<span class="timestamp">[${liveTimeStamp}]</span> <span class="${log.tag}">> ${log.text}</span>`;
                 simConsoleLogs.appendChild(line);
                 simConsoleLogs.scrollTop = simConsoleLogs.scrollHeight;
             }, index * 250);
@@ -698,7 +719,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 runAgentSimulation(agent);
             });
         });
-        // Initial run
+        // Initial run when code loads
         runAgentSimulation('sales');
     }
 
@@ -752,6 +773,198 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     calculateROISavings();
+
+    // ==========================================
+    // Portfolio Category Filtering & System Architecture Modal Engine
+    // ==========================================
+    const portfolioFilterBtns = document.querySelectorAll('#portfolioFilterBar .filter-btn');
+    const portfolioCardItems = document.querySelectorAll('.portfolio-card-item');
+
+    if (portfolioFilterBtns.length > 0 && portfolioCardItems.length > 0) {
+        portfolioFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                portfolioFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterVal = btn.getAttribute('data-filter');
+
+                portfolioCardItems.forEach(card => {
+                    const categories = card.getAttribute('data-category') || '';
+                    if (filterVal === 'all' || categories.includes(filterVal)) {
+                        card.style.display = 'block';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Architecture Specifications Modal Logic
+    const archModalOverlay = document.getElementById('archModalOverlay');
+    const archModalBody = document.getElementById('archModalBody');
+    const closeArchModal = document.getElementById('closeArchModal');
+    const openArchBtns = document.querySelectorAll('.open-arch-modal');
+
+    const projectSpecsData = {
+        instaguard: {
+            title: 'INSTAGUARD 360 — Architecture & Workflow Specs',
+            badge: 'INSTAGRAM & SHOPIFY BOT',
+            specs: [
+                { label: 'Neural Engine', val: 'OpenAI GPT-4o + Custom Fine-Tuned Prompt Pipeline' },
+                { label: 'Primary Webhooks', val: 'Meta Graph API v19.0 (Instagram DMs & Comments)' },
+                { label: 'Commerce Integration', val: 'Shopify Admin REST API + Webhooks (Live Inventory & Orders)' },
+                { label: 'Database & Caching', val: 'Redis Cloud Cache (Sub-5ms Session State)' },
+                { label: 'Execution Speed', val: '12 Seconds Average Full-Resolution Cycle' },
+                { label: 'Security Protocols', val: 'HMAC Signature Verification & AES-256 Token Encryption' }
+            ],
+            desc: 'This build monitors incoming Instagram Direct Messages and comment threads. Upon receiving a product or order status inquiry, the agent extracts order IDs or product keywords, verifies user authorization, calls Shopify APIs for live stock or shipping tracking, and constructs a human-like response with tracking links and promo codes.'
+        },
+        pipelinemax: {
+            title: 'PIPELINE-MAX — Architecture & Workflow Specs',
+            badge: 'SALES QUALIFICATION BOT',
+            specs: [
+                { label: 'Core Classifier', val: 'BANT (Budget, Authority, Need, Timeline) Neural Scoring' },
+                { label: 'Enrichment API', val: 'Apollo REST API + LinkedIn Company Scraper' },
+                { label: 'CRM Synchronization', val: 'Salesforce Enterprise REST & Bulk API 2.0' },
+                { label: 'Scheduling Engine', val: 'Calendly API v2 Webhook Handler' },
+                { label: 'Execution Speed', val: '14ms Response & Scoring Latency' },
+                { label: 'Security Protocols', val: 'OAuth 2.0 Mutual TLS & Enterprise Encrypted Vault' }
+            ],
+            desc: 'PIPELINE-MAX processes inbound web demo requests instantly. It enriches the lead profile against Apollo.io to retrieve company revenue, headcount, and tech stack. The neural classifier assigns a BANT score (0-100). Leads scoring > 80 automatically receive a calendar booking link and are logged into Salesforce with full transcript telemetry.'
+        },
+        supportrx: {
+            title: 'SUPPORTR-X — Architecture & Workflow Specs',
+            badge: 'OMNICHANNEL SUPPORT POD',
+            specs: [
+                { label: 'Vector Knowledge Base', val: 'Pinecone Vector DB + OpenAI Embeddings' },
+                { label: 'Identity Provider', val: 'Auth0 JWT Bearer Token Validation' },
+                { label: 'Billing System', val: 'Stripe API (Invoice Lookup, Refunds & Key Rotation)' },
+                { label: 'Ticket Routing', val: 'Zendesk REST API & Auto-Tagging Engine' },
+                { label: 'Execution Speed', val: '1.8 Seconds Ticket Closure' },
+                { label: 'Security Protocols', val: 'SOC2 Type II Compliant & PCI-DSS Shielded' }
+            ],
+            desc: 'Designed for high-security fintech platforms, SUPPORTR-X handles customer billing queries, subscription plan changes, and API key rotations. It authenticates users via Auth0 JWT, executes requested changes directly in Stripe SDK, updates Zendesk ticket history, and notifies users over Twilio WhatsApp.'
+        },
+        logiflow: {
+            title: 'LOGI-FLOW — Architecture & Workflow Specs',
+            badge: 'LOGISTICS & INVENTORY BOT',
+            specs: [
+                { label: 'Background Worker', val: 'Python Celery + Redis Task Queue' },
+                { label: 'Database Layer', val: 'PostgreSQL Relational DB (45,000 SKUs)' },
+                { label: 'Alerting Channel', val: 'Slack Bot Webhooks & WhatsApp Admin Push' },
+                { label: 'PO Engine', val: 'Automated ERP Purchase Order Dispatcher' },
+                { label: 'Execution Speed', val: 'Hourly Batch Cron & Real-Time Stream' },
+                { label: 'Security Protocols', val: 'Internal VPN Tunnel & Encrypted Database Connections' }
+            ],
+            desc: 'LOGI-FLOW runs continuous inventory checks across 45,000 SKUs across 4 warehouse locations. It cross-references current stock levels against historical velocity. When stock drops below re-order thresholds, it posts structured alerts to Slack and generates draft Purchase Orders for manager approval.'
+        },
+        audiencegen: {
+            title: 'AUDIENCE-GEN — Architecture & Workflow Specs',
+            badge: 'COLD OUTREACH PIPELINE',
+            specs: [
+                { label: 'Scraper & Data Pipeline', val: 'Apollo.io + Custom LinkedIn Prospect Extractor' },
+                { label: 'Email Deliverability', val: 'ZeroBounce Real-Time API Validation' },
+                { label: 'Outreach Engine', val: 'SendGrid Multi-Domain SMTP Relay' },
+                { label: 'Personalization AI', val: 'LangChain + GPT-4 Contextual Synthesizer' },
+                { label: 'Execution Speed', val: '500 High-Intent Leads Processed Daily' },
+                { label: 'Security Protocols', val: 'DKIM, SPF, DMARC Authentication Shield' }
+            ],
+            desc: 'AUDIENCE-GEN automates cold lead generation by identifying target executive titles (CTOs, VP of Eng), validating deliverability via ZeroBounce to maintain sender reputation, and personalizing email sequences based on recent company news and tech stack signals.'
+        },
+        whatsappflow: {
+            title: 'WHATSAPP-FLOW — Architecture & Workflow Specs',
+            badge: 'WHATSAPP COMMERCE AGENT',
+            specs: [
+                { label: 'Messaging Provider', val: 'Meta WhatsApp Business Cloud API' },
+                { label: 'Payment Gateway', val: 'Stripe & Razorpay Payment Link APIs' },
+                { label: 'Session Storage', val: 'MongoDB Atlas NoSQL' },
+                { label: 'Framework', val: 'FastAPI Python Async Server' },
+                { label: 'Execution Speed', val: 'Sub-Second Message Delivery' },
+                { label: 'Security Protocols', val: 'End-to-End Encrypted Message Payload' }
+            ],
+            desc: 'WHATSAPP-FLOW turns WhatsApp into a 24/7 automated sales counter. Customers can browse visual product catalogs inside WhatsApp chat, trigger instant payment links, receive automated order updates, and recover abandoned carts with targeted incentives.'
+        }
+    };
+
+    if (openArchBtns.length > 0 && archModalOverlay && archModalBody) {
+        openArchBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projKey = btn.getAttribute('data-project');
+                const p = projectSpecsData[projKey];
+                if (p) {
+                    let specsHtml = p.specs.map(s => `
+                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(203,213,225,0.4); padding: 8px 0; font-size: 0.85rem;">
+                            <strong style="color:var(--primary-blue); font-family:var(--font-mono);">${s.label}:</strong>
+                            <span style="color:var(--text-muted); text-align:right;">${s.val}</span>
+                        </div>
+                    `).join('');
+
+                    archModalBody.innerHTML = `
+                        <div style="display:inline-block; font-size:0.72rem; padding:4px 10px; background:rgba(37,99,235,0.1); border:1px solid var(--primary-blue); border-radius:12px; color:var(--primary-blue); margin-bottom:12px; font-weight:700;">${p.badge}</div>
+                        <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:14px; color:#0f172a;" class="section-title">${p.title}</h3>
+                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">${p.desc}</p>
+                        <div style="background:rgba(241,245,249,0.8); border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-bottom:16px;" class="mock-card">
+                            <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:10px; color:#0f172a; text-transform:uppercase; letter-spacing:0.5px;">SYSTEM TELEMETRY SPECS</h4>
+                            ${specsHtml}
+                        </div>
+                    `;
+                    archModalOverlay.style.display = 'flex';
+                }
+            });
+        });
+
+        if (closeArchModal) {
+            closeArchModal.addEventListener('click', () => {
+                archModalOverlay.style.display = 'none';
+            });
+        }
+
+        archModalOverlay.addEventListener('click', (e) => {
+            if (e.target === archModalOverlay) {
+                archModalOverlay.style.display = 'none';
+            }
+        });
+    }
+
+    // ==========================================
+    // Scroll-Driven Sequential Roadmap Reveal Engine
+    // ==========================================
+    const roadmapSteps = document.querySelectorAll('.roadmap-step-item');
+    const roadmapLaserFill = document.getElementById('roadmapLaserFill');
+    const roadmapWrapper = document.querySelector('.roadmap-timeline-wrapper');
+
+    function checkRoadmapScroll() {
+        if (roadmapSteps.length === 0) return;
+
+        const triggerBottom = window.innerHeight * 0.85;
+
+        roadmapSteps.forEach((step, idx) => {
+            const stepTop = step.getBoundingClientRect().top;
+
+            if (stepTop < triggerBottom) {
+                if (!step.classList.contains('revealed')) {
+                    step.classList.add('revealed');
+                    playCyberBeep(520 + idx * 80, 0.03);
+                }
+            }
+        });
+
+        // Update Laser Beam Height based on scroll progress
+        if (roadmapWrapper && roadmapLaserFill) {
+            const rect = roadmapWrapper.getBoundingClientRect();
+            const wrapperHeight = rect.height;
+            const scrolled = Math.max(0, triggerBottom - rect.top);
+            const progress = Math.min(100, Math.max(0, (scrolled / wrapperHeight) * 100));
+            roadmapLaserFill.style.height = `${progress}%`;
+        }
+    }
+
+    window.addEventListener('scroll', checkRoadmapScroll);
+    checkRoadmapScroll();
 
 });
 
