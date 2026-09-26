@@ -94,14 +94,14 @@
         <div class="container container-fluid subpage-hero-grid">
             <div class="subpage-hero-content">
                 <div class="breadcrumb-nav">
-                    <a href="index.html">Home</a> <span>/</span> <span>SEE WHAT WE BUILD</span>
+                    <a href="index.html">Home</a> <span>/</span> <span>ENGINEERED AI BUILDS</span>
                 </div>
                 <h1 class="subpage-hero-title">
-                    See What We Build: <br>
-                    <span class="text-glow">Custom AI Agents In Action</span>
+                    Engineered Neural Builds & <br>
+                    <span class="text-glow">Live AI Deployments</span>
                 </h1>
                 <p class="subpage-hero-desc">
-                    Explore our portfolio of custom neural workflows, enterprise CRM automations, 24/7 support pods, and real-time social media AI agents engineered for fast-growing businesses.
+                    Explore our portfolio of custom neural workflows, enterprise CRM automations, 24/7 support pods, and real-time conversational AI agents engineered for fast-growing businesses.
                 </p>
                 <div class="hero-btns">
                     <a href="#portfolio-grid-section" class="btn btn-primary btn-glow">
@@ -111,6 +111,30 @@
                     <a href="contact.html" class="btn btn-secondary">
                         Build Your Custom AI
                     </a>
+                </div>
+
+                <!-- Live Portfolio Telemetry Stats Bar -->
+                <div class="portfolio-hero-stats">
+                    <div class="portfolio-stat-box">
+                        <span class="stat-label-text">DEPLOYS LIVE</span>
+                        <span class="stat-num-val">520+</span>
+                        <span class="stat-sub-detail">Active Neural Agents</span>
+                    </div>
+                    <div class="portfolio-stat-box">
+                        <span class="stat-label-text">SYSTEM UPTIME</span>
+                        <span class="stat-num-val text-cyan">99.8%</span>
+                        <span class="stat-sub-detail">Continuous Telemetry</span>
+                    </div>
+                    <div class="portfolio-stat-box">
+                        <span class="stat-label-text">AVG LATENCY</span>
+                        <span class="stat-num-val text-green">12ms</span>
+                        <span class="stat-sub-detail">Inference & Webhooks</span>
+                    </div>
+                    <div class="portfolio-stat-box">
+                        <span class="stat-label-text">CLIENT SAVINGS</span>
+                        <span class="stat-num-val text-violet">$4.2M+</span>
+                        <span class="stat-sub-detail">Total Annual ROI</span>
+                    </div>
                 </div>
             </div>
 
@@ -126,7 +150,7 @@
         </div>
     </section>
 
-    <!-- Portfolio Category Filter & Grid Section -->
+    <!-- Portfolio Category Filter, Live Search & Grid Section -->
     <section class="section" id="portfolio-grid-section">
         <div class="container container-fluid">
             <div class="text-center margin-bottom-40">
@@ -135,18 +159,26 @@
                     <span>PORTFOLIO SHOWCASE</span>
                 </div>
                 <h2 class="section-title text-center">Engineered Solutions & <span class="text-glow">Live AI Deployments</span></h2>
-                <p class="section-subtitle text-center">Filter by business domain to view architecture breakdowns, performance metrics, and key technology integrations.</p>
+                <p class="section-subtitle text-center">Filter by domain or search tech stacks live to explore architecture blueprints and performance metrics.</p>
             </div>
 
-            <!-- Category Filter Tab Buttons -->
-            <div class="filter-tab-wrapper">
-                <div class="filter-tab-bar" id="portfolioFilterBar">
-                    <button class="filter-btn active" data-filter="all">⚡ All Builds</button>
-                    <button class="filter-btn" data-filter="sales">🎯 Sales & CRM AI</button>
-                    <button class="filter-btn" data-filter="support">💬 Support & Service AI</button>
-                    <button class="filter-btn" data-filter="ops">⚙️ Operations & Logistics</button>
-                    <button class="filter-btn" data-filter="social">📲 Social & Marketing AI</button>
-                    <button class="filter-btn" data-filter="ecommerce">🛍️ E-Commerce & Retail</button>
+            <!-- Toolbar: Filter Tabs & Live Search Input -->
+            <div class="portfolio-toolbar-container">
+                <div class="portfolio-filter-row">
+                    <div class="filter-tab-wrapper" style="margin: 0;">
+                        <div class="filter-tab-bar" id="portfolioFilterBar">
+                            <button class="filter-btn active" data-filter="all">⚡ All Builds (6)</button>
+                            <button class="filter-btn" data-filter="sales">🎯 Sales & CRM (2)</button>
+                            <button class="filter-btn" data-filter="support">💬 Support AI (2)</button>
+                            <button class="filter-btn" data-filter="ops">⚙️ Operations (1)</button>
+                            <button class="filter-btn" data-filter="social">📲 Social & E-Com (2)</button>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-search-box">
+                        <svg class="portfolio-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" class="portfolio-search-input" id="portfolioSearchInput" placeholder="Search stack: Python, GPT-4o, Shopify...">
+                    </div>
                 </div>
             </div>
 
@@ -154,249 +186,273 @@
             <div class="grid-3 action-cards-grid" id="portfolioCardsGrid">
                 
                 <!-- Build Card 1: INSTAGUARD 360 -->
-                <div class="card card-3d portfolio-card-item" data-category="social ecommerce">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">INSTAGUARD 360</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="social ecommerce" data-tags="python meta graph api shopify webhook gpt-4o instagram">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">INSTAGUARD 360</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/capabilities-robot.png" alt="Instagram AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/capabilities-robot.png" alt="Instagram & Shopify AI Agent">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Instagram & Shopify Conversational Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">Instagram & Shopify Conversational Agent</h3>
+                    <p class="card-description-text">
                         Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Python</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Meta Graph API</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Shopify Webhook</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">GPT-4o</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">Python</span>
+                        <span class="tech-tag-pill">Meta Graph API</span>
+                        <span class="tech-tag-pill">Shopify Webhook</span>
+                        <span class="tech-tag-pill">GPT-4o</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">40,000+</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">DMs / Mo</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">40k+</span>
+                            <span class="t-metric-lbl">DMs / MO</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">12 Sec</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Response</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">12s</span>
+                            <span class="t-metric-lbl">RESPONSE</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">+38%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Sales Conv.</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">+38%</span>
+                            <span class="t-metric-lbl">CONV. RATE</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="instaguard">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="instaguard">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Build Card 2: PIPELINE-MAX -->
-                <div class="card card-3d portfolio-card-item" data-category="sales">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">PIPELINE-MAX</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="sales" data-tags="salesforce crm apollo api calendly api node.js b2b lead">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">PIPELINE-MAX</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/cta-banner-full.png" alt="Sales AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/cta-banner-full.png" alt="Sales AI Agent Visual">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Enterprise B2B Lead Qualification Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">Enterprise B2B Lead Qualification Agent</h3>
+                    <p class="card-description-text">
                         Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Salesforce CRM</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Apollo API</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Calendly API</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Node.js</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">Salesforce CRM</span>
+                        <span class="tech-tag-pill">Apollo API</span>
+                        <span class="tech-tag-pill">Calendly API</span>
+                        <span class="tech-tag-pill">Node.js</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">98/100</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Accuracy</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">98/100</span>
+                            <span class="t-metric-lbl">ACCURACY</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">14ms</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Latency</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">14ms</span>
+                            <span class="t-metric-lbl">LATENCY</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">10x</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Meetings</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">10x</span>
+                            <span class="t-metric-lbl">MEETINGS</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="pipelinemax">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="pipelinemax">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Build Card 3: SUPPORTR-X -->
-                <div class="card card-3d portfolio-card-item" data-category="support">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">SUPPORTR-X</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="support" data-tags="auth0 stripe sdk twilio pinecone vector zendesk fintech">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">SUPPORTR-X</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ENTERPRISE</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/cta-robot-hologram.png" alt="Support AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/cta-robot-hologram.png" alt="Support AI Agent Visual">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Fintech Omnichannel Customer Support Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">Fintech Omnichannel Customer Support Pod</h3>
+                    <p class="card-description-text">
                         Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Auth0</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Stripe SDK</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Twilio</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Pinecone Vector</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">Auth0</span>
+                        <span class="tech-tag-pill">Stripe SDK</span>
+                        <span class="tech-tag-pill">Twilio API</span>
+                        <span class="tech-tag-pill">Pinecone Vector</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">1.8 Sec</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Resolution</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">1.8s</span>
+                            <span class="t-metric-lbl">RESOLVE</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">99.9%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Accuracy</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">99.9%</span>
+                            <span class="t-metric-lbl">ACCURACY</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">5 / 5</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">CSAT Rating</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">5.0</span>
+                            <span class="t-metric-lbl">CSAT SCORE</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="supportrx">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="supportrx">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Build Card 4: LOGI-FLOW -->
-                <div class="card card-3d portfolio-card-item" data-category="ops">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">LOGI-FLOW</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="ops" data-tags="python celery postgresql slack api shopify admin erp inventory">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">LOGI-FLOW</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/robot-hero.jpg" alt="Logistics AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2)); border-radius: 12px;">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/robot-hero.jpg" alt="Logistics AI Agent Visual">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Warehouse & Inventory Sync Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">Warehouse & Inventory Sync Agent</h3>
+                    <p class="card-description-text">
                         Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Python Celery</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">PostgreSQL</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Slack API</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Shopify Admin API</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">Python Celery</span>
+                        <span class="tech-tag-pill">PostgreSQL</span>
+                        <span class="tech-tag-pill">Slack API</span>
+                        <span class="tech-tag-pill">Shopify Admin</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">45,000</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">SKUs Synced</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">45,000</span>
+                            <span class="t-metric-lbl">SKUS SYNCED</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">100%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Uptime</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">100%</span>
+                            <span class="t-metric-lbl">UPTIME</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">850</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Auto POs/Day</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">850</span>
+                            <span class="t-metric-lbl">AUTO POS/DAY</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="logiflow">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="logiflow">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Build Card 5: AUDIENCE-GEN -->
-                <div class="card card-3d portfolio-card-item" data-category="social sales">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">AUDIENCE-GEN</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="social sales" data-tags="apollo scraper zerobounce sendgrid sdk langchain email outreach">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">AUDIENCE-GEN</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/bg-last.png" alt="LeadGen AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2)); border-radius: 12px;">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/bg-last.png" alt="LeadGen AI Agent Visual">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Cold Email Outreach & Scraper Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">Cold Outreach & Lead Scraper Agent</h3>
+                    <p class="card-description-text">
                         Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Apollo Scraper</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">ZeroBounce</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">SendGrid SDK</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">LangChain</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">Apollo Scraper</span>
+                        <span class="tech-tag-pill">ZeroBounce</span>
+                        <span class="tech-tag-pill">SendGrid SDK</span>
+                        <span class="tech-tag-pill">LangChain</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">500 / Day</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Verified Leads</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">500/day</span>
+                            <span class="t-metric-lbl">LEADS</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">+34%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Reply Rate</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">+34%</span>
+                            <span class="t-metric-lbl">REPLY RATE</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">4.5x</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Pipeline</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">4.5x</span>
+                            <span class="t-metric-lbl">PIPELINE</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="audiencegen">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="audiencegen">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Build Card 6: WHATSAPP-FLOW -->
-                <div class="card card-3d portfolio-card-item" data-category="social ecommerce">
-                    <div class="portfolio-card-badge-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <span class="cap-badge" style="margin: 0; font-size: 0.72rem; padding: 4px 10px;">WHATSAPP-FLOW</span>
-                        <span class="status-dot green-pulse" title="Live Deployment"></span>
+                <div class="portfolio-build-card portfolio-card-item" data-category="social ecommerce" data-tags="whatsapp cloud api stripe razorpay mongodb fastapi ecommerce">
+                    <div class="card-top-row">
+                        <span class="card-code-badge">WHATSAPP-FLOW</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
                     </div>
-                    <div class="portfolio-img-box margin-bottom-20" style="margin-top: 14px; text-align: center;">
-                        <img src="assets/images/agent.png" alt="WhatsApp AI Agent Visual" style="max-height: 180px; width: auto; object-fit: contain; filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.2));">
+
+                    <div class="portfolio-img-container">
+                        <img src="assets/images/agent.png" alt="WhatsApp AI Agent Visual">
                     </div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">WhatsApp Conversational Commerce Agent</h3>
-                    <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
+
+                    <h3 class="card-title-heading">WhatsApp Conversational Commerce Agent</h3>
+                    <p class="card-description-text">
                         Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.
                     </p>
 
-                    <div class="tech-tag-row margin-bottom-20" style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">WhatsApp Cloud API</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Stripe / Razorpay</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">MongoDB</span>
-                        <span class="user-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">FastAPI</span>
+                    <div class="card-tags-wrapper">
+                        <span class="tech-tag-pill">WhatsApp API</span>
+                        <span class="tech-tag-pill">Stripe SDK</span>
+                        <span class="tech-tag-pill">MongoDB</span>
+                        <span class="tech-tag-pill">FastAPI</span>
                     </div>
 
-                    <div style="background: rgba(241, 245, 249, 0.6); border: 1px solid #e2e8f0; border-radius: var(--radius-sm); padding: 12px; margin-bottom: 18px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px;" class="mock-card">
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #0284c7;">15,000</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Active Chats</div>
+                    <div class="card-telemetry-box">
+                        <div class="t-metric-col">
+                            <span class="t-metric-val">15,000</span>
+                            <span class="t-metric-lbl">CHATS</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #059669;">88%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Open Rate</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-cyan">88%</span>
+                            <span class="t-metric-lbl">OPEN RATE</span>
                         </div>
-                        <div>
-                            <div style="font-size: 1.1rem; font-weight: 800; color: #7c3aed;">+25%</div>
-                            <div style="font-size: 0.68rem; color: var(--text-muted);">Cart Recovery</div>
+                        <div class="t-metric-col">
+                            <span class="t-metric-val text-green">+25%</span>
+                            <span class="t-metric-lbl">CART RECOVERY</span>
                         </div>
                     </div>
 
-                    <button class="btn btn-secondary btn-sm open-arch-modal" style="width: 100%; justify-content: center;" data-project="whatsappflow">
-                        ⚡ View Architecture Specs
-                    </button>
+                    <div class="card-action-row">
+                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="whatsappflow">
+                            ⚡ View Architecture Specs
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -512,42 +568,35 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer class="footer">
-        <div class="container container-fluid footer-container">
-            <div class="footer-left">
-                <a href="index.html" class="logo margin-bottom-16">
-                    <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
-                        <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
-                    </svg>
-                    <span class="logo-text">AGENTSPACE</span>
-                </a>
-                <p class="footer-desc">
-                    Designing and deploying custom AI agents tailored for your business. Trained on your workflows, connected to your tools.
-                </p>
-            </div>
+        <div class="container footer-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
 
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="ai-agents.html">AI Agents</a>
+                <a href="workflow-studio.html">Workflow Studio</a>
                 <a href="solutions.html">Solutions</a>
-                <a href="portfolio.html">Portfolio</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="about-us.html">About Us</a>
-                <a href="contact.html">Contact</a>
             </div>
 
             <div class="footer-right">
-                <div class="social-icons margin-bottom-16">
-                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                <div class="social-icons">
                     <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
-                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
+                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 </div>
-                <div class="copyright">
-                    © 2026 AGENTSPACE Inc. All rights reserved.
-                </div>
+                <p class="copyright">© 2025. All rights reserved.</p>
             </div>
         </div>
     </footer>
