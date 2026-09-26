@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflow Studio | AGENTSPACE Neural Automation</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Futuristic Sci-Fi Robot Preloader Overlay -->
+    <div class="preloader-overlay" id="preloaderOverlay">
+        <div class="preloader-content">
+            <div class="preloader-robot-track">
+                <img src="assets/images/agent.png" alt="AGENTSPACE Robot Preloader" class="preloader-robot-img" id="preloaderRobot">
+                <div class="preloader-laser-line" id="preloaderLaser"></div>
+            </div>
+            
+            <div class="preloader-text-box">
+                <span class="preloader-typed-text" id="preloaderTypedText"></span><span class="preloader-cursor">|</span>
+            </div>
+            
+            <div class="preloader-progress-box">
+                <div class="preloader-progress-bar">
+                    <div class="preloader-progress-fill" id="preloaderFill"></div>
+                </div>
+                <div class="preloader-status">
+                    <span class="status-label">INITIALIZING WORKFLOW STUDIO ENGINE</span>
+                    <span class="status-percent" id="preloaderPercent">0%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Connected Points Background Canvas -->
+    <canvas id="constellationCanvas"></canvas>
+
+    <!-- Top HUD Live Status Bar -->
+    <div class="hud-status-bar">
+        <div class="container hud-status-container">
+            <div class="hud-ticker-text">
+                <span class="hud-status-item"><span class="status-dot"></span> SYSTEM: OPTIMAL</span>
+                <span class="hud-status-item">| NEURAL CORE v4.8 ACTIVE</span>
+                <span class="hud-status-item">| AGENTS DEPLOYED: 1,420</span>
+                <span class="hud-status-item">| WORKFLOW LATENCY: 32ms</span>
+            </div>
+            <div class="hud-status-right">
+                <span>[ WORKFLOW STUDIO ONLINE ]</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container container-fluid nav-container">
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+                <div class="offcanvas-actions">
+                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
+                </div>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
+                <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
+                <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Studio Hero Header Banner -->
+    <section class=" section studio-hero-section">
+        <div class="container">
+            <div class="text-center margin-bottom-30">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">⚡</span>
+                    <span>AUTOMATED NEURAL WORKFLOW STUDIO</span>
+                </div>
+                <h1 class="hero-title text-center">Let's Start Your <span class="text-glow">AI Workflow</span></h1>
+                <p class="hero-subtitle text-center" style="max-width: 840px; margin: 0 auto 24px;">
+                    Select an AI workflow, prompt your custom requirements, explore today's social life themes, review human approval sign-offs, and broadcast live to connected platforms.
+                </p>
+            </div>
+
+            <!-- 4-Step Interactive Guide Ribbon -->
+            <div class="wf-guide-ribbon">
+                <div class="wf-guide-step">
+                    <div class="guide-num-badge">1</div>
+                    <div class="guide-step-text">
+                        <strong>1. PROMPT INPUT</strong>
+                        <span>Set your AI task & targets</span>
+                    </div>
+                </div>
+                <div class="wf-guide-arrow">➔</div>
+                <div class="wf-guide-step">
+                    <div class="guide-num-badge">2</div>
+                    <div class="guide-step-text">
+                        <strong>2. IDEAS & THEME SEARCH</strong>
+                        <span>AI scans today's social trends</span>
+                    </div>
+                </div>
+                <div class="wf-guide-arrow">➔</div>
+                <div class="wf-guide-step">
+                    <div class="guide-num-badge">3</div>
+                    <div class="guide-step-text">
+                        <strong>3. HUMAN APPROVAL</strong>
+                        <span>Review & sign-off draft</span>
+                    </div>
+                </div>
+                <div class="wf-guide-arrow">➔</div>
+                <div class="wf-guide-step active-pulse">
+                    <div class="guide-num-badge">4</div>
+                    <div class="guide-step-text">
+                        <strong>4. DRAFT & PUBLISH UI</strong>
+                        <span>Preview & broadcast live</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Studio Workspace Container -->
+    <section class="studio-workspace-section">
+        <div class="container container-fluid">
+
+            <!-- Horizontal Workflow Selector Bar -->
+            <div class="studio-workflow-selector-bar">
+                <div class="selector-header">
+                    <span class="studio-dot"></span>
+                    <span class="selector-title">🚀 LET'S START WORKFLOW — CHOOSE AI AUTOMATION PRESET</span>
+                </div>
+                <div class="workflow-preset-chips studio-presets-grid" id="workflowPresetChips">
+                    <button class="preset-chip active" data-preset="social">
+                        <div class="chip-content">
+                            <span class="chip-title">📲 Social Posts & Media</span>
+                            <span class="chip-desc">Search today's themes, approve & auto-publish</span>
+                        </div>
+                    </button>
+                    <button class="preset-chip" data-preset="crm">
+                        <div class="chip-content">
+                            <span class="chip-title">🎯 CRM Lead Pipeline</span>
+                            <span class="chip-desc">Enrich leads, rep sign-off & sync HubSpot</span>
+                        </div>
+                    </button>
+                    <button class="preset-chip" data-preset="email">
+                        <div class="chip-content">
+                            <span class="chip-title">✉️ Email Campaign & Support</span>
+                            <span class="chip-desc">Intent triage, AI reply & Gmail dispatch</span>
+                        </div>
+                    </button>
+                    <button class="preset-chip" data-preset="meeting">
+                        <div class="chip-content">
+                            <span class="chip-title">📅 Scheduled Meetings</span>
+                            <span class="chip-desc">Find availability, host sign-off & Meet sync</span>
+                        </div>
+                    </button>
+                    <button class="preset-chip" data-preset="ecom">
+                        <div class="chip-content">
+                            <span class="chip-title">🛒 E-Commerce Support Bot</span>
+                            <span class="chip-desc">Auto-refunds & Stripe API execution in 38ms</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Balanced Studio Canvas Card -->
+            <div class="workflow-canvas-card studio-canvas-full">
+                <div class="studio-card-header canvas-header">
+                    <div class="canvas-header-left">
+                        <span class="studio-dot green-pulse"></span>
+                        <div class="header-titles-box">
+                            <span class="studio-header-title" id="wfCanvasTitle">📲 Social Posts & Multi-Platform Publishing Flow</span>
+                            <span class="canvas-sub-tag">STANDALONE LIVE INTERACTIVE WORKFLOW DEMO</span>
+                        </div>
+                    </div>
+                    <div class="canvas-actions">
+                        <span class="auto-flow-badge green-pulse" style="font-family: var(--font-tech); font-size: 0.8rem; font-weight: 700; color: #00f0ff; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;"><span class="studio-dot green-pulse"></span> ⚡ AUTOMATED 4-STEP FLOW ACTIVE</span>
+                        <button class="btn-canvas-action" id="btnCopyWf">📋 Copy Blueprint</button>
+                    </div>
+                </div>
+
+                <div class="canvas-body-wrapper" id="wfCanvasBody">
+                    <!-- Live Auto-Flow HUD Status Banner -->
+                    <div class="autoplay-hud-banner" id="autoPlayHudBanner" style="display: flex;">
+                        <div class="autoplay-hud-left">
+                            <span class="hud-live-dot red-pulse"></span>
+                            <span class="autoplay-status-text" id="autoPlayStatusText">⚡ AUTOMATING WORKFLOW: STEP 1/4 (Analyzing Prompt & Target Parameters...)</span>
+                        </div>
+                        <div class="autoplay-progress-track">
+                            <div class="autoplay-progress-bar" id="autoPlayProgressBar" style="width: 25%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Metrics Summary Banner -->
+                    <div class="wf-metrics-bar">
+                        <div class="wf-metric-item">
+                            <span class="metric-lbl">EST. LATENCY</span>
+                            <span class="metric-val" id="wfMetricLatency">32 ms</span>
+                        </div>
+                        <div class="wf-metric-item">
+                            <span class="metric-lbl">ACCURACY SCORE</span>
+                            <span class="metric-val text-cyan" id="wfMetricAccuracy">99.7%</span>
+                        </div>
+                        <div class="wf-metric-item">
+                            <span class="metric-lbl">EST. TIME SAVED</span>
+                            <span class="metric-val text-green" id="wfMetricSavings">28 hrs/week</span>
+                        </div>
+                        <div class="wf-metric-item">
+                            <span class="metric-lbl">ACTIVE AGENTS</span>
+                            <span class="metric-val text-violet" id="wfMetricAgents">3 Agents</span>
+                        </div>
+                    </div>
+
+                    <!-- Sequential 4-Step Navigation Tabs -->
+                    <div class="wf-stage-tabs-nav" id="wfStageTabsNav">
+                        <button class="wf-stage-tab active" data-stage="1">
+                            <span class="stage-badge">STEP 1</span>
+                            <span class="stage-title">🚀 Prompt Input</span>
+                        </button>
+                        <button class="wf-stage-tab" data-stage="2">
+                            <span class="stage-badge">STEP 2</span>
+                            <span class="stage-title">🔎 Theme Search</span>
+                        </button>
+                        <button class="wf-stage-tab" data-stage="3">
+                            <span class="stage-badge">STEP 3</span>
+                            <span class="stage-title">👤 Human Approval</span>
+                        </button>
+                        <button class="wf-stage-tab" data-stage="4">
+                            <span class="stage-badge">STEP 4</span>
+                            <span class="stage-title">📱 Draft & Publish</span>
+                        </button>
+                    </div>
+
+                    <!-- Interactive Stage View Content Area -->
+                    <div class="wf-stage-display-panel" id="wfStageDisplayPanel">
+                        <!-- Dynamic Stage Content populated by script.js -->
+                    </div>
+
+                    <!-- Live Simulation Output Console / Logs -->
+                    <div class="wf-simulation-log" id="wfSimulationLog" style="display: none;">
+                        <div class="sim-log-header">
+                            <span class="log-indicator">● LIVE EXECUTION PAYLOAD MONITOR</span>
+                            <span class="sim-close-btn" id="btnCloseLog">×</span>
+                        </div>
+                        <div class="sim-log-content" id="simLogContent">
+                            <!-- Dynamic simulation logs appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Banner Section -->
+            <div class="studio-cta-box text-center margin-top-40">
+                <h3 style="font-family: var(--font-tech); font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">Ready to Deploy This Neural Workflow to Production?</h3>
+                <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">Connect your API keys, integrate webhooks, or request a custom neural agent pod built for your team.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary">Book a Live Architecture Demo</a>
+                    <a href="solutions.html" class="btn btn-secondary">Explore All Enterprise Solutions</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
+                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
+                </svg>
+                <span class="logo-text">AGENTSPACE</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-agents.html">AI Agents</a>
+                <a href="workflow-studio.html">Workflow Studio</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="about-us.html">About Us</a>
+            </div>
+
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg></a>
+                    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></a>
+                    <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+                <p class="copyright">© 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <div class="corner-robot-widget" id="cornerRobotWidget">
+        <div class="robot-speech-bubble" id="robotSpeechBubble">
+            <span class="speech-close" id="speechClose">&times;</span>
+            <div class="speech-text" id="speechText">
+                Welcome to Workflow Studio! ⚙️ Select a workflow preset or test custom prompts to see real-time AI automation.
+            </div>
+            <div class="speech-actions">
+                <a href="contact.html" class="speech-btn">Book Demo</a>
+                <a href="solutions.html" class="speech-btn speech-btn-sec">Solutions</a>
+            </div>
+        </div>
+
+        <div class="corner-robot-avatar" id="cornerRobotAvatar">
+            <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
+        </div>
+    </div>
+
+    <!-- Sci-Fi Holographic Crosshair Cursor Overlay & Target Lock -->
+    <div class="sci-cursor-container" id="sciCursorContainer">
+        <div class="sci-cursor-dot" id="sciCursorDot"></div>
+        <div class="sci-cursor-reticle" id="sciCursorReticle">
+            <div class="reticle-ring"></div>
+            <div class="reticle-bracket bracket-tl"></div>
+            <div class="reticle-bracket bracket-tr"></div>
+            <div class="reticle-bracket bracket-bl"></div>
+            <div class="reticle-bracket bracket-br"></div>
+            <div class="reticle-target-text" id="reticleTargetText">TARGET LOCKED</div>
+        </div>
+    </div>
+    <!-- Cursor Spark Trail Canvas -->
+    <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
