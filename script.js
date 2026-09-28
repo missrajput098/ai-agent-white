@@ -1153,8 +1153,40 @@ document.addEventListener('DOMContentLoaded', () => {
     checkRoadmapScroll();
 
     // ==========================================
-    // Interactive Visual AI Workflow Generator Engine
+    // Interactive Visual AI Workflow Generator Engine & Redesigned 5-Tab Studio
     // ==========================================
+    const studioNavTabs = document.getElementById('studioNavTabs');
+    if (studioNavTabs) {
+        const tabBtns = studioNavTabs.querySelectorAll('.studio-tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                if (!targetTab) return;
+
+                // Update active button
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update active pane with smooth fade-slide transition
+                const panes = document.querySelectorAll('.studio-tab-pane');
+                panes.forEach(pane => {
+                    pane.classList.remove('active');
+                });
+
+                const targetPane = document.getElementById(`pane-${targetTab}`);
+                if (targetPane) {
+                    // Trigger reflow for keyframe animation re-trigger
+                    void targetPane.offsetWidth;
+                    targetPane.classList.add('active');
+                }
+
+                if (typeof playCyberClick === 'function') {
+                    playCyberClick();
+                }
+            });
+        });
+    }
+
     const wfPresetChips = document.querySelectorAll('.preset-chip');
     const wfTriggerSelect = document.getElementById('wfTriggerSelect');
     const wfAgentSelect = document.getElementById('wfAgentSelect');

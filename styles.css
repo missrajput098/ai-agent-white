@@ -6444,6 +6444,834 @@ body.robotics-mode .wf-node-card:hover .wf-node-info h4 {
     z-index: 10;
 }
 
+/* ==========================================
+   REDESIGNED STUDIO WORKSPACE & AUTOMATION TABS
+   ========================================== */
+.studio-tabs-bar {
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.studio-tabs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.studio-tabs-title {
+    font-family: var(--font-tech);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--brand-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.studio-nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.studio-tab-btn {
+    background: #f8fafc;
+    border: 1px solid rgba(3, 47, 104, 0.12);
+    border-radius: var(--radius-md);
+    padding: 14px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    position: relative;
+    overflow: hidden;
+}
+
+.studio-tab-btn:hover {
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+    color: var(--brand-primary);
+}
+
+.studio-tab-btn.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(139, 92, 246, 0.08));
+    border-color: #2563eb;
+    color: #1e3a8a;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+}
+
+.studio-tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #8b5cf6);
+    border-radius: 3px 3px 0 0;
+}
+
+.tab-icon-box {
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tab Panes & Smooth Fade Slide Transition */
+.studio-tab-pane {
+    display: none;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-tab-pane.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: tabSlideFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabSlideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* System Header Banner Card */
+.workflow-system-banner {
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+    align-items: center;
+}
+
+.banner-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.banner-headline {
+    font-family: var(--font-main);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.gradient-text-purple {
+    background: linear-gradient(135deg, #2563eb, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.banner-desc {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.6;
+    max-width: 680px;
+}
+
+.goal-card-box {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.goal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.goal-icon-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goal-title {
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+.goal-flow-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+    line-height: 1.5;
+    background: #ffffff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Numbered Step Cards Row (1 to 5) */
+.numbered-steps-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.numbered-step-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.1);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    min-height: 250px;
+}
+
+.numbered-step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.12);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Card Thumbnail Images Header */
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: #0f172a;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    opacity: 0.88;
+}
+
+.numbered-step-card:hover .card-step-img {
+    transform: scale(1.08);
+    opacity: 1;
+}
+
+.card-img-wrapper .step-num-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+}
+
+.card-img-wrapper .step-icon-bg {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.step-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.step-num-badge {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.step-icon-bg {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon-bg.theme-blue { background: #eff6ff; color: #2563eb; }
+.step-icon-bg.theme-purple { background: #f5f3ff; color: #8b5cf6; }
+.step-icon-bg.theme-green { background: #ecfdf5; color: #10b981; }
+.step-icon-bg.theme-orange { background: #fff7ed; color: #f59e0b; }
+.step-icon-bg.theme-teal { background: #ecfeff; color: #06b6d4; }
+
+.step-card-title {
+    font-family: var(--font-main);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+.step-card-desc {
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.step-pills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.pill-item {
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pill-item svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+}
+
+.step-arrow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    width: 20px;
+    animation: pulseArrow 2s infinite ease-in-out;
+}
+
+@keyframes pulseArrow {
+    0%, 100% { opacity: 0.5; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(3px); }
+}
+
+/* How It Works Diagram Container */
+.how-it-works-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.section-tag-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+    background: #f1f5f9;
+    padding: 8px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.how-nodes-row {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.how-node-card {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-md);
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.how-node-card:hover {
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transform: translateY(-3px);
+}
+
+.how-node-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.how-node-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.how-node-title {
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.how-node-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.how-node-list li {
+    font-size: 0.78rem;
+    color: #475569;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.how-node-list li::before {
+    content: '•';
+    color: #2563eb;
+    font-weight: bold;
+}
+
+.how-chips-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.how-chip {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Highlighted Outcome Card (End Node 6) */
+.how-node-card.outcome-node {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border: 1px solid #10b981;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+}
+
+.how-node-card.outcome-node .how-node-title {
+    color: #065f46;
+}
+
+.outcome-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #10b981;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.outcome-text {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #047857;
+    text-align: center;
+    line-height: 1.45;
+}
+
+/* Key Benefits Section */
+.key-benefits-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 20px 28px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.benefits-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #0f172a;
+    white-space: nowrap;
+    padding-right: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    flex-grow: 1;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.benefit-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.08);
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefit-text-box h5 {
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+.benefit-text-box p {
+    font-size: 0.74rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ==========================================
+   INTERACTIVE ARCHITECTURE GUIDE RIBBON
+   ========================================== */
+.wf-guide-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: #ffffff;
+    border: 1px solid rgba(3, 47, 104, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 18px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(12px);
+    margin-top: 10px;
+}
+
+.wf-guide-step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-md);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wf-guide-step:hover {
+    background: #ffffff;
+    border-color: rgba(37, 99, 235, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+}
+
+.wf-guide-step.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(139, 92, 246, 0.06));
+    border-color: rgba(37, 99, 235, 0.5);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.guide-num-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.guide-step-text strong {
+    display: block;
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.guide-step-text span {
+    display: block;
+    font-size: 0.74rem;
+    color: #475569;
+    line-height: 1.3;
+}
+
+.wf-guide-arrow {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    animation: pulseArrow 2s infinite ease-in-out;
+}
+
+/* Robotics Mode Dark Theme Compatibility & Contrast Fixes */
+body.robotics-mode .wf-guide-ribbon,
+body.robotics-mode .studio-tabs-bar,
+body.robotics-mode .workflow-system-banner,
+body.robotics-mode .numbered-step-card,
+body.robotics-mode .how-it-works-wrapper,
+body.robotics-mode .key-benefits-wrapper {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border-color: rgba(56, 189, 248, 0.25) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(37, 99, 235, 0.12) !important;
+}
+
+body.robotics-mode .wf-guide-step {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.robotics-mode .wf-guide-step:hover {
+    background: rgba(30, 41, 59, 1) !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.robotics-mode .studio-tab-btn {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .studio-tab-btn:hover {
+    background: rgba(30, 41, 59, 1) !important;
+    color: #38bdf8 !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+body.robotics-mode .studio-tab-btn.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(139, 92, 246, 0.2)) !important;
+    border-color: #38bdf8 !important;
+    color: #f8fafc !important;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.25) !important;
+}
+
+body.robotics-mode .banner-headline,
+body.robotics-mode .step-card-title,
+body.robotics-mode .how-node-title,
+body.robotics-mode .goal-title,
+body.robotics-mode .section-tag-box,
+body.robotics-mode .benefits-tag,
+body.robotics-mode .benefit-text-box h5,
+body.robotics-mode .guide-step-text strong,
+body.robotics-mode .studio-tabs-title {
+    color: #f8fafc !important;
+}
+
+body.robotics-mode .banner-desc,
+body.robotics-mode .step-card-desc,
+body.robotics-mode .how-node-list li,
+body.robotics-mode .benefit-text-box p,
+body.robotics-mode .guide-step-text span {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .pill-item,
+body.robotics-mode .how-node-card,
+body.robotics-mode .how-chip,
+body.robotics-mode .goal-card-box,
+body.robotics-mode .goal-flow-text {
+    background: rgba(30, 41, 59, 0.9) !important;
+    color: #f1f5f9 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.robotics-mode .pill-item:hover {
+    background: rgba(51, 65, 85, 0.9) !important;
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    color: #38bdf8 !important;
+}
+
+body.robotics-mode .step-icon-bg.theme-blue {
+    background: rgba(37, 99, 235, 0.2) !important;
+    color: #60a5fa !important;
+    border-color: rgba(96, 165, 250, 0.3) !important;
+}
+
+body.robotics-mode .step-icon-bg.theme-purple {
+    background: rgba(139, 92, 246, 0.2) !important;
+    color: #c084fc !important;
+    border-color: rgba(192, 132, 252, 0.3) !important;
+}
+
+body.robotics-mode .step-icon-bg.theme-green {
+    background: rgba(16, 185, 129, 0.2) !important;
+    color: #34d399 !important;
+    border-color: rgba(52, 211, 153, 0.3) !important;
+}
+
+body.robotics-mode .step-icon-bg.theme-orange {
+    background: rgba(245, 158, 11, 0.2) !important;
+    color: #fbbf24 !important;
+    border-color: rgba(251, 191, 36, 0.3) !important;
+}
+
+body.robotics-mode .step-icon-bg.theme-teal {
+    background: rgba(6, 182, 212, 0.2) !important;
+    color: #22d3ee !important;
+    border-color: rgba(34, 211, 238, 0.3) !important;
+}
+
+@media (max-width: 1200px) {
+    .studio-nav-tabs {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .numbered-steps-container {
+        flex-wrap: wrap;
+    }
+    .numbered-step-card {
+        min-width: 220px;
+    }
+    .step-arrow-connector {
+        display: none;
+    }
+    .how-nodes-row {
+        flex-wrap: wrap;
+    }
+    .how-node-card {
+        min-width: 200px;
+    }
+    .benefits-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .studio-nav-tabs {
+        grid-template-columns: 1fr;
+    }
+    .workflow-system-banner {
+        grid-template-columns: 1fr;
+    }
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    .key-benefits-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .benefits-tag {
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 10px;
+        width: 100%;
+    }
+}
+
 .studio-workflow-selector-bar {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -7461,4 +8289,172 @@ body.robotics-mode .t-metric-val {
     0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.5); }
     50% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.9); }
 }
+
+/* Studio Hero Studio Canvas & CTA Split Banner Upgrades */
+.studio-hero-canvas-wrapper {
+    margin-top: 35px;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 30px rgba(37, 99, 235, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    background: rgba(15, 23, 42, 0.6);
+}
+
+.studio-hero-canvas-img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-hero-canvas-wrapper:hover .studio-hero-canvas-img {
+    transform: scale(1.02);
+}
+
+.studio-cta-box {
+    /* background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)); */
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+.studio-cta-inner {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.cta-content {
+    flex: 1;
+    text-align: left;
+}
+
+.cta-badge {
+    display: inline-block;
+    font-family: var(--font-tech);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+
+.cta-img-box {
+    flex: 0 0 420px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.cta-banner-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.cta-img-box:hover .cta-banner-img {
+    transform: scale(1.05);
+}
+
+.how-it-works-banner {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.how-it-works-banner-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 992px) {
+    .studio-cta-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cta-content {
+        text-align: center;
+    }
+    .cta-img-box {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Studio Hero Section - High Visibility Fixed Background Canvas */
+.studio-hero-section {
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(15, 23, 42, 0.22) 0%, rgba(15, 23, 42, 0.48) 100%), url('assets/images/hero-studio-canvas.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 85px 0 70px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.4);
+    box-shadow: inset 0 -40px 80px rgba(15, 23, 42, 0.65);
+}
+
+.studio-hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 40%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.studio-hero-section .hero-title {
+    color: #ffffff;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.95), 0 0 15px rgba(0, 0, 0, 0.8);
+    font-weight: 800;
+}
+
+.studio-hero-section .hero-subtitle {
+    color: #f1f5f9 !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.8);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.studio-hero-section .cap-badge {
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(56, 189, 248, 0.25) !important;
+}
+
+.studio-hero-section .wf-guide-ribbon {
+    background: rgba(15, 23, 42, 0.55) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45) !important;
+}
+
+@media (max-width: 768px) {
+    .studio-hero-section {
+        background-attachment: scroll;
+    }
+}
+
 
