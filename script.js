@@ -175,28 +175,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // Robotics Mode Dual-Theme Toggle Logic
+    // Floating Dock Control Logic (Sound & Mode)
     // ==========================================
     const roboticsToggleBtn = document.getElementById('roboticsModeToggle');
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
     const storedMode = localStorage.getItem('roboticsMode');
+    const storedAudio = localStorage.getItem('audioEnabled');
+
+    function updateSoundUI(isON) {
+        audioEnabled = isON;
+        if (soundToggleBtn) {
+            const iconOff = soundToggleBtn.querySelector('.icon-sound-off');
+            const iconOn = soundToggleBtn.querySelector('.icon-sound-on');
+            const tooltip = soundToggleBtn.querySelector('.dock-tooltip');
+
+            if (isON) {
+                soundToggleBtn.classList.add('active');
+                if (iconOff) iconOff.style.display = 'none';
+                if (iconOn) iconOn.style.display = 'block';
+                if (tooltip) tooltip.textContent = 'Sound On';
+                soundToggleBtn.setAttribute('data-tooltip', 'Sound On');
+                soundToggleBtn.setAttribute('aria-label', 'Sound On');
+            } else {
+                soundToggleBtn.classList.remove('active');
+                if (iconOff) iconOff.style.display = 'block';
+                if (iconOn) iconOn.style.display = 'none';
+                if (tooltip) tooltip.textContent = 'Sound Off';
+                soundToggleBtn.setAttribute('data-tooltip', 'Sound Off');
+                soundToggleBtn.setAttribute('aria-label', 'Sound Off');
+            }
+        }
+    }
 
     function applyRoboticsMode(isON) {
-        if (isON) {
-            document.body.classList.add('robotics-mode');
-            if (roboticsToggleBtn) {
-                roboticsToggleBtn.setAttribute('title', 'Robotics Mode: ON');
-                roboticsToggleBtn.innerHTML = '<span class="mode-icon">⚡</span> <span class="mode-text">ROBOTICS MODE: ON</span>';
+        if (roboticsToggleBtn) {
+            const iconOff = roboticsToggleBtn.querySelector('.icon-mode-off');
+            const iconOn = roboticsToggleBtn.querySelector('.icon-mode-on');
+            const tooltip = roboticsToggleBtn.querySelector('.dock-tooltip');
+
+            if (isON) {
+                document.body.classList.add('robotics-mode');
+                roboticsToggleBtn.classList.add('active');
+                if (iconOff) iconOff.style.display = 'none';
+                if (iconOn) iconOn.style.display = 'block';
+                if (tooltip) tooltip.textContent = 'Robotics Mode On';
+                roboticsToggleBtn.setAttribute('data-tooltip', 'Robotics Mode On');
+                roboticsToggleBtn.setAttribute('aria-label', 'Robotics Mode On');
+                initAudio();
+                updateSoundUI(true);
+                playPowerUpSound();
+            } else {
+                document.body.classList.remove('robotics-mode');
+                roboticsToggleBtn.classList.remove('active');
+                if (iconOff) iconOff.style.display = 'block';
+                if (iconOn) iconOn.style.display = 'none';
+                if (tooltip) tooltip.textContent = 'Robotics Mode Off';
+                roboticsToggleBtn.setAttribute('data-tooltip', 'Robotics Mode Off');
+                roboticsToggleBtn.setAttribute('aria-label', 'Robotics Mode Off');
             }
-            initAudio();
-            audioEnabled = true;
-            playPowerUpSound();
         } else {
-            document.body.classList.remove('robotics-mode');
-            if (roboticsToggleBtn) {
-                roboticsToggleBtn.setAttribute('title', 'Robotics Mode: OFF');
-                roboticsToggleBtn.innerHTML = '<span class="mode-icon">🤖</span> <span class="mode-text">ROBOTICS MODE: OFF</span>';
+            if (isON) {
+                document.body.classList.add('robotics-mode');
+            } else {
+                document.body.classList.remove('robotics-mode');
             }
-            audioEnabled = false;
         }
     }
 
@@ -204,6 +246,25 @@ document.addEventListener('DOMContentLoaded', () => {
         applyRoboticsMode(true);
     } else {
         applyRoboticsMode(false);
+    }
+
+    if (storedAudio === 'true') {
+        initAudio();
+        updateSoundUI(true);
+    } else if (storedMode !== 'true') {
+        updateSoundUI(false);
+    }
+
+    if (soundToggleBtn) {
+        soundToggleBtn.addEventListener('click', () => {
+            initAudio();
+            const newState = !audioEnabled;
+            localStorage.setItem('audioEnabled', newState ? 'true' : 'false');
+            updateSoundUI(newState);
+            if (newState) {
+                playPowerUpSound();
+            }
+        });
     }
 
     if (roboticsToggleBtn) {
@@ -362,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloaderPercent = document.getElementById('preloaderPercent');
 
     if (preloaderOverlay && preloaderRobot && preloaderTypedText && preloaderFill && preloaderPercent) {
-        const welcomeMessage = "WELCOME TO AGENTSPACE";
+        const welcomeMessage = "WELCOME TO AGENT FACTONIX";
         let currentProgress = 0;
         const totalDuration = 1800;
         const intervalTime = 30;
@@ -1092,8 +1153,40 @@ document.addEventListener('DOMContentLoaded', () => {
     checkRoadmapScroll();
 
     // ==========================================
-    // Interactive Visual AI Workflow Generator Engine
+    // Interactive Visual AI Workflow Generator Engine & Redesigned 5-Tab Studio
     // ==========================================
+    const studioNavTabs = document.getElementById('studioNavTabs');
+    if (studioNavTabs) {
+        const tabBtns = studioNavTabs.querySelectorAll('.studio-tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                if (!targetTab) return;
+
+                // Update active button
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update active pane with smooth fade-slide transition
+                const panes = document.querySelectorAll('.studio-tab-pane');
+                panes.forEach(pane => {
+                    pane.classList.remove('active');
+                });
+
+                const targetPane = document.getElementById(`pane-${targetTab}`);
+                if (targetPane) {
+                    // Trigger reflow for keyframe animation re-trigger
+                    void targetPane.offsetWidth;
+                    targetPane.classList.add('active');
+                }
+
+                if (typeof playCyberClick === 'function') {
+                    playCyberClick();
+                }
+            });
+        });
+    }
+
     const wfPresetChips = document.querySelectorAll('.preset-chip');
     const wfTriggerSelect = document.getElementById('wfTriggerSelect');
     const wfAgentSelect = document.getElementById('wfAgentSelect');

@@ -58,11 +58,7 @@
     <header class="navbar">
         <div class="container container-fluid nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
-                </svg>
-                <span class="logo-text">AGENTSPACE</span>
+                <img src="assets/images/logo.webp" alt="Factonix Technologies" class="logo-img">
             </a>
 
             <nav class="nav-links" id="navLinks">
@@ -73,14 +69,9 @@
                 <a href="how-it-works.html">How It Works</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="about-us.html">About Us</a>
-                <div class="offcanvas-actions">
-                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
-                </div>
             </nav>
 
             <div class="nav-actions">
-                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
-                <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -90,50 +81,50 @@
     </header>
 
     <!-- Studio Hero Header Banner -->
-    <section class=" section studio-hero-section">
+    <section class="section studio-hero-section">
         <div class="container">
             <div class="text-center margin-bottom-30">
-                <div class="cap-badge">
+                <!-- <div class="cap-badge">
                     <span class="sparkle-icon">⚡</span>
-                    <span>AUTOMATED NEURAL WORKFLOW STUDIO</span>
-                </div>
-                <h1 class="hero-title text-center">Let's Start Your <span class="text-glow">AI Workflow</span></h1>
-                <p class="hero-subtitle text-center" style="max-width: 840px; margin: 0 auto 24px;">
-                    Select an AI workflow, prompt your custom requirements, explore today's social life themes, review human approval sign-offs, and broadcast live to connected platforms.
+                    <span>ENTERPRISE AI AUTOMATION STUDIO</span>
+                </div> -->
+                <h1 class="hero-title text-center">Orchestrate End-to-End AI Automation Systems</h1>
+                <p class="hero-subtitle text-center" style="max-width: 860px; margin: 0 auto 28px; font-size: 1.05rem; line-height: 1.65; color: var(--text-muted);">
+                    Deploy intelligent AI agents, automate cross-platform workflows across CRM, Social Media, E-commerce, B2B Sales, and Education — with real-time payload tracking and human sign-off.
                 </p>
             </div>
 
-            <!-- 4-Step Interactive Guide Ribbon -->
+            <!-- 4-Step Interactive Architecture Guide Ribbon -->
             <div class="wf-guide-ribbon">
                 <div class="wf-guide-step">
                     <div class="guide-num-badge">1</div>
                     <div class="guide-step-text">
-                        <strong>1. PROMPT INPUT</strong>
-                        <span>Set your AI task & targets</span>
+                        <strong>1. SELECT AUTOMATION PRESET</strong>
+                        <span>Choose from 5 enterprise blueprints</span>
                     </div>
                 </div>
                 <div class="wf-guide-arrow">➔</div>
                 <div class="wf-guide-step">
                     <div class="guide-num-badge">2</div>
                     <div class="guide-step-text">
-                        <strong>2. IDEAS & THEME SEARCH</strong>
-                        <span>AI scans today's social trends</span>
+                        <strong>2. AI ENRICHMENT & TRIAGE</strong>
+                        <span>Autonomous data scoring & enrichment</span>
                     </div>
                 </div>
                 <div class="wf-guide-arrow">➔</div>
                 <div class="wf-guide-step">
                     <div class="guide-num-badge">3</div>
                     <div class="guide-step-text">
-                        <strong>3. HUMAN APPROVAL</strong>
-                        <span>Review & sign-off draft</span>
+                        <strong>3. MULTI-CHANNEL DISPATCH</strong>
+                        <span>Smart channel engagement engine</span>
                     </div>
                 </div>
                 <div class="wf-guide-arrow">➔</div>
                 <div class="wf-guide-step active-pulse">
                     <div class="guide-num-badge">4</div>
                     <div class="guide-step-text">
-                        <strong>4. DRAFT & PUBLISH UI</strong>
-                        <span>Preview & broadcast live</span>
+                        <strong>4. MONITOR & CONVERT</strong>
+                        <span>Real-time CRM sync & performance HUD</span>
                     </div>
                 </div>
             </div>
@@ -144,139 +135,1110 @@
     <section class="studio-workspace-section">
         <div class="container container-fluid">
 
-            <!-- Horizontal Workflow Selector Bar -->
-            <div class="studio-workflow-selector-bar">
-                <div class="selector-header">
-                    <span class="studio-dot"></span>
-                    <span class="selector-title">🚀 LET'S START WORKFLOW — CHOOSE AI AUTOMATION PRESET</span>
+            <!-- Horizontal Workflow Selector Tabs Bar -->
+            <div class="studio-tabs-bar">
+                <div class="studio-tabs-header">
+                    <span class="studio-tabs-title"><span class="studio-dot green-pulse"></span> 🚀 WORKFLOW STUDIO — SELECT AUTOMATION SYSTEM</span>
                 </div>
-                <div class="workflow-preset-chips studio-presets-grid" id="workflowPresetChips">
-                    <button class="preset-chip active" data-preset="social">
-                        <div class="chip-content">
-                            <span class="chip-title">📲 Social Posts & Media</span>
-                            <span class="chip-desc">Search today's themes, approve & auto-publish</span>
-                        </div>
+                <div class="studio-nav-tabs" id="studioNavTabs">
+                    <button class="studio-tab-btn active" data-tab="crm">
+                        <span class="tab-icon-box">🎯</span>
+                        <span>CRM Automation</span>
                     </button>
-                    <button class="preset-chip" data-preset="crm">
-                        <div class="chip-content">
-                            <span class="chip-title">🎯 CRM Lead Pipeline</span>
-                            <span class="chip-desc">Enrich leads, rep sign-off & sync HubSpot</span>
-                        </div>
+                    <button class="studio-tab-btn" data-tab="social">
+                        <span class="tab-icon-box">📲</span>
+                        <span>Social Media Automation</span>
                     </button>
-                    <button class="preset-chip" data-preset="email">
-                        <div class="chip-content">
-                            <span class="chip-title">✉️ Email Campaign & Support</span>
-                            <span class="chip-desc">Intent triage, AI reply & Gmail dispatch</span>
-                        </div>
+                    <button class="studio-tab-btn" data-tab="ecom">
+                        <span class="tab-icon-box">🛒</span>
+                        <span>E-commerce Automation</span>
                     </button>
-                    <button class="preset-chip" data-preset="meeting">
-                        <div class="chip-content">
-                            <span class="chip-title">📅 Scheduled Meetings</span>
-                            <span class="chip-desc">Find availability, host sign-off & Meet sync</span>
-                        </div>
+                    <button class="studio-tab-btn" data-tab="b2b">
+                        <span class="tab-icon-box">💼</span>
+                        <span>B2B Sales Automation</span>
                     </button>
-                    <button class="preset-chip" data-preset="ecom">
-                        <div class="chip-content">
-                            <span class="chip-title">🛒 E-Commerce Support Bot</span>
-                            <span class="chip-desc">Auto-refunds & Stripe API execution in 38ms</span>
-                        </div>
+                    <button class="studio-tab-btn" data-tab="education">
+                        <span class="tab-icon-box">🎓</span>
+                        <span>Education Automation</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Main Balanced Studio Canvas Card -->
-            <div class="workflow-canvas-card studio-canvas-full">
-                <div class="studio-card-header canvas-header">
-                    <div class="canvas-header-left">
-                        <span class="studio-dot green-pulse"></span>
-                        <div class="header-titles-box">
-                            <span class="studio-header-title" id="wfCanvasTitle">📲 Social Posts & Multi-Platform Publishing Flow</span>
-                            <span class="canvas-sub-tag">STANDALONE LIVE INTERACTIVE WORKFLOW DEMO</span>
+            <!-- Tab Content Panes Container -->
+            <div class="studio-tab-content-container">
+
+                <!-- ==================== TAB 1: CRM AUTOMATION ==================== -->
+                <div class="studio-tab-pane active" id="pane-crm">
+                    <!-- System Banner & Goal -->
+                    <div class="workflow-system-banner">
+                        <div>
+                            <span class="banner-eyebrow">CRM AUTOMATION SYSTEM</span>
+                            <h2 class="banner-headline">From Lead to Loyal Customer — <span class="gradient-text-purple">Automatically</span></h2>
+                            <p class="banner-desc">Our CRM automation helps you capture leads, engage them with the right message, and turn them into happy customers — all with the power of AI and automation tools.</p>
+                        </div>
+                        <div class="goal-card-box">
+                            <div class="goal-header">
+                                <div class="goal-icon-badge">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <span class="goal-title">The Goal</span>
+                            </div>
+                            <div class="goal-flow-text">
+                                More leads ➔ Higher engagement ➔ More sales ➔ Business growth
+                            </div>
                         </div>
                     </div>
-                    <div class="canvas-actions">
-                        <span class="auto-flow-badge green-pulse" style="font-family: var(--font-tech); font-size: 0.8rem; font-weight: 700; color: #00f0ff; background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3); padding: 6px 14px; border-radius: 20px; display: inline-flex; align-items: center; gap: 8px;"><span class="studio-dot green-pulse"></span> ⚡ AUTOMATED 4-STEP FLOW ACTIVE</span>
-                        <button class="btn-canvas-action" id="btnCopyWf">📋 Copy Blueprint</button>
+
+                    <!-- Numbered Step Cards (Row 1) -->
+                    <div class="numbered-steps-container">
+                        <!-- Step 1 -->
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step1-capture.jpg" alt="Capture Leads" class="card-step-img">
+                                <span class="step-num-badge">1</span>
+                                <div class="step-icon-bg theme-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Capture Leads</h4>
+                            <p class="step-card-desc">Collect inbound leads across all digital channels.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg> Website</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/></svg> Social Media</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2"/></svg> Phone/Calls</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16"/></svg> Web Forms</div>
+                            </div>
+                        </div>
+
+                        <div class="step-arrow-connector">➔</div>
+
+                        <!-- Step 2 -->
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step2-enrich.jpg" alt="AI Enrich" class="card-step-img">
+                                <span class="step-num-badge" style="background: #8b5cf6;">2</span>
+                                <div class="step-icon-bg theme-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">AI Enrich & Qualify</h4>
+                            <p class="step-card-desc">AI scores & enriches lead data.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg> Company Info</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg> Role Fit</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ICP Score</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/></svg> Tags</div>
+                            </div>
+                        </div>
+
+                        <div class="step-arrow-connector">➔</div>
+
+                        <!-- Step 3 -->
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step3-automate.jpg" alt="Automate with AI" class="card-step-img">
+                                <span class="step-num-badge" style="background: #10b981;">3</span>
+                                <div class="step-icon-bg theme-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Automate with AI</h4>
+                            <p class="step-card-desc">Trigger smart automated workflows.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg> Auto Email</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> WhatsApp</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg> Follow-up</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Next Stage</div>
+                            </div>
+                        </div>
+
+                        <div class="step-arrow-connector">➔</div>
+
+                        <!-- Step 4 -->
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step4-engage.jpg" alt="Engage Channels" class="card-step-img">
+                                <span class="step-num-badge" style="background: #f59e0b;">4</span>
+                                <div class="step-icon-bg theme-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Engage Channels</h4>
+                            <p class="step-card-desc">Reach leads via email, SMS & WhatsApp.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg> Campaigns</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Messages</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg> Alerts</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/></svg> Re-engage</div>
+                            </div>
+                        </div>
+
+                        <div class="step-arrow-connector">➔</div>
+
+                        <!-- Step 5 -->
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step5-analytics.jpg" alt="Track & Convert" class="card-step-img">
+                                <span class="step-num-badge" style="background: #06b6d4;">5</span>
+                                <div class="step-icon-bg theme-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Track & Convert</h4>
+                            <p class="step-card-desc">Monitor HUD & boost conversions.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Real-time HUD</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Timeline</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> AI Notes</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg> Reminders</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works – Step by Step (Row 2) -->
+                    <div class="how-it-works-wrapper">
+                        <div class="section-tag-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <span>How It Works – Step by Step</span>
+                        </div>
+
+                        <!-- <div class="how-it-works-banner">
+                            <img src="assets/images/flow-diagram-banner.jpg" alt="Neural Workflow Execution Diagram" class="how-it-works-banner-img">
+                        </div> -->
+
+                        <div class="how-nodes-row">
+                            <!-- Node 1 -->
+                            <div class="how-node-card">
+                                <div class="how-node-header">
+                                    <div class="how-node-icon theme-blue" style="background: #eff6ff; color: #2563eb;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                                    </div>
+                                    <span class="how-node-title">Lead Sources</span>
+                                </div>
+                                <ul class="how-node-list">
+                                    <li>Website</li>
+                                    <li>Social Media</li>
+                                    <li>Phone / Calls</li>
+                                    <li>Manual Entry</li>
+                                </ul>
+                            </div>
+
+                            <div class="step-arrow-connector">➔</div>
+
+                            <!-- Node 2 -->
+                            <div class="how-node-card">
+                                <div class="how-node-header">
+                                    <div class="how-node-icon theme-purple" style="background: #f5f3ff; color: #8b5cf6;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <span class="how-node-title">AI Processing</span>
+                                </div>
+                                <ul class="how-node-list">
+                                    <li>Enrich lead data</li>
+                                    <li>Find company & role</li>
+                                    <li>Score the lead</li>
+                                    <li>Add interest tags</li>
+                                </ul>
+                            </div>
+
+                            <div class="step-arrow-connector">➔</div>
+
+                            <!-- Node 3 -->
+                            <div class="how-node-card">
+                                <div class="how-node-header">
+                                    <div class="how-node-icon theme-green" style="background: #ecfdf5; color: #10b981;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                                    </div>
+                                    <span class="how-node-title">Automation Engine</span>
+                                </div>
+                                <ul class="how-node-list">
+                                    <li>Send personalized emails</li>
+                                    <li>WhatsApp / SMS follow-ups</li>
+                                    <li>Schedule next actions</li>
+                                    <li>Move to next stage</li>
+                                </ul>
+                            </div>
+
+                            <div class="step-arrow-connector">➔</div>
+
+                            <!-- Node 4 -->
+                            <div class="how-node-card">
+                                <div class="how-node-header">
+                                    <div class="how-node-icon theme-orange" style="background: #fff7ed; color: #f59e0b;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                    </div>
+                                    <span class="how-node-title">Multi-Channel Engagement</span>
+                                </div>
+                                <div class="how-chips-group">
+                                    <div class="how-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg> Email</div>
+                                    <div class="how-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> WhatsApp</div>
+                                    <div class="how-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> SMS</div>
+                                    <div class="how-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/></svg> Re-engagement</div>
+                                </div>
+                            </div>
+
+                            <div class="step-arrow-connector">➔</div>
+
+                            <!-- Node 5 -->
+                            <div class="how-node-card">
+                                <div class="how-node-header">
+                                    <div class="how-node-icon theme-teal" style="background: #ecfeff; color: #06b6d4;">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                    </div>
+                                    <span class="how-node-title">CRM Dashboard</span>
+                                </div>
+                                <ul class="how-node-list">
+                                    <li>Track progress</li>
+                                    <li>View activity timeline</li>
+                                    <li>Get AI insights</li>
+                                    <li>Set reminders & alerts</li>
+                                </ul>
+                            </div>
+
+                            <div class="step-arrow-connector">➔</div>
+
+                            <!-- Node 6 (Outcome Highlight Card) -->
+                            <div class="how-node-card outcome-node">
+                                <div class="outcome-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                                </div>
+                                <span class="how-node-title text-center" style="display:block; margin-bottom: 8px;">Happy Customers</span>
+                                <p class="outcome-text">More conversions.<br>Long-term relationships.<br>Business growth.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits (Row 3) -->
+                    <div class="key-benefits-wrapper">
+                        <div class="benefits-tag">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <span>Key Benefits</span>
+                        </div>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                                <div class="benefit-text-box">
+                                    <h5>Saves Time</h5>
+                                    <p>Automate repetitive work</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                                <div class="benefit-text-box">
+                                    <h5>Higher Engagement</h5>
+                                    <p>Personalized timely comms</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-3-3.87"/><path d="M9 21v-2a4 4 0 0 1 3-3.87"/><circle cx="9" cy="7" r="4"/></svg></div>
+                                <div class="benefit-text-box">
+                                    <h5>More Conversions</h5>
+                                    <p>Turn leads into customers</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg></div>
+                                <div class="benefit-text-box">
+                                    <h5>Better Experience</h5>
+                                    <p>Happy customers & loyalty</p>
+                                </div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                                <div class="benefit-text-box">
+                                    <h5>Scalable Growth</h5>
+                                    <p>Built for your business needs</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="canvas-body-wrapper" id="wfCanvasBody">
-                    <!-- Live Auto-Flow HUD Status Banner -->
-                    <div class="autoplay-hud-banner" id="autoPlayHudBanner" style="display: flex;">
-                        <div class="autoplay-hud-left">
-                            <span class="hud-live-dot red-pulse"></span>
-                            <span class="autoplay-status-text" id="autoPlayStatusText">⚡ AUTOMATING WORKFLOW: STEP 1/4 (Analyzing Prompt & Target Parameters...)</span>
+                <!-- ==================== TAB 2: SOCIAL MEDIA AUTOMATION ==================== -->
+                <div class="studio-tab-pane" id="pane-social">
+                    <div class="workflow-system-banner">
+                        <div>
+                            <span class="banner-eyebrow" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">SOCIAL MEDIA AUTOMATION SYSTEM</span>
+                            <h2 class="banner-headline">From Content Idea to Viral Reach — <span class="gradient-text-purple">Automatically</span></h2>
+                            <p class="banner-desc">Our Social Media automation discovers trending topics, drafts platform-tailored content, auto-schedules posts, and manages community interactions with AI.</p>
                         </div>
-                        <div class="autoplay-progress-track">
-                            <div class="autoplay-progress-bar" id="autoPlayProgressBar" style="width: 25%;"></div>
-                        </div>
-                    </div>
-
-                    <!-- Metrics Summary Banner -->
-                    <div class="wf-metrics-bar">
-                        <div class="wf-metric-item">
-                            <span class="metric-lbl">EST. LATENCY</span>
-                            <span class="metric-val" id="wfMetricLatency">32 ms</span>
-                        </div>
-                        <div class="wf-metric-item">
-                            <span class="metric-lbl">ACCURACY SCORE</span>
-                            <span class="metric-val text-cyan" id="wfMetricAccuracy">99.7%</span>
-                        </div>
-                        <div class="wf-metric-item">
-                            <span class="metric-lbl">EST. TIME SAVED</span>
-                            <span class="metric-val text-green" id="wfMetricSavings">28 hrs/week</span>
-                        </div>
-                        <div class="wf-metric-item">
-                            <span class="metric-lbl">ACTIVE AGENTS</span>
-                            <span class="metric-val text-violet" id="wfMetricAgents">3 Agents</span>
+                        <div class="goal-card-box">
+                            <div class="goal-header">
+                                <div class="goal-icon-badge" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <span class="goal-title">The Goal</span>
+                            </div>
+                            <div class="goal-flow-text">
+                                Trend discovery ➔ AI generation ➔ Auto scheduling ➔ Viral reach
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Sequential 4-Step Navigation Tabs -->
-                    <div class="wf-stage-tabs-nav" id="wfStageTabsNav">
-                        <button class="wf-stage-tab active" data-stage="1">
-                            <span class="stage-badge">STEP 1</span>
-                            <span class="stage-title">🚀 Prompt Input</span>
-                        </button>
-                        <button class="wf-stage-tab" data-stage="2">
-                            <span class="stage-badge">STEP 2</span>
-                            <span class="stage-title">🔎 Theme Search</span>
-                        </button>
-                        <button class="wf-stage-tab" data-stage="3">
-                            <span class="stage-badge">STEP 3</span>
-                            <span class="stage-title">👤 Human Approval</span>
-                        </button>
-                        <button class="wf-stage-tab" data-stage="4">
-                            <span class="stage-badge">STEP 4</span>
-                            <span class="stage-title">📱 Draft & Publish</span>
-                        </button>
-                    </div>
-
-                    <!-- Interactive Stage View Content Area -->
-                    <div class="wf-stage-display-panel" id="wfStageDisplayPanel">
-                        <!-- Dynamic Stage Content populated by script.js -->
-                    </div>
-
-                    <!-- Live Simulation Output Console / Logs -->
-                    <div class="wf-simulation-log" id="wfSimulationLog" style="display: none;">
-                        <div class="sim-log-header">
-                            <span class="log-indicator">● LIVE EXECUTION PAYLOAD MONITOR</span>
-                            <span class="sim-close-btn" id="btnCloseLog">×</span>
+                    <!-- Steps Row -->
+                    <div class="numbered-steps-container">
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step1-capture.jpg" alt="Discover Trends" class="card-step-img">
+                                <span class="step-num-badge">1</span>
+                                <div class="step-icon-bg theme-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Discover Trends</h4>
+                            <p class="step-card-desc">Scan live feeds for viral topics.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg> Tech News</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg> Hashtags</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Competitors</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg> RSS Feeds</div>
+                            </div>
                         </div>
-                        <div class="sim-log-content" id="simLogContent">
-                            <!-- Dynamic simulation logs appear here -->
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step2-enrich.jpg" alt="AI Content Creation" class="card-step-img">
+                                <span class="step-num-badge" style="background: #8b5cf6;">2</span>
+                                <div class="step-icon-bg theme-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">AI Content Engine</h4>
+                            <p class="step-card-desc">Draft posts & carousels instantly.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Viral Hooks</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg> Carousels</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg> Hashtags</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg> Tone Match</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step3-automate.jpg" alt="Automate Scheduling" class="card-step-img">
+                                <span class="step-num-badge" style="background: #10b981;">3</span>
+                                <div class="step-icon-bg theme-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Auto Scheduling</h4>
+                            <p class="step-card-desc">Publish at peak engagement times.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Best Time</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg> Calendar</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/></svg> Auto Queue</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/></svg> Multi-Format</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step4-engage.jpg" alt="Engage Community" class="card-step-img">
+                                <span class="step-num-badge" style="background: #f59e0b;">4</span>
+                                <div class="step-icon-bg theme-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Community Bot</h4>
+                            <p class="step-card-desc">Automate DM & comment replies.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Auto DM</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> Comments</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg> Sentiment</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Brand Guard</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step5-analytics.jpg" alt="Track & Scale" class="card-step-img">
+                                <span class="step-num-badge" style="background: #06b6d4;">5</span>
+                                <div class="step-icon-bg theme-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Track & Scale</h4>
+                            <p class="step-card-desc">Monitor reach & viral analytics.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Viral HUD</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Engagement</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Impressions</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Growth</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works Flow -->
+                    <div class="how-it-works-wrapper">
+                        <div class="section-tag-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <span>How It Works – Step by Step</span>
+                        </div>
+                        <div class="how-it-works-banner">
+                            <img src="assets/images/flow-diagram-banner.jpg" alt="Neural Workflow Execution Diagram" class="how-it-works-banner-img">
+                        </div>
+                        <div class="how-nodes-row">
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Content Sources</span></div>
+                                <ul class="how-node-list"><li>Trending Topics</li><li>News Feeds</li><li>RSS Streams</li><li>User Prompts</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">AI Content Engine</span></div>
+                                <ul class="how-node-list"><li>Multi-platform copy</li><li>Visual hooks</li><li>Viral scoring</li><li>Brand tone</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Distribution Engine</span></div>
+                                <ul class="how-node-list"><li>Auto-schedule</li><li>Cross-format</li><li>Asset optimize</li><li>Instant queue</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Multi-Platform</span></div>
+                                <div class="how-chips-group">
+                                    <div class="how-chip">LinkedIn</div>
+                                    <div class="how-chip">Twitter / X</div>
+                                    <div class="how-chip">Instagram</div>
+                                    <div class="how-chip">YouTube</div>
+                                </div>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Analytics HUD</span></div>
+                                <ul class="how-node-list"><li>Track reach</li><li>Engagement rate</li><li>Audience stats</li><li>Top insights</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card outcome-node">
+                                <div class="outcome-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                </div>
+                                <span class="how-node-title text-center" style="display:block; margin-bottom:8px;">Viral Audience</span>
+                                <p class="outcome-text">Exponential reach.<br>Strong brand presence.<br>Organic engagement.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div class="key-benefits-wrapper">
+                        <div class="benefits-tag"><span>Key Benefits</span></div>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">⚡</div>
+                                <div class="benefit-text-box"><h5>10x Output</h5><p>Automate creation</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🎯</div>
+                                <div class="benefit-text-box"><h5>Higher Reach</h5><p>Peak time posting</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🌐</div>
+                                <div class="benefit-text-box"><h5>Multi-Platform</h5><p>Broad distribution</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🛡️</div>
+                                <div class="benefit-text-box"><h5>Brand Guard</h5><p>AI tone safety</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">📈</div>
+                                <div class="benefit-text-box"><h5>Viral Growth</h5><p>Data optimization</p></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- ==================== TAB 3: E-COMMERCE AUTOMATION ==================== -->
+                <div class="studio-tab-pane" id="pane-ecom">
+                    <div class="workflow-system-banner">
+                        <div>
+                            <span class="banner-eyebrow" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">E-COMMERCE AUTOMATION SYSTEM</span>
+                            <h2 class="banner-headline">From Order Placement to Happy Customer — <span class="gradient-text-purple">Automatically</span></h2>
+                            <p class="banner-desc">Streamline order processing, fraud triage, 3PL inventory dispatch, instant tracking updates, and automated customer returns.</p>
+                        </div>
+                        <div class="goal-card-box">
+                            <div class="goal-header">
+                                <div class="goal-icon-badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <span class="goal-title">The Goal</span>
+                            </div>
+                            <div class="goal-flow-text">
+                                Order placement ➔ AI stock check ➔ Auto dispatch ➔ Repeat purchases
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Row -->
+                    <div class="numbered-steps-container">
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step1-capture.jpg" alt="Capture Orders" class="card-step-img">
+                                <span class="step-num-badge">1</span>
+                                <div class="step-icon-bg theme-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Capture Orders</h4>
+                            <p class="step-card-desc">Sync orders from all storefronts.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg> Shopify</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg> Amazon API</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> WooCommerce</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg> Mobile Checkout</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step2-enrich.jpg" alt="AI Order Triage" class="card-step-img">
+                                <span class="step-num-badge" style="background: #8b5cf6;">2</span>
+                                <div class="step-icon-bg theme-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">AI Order Triage</h4>
+                            <p class="step-card-desc">Validate address & fraud risk.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fraud Check</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Address Scan</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Stock Match</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Tax Auto</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step3-automate.jpg" alt="Fulfillment Sync" class="card-step-img">
+                                <span class="step-num-badge" style="background: #10b981;">3</span>
+                                <div class="step-icon-bg theme-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Fulfillment Sync</h4>
+                            <p class="step-card-desc">Auto-dispatch to 3PL warehouses.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/></svg> Labels</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/></svg> 3PL Dispatch</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/></svg> ERP Sync</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Invoicing</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step4-engage.jpg" alt="Engage Buyers" class="card-step-img">
+                                <span class="step-num-badge" style="background: #f59e0b;">4</span>
+                                <div class="step-icon-bg theme-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Engage Buyers</h4>
+                            <p class="step-card-desc">Real-time SMS & WhatsApp tracking.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> SMS Tracking</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> WhatsApp</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Delivery ETA</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Reviews</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step5-analytics.jpg" alt="Track & Retain" class="card-step-img">
+                                <span class="step-num-badge" style="background: #06b6d4;">5</span>
+                                <div class="step-icon-bg theme-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Track & Retain</h4>
+                            <p class="step-card-desc">Monitor LTV & auto-refunds.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Revenue HUD</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg> Return Triage</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Restock</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> LTV Metrics</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works Flow -->
+                    <div class="how-it-works-wrapper">
+                        <div class="section-tag-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <span>How It Works – Step by Step</span>
+                        </div>
+                        <div class="how-it-works-banner">
+                            <img src="assets/images/flow-diagram-banner.jpg" alt="Neural Workflow Execution Diagram" class="how-it-works-banner-img">
+                        </div>
+                        <div class="how-nodes-row">
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Order Stream</span></div>
+                                <ul class="how-node-list"><li>Web Checkout</li><li>Marketplace API</li><li>Mobile Cart</li><li>Chat Commerce</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">AI Inventory Triage</span></div>
+                                <ul class="how-node-list"><li>Verify payment</li><li>Check inventory</li><li>Fraud risk scan</li><li>Tax validation</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Fulfillment Engine</span></div>
+                                <ul class="how-node-list"><li>Generate labels</li><li>3PL Warehouse</li><li>Auto refund</li><li>Inventory sync</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Omnichannel Dispatch</span></div>
+                                <div class="how-chips-group">
+                                    <div class="how-chip">Email Updates</div>
+                                    <div class="how-chip">WhatsApp Alerts</div>
+                                    <div class="how-chip">SMS Tracking</div>
+                                    <div class="how-chip">Portal HUD</div>
+                                </div>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Store Analytics</span></div>
+                                <ul class="how-node-list"><li>Track revenue</li><li>Return rates</li><li>LTV metrics</li><li>Cart recovery</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card outcome-node">
+                                <div class="outcome-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg>
+                                </div>
+                                <span class="how-node-title text-center" style="display:block; margin-bottom:8px;">Delighted Buyers</span>
+                                <p class="outcome-text">Fast shipping.<br>Seamless returns.<br>Repeat purchases.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div class="key-benefits-wrapper">
+                        <div class="benefits-tag"><span>Key Benefits</span></div>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🚚</div>
+                                <div class="benefit-text-box"><h5>Fast Delivery</h5><p>Instant 3PL sync</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🛡️</div>
+                                <div class="benefit-text-box"><h5>Zero Errors</h5><p>AI address check</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">💎</div>
+                                <div class="benefit-text-box"><h5>Higher LTV</h5><p>Auto post-purchase</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">⚡</div>
+                                <div class="benefit-text-box"><h5>Fast Refunds</h5><p>Sub-second processing</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">📈</div>
+                                <div class="benefit-text-box"><h5>Peak Scale</h5><p>Handle holiday rush</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== TAB 4: B2B SALES AUTOMATION ==================== -->
+                <div class="studio-tab-pane" id="pane-b2b">
+                    <div class="workflow-system-banner">
+                        <div>
+                            <span class="banner-eyebrow" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">B2B SALES AUTOMATION SYSTEM</span>
+                            <h2 class="banner-headline">From Prospect Signal to Closed Deal — <span class="gradient-text-purple">Automatically</span></h2>
+                            <p class="banner-desc">Automate intent data monitoring, AI decision-maker scoring, personalized multi-touch sequences, and CRM pipeline sync.</p>
+                        </div>
+                        <div class="goal-card-box">
+                            <div class="goal-header">
+                                <div class="goal-icon-badge" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <span class="goal-title">The Goal</span>
+                            </div>
+                            <div class="goal-flow-text">
+                                Intent signal ➔ AI scoring ➔ Multi-touch outreach ➔ Closed revenue
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Row -->
+                    <div class="numbered-steps-container">
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step1-capture.jpg" alt="Signal Capture" class="card-step-img">
+                                <span class="step-num-badge">1</span>
+                                <div class="step-icon-bg theme-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Signal Capture</h4>
+                            <p class="step-card-desc">Track visitor intent & downloads.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg> Web Intent</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Downloads</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg> LinkedIn</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg> Hiring Alerts</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step2-enrich.jpg" alt="AI Prospect Score" class="card-step-img">
+                                <span class="step-num-badge" style="background: #8b5cf6;">2</span>
+                                <div class="step-icon-bg theme-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">AI Prospect Score</h4>
+                            <p class="step-card-desc">Match tech stack & decision makers.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/></svg> Tech Stack</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Revenue Tier</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Decision Maker</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ICP Fit Score</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step3-automate.jpg" alt="Auto Sequences" class="card-step-img">
+                                <span class="step-num-badge" style="background: #10b981;">3</span>
+                                <div class="step-icon-bg theme-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Auto Sequences</h4>
+                            <p class="step-card-desc">Personalized email & InMail.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Custom Pitch</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg> Cold Email</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/></svg> InMail</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/></svg> Demo Link</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step4-engage.jpg" alt="Engage Accounts" class="card-step-img">
+                                <span class="step-num-badge" style="background: #f59e0b;">4</span>
+                                <div class="step-icon-bg theme-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Engage Accounts</h4>
+                            <p class="step-card-desc">Deliver custom pitch proposals.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Proposals</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg> Demo Booking</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Objections</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/></svg> Nurture</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step5-analytics.jpg" alt="Track & Close" class="card-step-img">
+                                <span class="step-num-badge" style="background: #06b6d4;">5</span>
+                                <div class="step-icon-bg theme-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Track & Close</h4>
+                            <p class="step-card-desc">Accelerate deal pipeline velocity.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Velocity</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/></svg> CRM Auto-Sync</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Forecast</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Contracts</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works Flow -->
+                    <div class="how-it-works-wrapper">
+                        <div class="section-tag-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <span>How It Works – Step by Step</span>
+                        </div>
+                        <div class="how-it-works-banner">
+                            <img src="assets/images/flow-diagram-banner.jpg" alt="Neural Workflow Execution Diagram" class="how-it-works-banner-img">
+                        </div>
+                        <div class="how-nodes-row">
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Prospect Signals</span></div>
+                                <ul class="how-node-list"><li>Inbound Forms</li><li>Tech Scrapers</li><li>LinkedIn Intent</li><li>Events</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">AI Scoring</span></div>
+                                <ul class="how-node-list"><li>Scrape tech stack</li><li>Match personas</li><li>Purchase intent</li><li>Enrich contacts</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Outreach Engine</span></div>
+                                <ul class="how-node-list"><li>Multi-touch email</li><li>Pitch deck auto</li><li>Meeting slots</li><li>CRM creation</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Multi-Touch Cadence</span></div>
+                                <div class="how-chips-group">
+                                    <div class="how-chip">Cold Email</div>
+                                    <div class="how-chip">LinkedIn InMail</div>
+                                    <div class="how-chip">SMS Reminders</div>
+                                    <div class="how-chip">Phone Alerts</div>
+                                </div>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Sales Funnel Tracker</span></div>
+                                <ul class="how-node-list"><li>Stage velocity</li><li>Win/Loss stats</li><li>Leaderboards</li><li>Forecasts</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card outcome-node">
+                                <div class="outcome-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg>
+                                </div>
+                                <span class="how-node-title text-center" style="display:block; margin-bottom:8px;">Closed Revenue</span>
+                                <p class="outcome-text">Shorter sales cycles.<br>Higher win rates.<br>Enterprise deals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div class="key-benefits-wrapper">
+                        <div class="benefits-tag"><span>Key Benefits</span></div>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">⏱️</div>
+                                <div class="benefit-text-box"><h5>Shorter Cycles</h5><p>Instant outreach</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🎯</div>
+                                <div class="benefit-text-box"><h5>Higher Win Rate</h5><p>AI personalization</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">📊</div>
+                                <div class="benefit-text-box"><h5>Clean CRM</h5><p>Zero lost leads</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">💼</div>
+                                <div class="benefit-text-box"><h5>Rep Focus</h5><p>3x demo bookings</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🚀</div>
+                                <div class="benefit-text-box"><h5>Pipeline Growth</h5><p>Predictable revenue</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== TAB 5: EDUCATION AUTOMATION ==================== -->
+                <div class="studio-tab-pane" id="pane-education">
+                    <div class="workflow-system-banner">
+                        <div>
+                            <span class="banner-eyebrow" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">EDUCATION AUTOMATION SYSTEM</span>
+                            <h2 class="banner-headline">From Student Inquiry to Academic Success — <span class="gradient-text-purple">Automatically</span></h2>
+                            <p class="banner-desc">Empower educational institutions with AI admissions triage, course prerequisite matching, LMS auto-provisioning, and progress tracking.</p>
+                        </div>
+                        <div class="goal-card-box">
+                            <div class="goal-header">
+                                <div class="goal-icon-badge" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                                </div>
+                                <span class="goal-title">The Goal</span>
+                            </div>
+                            <div class="goal-flow-text">
+                                Student inquiry ➔ AI admissions fit ➔ LMS provisioning ➔ Graduation rate
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steps Row -->
+                    <div class="numbered-steps-container">
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step1-capture.jpg" alt="Capture Inquiries" class="card-step-img">
+                                <span class="step-num-badge">1</span>
+                                <div class="step-icon-bg theme-blue">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Capture Inquiries</h4>
+                            <p class="step-card-desc">Collect student applications & forms.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Admissions</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Chatbot</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg> Info Session</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Referrals</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step2-enrich.jpg" alt="AI Evaluation" class="card-step-img">
+                                <span class="step-num-badge" style="background: #8b5cf6;">2</span>
+                                <div class="step-icon-bg theme-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">AI Evaluation</h4>
+                            <p class="step-card-desc">Assess credits & financial aid fit.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg> Transcripts</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Financial Aid</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Prereq Check</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg> Program Fit</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step3-automate.jpg" alt="Automate Enrollment" class="card-step-img">
+                                <span class="step-num-badge" style="background: #10b981;">3</span>
+                                <div class="step-icon-bg theme-green">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Automate Enrollment</h4>
+                            <p class="step-card-desc">Provision LMS portals & schedules.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> LMS Account</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Invoicing</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Onboarding</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step4-engage.jpg" alt="Engage Scholars" class="card-step-img">
+                                <span class="step-num-badge" style="background: #f59e0b;">4</span>
+                                <div class="step-icon-bg theme-orange">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Engage Scholars</h4>
+                            <p class="step-card-desc">Deliver AI tutoring & exam alerts.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg> Reminders</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> AI Tutor Bot</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Exam Alerts</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Parent Portal</div>
+                            </div>
+                        </div>
+                        <div class="step-arrow-connector">➔</div>
+                        <div class="numbered-step-card">
+                            <div class="card-img-wrapper">
+                                <img src="assets/images/step5-analytics.jpg" alt="Track & Empower" class="card-step-img">
+                                <span class="step-num-badge" style="background: #06b6d4;">5</span>
+                                <div class="step-icon-bg theme-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                                </div>
+                            </div>
+                            <h4 class="step-card-title">Track & Empower</h4>
+                            <p class="step-card-desc">Monitor GPA & student retention.</p>
+                            <div class="step-pills-grid">
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Progress HUD</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg> GPA Analytics</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Retention</div>
+                                <div class="pill-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Alumni</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works Flow -->
+                    <div class="how-it-works-wrapper">
+                        <div class="section-tag-box">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                            <span>How It Works – Step by Step</span>
+                        </div>
+                        <div class="how-it-works-banner">
+                            <img src="assets/images/flow-diagram-banner.jpg" alt="Neural Workflow Execution Diagram" class="how-it-works-banner-img">
+                        </div>
+                        <div class="how-nodes-row">
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Student Inquiries</span></div>
+                                <ul class="how-node-list"><li>Application Portal</li><li>Campus Chatbot</li><li>Info Sessions</li><li>Referral Leads</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">AI Evaluation</span></div>
+                                <ul class="how-node-list"><li>Validate transcripts</li><li>Score program fit</li><li>Assign advisor</li><li>Financial aid</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Learning Engine</span></div>
+                                <ul class="how-node-list"><li>Provision LMS</li><li>Schedule orientation</li><li>Assign coursework</li><li>Track submissions</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Student Portal & SMS</span></div>
+                                <div class="how-chips-group">
+                                    <div class="how-chip">LMS Notifications</div>
+                                    <div class="how-chip">WhatsApp Alerts</div>
+                                    <div class="how-chip">Exam Reminders</div>
+                                    <div class="how-chip">Advisor Chat</div>
+                                </div>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card">
+                                <div class="how-node-header"><span class="how-node-title">Student Progress HUD</span></div>
+                                <ul class="how-node-list"><li>GPA & attendance</li><li>Risk warnings</li><li>Completion rates</li><li>Financial status</li></ul>
+                            </div>
+                            <div class="step-arrow-connector">➔</div>
+                            <div class="how-node-card outcome-node">
+                                <div class="outcome-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+                                </div>
+                                <span class="how-node-title text-center" style="display:block; margin-bottom:8px;">Thriving Scholars</span>
+                                <p class="outcome-text">Higher retention.<br>Personalized learning.<br>Outstanding outcomes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Benefits -->
+                    <div class="key-benefits-wrapper">
+                        <div class="benefits-tag"><span>Key Benefits</span></div>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🎓</div>
+                                <div class="benefit-text-box"><h5>Fast Admissions</h5><p>90% faster processing</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">🛡️</div>
+                                <div class="benefit-text-box"><h5>High Retention</h5><p>Early intervention AI</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">📚</div>
+                                <div class="benefit-text-box"><h5>Personalized</h5><p>Course matching</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">💬</div>
+                                <div class="benefit-text-box"><h5>Connected</h5><p>Omnichannel alerts</p></div>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon-box">📈</div>
+                                <div class="benefit-text-box"><h5>Scalable Intake</h5><p>Efficient growth</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Bottom CTA Banner Section -->
-            <div class="studio-cta-box text-center margin-top-40">
-                <h3 style="font-family: var(--font-tech); font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px;">Ready to Deploy This Neural Workflow to Production?</h3>
-                <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">Connect your API keys, integrate webhooks, or request a custom neural agent pod built for your team.</p>
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="contact.html" class="btn btn-primary">Book a Live Architecture Demo</a>
-                    <a href="solutions.html" class="btn btn-secondary">Explore All Enterprise Solutions</a>
+            <div class="studio-cta-box margin-top-40">
+                <div class="studio-cta-inner">
+                    <div class="cta-content">
+                        <span class="cta-badge">⚡ PRODUCTION-READY NEURAL ARCHITECTURE</span>
+                        <h3 style="font-family: var(--font-tech); font-size: 1.45rem; color: var(--text-main); margin-bottom: 8px;">Ready to Deploy This Neural Workflow to Production?</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 22px; line-height: 1.6;">Connect your API keys, integrate webhooks, or request a custom neural agent pod built specifically for your team.</p>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="contact.html" class="btn btn-primary">Book a Live Architecture Demo</a>
+                            <a href="solutions.html" class="btn btn-secondary">Explore All Enterprise Solutions</a>
+                        </div>
+                    </div>
+                    <div class="cta-img-box">
+                        <img src="assets/images/cta-robot-deploy.jpg" alt="Deploy AI Agent Neural Pod" class="cta-banner-img">
+                    </div>
                 </div>
             </div>
 
@@ -286,12 +1248,8 @@
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container footer-container">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
-                </svg>
-                <span class="logo-text">AGENTSPACE</span>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.webp" alt="Factonix Technologies" class="logo-img">
             </a>
 
             <div class="footer-links">
@@ -316,7 +1274,8 @@
         </div>
     </footer>
 
-    <!-- Global Floating Corner AI Robot Agent Widget -->
+    <!-- Global Floating Corner AI Robot Agent Widget (Disabled) -->
+    <!--
     <div class="corner-robot-widget" id="cornerRobotWidget">
         <div class="robot-speech-bubble" id="robotSpeechBubble">
             <span class="speech-close" id="speechClose">&times;</span>
@@ -333,6 +1292,7 @@
             <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
         </div>
     </div>
+    -->
 
     <!-- Sci-Fi Holographic Crosshair Cursor Overlay & Target Lock -->
     <div class="sci-cursor-container" id="sciCursorContainer">
@@ -348,6 +1308,35 @@
     </div>
     <!-- Cursor Spark Trail Canvas -->
     <canvas id="cursorSparkCanvas" class="cursor-spark-canvas"></canvas>
+
+    <!-- Fixed Floating Quick Settings Control Dock -->
+    <div class="floating-control-dock" id="floatingControlDock">
+        <button class="dock-btn sound-dock-btn" id="soundToggleBtn" aria-label="Sound Off" data-tooltip="Sound Off">
+            <svg class="dock-icon icon-sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg class="dock-icon icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <span class="dock-tooltip">Sound Off</span>
+        </button>
+        
+        <div class="dock-divider"></div>
+        
+        <button class="dock-btn mode-dock-btn" id="roboticsModeToggle" aria-label="Robotics Mode Off" data-tooltip="Robotics Mode Off">
+            <svg class="dock-icon icon-mode-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="dock-icon icon-mode-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="dock-tooltip">Robotics Mode Off</span>
+        </button>
+    </div>
 
     <!-- Custom JS -->
     <script src="script.js"></script>

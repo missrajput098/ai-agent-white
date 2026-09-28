@@ -58,11 +58,7 @@
     <header class="navbar">
         <div class="container container-fluid nav-container">
             <a href="index.html" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#00f0ff"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#7000ff" fill-opacity="0.85"/>
-                </svg>
-                <span class="logo-text">AGENTSPACE</span>
+                <img src="assets/images/logo.webp" alt="Factonix Technologies" class="logo-img">
             </a>
 
             <nav class="nav-links" id="navLinks">
@@ -73,14 +69,9 @@
                 <a href="how-it-works.html">How It Works</a>
                 <a href="case-studies.html">Case Studies</a>
                 <a href="about-us.html">About Us</a>
-                <div class="offcanvas-actions">
-                    <button class="sound-toggle-btn" id="soundToggleBtnOffcanvas">🔊 AUDIO FX: OFF</button>
-                </div>
             </nav>
 
             <div class="nav-actions">
-                <button class="sound-toggle-btn" id="soundToggleBtn">🔊 AUDIO FX: OFF</button>
-                <button class="robotics-mode-toggle" id="roboticsModeToggle">🤖 ROBOTICS MODE: OFF</button>
                 <a href="contact.html" class="btn btn-primary btn-sm">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
@@ -571,12 +562,8 @@
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container footer-container">
-            <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 4L32 16L20 28L8 16L20 4Z" fill="#0284C7"/>
-                    <path d="M20 12L36 20L20 36L4 20L20 12Z" fill="#2563EB" fill-opacity="0.85"/>
-                </svg>
-                <span class="logo-text">AGENTSPACE</span>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.webp" alt="Factonix Technologies" class="logo-img">
             </a>
 
             <div class="footer-links">
@@ -601,7 +588,8 @@
         </div>
     </footer>
 
-    <!-- Corner Floating Robot Widget Assistant -->
+    <!-- Corner Floating Robot Widget Assistant (Disabled) -->
+    <!--
     <div class="corner-robot-widget" id="cornerRobotWidget">
         <div class="robot-speech-bubble" id="robotSpeechBubble">
             "Welcome to our Portfolio! Click any project to view specs or filter by category."
@@ -609,6 +597,36 @@
         <div class="corner-robot-avatar" id="cornerRobotAvatar">
             <img src="assets/images/agent.png" alt="AGENTSPACE AI Robot Assistant" class="bouncing-agent-img">
         </div>
+    </div>
+    -->
+
+    <!-- Fixed Floating Quick Settings Control Dock -->
+    <div class="floating-control-dock" id="floatingControlDock">
+        <button class="dock-btn sound-dock-btn" id="soundToggleBtn" aria-label="Sound Off" data-tooltip="Sound Off">
+            <svg class="dock-icon icon-sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <line x1="23" y1="9" x2="17" y2="15"></line>
+                <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg class="dock-icon icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+            <span class="dock-tooltip">Sound Off</span>
+        </button>
+        
+        <div class="dock-divider"></div>
+        
+        <button class="dock-btn mode-dock-btn" id="roboticsModeToggle" aria-label="Robotics Mode Off" data-tooltip="Robotics Mode Off">
+            <svg class="dock-icon icon-mode-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="dock-icon icon-mode-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="dock-tooltip">Robotics Mode Off</span>
+        </button>
     </div>
 
     <!-- Custom Script -->
