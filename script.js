@@ -2172,5 +2172,445 @@ document.addEventListener('DOMContentLoaded', () => {
         btnStopAutoPlay.addEventListener('click', stopAutoPlayWorkflow);
     }
 
+    // ==========================================
+    // REALISTIC LIVE AUTOMATION WALKTHROUGH DEMO ENGINE
+    // ==========================================
+    function initInteractiveWalkthroughEngine() {
+        const walkthroughContainers = document.querySelectorAll('.interactive-walkthrough-section');
+        if (!walkthroughContainers.length) return;
+
+        walkthroughContainers.forEach(container => {
+            const viewport = container.querySelector('.walkthrough-viewport');
+            const stage = container.querySelector('.canvas-stage');
+            const callout = container.querySelector('.wf-callout-tooltip');
+            const calloutTag = container.querySelector('#calloutStepTag');
+            const calloutText = container.querySelector('#calloutText');
+            const playBtn = container.querySelector('#demoPlayBtn');
+            const playBtnText = container.querySelector('#playBtnText');
+            const playIcon = container.querySelector('#playIcon');
+            const pauseIcon = container.querySelector('#pauseIcon');
+            const prevBtn = container.querySelector('#demoPrevBtn');
+            const nextBtn = container.querySelector('#demoNextBtn');
+            const resetBtn = container.querySelector('#resetCameraBtn');
+            const segmentsTrack = container.querySelector('#timelineSegmentsTrack');
+            const stepIndicator = container.querySelector('#demoStepIndicator');
+
+            if (!viewport || !stage) return;
+
+            let currentTabKey = 'crm';
+            let currentStep = 0; // 0 = Full Overview, 1-5 = Focused Nodes
+            let isAutoPlaying = false;
+            let autoPlayTimer = null;
+
+            const nodeCenters = {
+                1: { id: 'node-agent', x: 190, y: 212 },
+                2: { id: 'node-router', x: 430, y: 220 },
+                3: { id: 'node-slack', x: 740, y: 110 },
+                4: { id: 'node-gmail', x: 740, y: 330 },
+                5: { id: 'node-search', x: 470, y: 430 }
+            };
+
+            const tabBlueprints = {
+                crm: {
+                    title: 'CRM Automation — Inbound Lead Engine & Dispatch',
+                    nodes: {
+                        1: { name: 'Make AI Agent <span class="badge-mini">inbound</span>', sub: 'Run Lead Triage Agent' },
+                        2: { name: 'Router <span class="badge-num">Score > 80</span>', sub: 'ICP Lead Triage' },
+                        3: { name: 'Slack <span class="badge-num">hot-deals</span>', sub: 'Instant Sales Alert' },
+                        4: { name: 'Gmail <span class="badge-num">welcome-seq</span>', sub: 'Send Intro Email' },
+                        5: { name: 'AI Web Search <span class="badge-num">clearbit</span>', sub: 'Company RAG Intel' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // CRM AUTOMATION', text: 'Full end-to-end CRM automation blueprint. Inbound lead capture ➔ AI enrichment ➔ Triage router ➔ Instant Slack & Gmail dispatch.' },
+                        { step: 1, tag: 'STEP 1 // INBOUND LEAD AGENT', text: 'Captures inbound web forms, calls, and chat inquiries in real-time, ingesting lead metadata.' },
+                        { step: 2, tag: 'STEP 2 // NEURAL ICP TRIAGE ROUTER', text: 'Evaluates lead fit score against ICP metrics. Routes deals >= 80 to high-priority sales tracks.' },
+                        { step: 3, tag: 'STEP 3 // REAL-TIME SLACK DISPATCH', text: 'Instantly alerts key account executives in #hot-leads with complete lead context & ICP score.' },
+                        { step: 4, tag: 'STEP 4 // HYPER-PERSONALIZED EMAIL', text: 'Dispatches custom welcome email sequence and meeting booking link directly via Gmail.' },
+                        { step: 5, tag: 'STEP 5 // DEEP DATA ENRICHMENT RAG', text: 'Executes web search & Clearbit lookup to enrich target company tech stack and executive roster.' }
+                    ]
+                },
+                social: {
+                    title: 'Social Media Automation — Autonomous Content Engine',
+                    nodes: {
+                        1: { name: 'Social AI Planner <span class="badge-mini">viral</span>', sub: 'Trend & Prompt Engine' },
+                        2: { name: 'Router <span class="badge-num">Quality > 90</span>', sub: 'Brand & Safety Gate' },
+                        3: { name: 'LinkedIn / X <span class="badge-num">social-post</span>', sub: 'Auto Post & Schedule' },
+                        4: { name: 'Visual AI <span class="badge-num">DALL-E 3</span>', sub: 'Generate Banner Assets' },
+                        5: { name: 'Social Listener <span class="badge-num">24/7</span>', sub: 'Monitor Brand Mentions' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // SOCIAL MEDIA ENGINE', text: 'Autonomous social media pipeline. Scans trends ➔ Generates copy & graphics ➔ Quality router ➔ Multi-platform scheduling.' },
+                        { step: 1, tag: 'STEP 1 // SOCIAL AI PLANNER', text: 'Generates high-engagement social posts, carousel scripts, and hashtags based on tech trends.' },
+                        { step: 2, tag: 'STEP 2 // BRAND & SAFETY ROUTER', text: 'Verifies post tone, compliance guardrails, and quality score before publishing.' },
+                        { step: 3, tag: 'STEP 3 // MULTI-PLATFORM DISPATCH', text: 'Schedules and posts approved copy across LinkedIn, Twitter/X, and Instagram.' },
+                        { step: 4, tag: 'STEP 4 // VISUAL ASSET GENERATION', text: 'Creates futuristic 3D visual banners and graphics matching post context.' },
+                        { step: 5, tag: 'STEP 5 // 24/7 SOCIAL LISTENING', text: 'Monitors brand mentions, competitor posts, and industry keywords in real time.' }
+                    ]
+                },
+                ecom: {
+                    title: 'E-commerce Automation — Abandoned Cart & Recovery',
+                    nodes: {
+                        1: { name: 'Cart Recovery Agent <span class="badge-mini">checkout</span>', sub: 'Real-time Cart Tracker' },
+                        2: { name: 'Router <span class="badge-num">CLV Filter</span>', sub: 'VIP vs Standard Recovery' },
+                        3: { name: 'WhatsApp <span class="badge-num">instant-coupon</span>', sub: 'Send Dynamic Promo' },
+                        4: { name: 'Email Recovery <span class="badge-num">abandoned-series</span>', sub: '3-Touch Email Sequence' },
+                        5: { name: 'Price Optimizer <span class="badge-num">margin-ai</span>', sub: 'Calculate Discount %' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // E-COMMERCE RECOVERY', text: 'Cart recovery workflow. Detects cart abandonment ➔ Calculates optimal discount ➔ WhatsApp & Email omnichannel engagement.' },
+                        { step: 1, tag: 'STEP 1 // CART RECOVERY AGENT', text: 'Detects abandoned checkouts on Shopify/WooCommerce within 60 seconds of inactivity.' },
+                        { step: 2, tag: 'STEP 2 // VIP SEGMENT ROUTER', text: 'Evaluates customer lifetime value (CLV) to determine personalized recovery incentive.' },
+                        { step: 3, tag: 'STEP 3 // WHATSAPP PROMO DISPATCH', text: 'Sends conversational WhatsApp message with one-click checkout coupon link.' },
+                        { step: 4, tag: 'STEP 4 // OMNICHANNEL EMAIL SERIES', text: 'Fires automated 3-touch follow-up emails highlighting saved cart items.' },
+                        { step: 5, tag: 'STEP 5 // DYNAMIC MARGIN CALCULATOR', text: 'Computes product profit margins to customize discount offer without eroding margin.' }
+                    ]
+                },
+                b2b: {
+                    title: 'B2B Sales Automation — Outbound Account Intelligence',
+                    nodes: {
+                        1: { name: 'SDR AI Agent <span class="badge-mini">intent</span>', sub: 'Outbound Signal Collector' },
+                        2: { name: 'Router <span class="badge-num">Tier-1 Account</span>', sub: 'Enterprise Filter Gate' },
+                        3: { name: 'Sales Rep Alert <span class="badge-num">Slack SDR</span>', sub: 'Handoff to Account Exec' },
+                        4: { name: 'Cold Outreach <span class="badge-num">sequence-3</span>', sub: 'Personalized Email Flow' },
+                        5: { name: 'Executive Intel <span class="badge-num">sec-10k</span>', sub: 'Financial & News Scraper' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // B2B OUTBOUND SALES', text: 'Enterprise B2B outreach pipeline. Detects account intent ➔ Scrapes executive news ➔ Tier-1 router ➔ Sales rep handoff.' },
+                        { step: 1, tag: 'STEP 1 // OUTBOUND INTENT AGENT', text: 'Captures target account intent signals, job hirings, and tech stack additions.' },
+                        { step: 2, tag: 'STEP 2 // ENTERPRISE TIER ROUTER', text: 'Filters Tier-1 enterprise target accounts for high-touch human sales handoffs.' },
+                        { step: 3, tag: 'STEP 3 // ACCOUNT EXEC HANDOFF', text: 'Creates CRM deal task and notifies designated Account Executive in Slack.' },
+                        { step: 4, tag: 'STEP 4 // PERSONALIZED OUTREACH', text: 'Launches multi-channel email outreach referencing recent company news and pain points.' },
+                        { step: 5, tag: 'STEP 5 // DEEP EXECUTIVE RESEARCH', text: 'Scrapes 10-K filings, press releases, and earnings calls for hyper-personalized messaging.' }
+                    ]
+                },
+                education: {
+                    title: 'Education Automation — AI Tutor & Student Onboarding',
+                    nodes: {
+                        1: { name: 'AI Tutor Agent <span class="badge-mini">24/7 student</span>', sub: 'Inquiry & Support Handler' },
+                        2: { name: 'Router <span class="badge-num">Triage Filter</span>', sub: 'AI Answer vs Mentor Escalate' },
+                        3: { name: 'Mentor Channel <span class="badge-num">slack-tutor</span>', sub: 'Escalate Complex Query' },
+                        4: { name: 'Student Portal <span class="badge-num">weekly-summary</span>', sub: 'Progress Report Email' },
+                        5: { name: 'Curriculum RAG <span class="badge-num">vector-db</span>', sub: 'Search Course Knowledge' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // EDUCATION AUTOMATION', text: 'Smart student support pipeline. Ingests questions ➔ Queries course RAG ➔ AI tutor answers ➔ Escalates edge cases to mentors.' },
+                        { step: 1, tag: 'STEP 1 // AI TUTOR AGENT', text: 'Answers student course questions 24/7 across portal chat and messaging apps.' },
+                        { step: 2, tag: 'STEP 2 // SUPPORT TRIAGE ROUTER', text: 'Determines if question can be answered by RAG knowledge or requires faculty review.' },
+                        { step: 3, tag: 'STEP 3 // FACULTY MENTOR ESCALATION', text: 'Alerts course TA or professor in Slack when student requires detailed human guidance.' },
+                        { step: 4, tag: 'STEP 4 // WEEKLY PROGRESS EMAIL', text: 'Generates weekly learning analytics summary and study recommendations for students.' },
+                        { step: 5, tag: 'STEP 5 // CURRICULUM VECTOR RAG', text: 'Searches high-dimensional course textbooks, syllabus PDFs, and lecture transcripts.' }
+                    ]
+                }
+            };
+
+            function updateBlueprintUI(tabKey) {
+                currentTabKey = tabKey;
+                const blueprint = tabBlueprints[tabKey] || tabBlueprints.crm;
+
+                // Update Workflow Theme Accent Class
+                container.classList.remove('wf-theme-crm', 'wf-theme-social', 'wf-theme-ecom', 'wf-theme-b2b', 'wf-theme-education');
+                container.classList.add(`wf-theme-${tabKey}`);
+
+                // Update Demo Title Text
+                const titleText = container.querySelector('#demoTitleText');
+                if (titleText) titleText.textContent = blueprint.title;
+
+                // Update Nodes
+                Object.keys(blueprint.nodes).forEach(stepNum => {
+                    const nodeData = blueprint.nodes[stepNum];
+                    const nodeEl = container.querySelector(`.wf-node[data-step="${stepNum}"]`);
+                    if (nodeEl) {
+                        const nameEl = nodeEl.querySelector('.node-name');
+                        const subEl = nodeEl.querySelector('.node-sub');
+                        if (nameEl && nodeData.name) nameEl.innerHTML = nodeData.name;
+                        if (subEl && nodeData.sub) subEl.textContent = nodeData.sub;
+                    }
+                });
+
+                renderTimelineSegments();
+            }
+
+            function renderTimelineSegments() {
+                if (!segmentsTrack) return;
+                segmentsTrack.innerHTML = '';
+
+                // Overview Pill (Step 0)
+                const ovPill = document.createElement('div');
+                ovPill.className = `timeline-segment-pill ${currentStep === 0 ? 'active' : 'completed'}`;
+                ovPill.title = 'Full Workflow Overview';
+                ovPill.innerHTML = '<div class="timeline-segment-fill"></div>';
+                ovPill.addEventListener('click', () => {
+                    stopAutoPlay();
+                    goToStep(0);
+                });
+                segmentsTrack.appendChild(ovPill);
+
+                // Step Pills 1-5
+                for (let i = 1; i <= 5; i++) {
+                    const pill = document.createElement('div');
+                    pill.className = `timeline-segment-pill ${i === currentStep ? 'active' : (i < currentStep ? 'completed' : '')}`;
+                    pill.title = `Step ${i}`;
+                    pill.innerHTML = '<div class="timeline-segment-fill"></div>';
+                    pill.addEventListener('click', () => {
+                        stopAutoPlay();
+                        goToStep(i);
+                    });
+                    segmentsTrack.appendChild(pill);
+                }
+            }
+
+            function goToStep(stepIndex) {
+                currentStep = stepIndex;
+
+                const blueprint = tabBlueprints[currentTabKey] || tabBlueprints.crm;
+                const allNodes = stage.querySelectorAll('.wf-node');
+
+                // Canvas viewport dimension bounds
+                const vWidth = viewport.clientWidth || 1000;
+                const vHeight = viewport.clientHeight || 520;
+
+                if (currentStep === 0) {
+                    // Full Workflow Overview
+                    viewport.classList.remove('wf-canvas-dimmed');
+                    allNodes.forEach(n => n.classList.remove('active-focus'));
+
+                    // Scale stage to fit overview nicely
+                    const scaleX = vWidth / 1000;
+                    const scaleY = vHeight / 520;
+                    const fitScale = Math.min(scaleX, scaleY) * 0.92;
+                    const transX = (vWidth - 1000 * fitScale) / 2;
+                    const transY = (vHeight - 520 * fitScale) / 2;
+
+                    stage.style.transform = `translate(${transX}px, ${transY}px) scale(${fitScale})`;
+
+                    const overviewInfo = blueprint.steps.find(s => s.step === 0);
+                    if (overviewInfo && callout) {
+                        if (calloutTag) calloutTag.textContent = overviewInfo.tag;
+                        if (calloutText) calloutText.textContent = overviewInfo.text;
+                        // Position callout at top center
+                        callout.className = 'wf-callout-tooltip arrow-top';
+                        callout.style.left = `${1000 / 2 - 160}px`;
+                        callout.style.top = `30px`;
+                        callout.classList.remove('hidden');
+                    }
+
+                    if (stepIndicator) stepIndicator.textContent = 'Full Overview';
+                    renderTimelineSegments();
+
+                    if (typeof playCyberBeep === 'function') playCyberBeep(600, 0.03);
+                    return;
+                }
+
+                // Focused Node Mode
+                viewport.classList.add('wf-canvas-dimmed');
+                allNodes.forEach(node => {
+                    const nStep = parseInt(node.getAttribute('data-step'));
+                    if (nStep === currentStep) {
+                        node.classList.add('active-focus');
+                    } else {
+                        node.classList.remove('active-focus');
+                    }
+                });
+
+                const centerData = nodeCenters[currentStep];
+                if (!centerData) return;
+
+                const targetNode = container.querySelector(`.wf-node[data-step="${currentStep}"]`);
+                let nodeX = centerData.x;
+                let nodeY = centerData.y;
+
+                if (targetNode) {
+                    nodeX = targetNode.offsetLeft + targetNode.offsetWidth / 2;
+                    nodeY = targetNode.offsetTop + targetNode.offsetHeight / 2;
+                }
+
+                const zoomLevel = 1.32;
+                const transX = vWidth / 2 - nodeX * zoomLevel;
+                const transY = vHeight / 2 - nodeY * zoomLevel;
+
+                stage.style.transform = `translate(${transX}px, ${transY}px) scale(${zoomLevel})`;
+
+                // Update Callout Tooltip
+                const stepInfo = blueprint.steps.find(s => s.step === currentStep);
+                if (stepInfo && callout) {
+                    if (calloutTag) calloutTag.textContent = stepInfo.tag;
+                    if (calloutText) calloutText.textContent = stepInfo.text;
+
+                    positionCallout(nodeX, nodeY);
+                }
+
+                if (stepIndicator) stepIndicator.textContent = `Step ${currentStep} of 5`;
+                renderTimelineSegments();
+
+                if (typeof playCyberBeep === 'function') playCyberBeep(650 + currentStep * 70, 0.03);
+            }
+
+            function positionCallout(nodeX, nodeY) {
+                if (!callout) return;
+                callout.classList.remove('hidden');
+
+                // Dynamic pointer arrow positioning around active node
+                if (nodeY > 330) {
+                    // Position above node (arrow pointing down)
+                    callout.className = 'wf-callout-tooltip arrow-top';
+                    callout.style.left = `${nodeX - 160}px`;
+                    callout.style.top = `${nodeY - 145}px`;
+                } else if (nodeX > 620) {
+                    // Position to the left of node (arrow pointing right)
+                    callout.className = 'wf-callout-tooltip arrow-left';
+                    callout.style.left = `${nodeX - 350}px`;
+                    callout.style.top = `${nodeY - 45}px`;
+                } else if (nodeY < 150) {
+                    // Position below node (arrow pointing up)
+                    callout.className = 'wf-callout-tooltip arrow-bottom';
+                    callout.style.left = `${nodeX - 160}px`;
+                    callout.style.top = `${nodeY + 55}px`;
+                } else {
+                    // Position to the right of node (arrow pointing left)
+                    callout.className = 'wf-callout-tooltip arrow-right';
+                    callout.style.left = `${nodeX + 160}px`;
+                    callout.style.top = `${nodeY - 45}px`;
+                }
+            }
+
+            function nextStep() {
+                let nextS = currentStep + 1;
+                if (nextS > 5) nextS = 0;
+                goToStep(nextS);
+            }
+
+            function prevStep() {
+                let prevS = currentStep - 1;
+                if (prevS < 0) prevS = 5;
+                goToStep(prevS);
+            }
+
+            function startAutoPlay() {
+                if (isAutoPlaying) return;
+                isAutoPlaying = true;
+                if (playBtnText) playBtnText.textContent = 'Pause Demo';
+                if (playIcon) playIcon.style.display = 'none';
+                if (pauseIcon) pauseIcon.style.display = 'inline-block';
+
+                autoPlayTimer = setInterval(() => {
+                    nextStep();
+                }, 3500);
+            }
+
+            function stopAutoPlay() {
+                if (!isAutoPlaying) return;
+                isAutoPlaying = false;
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+                if (playBtnText) playBtnText.textContent = 'Play Demo';
+                if (playIcon) playIcon.style.display = 'inline-block';
+                if (pauseIcon) pauseIcon.style.display = 'none';
+            }
+
+            if (playBtn) {
+                playBtn.addEventListener('click', () => {
+                    if (isAutoPlaying) stopAutoPlay();
+                    else startAutoPlay();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    nextStep();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    prevStep();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    goToStep(0);
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            // Bind Direct Node Clicks
+            const allNodes = stage.querySelectorAll('.wf-node');
+            allNodes.forEach(node => {
+                node.addEventListener('click', () => {
+                    stopAutoPlay();
+                    const step = parseInt(node.getAttribute('data-step'));
+                    if (step !== undefined && !isNaN(step)) goToStep(step);
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            });
+
+            // Bind Studio Navigation Tabs (Restart animation & auto-play on tab switch)
+            const tabButtons = document.querySelectorAll('.studio-tab-btn');
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabKey = btn.getAttribute('data-tab');
+                    if (tabKey && tabBlueprints[tabKey]) {
+                        tabButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // Switch Tab Pane on Studio Page if applicable
+                        const panes = document.querySelectorAll('.studio-tab-pane');
+                        panes.forEach(pane => {
+                            if (pane.id === `pane-${tabKey}`) pane.classList.add('active');
+                            else pane.classList.remove('active');
+                        });
+
+                        // Stop previous timer, update blueprint, reset overview step
+                        stopAutoPlay();
+                        updateBlueprintUI(tabKey);
+                        goToStep(0);
+
+                        // Restart SVG flow pulse animations
+                        const motionAnims = stage.querySelectorAll('animateMotion');
+                        motionAnims.forEach(anim => {
+                            try {
+                                if (typeof anim.beginElement === 'function') {
+                                    anim.beginElement();
+                                }
+                            } catch (e) {}
+                        });
+
+                        if (typeof playCyberClick === 'function') playCyberClick();
+
+                        // Automatically restart auto-play demo walkthrough for the new tab
+                        setTimeout(() => {
+                            startAutoPlay();
+                        }, 500);
+                    }
+                });
+            });
+
+            // Bind Step Cards on Page to Viewport Camera
+            const stepCards = document.querySelectorAll('.numbered-step-card, .how-node-card');
+            stepCards.forEach((card, idx) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const stepNum = (idx % 5) + 1;
+                    viewport.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    stopAutoPlay();
+                    goToStep(stepNum);
+                });
+            });
+
+            // Initial load
+            updateBlueprintUI('crm');
+            setTimeout(() => {
+                goToStep(0);
+            }, 300);
+        });
+    }
+
+    initInteractiveWalkthroughEngine();
 });
 
