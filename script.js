@@ -489,36 +489,388 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // Hero Scroll Image Sequence
+    // 3D Isometric Brand Theme Floating Boxes Automation Engine
     // ==========================================
-    const scrollTrack = document.querySelector('.hero-scroll-track');
-    const img1 = document.getElementById('heroImg1');
-    const img2 = document.getElementById('heroImg2');
-    const img3 = document.getElementById('heroImg3');
-
-    function handleHeroScrollSequence() {
-        if (!scrollTrack || !img1 || !img2 || !img3) return;
-
-        const rect = scrollTrack.getBoundingClientRect();
-        const trackHeight = scrollTrack.offsetHeight - window.innerHeight;
-        if (trackHeight <= 0) return;
-
-        const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 1);
-
-        if (progress < 0.33) {
-            img1.classList.add('active');
-            img2.classList.remove('active');
-            img3.classList.remove('active');
-        } else if (progress >= 0.33 && progress < 0.66) {
-            img1.classList.remove('active');
-            img2.classList.add('active');
-            img3.classList.remove('active');
-        } else {
-            img1.classList.remove('active');
-            img2.classList.remove('active');
-            img3.classList.add('active');
+    const heroBoxes3DData = {
+        instagram: {
+            boxes: [
+                {
+                    title: "01 // BUILD & TRIGGER",
+                    badge: "AUTOMATION",
+                    nodes: [
+                        { icon: "⚡", label: "Trigger", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ACCELERATE & DRAFT",
+                    badge: "CONTENT",
+                    nodes: [
+                        { icon: "✍️", label: "Create Content", dotClass: "green-dot" },
+                        { icon: "🏷️", label: "Caption AI", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // SCALE & PUBLISH",
+                    badge: "INSTAGRAM",
+                    nodes: [
+                        { icon: "🎨", label: "Create Image", dotClass: "pink-dot" },
+                        { icon: "📸", label: "Publish", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        whatsapp: {
+            boxes: [
+                {
+                    title: "01 // INBOUND & TRIAGE",
+                    badge: "SUPPORT",
+                    nodes: [
+                        { icon: "💬", label: "Incoming Message", dotClass: "green-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // CONTEXT & REPLY",
+                    badge: "LLM RAG",
+                    nodes: [
+                        { icon: "🔍", label: "Understand", dotClass: "pink-dot" },
+                        { icon: "🤖", label: "Generate Reply", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // REVIEW & DISPATCH",
+                    badge: "WHATSAPP",
+                    nodes: [
+                        { icon: "👤", label: "Human Review", dotClass: "green-dot" },
+                        { icon: "📲", label: "Send Reply", dotClass: "pink-dot" }
+                    ]
+                }
+            ]
+        },
+        leads: {
+            boxes: [
+                {
+                    title: "01 // CAPTURE & QUALIFY",
+                    badge: "LEAD GEN",
+                    nodes: [
+                        { icon: "🌐", label: "New Lead", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ENRICH & SCORE",
+                    badge: "CLEARBIT",
+                    nodes: [
+                        { icon: "📊", label: "Qualify", dotClass: "green-dot" },
+                        { icon: "⭐", label: "Score Fit", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // CRM & HANDOFF",
+                    badge: "SALESFORCE",
+                    nodes: [
+                        { icon: "🔄", label: "CRM Sync", dotClass: "pink-dot" },
+                        { icon: "🤝", label: "Follow-up", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        email: {
+            boxes: [
+                {
+                    title: "01 // INBOUND MAIL",
+                    badge: "INBOX",
+                    nodes: [
+                        { icon: "📧", label: "Inbound Email", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // CLASSIFY & DRAFT",
+                    badge: "PARSER",
+                    nodes: [
+                        { icon: "✍️", label: "Draft Reply", dotClass: "green-dot" },
+                        { icon: "📁", label: "Categorize", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // DISPATCH & COMPLETE",
+                    badge: "SENDGRID",
+                    nodes: [
+                        { icon: "📤", label: "Dispatch Mail", dotClass: "pink-dot" },
+                        { icon: "🎉", label: "Inbox Zero", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        sales: {
+            boxes: [
+                {
+                    title: "01 // DEMO SIGNAL",
+                    badge: "ZOOM AI",
+                    nodes: [
+                        { icon: "🎥", label: "Demo Call", dotClass: "pink-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // PROPOSAL & QUOTE",
+                    badge: "DECK AI",
+                    nodes: [
+                        { icon: "📄", label: "Generate Quote", dotClass: "green-dot" },
+                        { icon: "📨", label: "Send Follow-up", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // NUDGE & CLOSE",
+                    badge: "WON DEAL",
+                    nodes: [
+                        { icon: "⏰", label: "Set Nudge", dotClass: "pink-dot" },
+                        { icon: "🏆", label: "Deal Closed", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        analytics: {
+            boxes: [
+                {
+                    title: "01 // CRON & PIPELINE",
+                    badge: "AUDIT",
+                    nodes: [
+                        { icon: "⏱️", label: "Scheduled Cron", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // LOGS & INSIGHTS",
+                    badge: "ROI METRICS",
+                    nodes: [
+                        { icon: "📈", label: "Audit Logs", dotClass: "green-dot" },
+                        { icon: "✨", label: "AI Insights", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // HUD & BROADCAST",
+                    badge: "REPORT",
+                    nodes: [
+                        { icon: "📊", label: "Build HUD", dotClass: "pink-dot" },
+                        { icon: "📡", label: "Executive Push", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        content: {
+            boxes: [
+                {
+                    title: "01 // PROMPT & STRATEGY",
+                    badge: "IDEATION",
+                    nodes: [
+                        { icon: "💡", label: "Prompt Input", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // RESEARCH & DRAFT",
+                    badge: "COPYWRITING",
+                    nodes: [
+                        { icon: "🔎", label: "Research", dotClass: "green-dot" },
+                        { icon: "📝", label: "Draft Copy", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // VISUALS & SYNC",
+                    badge: "DALL-E 3",
+                    nodes: [
+                        { icon: "🖼️", label: "Visual Engine", dotClass: "pink-dot" },
+                        { icon: "🚀", label: "Publish & Sync", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        crm: {
+            boxes: [
+                {
+                    title: "01 // WEBHOOK & TRIAGE",
+                    badge: "HUBSPOT",
+                    nodes: [
+                        { icon: "🔔", label: "Webhook Event", dotClass: "pink-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ASSIGN & ENRICH",
+                    badge: "CLEARBIT",
+                    nodes: [
+                        { icon: "🎯", label: "Assign Rep", dotClass: "green-dot" },
+                        { icon: "📞", label: "Enrich Contact", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // SLACK & PIPELINE",
+                    badge: "AUTOMATED",
+                    nodes: [
+                        { icon: "📢", label: "Slack Alert", dotClass: "pink-dot" },
+                        { icon: "⚡", label: "Pipeline Sync", dotClass: "green-dot" }
+                    ]
+                }
+            ]
         }
+    };
+
+    function initHero3DBoxesEngine() {
+        const trackEl = document.getElementById('boxes3DTrack');
+        const badges = document.querySelectorAll('.floating-badge');
+
+        if (!trackEl) return;
+
+        let activeServiceKey = 'instagram';
+        let animationTimers = [];
+        let boxElements = [];
+
+        function clearTimers() {
+            animationTimers.forEach(t => clearTimeout(t));
+            animationTimers = [];
+        }
+
+        function updateBadgeHighlight(wfKey) {
+            badges.forEach(b => {
+                const bWf = b.getAttribute('data-workflow');
+                if (bWf === wfKey) {
+                    b.classList.add('active-wf');
+                } else {
+                    b.classList.remove('active-wf');
+                }
+            });
+        }
+
+        function switchService(newKey) {
+            clearTimers();
+
+            // Smooth exit current 3D boxes
+            if (boxElements.length > 0) {
+                boxElements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform += ' translateY(40px) scale(0.85)';
+                    el.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+
+                animationTimers.push(setTimeout(() => {
+                    runSequentialBoxAnimation(newKey);
+                }, 350));
+            } else {
+                runSequentialBoxAnimation(newKey);
+            }
+        }
+
+        function runSequentialBoxAnimation(serviceKey) {
+            clearTimers();
+            activeServiceKey = serviceKey;
+            updateBadgeHighlight(serviceKey);
+
+            trackEl.innerHTML = '';
+            boxElements = [];
+
+            const serviceData = heroBoxes3DData[serviceKey] || heroBoxes3DData.instagram;
+            const boxes = serviceData.boxes;
+
+            // Sequential timing config
+            const boxInterval = 2300; // time between box entries
+
+            boxes.forEach((boxData, boxIdx) => {
+                animationTimers.push(setTimeout(() => {
+                    // Step A & B: Create 3D Purple Box & Drop In from Above
+                    const boxEl = document.createElement('div');
+                    boxEl.className = `box-3d-item box-entering ${boxIdx === 0 ? 'active-box' : ''}`;
+
+                    const topOffset = boxIdx * 96;
+                    const scaleVal = (1 - boxIdx * 0.045).toFixed(3);
+                    const zVal = -boxIdx * 25;
+                    const rotXVal = 22;
+                    const rotYVal = -16;
+
+                    boxEl.style.top = `${topOffset}px`;
+                    boxEl.style.transform = `translateY(0px) rotateX(${rotXVal}deg) rotateY(${rotYVal}deg) scale(${scaleVal}) translateZ(${zVal}px)`;
+                    boxEl.style.zIndex = 30 - boxIdx;
+
+                    boxEl.innerHTML = `
+                        <div class="box-3d-header" id="boxHeader_${boxIdx}">
+                            <span class="box-3d-title">${boxData.title}</span>
+                            <span class="box-3d-badge">${boxData.badge}</span>
+                        </div>
+                        <div class="box-nodes-container" id="boxNodes_${boxIdx}">
+                            <svg class="box-flow-svg" viewBox="0 0 100 12" preserveAspectRatio="none">
+                                <path d="M 10 6 L 90 6" class="box-flow-line" id="flowLine_${boxIdx}"></path>
+                            </svg>
+                            <div class="mini-node-pill" id="nodeA_${boxIdx}">
+                                <span class="mini-node-dot ${boxData.nodes[0].dotClass}"></span>
+                                <span class="mini-node-label">${boxData.nodes[0].icon} ${boxData.nodes[0].label}</span>
+                            </div>
+                            <div class="mini-node-pill" id="nodeB_${boxIdx}">
+                                <span class="mini-node-dot ${boxData.nodes[1].dotClass}"></span>
+                                <span class="mini-node-label">${boxData.nodes[1].icon} ${boxData.nodes[1].label}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    trackEl.appendChild(boxEl);
+                    boxElements.push(boxEl);
+
+                    if (typeof playCyberBeep === 'function') {
+                        playCyberBeep(650 + boxIdx * 80, 0.03);
+                    }
+
+                    // Step C: Header Title Appears (T + 380ms)
+                    animationTimers.push(setTimeout(() => {
+                        const headerEl = boxEl.querySelector(`#boxHeader_${boxIdx}`);
+                        if (headerEl) headerEl.classList.add('title-visible');
+                    }, 380));
+
+                    // Step D: Node 1 Appears (T + 750ms)
+                    animationTimers.push(setTimeout(() => {
+                        const nodeA = boxEl.querySelector(`#nodeA_${boxIdx}`);
+                        if (nodeA) nodeA.classList.add('node-visible');
+                    }, 750));
+
+                    // Step D2: Connecting Line Draws (T + 1150ms)
+                    animationTimers.push(setTimeout(() => {
+                        const flowLine = boxEl.querySelector(`#flowLine_${boxIdx}`);
+                        if (flowLine) flowLine.classList.add('line-drawn');
+                    }, 1150));
+
+                    // Step D3: Node 2 Appears (T + 1500ms)
+                    animationTimers.push(setTimeout(() => {
+                        const nodeB = boxEl.querySelector(`#nodeB_${boxIdx}`);
+                        if (nodeB) nodeB.classList.add('node-visible');
+                    }, 1500));
+
+                }, boxIdx * boxInterval));
+            });
+
+            // Step F: Infinite Loop Reset after all boxes arrive & complete
+            const totalDuration = boxes.length * boxInterval + 2600;
+            animationTimers.push(setTimeout(() => {
+                switchService(serviceKey);
+            }, totalDuration));
+        }
+
+        // Bind Floating Pill Buttons
+        badges.forEach(badge => {
+            badge.addEventListener('click', (e) => {
+                e.preventDefault();
+                const wfKey = badge.getAttribute('data-workflow');
+                if (wfKey && heroBoxes3DData[wfKey]) {
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                    switchService(wfKey);
+                }
+            });
+        });
+
+        // Start default flow (Instagram)
+        runSequentialBoxAnimation('instagram');
     }
+
+    initHero3DBoxesEngine();
 
     // ==========================================
     // AI Solutions Sticky Scroll Feature Showcase
@@ -568,7 +920,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('scroll', () => {
-        handleHeroScrollSequence();
         handleSolutionsScrollSequence();
     });
 
