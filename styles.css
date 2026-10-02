@@ -10310,4 +10310,953 @@ body.robotics-mode .step-indicator {
     }
 }
 
+/* ==========================================
+   ENHANCED PREMIUM 3D STACKED HERO AUTOMATION STAGE (POINT 1)
+   ========================================== */
+.hero-3d-boxes-stage {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    perspective: 1400px;
+    perspective-origin: 50% 15%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 24px;
+}
+
+.boxes-3d-viewport {
+    width: 100%;
+    max-width: 560px;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.boxes-3d-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.box-3d-item {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 247, 250, 0.95) 100%);
+    border: 1.5px solid rgba(147, 51, 234, 0.4);
+    border-radius: 24px;
+    padding: 24px 28px;
+    box-shadow: 
+        0 25px 50px -15px rgba(147, 51, 234, 0.3),
+        0 15px 30px -10px rgba(37, 99, 235, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    opacity: 0;
+    transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.robotics-mode .box-3d-item {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 27, 75, 0.92) 100%);
+    border-color: rgba(168, 85, 247, 0.5);
+    box-shadow: 
+        0 25px 60px -10px rgba(168, 85, 247, 0.45),
+        0 0 35px rgba(0, 240, 255, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.box-3d-item.box-entering {
+    animation: boxDropFromAbove 0.78s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes boxDropFromAbove {
+    0% {
+        opacity: 0;
+        transform: translateY(-180px) rotateX(32deg) rotateY(-22deg) scale(0.82) translateZ(-80px);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(10px) rotateX(22deg) rotateY(-15deg) scale(1.03) translateZ(0px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px) rotateX(24deg) rotateY(-18deg) scale(1) translateZ(0px);
+    }
+}
+
+.box-3d-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.box-3d-header.title-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.box-3d-title {
+    font-family: var(--font-hud);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-text);
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.robotics-mode .box-3d-title {
+    background: linear-gradient(90deg, #38bdf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.box-3d-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(59, 130, 246, 0.18));
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #9333ea;
+}
+
+body.robotics-mode .box-3d-badge {
+    color: #c084fc;
+    border-color: rgba(192, 132, 252, 0.5);
+}
+
+.box-nodes-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+}
+
+.box-flow-svg {
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    width: 60%;
+    height: 14px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.box-flow-line {
+    stroke: #c084fc;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box-flow-line.line-drawn {
+    stroke-dashoffset: 0;
+}
+
+.mini-node-pill {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(203, 213, 225, 0.9);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+    transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body.robotics-mode .mini-node-pill {
+    background: rgba(15, 23, 42, 0.92);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.mini-node-pill.node-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.mini-node-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.cyan-dot { background: #06b6d4; box-shadow: 0 0 10px #06b6d4; }
+.pink-dot { background: #ec4899; box-shadow: 0 0 10px #ec4899; }
+.green-dot { background: #10b981; box-shadow: 0 0 10px #10b981; }
+
+.mini-node-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--brand-text);
+}
+
+body.robotics-mode .mini-node-label {
+    color: #f1f5f9;
+}
+
+/* ==========================================
+   CONNECTED VISUAL PIPELINE (POINT 2)
+   ========================================== */
+.process-pipeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.visual-pipeline-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1140px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.92));
+    border: 1.5px solid rgba(37, 99, 235, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 38px 32px;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+body.robotics-mode .visual-pipeline-track {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 27, 75, 0.9));
+    border-color: rgba(0, 240, 255, 0.35);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+
+.video-overlay {
+    background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.pipeline-step-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.pipeline-step-node.active .pipeline-node-icon {
+    transform: scale(1.12);
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.4);
+    border-color: var(--brand-action);
+}
+
+.pipeline-node-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: #ffffff;
+    border: 1.5px solid rgba(203, 213, 225, 0.8);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+body.robotics-mode .pipeline-node-icon {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pipeline-node-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.pipeline-node-title {
+    font-family: var(--font-hud);
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-text);
+    margin-bottom: 3px;
+}
+
+body.robotics-mode .pipeline-node-title {
+    color: #ffffff;
+}
+
+.pipeline-node-sub {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+.pipeline-connector-flow {
+    flex: 1;
+    height: 4px;
+    background: rgba(203, 213, 225, 0.6);
+    position: relative;
+    margin: 0 10px;
+    top: -20px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+body.robotics-mode .pipeline-connector-flow {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.connector-line-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    transform: translateX(-100%);
+    animation: flowPulseLine 2.2s infinite linear;
+}
+
+.glowing-particle {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #00f0ff;
+    box-shadow: 0 0 12px #00f0ff, 0 0 24px #00f0ff;
+    animation: moveParticle 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================
+   TEST DRIVE LIVE SIMULATOR (POINT 3)
+   ========================================== */
+.sim-terminal-wrapper {
+    max-width: 1140px !important;
+    padding: 24px !important;
+}
+
+/* ==========================================
+   AI CAPABILITY WORKSPACE (POINT 4)
+   ========================================== */
+.cap-workspace-stage {
+    min-height: 400px !important;
+    padding: 40px !important;
+}
+
+/* ==========================================
+   AI AGENT CARDS HOVER ELEVATION (POINT 5)
+   ========================================== */
+.agent-card {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease !important;
+}
+
+.agent-card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.18) !important;
+}
+
+.agent-card:hover .agent-img-box img {
+    transform: scale(1.08) !important;
+    transition: transform 0.4s ease !important;
+}
+
+.agent-card .agent-img-box img {
+    transition: transform 0.4s ease;
+}
+
+/* ==========================================
+   ROI CALCULATOR VISUAL HIGHLIGHT (POINT 7)
+   ========================================== */
+.roi-big-number {
+    font-size: 3.4rem !important;
+    font-weight: 900 !important;
+    background: linear-gradient(135deg, #2563eb, #9333ea) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    transition: all 0.3s ease;
+}
+
+body.robotics-mode .roi-big-number {
+    background: linear-gradient(135deg, #00f0ff, #c084fc) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+/* ==========================================
+   FINAL CTA TEXT CONTRAST (POINT 8)
+   ========================================== */
+.cta-heading {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.cta-sub {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.pipeline-step-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.pipeline-step-node:hover {
+    transform: translateY(-4px);
+}
+
+.pipeline-node-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.pipeline-node-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.pipeline-node-title {
+    font-family: var(--font-hud);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-text);
+    margin-bottom: 2px;
+}
+
+body.robotics-mode .pipeline-node-title {
+    color: #ffffff;
+}
+
+.pipeline-node-sub {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
+.pipeline-connector-flow {
+    flex: 1;
+    height: 3px;
+    background: rgba(203, 213, 225, 0.6);
+    position: relative;
+    margin: 0 8px;
+    top: -18px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+body.robotics-mode .pipeline-connector-flow {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.connector-line-fill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    transform: translateX(-100%);
+    animation: flowPulseLine 2.5s infinite linear;
+}
+
+.glowing-particle {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00f0ff;
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    animation: moveParticle 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes flowPulseLine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes moveParticle {
+    0% { left: 0%; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+.node-final-agent .pipeline-node-icon.final-pulse {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2));
+    border: 1px solid rgba(236, 72, 153, 0.4);
+    color: #ec4899;
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
+    animation: agentGlowPulse 2s infinite ease-in-out;
+}
+
+@keyframes agentGlowPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.3); transform: scale(1); }
+    50% { box-shadow: 0 0 28px rgba(236, 72, 153, 0.6); transform: scale(1.06); }
+}
+
+/* ==========================================
+   AI CAPABILITY SHOWCASE SPLIT LAYOUT (SECTION 5)
+   ========================================== */
+.capabilities-showcase-section {
+    padding: 80px 0;
+}
+
+.cap-showcase-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    align-items: stretch;
+    margin-top: 36px;
+}
+
+.cap-tabs-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cap-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: var(--radius-md);
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+body.robotics-mode .cap-tab-btn {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cap-tab-btn:hover {
+    transform: translateX(4px);
+    border-color: var(--brand-action);
+}
+
+.cap-tab-btn.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(168, 85, 247, 0.08));
+    border-color: var(--brand-action);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+}
+
+body.robotics-mode .cap-tab-btn.active {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(168, 85, 247, 0.15));
+    border-color: #00f0ff;
+    box-shadow: 0 6px 24px rgba(0, 240, 255, 0.2);
+}
+
+.cap-tab-num {
+    font-family: var(--font-hud);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--brand-action);
+}
+
+body.robotics-mode .cap-tab-num {
+    color: #00f0ff;
+}
+
+.cap-tab-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.cap-tab-text strong {
+    font-family: var(--font-hud);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-text);
+}
+
+body.robotics-mode .cap-tab-text strong {
+    color: #ffffff;
+}
+
+.cap-tab-text span {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+}
+
+.cap-tab-indicator {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.cap-tab-btn.active .cap-tab-indicator {
+    background: linear-gradient(180deg, #3b82f6, #a855f7);
+}
+
+.cap-workspace-stage {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+}
+
+body.robotics-mode .cap-workspace-stage {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cap-flow-display {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    animation: capFadeIn 0.45s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes capFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cap-flow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    padding-bottom: 16px;
+}
+
+body.robotics-mode .cap-flow-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.cap-flow-title {
+    font-family: var(--font-hud);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--brand-text);
+}
+
+body.robotics-mode .cap-flow-title {
+    color: #ffffff;
+}
+
+.cap-flow-nodes-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.cap-node-card {
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px solid rgba(203, 213, 225, 0.8);
+    border-radius: 14px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 120px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+    animation: nodeEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+body.robotics-mode .cap-node-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+@keyframes nodeEnter {
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cap-node-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.cap-node-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--brand-text);
+}
+
+body.robotics-mode .cap-node-label {
+    color: #ffffff;
+}
+
+.cap-arrow-sep {
+    color: var(--brand-action);
+    font-weight: 800;
+    font-size: 1.1rem;
+    opacity: 0.6;
+}
+
+body.robotics-mode .cap-arrow-sep {
+    color: #00f0ff;
+}
+
+.cap-execution-preview {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(168, 85, 247, 0.05));
+    border: 1px dashed rgba(37, 99, 235, 0.25);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body.robotics-mode .cap-execution-preview {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(168, 85, 247, 0.08));
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+.agent-tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.tool-chip {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    color: var(--brand-primary);
+    transition: all 0.25s ease;
+}
+
+body.robotics-mode .tool-chip {
+    background: rgba(0, 240, 255, 0.1);
+    border-color: rgba(0, 240, 255, 0.25);
+    color: #38bdf8;
+}
+
+.agent-card:hover .tool-chip {
+    background: rgba(37, 99, 235, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Responsive Adaptations & Visibility Correction */
+@media (max-width: 900px) {
+    .cap-showcase-layout {
+        grid-template-columns: 1fr;
+    }
+    .cap-tabs-vertical {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+    .cap-tab-btn {
+        min-width: 140px;
+    }
+    .cap-flow-nodes-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cap-arrow-sep {
+        text-align: center;
+        transform: rotate(90deg);
+    }
+    .visual-pipeline-track {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .pipeline-connector-flow {
+        width: 3px;
+        height: 30px;
+        top: 0;
+        margin: 4px 0;
+    }
+}
+
+/* ==========================================
+   VISIBILITY & CONTRAST CORRECTIONS (LIGHT MODE MODE 1)
+   ========================================== */
+
+/* 1. Revert Section 3 ("One Business") background to clean light theme */
+.process-section {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+    position: relative;
+}
+
+.video-bg-container {
+    opacity: 1 !important; /* Low opacity watermark behind content */
+    filter: grayscale(100%) opacity(0.3) !important;
+    pointer-events: none;
+}
+
+.video-overlay {
+    background: transparent !important; /* Remove dark navy overlay */
+    backdrop-filter: none !important;
+}
+
+.process-section .section-title,
+.process-section .section-label,
+.process-section .section-subtitle {
+    color: #0f172a !important;
+    text-shadow: none !important;
+}
+
+.speech-bubble-card {
+    background: #ffffff !important;
+    border: 1px solid rgba(37, 99, 235, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+}
+
+.speech-quote {
+    color: #1e293b !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+}
+
+/* 2. Global High-Contrast Text Priorities */
+h1, h2, h3, h4, h5, h6, .section-title {
+    color: #0f172a !important; /* High contrast dark navy */
+}
+
+body:not(.robotics-mode) .section-subtitle,
+body:not(.robotics-mode) p {
+    color: #334155 !important; /* Dark slate body text */
+}
+
+body:not(.robotics-mode) .text-muted {
+    color: #475569 !important;
+}
+
+/* 3. Simulator Section Surround Light Background */
+.simulator-section {
+    background-color: #f8fafc !important;
+}
+
+.simulator-section .section-title,
+.simulator-section .section-subtitle {
+    color: #0f172a !important;
+}
+
+/* 4. Responsive Mobile Cards & Pipeline Stacks */
+@media (max-width: 768px) {
+    .visual-pipeline-track {
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 24px 16px !important;
+    }
+
+    .pipeline-connector-flow {
+        width: 3px !important;
+        height: 24px !important;
+        top: 0 !important;
+        margin: 2px auto !important;
+    }
+
+    .cap-showcase-layout {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .cap-tabs-vertical {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding-bottom: 8px !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cap-tab-btn {
+        min-width: 130px !important;
+        scroll-snap-align: start !important;
+        padding: 12px 14px !important;
+    }
+
+    .cap-workspace-stage {
+        padding: 20px 16px !important;
+        min-height: auto !important;
+    }
+
+    .cap-flow-nodes-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+
+    .cap-arrow-sep {
+        text-align: center !important;
+        transform: rotate(90deg) !important;
+        margin: 2px 0 !important;
+    }
+
+    .agents-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 16px !important;
+        padding-bottom: 16px !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .agent-card {
+        flex: 0 0 85vw !important;
+        scroll-snap-align: center !important;
+    }
+
+    .timeline-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .timeline-line {
+        left: 28px !important;
+        transform: none !important;
+    }
+}
+
 

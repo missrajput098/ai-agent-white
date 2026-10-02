@@ -783,11 +783,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const boxEl = document.createElement('div');
                     boxEl.className = `box-3d-item box-entering ${boxIdx === 0 ? 'active-box' : ''}`;
 
-                    const topOffset = boxIdx * 96;
-                    const scaleVal = (1 - boxIdx * 0.045).toFixed(3);
-                    const zVal = -boxIdx * 25;
-                    const rotXVal = 22;
-                    const rotYVal = -16;
+                    const topOffset = boxIdx * 115;
+                    const scaleVal = (1 - boxIdx * 0.04).toFixed(3);
+                    const zVal = -boxIdx * 30;
+                    const rotXVal = 24;
+                    const rotYVal = -18;
 
                     boxEl.style.top = `${topOffset}px`;
                     boxEl.style.transform = `translateY(0px) rotateX(${rotXVal}deg) rotateY(${rotYVal}deg) scale(${scaleVal}) translateZ(${zVal}px)`;
@@ -873,55 +873,191 @@ document.addEventListener('DOMContentLoaded', () => {
     initHero3DBoxesEngine();
 
     // ==========================================
-    // AI Solutions Sticky Scroll Feature Showcase
+    // Live Stats Section Count-Up Observer (SECTION 2)
     // ==========================================
-    const solTrack = document.querySelector('.solutions-scroll-track');
-    const solStages = document.querySelectorAll('.sol-step-stage');
-    const stepNavBtns = document.querySelectorAll('.step-nav-btn');
+    function initStatsCounterEngine() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        if (statNumbers.length === 0) return;
 
-    function handleSolutionsScrollSequence() {
-        if (!solTrack || solStages.length === 0) return;
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetEl = entry.target;
+                    const targetVal = parseFloat(targetEl.getAttribute('data-target'));
+                    if (isNaN(targetVal)) return;
 
-        const rect = solTrack.getBoundingClientRect();
-        const trackHeight = solTrack.offsetHeight - window.innerHeight;
-        if (trackHeight <= 0) return;
+                    let current = 0;
+                    const duration = 1400;
+                    const stepTime = 25;
+                    const steps = duration / stepTime;
+                    const increment = targetVal / steps;
 
-        const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 0.999);
-        const stepIndex = Math.floor(progress * solStages.length);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= targetVal) {
+                            current = targetVal;
+                            clearInterval(timer);
+                        }
+                        if (Number.isInteger(targetVal)) {
+                            targetEl.innerText = Math.floor(current);
+                        } else {
+                            targetEl.innerText = current.toFixed(1);
+                        }
+                    }, stepTime);
 
-        solStages.forEach((stage, idx) => {
-            if (idx === stepIndex) {
-                stage.classList.add('active');
-            } else {
-                stage.classList.remove('active');
-            }
-        });
+                    obs.unobserve(targetEl);
+                }
+            });
+        }, { threshold: 0.5 });
 
-        stepNavBtns.forEach((btn, idx) => {
-            if (idx === stepIndex) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+        statNumbers.forEach(num => observer.observe(num));
     }
+    initStatsCounterEngine();
 
-    stepNavBtns.forEach((btn, idx) => {
-        btn.addEventListener('click', () => {
-            if (!solTrack) return;
-            const trackTop = solTrack.offsetTop;
-            const trackHeight = solTrack.offsetHeight - window.innerHeight;
-            const targetScroll = trackTop + (trackHeight * (idx / solStages.length)) + 10;
-            window.scrollTo({
-                top: targetScroll,
-                behavior: 'smooth'
+    // ==========================================
+    // Connected Visual Pipeline Sequential Node Activation (SECTION 3)
+    // ==========================================
+    function initPipelineFlowEngine() {
+        const pipelineTrack = document.getElementById('visualPipelineTrack');
+        if (!pipelineTrack) return;
+
+        const nodes = pipelineTrack.querySelectorAll('.pipeline-step-node');
+        let currentNodeIdx = 0;
+
+        setInterval(() => {
+            nodes.forEach((node, idx) => {
+                if (idx === currentNodeIdx) {
+                    node.classList.add('active');
+                } else {
+                    node.classList.remove('active');
+                }
+            });
+            currentNodeIdx = (currentNodeIdx + 1) % nodes.length;
+        }, 2200);
+    }
+    initPipelineFlowEngine();
+
+    // ==========================================
+    // AI Capability Showcase Split Workspace Engine (SECTION 5)
+    // ==========================================
+    const capabilityData = {
+        create: {
+            title: "AI Content & Media Generation Engine",
+            tag: "CREATION PIPELINE",
+            nodes: [
+                { icon: "💡", label: "Idea" },
+                { icon: "🧠", label: "AI Agent" },
+                { icon: "⚙️", label: "Generate" },
+                { icon: "🚀", label: "Publish" }
+            ],
+            status: "Generating Instagram post copy, graphic visual, and hashtag suite...",
+            progress: "100%"
+        },
+        automate: {
+            title: "Autonomous Workflow Automation Hub",
+            tag: "AUTOMATION ENGINE",
+            nodes: [
+                { icon: "⚡", label: "Trigger" },
+                { icon: "🧠", label: "AI Agent" },
+                { icon: "🔀", label: "Decision" },
+                { icon: "⚙️", label: "Action" }
+            ],
+            status: "Synchronizing API payloads & executing background Celery job...",
+            progress: "100%"
+        },
+        analyze: {
+            title: "Predictive Analytics & Intelligence Engine",
+            tag: "BUSINESS INTELLIGENCE",
+            nodes: [
+                { icon: "📊", label: "Data" },
+                { icon: "🔎", label: "AI Analysis" },
+                { icon: "💡", label: "Insights" },
+                { icon: "📈", label: "Report" }
+            ],
+            status: "Synthesizing 45k data records into executive revenue forecast...",
+            progress: "100%"
+        },
+        sell: {
+            title: "Sales Lead Qualification & Conversion Pipeline",
+            tag: "LEAD CONVERSION",
+            nodes: [
+                { icon: "🎯", label: "Lead" },
+                { icon: "⭐", label: "Qualification" },
+                { icon: "📨", label: "Follow-up" },
+                { icon: "🔄", label: "CRM" }
+            ],
+            status: "Prospect scored 96/100 (Enterprise fit) — Calendly invite dispatched.",
+            progress: "100%"
+        },
+        support: {
+            title: "24/7 AI Customer Care & Support Pod",
+            tag: "SUPPORT ENGINE",
+            nodes: [
+                { icon: "💬", label: "Message" },
+                { icon: "🧠", label: "Understand" },
+                { icon: "🤖", label: "Reply" },
+                { icon: "✅", label: "Resolve" }
+            ],
+            status: "Inquiry resolved in 1.4s with 99.8% customer satisfaction score.",
+            progress: "100%"
+        }
+    };
+
+    function initCapShowcaseEngine() {
+        const tabBtns = document.querySelectorAll('.cap-tab-btn');
+        const stageEl = document.getElementById('capWorkspaceStage');
+
+        if (!stageEl || tabBtns.length === 0) return;
+
+        function renderCapabilityFlow(capKey) {
+            const data = capabilityData[capKey] || capabilityData.create;
+
+            let nodesHtml = data.nodes.map((node, idx) => `
+                <div class="cap-node-card" style="animation-delay: ${idx * 0.08}s">
+                    <span class="cap-node-icon">${node.icon}</span>
+                    <span class="cap-node-label">${node.label}</span>
+                </div>
+                ${idx < data.nodes.length - 1 ? '<span class="cap-arrow-sep">→</span>' : ''}
+            `).join('');
+
+            stageEl.innerHTML = `
+                <div class="cap-flow-display">
+                    <div class="cap-flow-header">
+                        <h3 class="cap-flow-title">${data.title}</h3>
+                        <span class="box-3d-badge">${data.tag}</span>
+                    </div>
+
+                    <div class="cap-flow-nodes-row">
+                        ${nodesHtml}
+                    </div>
+
+                    <div class="cap-execution-preview">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span class="status-dot green-pulse"></span>
+                            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${data.status}</span>
+                        </div>
+                        <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--brand-action);">${data.progress}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const capKey = btn.getAttribute('data-cap');
+                if (typeof playCyberClick === 'function') playCyberClick();
+                renderCapabilityFlow(capKey);
             });
         });
-    });
 
-    window.addEventListener('scroll', () => {
-        handleSolutionsScrollSequence();
-    });
+        // Render initial default tab (CREATE)
+        renderCapabilityFlow('create');
+    }
+
+    initCapShowcaseEngine();
 
     // ==========================================
     // Fullscreen Constellation Particle Canvas

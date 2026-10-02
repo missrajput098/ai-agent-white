@@ -313,69 +313,78 @@
                 You tell us what you need. We study your business, understand your workflows, and build a custom AI agent that fits your exact requirements.
             </p>
 
-            <div class="process-grid">
+            <div class="process-pipeline-wrapper">
                 <!-- User Speech Bubble Card -->
                 <div class="speech-bubble-card card-3d">
                     <div class="user-pill">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                        <span>You Tell Us</span>
+                        <span>Your Business Goal</span>
                     </div>
                     <blockquote class="speech-quote">
-                        "I need an AI that handles my Instagram, replies to customers and sends qualified leads to my sales team."
+                        "I need an AI agent that handles my Instagram DMs, replies to customers, and sends qualified leads to my sales team."
                     </blockquote>
-
-                    <!-- Animated Typing Terminal Box -->
-                    <div class="process-terminal-box">
-                        <div class="terminal-header">
-                            <span class="term-dot red"></span>
-                            <span class="term-dot yellow"></span>
-                            <span class="term-dot green"></span>
-                            <span class="term-title">FACTONIX_AI_ENGINE.log</span>
-                        </div>
-                        <div class="terminal-body" id="terminalBody">
-                            <p class="term-line"><span class="term-cyan">> Initializing Factonix AI Architecture...</span></p>
-                            <p class="term-line"><span class="term-blue">> Connecting Instagram & WhatsApp Webhooks...</span> [OK]</p>
-                            <p class="term-line"><span class="term-purple">> Training Model on Workflows...</span> [100%]</p>
-                            <p class="term-line"><span class="term-green">> Status: AI AGENT DEPLOYED & LIVE ⚡</span></p>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Horizontal Process Steps -->
-                <div class="process-steps-row">
-                    <div class="step-card">
-                        <div class="step-icon-box glow-blue">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a9 9 0 0 1 9 9c0 3.6-2.1 6.7-5.2 8.1L12 22l-3.8-2.9C5.1 17.7 3 14.6 3 11a9 9 0 0 1 9-9z"/><circle cx="12" cy="11" r="3"/></svg>
+                <!-- Animated Connected Visual Pipeline Flow -->
+                <div class="visual-pipeline-track" id="visualPipelineTrack">
+                    <div class="pipeline-step-node active" data-step="1">
+                        <div class="pipeline-node-icon glow-blue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
                         </div>
-                        <h4 class="step-name">We Build</h4>
-                        <p class="step-desc">Design the right architecture</p>
+                        <h4 class="pipeline-node-title">YOUR BUSINESS</h4>
+                        <p class="pipeline-node-sub">Goals & Operations</p>
                     </div>
-                    <span class="step-connector">→</span>
 
-                    <div class="step-card">
-                        <div class="step-icon-box glow-cyan">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                        </div>
-                        <h4 class="step-name">Connect</h4>
-                        <p class="step-desc">Integrate your tools & data</p>
+                    <div class="pipeline-connector-flow">
+                        <div class="connector-line-fill"></div>
+                        <div class="glowing-particle"></div>
                     </div>
-                    <span class="step-connector">→</span>
 
-                    <div class="step-card">
-                        <div class="step-icon-box glow-blue">
+                    <div class="pipeline-step-node" data-step="2">
+                        <div class="pipeline-node-icon glow-cyan">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                         </div>
-                        <h4 class="step-name">Train</h4>
-                        <p class="step-desc">Teach your workflows</p>
+                        <h4 class="pipeline-node-title">YOUR DATA</h4>
+                        <p class="pipeline-node-sub">Knowledge & Docs</p>
                     </div>
-                    <span class="step-connector">→</span>
 
-                    <div class="step-card">
-                        <div class="step-icon-box glow-purple">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71.79-1.81.2-2.55L4.5 16.5z"/><path d="M12 15l-3-3 7.5-7.5.78.78c.88.88.88 2.3 0 3.18L12 15z"/></svg>
+                    <div class="pipeline-connector-flow">
+                        <div class="connector-line-fill"></div>
+                        <div class="glowing-particle"></div>
+                    </div>
+
+                    <div class="pipeline-step-node" data-step="3">
+                        <div class="pipeline-node-icon glow-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                         </div>
-                        <h4 class="step-name">Deploy</h4>
-                        <p class="step-desc">Your AI agent is ready</p>
+                        <h4 class="pipeline-node-title">YOUR WORKFLOW</h4>
+                        <p class="pipeline-node-sub">Rules & Logic</p>
+                    </div>
+
+                    <div class="pipeline-connector-flow">
+                        <div class="connector-line-fill"></div>
+                        <div class="glowing-particle"></div>
+                    </div>
+
+                    <div class="pipeline-step-node" data-step="4">
+                        <div class="pipeline-node-icon glow-orange">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <h4 class="pipeline-node-title">YOUR TOOLS</h4>
+                        <p class="pipeline-node-sub">APIs & Integrations</p>
+                    </div>
+
+                    <div class="pipeline-connector-flow">
+                        <div class="connector-line-fill"></div>
+                        <div class="glowing-particle"></div>
+                    </div>
+
+                    <div class="pipeline-step-node node-final-agent" data-step="5">
+                        <div class="pipeline-node-icon glow-pink final-pulse">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+                        </div>
+                        <h4 class="pipeline-node-title">YOUR CUSTOM AI AGENT</h4>
+                        <p class="pipeline-node-sub">Autonomous 24/7</p>
                     </div>
                 </div>
             </div>
@@ -454,188 +463,71 @@
         </div>
     </section>
 
-    <!-- Section 5A: AI Agent Solutions (Sticky Scroll Feature Showcase with Alternating Vertical Patti) -->
-    <section class="section solutions-scroll-section" id="ai-solutions">
-        <div class="container text-center">
-            <div class="cap-badge">
-                <span class="sparkle-icon">✦</span>
-                <span>AI AGENT SOLUTIONS</span>
+    <!-- Section 5: AI Capability Showcase (What Should Your AI Do?) -->
+    <section class="section capabilities-showcase-section" id="ai-solutions">
+        <div class="container container-fluid">
+            <div class="text-center margin-bottom-40">
+                <div class="cap-badge">
+                    <span class="sparkle-icon">✦</span>
+                    <span>AI CAPABILITY SHOWCASE</span>
+                </div>
+                <h2 class="section-title text-center">What Should Your <span class="text-glow">AI Do?</span></h2>
+                <p class="section-subtitle text-center">Select an AI capability below to see live node flows and automated actions in motion.</p>
             </div>
-            <h2 class="section-title">What Should Your <span class="text-glow">AI Do?</span></h2>
-            <p class="section-subtitle text-center">Scroll to experience the intelligent capabilities engineered for your business.</p>
-        </div>
 
-        <div class="solutions-scroll-track">
-            <div class="solutions-sticky-wrapper">
-                
-                <!-- Top Step Controller Pills Row -->
-                <div class="solutions-step-nav" id="solutionsStepNav">
-                    <button class="step-nav-btn active" data-step="0"><span class="nav-dot"></span>01 CREATE</button>
-                    <button class="step-nav-btn" data-step="1"><span class="nav-dot"></span>02 SELL</button>
-                    <button class="step-nav-btn" data-step="2"><span class="nav-dot"></span>03 SUPPORT</button>
-                    <button class="step-nav-btn" data-step="3"><span class="nav-dot"></span>04 AUTOMATE</button>
-                    <button class="step-nav-btn" data-step="4"><span class="nav-dot"></span>05 ANALYZE</button>
+            <div class="cap-showcase-layout">
+                <!-- LEFT SIDE: Compact Vertical Tabs -->
+                <div class="cap-tabs-vertical" id="capTabsVertical">
+                    <button class="cap-tab-btn active" data-cap="create">
+                        <span class="cap-tab-num">01</span>
+                        <div class="cap-tab-text">
+                            <strong>CREATE</strong>
+                            <span>Content & Design</span>
+                        </div>
+                        <span class="cap-tab-indicator"></span>
+                    </button>
+
+                    <button class="cap-tab-btn" data-cap="automate">
+                        <span class="cap-tab-num">02</span>
+                        <div class="cap-tab-text">
+                            <strong>AUTOMATE</strong>
+                            <span>Workflows & Tasks</span>
+                        </div>
+                        <span class="cap-tab-indicator"></span>
+                    </button>
+
+                    <button class="cap-tab-btn" data-cap="analyze">
+                        <span class="cap-tab-num">03</span>
+                        <div class="cap-tab-text">
+                            <strong>ANALYZE</strong>
+                            <span>Data & Insights</span>
+                        </div>
+                        <span class="cap-tab-indicator"></span>
+                    </button>
+
+                    <button class="cap-tab-btn" data-cap="sell">
+                        <span class="cap-tab-num">04</span>
+                        <div class="cap-tab-text">
+                            <strong>SELL</strong>
+                            <span>Leads & Conversions</span>
+                        </div>
+                        <span class="cap-tab-indicator"></span>
+                    </button>
+
+                    <button class="cap-tab-btn" data-cap="support">
+                        <span class="cap-tab-num">05</span>
+                        <div class="cap-tab-text">
+                            <strong>SUPPORT</strong>
+                            <span>24/7 Customer Care</span>
+                        </div>
+                        <span class="cap-tab-indicator"></span>
+                    </button>
                 </div>
 
-                <div class="container solutions-stage-wrapper">
-                    
-                    <!-- Step 0 (Left Vertical Patti + Right Content) -->
-                    <div class="sol-step-stage step-left glow-blue active" data-step="0">
-                        <div class="sol-vertical-patti patti-left">
-                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-                            <div class="patti-title-box">
-                                <span class="patti-step-num">01</span>
-                                <h3 class="patti-title">CREATE</h3>
-                            </div>
-                            <div class="patti-accent-bar"></div>
-                        </div>
-                        <div class="sol-stage-content">
-                            <div class="sol-stage-text">
-                                <h3>Content & Design Generation</h3>
-                                <p>Generate high-converting social posts, images, reels, captions, and graphics on autopilot tailored to your brand voice.</p>
-                            </div>
-                            <div class="sol-preview-box glow-blue active">
-                                <div class="sol-preview-header">
-                                    <span class="sol-dot"></span>
-                                    <span>Content Generation Engine</span>
-                                </div>
-                                <div class="sol-preview-body">
-                                    <div class="mock-card">
-                                        <div class="mock-tag">AI CREATOR</div>
-                                        <p class="mock-text">"Generating Instagram reel caption & graphic design..."</p>
-                                        <div class="mock-bar"><div class="mock-fill blue-fill"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 1 (Right Vertical Patti + Left Content) -->
-                    <div class="sol-step-stage step-right glow-cyan" data-step="1">
-                        <div class="sol-stage-content">
-                            <div class="sol-stage-text">
-                                <h3>Lead Capture & Conversions</h3>
-                                <p>Qualify inbound prospects 24/7, conduct automated sales outreach, manage follow-ups, and close deals faster.</p>
-                            </div>
-                            <div class="sol-preview-box glow-cyan active">
-                                <div class="sol-preview-header">
-                                    <span class="sol-dot"></span>
-                                    <span>Sales Lead Conversion Pipeline</span>
-                                </div>
-                                <div class="sol-preview-body">
-                                    <div class="mock-card">
-                                        <div class="mock-tag">LEAD QUALIFIED</div>
-                                        <p class="mock-text">"Prospect booked meeting via CRM automation"</p>
-                                        <div class="mock-bar"><div class="mock-fill cyan-fill"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sol-vertical-patti patti-right">
-                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg></div>
-                            <div class="patti-title-box">
-                                <span class="patti-step-num">02</span>
-                                <h3 class="patti-title">SELL</h3>
-                            </div>
-                            <div class="patti-accent-bar"></div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 (Left Vertical Patti + Right Content) -->
-                    <div class="sol-step-stage step-left glow-purple" data-step="2">
-                        <div class="sol-vertical-patti patti-left">
-                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
-                            <div class="patti-title-box">
-                                <span class="patti-step-num">03</span>
-                                <h3 class="patti-title">SUPPORT</h3>
-                            </div>
-                            <div class="patti-accent-bar"></div>
-                        </div>
-                        <div class="sol-stage-content">
-                            <div class="sol-stage-text">
-                                <h3>24/7 Customer Care</h3>
-                                <p>Instantly resolve customer inquiries, answer FAQs, troubleshoot issues, and elevate user satisfaction across all channels.</p>
-                            </div>
-                            <div class="sol-preview-box glow-purple active">
-                                <div class="sol-preview-header">
-                                    <span class="sol-dot"></span>
-                                    <span>24/7 AI Customer Agent</span>
-                                </div>
-                                <div class="sol-preview-body">
-                                    <div class="mock-card">
-                                        <div class="mock-tag">TICKET RESOLVED</div>
-                                        <p class="mock-text">"Resolved query in 1.2s with 99.4% satisfaction score"</p>
-                                        <div class="mock-bar"><div class="mock-fill purple-fill"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 (Right Vertical Patti + Left Content) -->
-                    <div class="sol-step-stage step-right glow-orange" data-step="3">
-                        <div class="sol-stage-content">
-                            <div class="sol-stage-text">
-                                <h3>Workflow Optimization</h3>
-                                <p>Streamline complex multi-step processes, schedule background jobs, sync databases, and eliminate manual overhead.</p>
-                            </div>
-                            <div class="sol-preview-box glow-orange active">
-                                <div class="sol-preview-header">
-                                    <span class="sol-dot"></span>
-                                    <span>Workflow Automation Hub</span>
-                                </div>
-                                <div class="sol-preview-body">
-                                    <div class="mock-card">
-                                        <div class="mock-tag">WORKFLOW ACTIVE</div>
-                                        <p class="mock-text">"Synchronizing API data across Shopify & WhatsApp"</p>
-                                        <div class="mock-bar"><div class="mock-fill orange-fill"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sol-vertical-patti patti-right">
-                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-                            <div class="patti-title-box">
-                                <span class="patti-step-num">04</span>
-                                <h3 class="patti-title">AUTOMATE</h3>
-                            </div>
-                            <div class="patti-accent-bar"></div>
-                        </div>
-                    </div>
-
-                    <!-- Step 4 (Left Vertical Patti + Right Content) -->
-                    <div class="sol-step-stage step-left glow-pink" data-step="4">
-                        <div class="sol-vertical-patti patti-left">
-                            <div class="hex-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-                            <div class="patti-title-box">
-                                <span class="patti-step-num">05</span>
-                                <h3 class="patti-title">ANALYZE</h3>
-                            </div>
-                            <div class="patti-accent-bar"></div>
-                        </div>
-                        <div class="sol-stage-content">
-                            <div class="sol-stage-text">
-                                <h3>Predictive Analytics & Reports</h3>
-                                <p>Transform raw business metrics into actionable intelligence, predictive forecasts, and automated executive reports.</p>
-                            </div>
-                            <div class="sol-preview-box glow-pink active">
-                                <div class="sol-preview-header">
-                                    <span class="sol-dot"></span>
-                                    <span>Analytics & Business Intelligence</span>
-                                </div>
-                                <div class="sol-preview-body">
-                                    <div class="mock-card">
-                                        <div class="mock-tag">INSIGHT GENERATED</div>
-                                        <p class="mock-text">"+38% Conversion Increase this month"</p>
-                                        <div class="mock-bar"><div class="mock-fill pink-fill"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- RIGHT SIDE: Dynamic AI Workspace -->
+                <div class="cap-workspace-stage" id="capWorkspaceStage">
+                    <!-- Dynamic capability content injected & animated by script.js -->
                 </div>
-
             </div>
         </div>
     </section>
@@ -667,6 +559,14 @@
                     <div class="agent-card-body">
                         <h3>Social AI</h3>
                         <p>Creates, schedules and manages your content across all social media platforms on autopilot.</p>
+                        
+                        <div class="agent-tools-row">
+                            <span class="tool-chip" title="Instagram API">📸 Meta</span>
+                            <span class="tool-chip" title="OpenAI GPT-4o">🧠 OpenAI</span>
+                            <span class="tool-chip" title="Canva Design">🎨 Canva</span>
+                            <span class="tool-chip" title="Buffer Sync">📅 Buffer</span>
+                        </div>
+
                         <button class="agent-arrow-btn" aria-label="Learn more about Social AI">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
@@ -686,6 +586,14 @@
                     <div class="agent-card-body">
                         <h3>Sales AI</h3>
                         <p>Qualifies inbound prospects, conducts intelligent outreach, and books meetings automatically.</p>
+                        
+                        <div class="agent-tools-row">
+                            <span class="tool-chip" title="Salesforce CRM">☁️ Salesforce</span>
+                            <span class="tool-chip" title="HubSpot">🧡 HubSpot</span>
+                            <span class="tool-chip" title="Calendly Sync">📅 Calendly</span>
+                            <span class="tool-chip" title="Apollo Data">🚀 Apollo</span>
+                        </div>
+
                         <button class="agent-arrow-btn" aria-label="Learn more about Sales AI">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
@@ -705,6 +613,14 @@
                     <div class="agent-card-body">
                         <h3>Support AI</h3>
                         <p>Handles complex customer conversations, resolves inquiries 24/7, and elevates satisfaction.</p>
+                        
+                        <div class="agent-tools-row">
+                            <span class="tool-chip" title="Zendesk Desk">💬 Zendesk</span>
+                            <span class="tool-chip" title="Stripe Billing">💳 Stripe</span>
+                            <span class="tool-chip" title="WhatsApp Business">📲 WhatsApp</span>
+                            <span class="tool-chip" title="Auth0 Auth">🔒 Auth0</span>
+                        </div>
+
                         <button class="agent-arrow-btn" aria-label="Learn more about Support AI">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
@@ -724,6 +640,14 @@
                     <div class="agent-card-body">
                         <h3>Operations AI</h3>
                         <p>Automates repetitive business tasks, coordinates API pipelines, and synchronizes databases.</p>
+                        
+                        <div class="agent-tools-row">
+                            <span class="tool-chip" title="Shopify Commerce">🛍️ Shopify</span>
+                            <span class="tool-chip" title="PostgreSQL DB">🐘 Postgres</span>
+                            <span class="tool-chip" title="Slack Alerts">📢 Slack</span>
+                            <span class="tool-chip" title="Python Engine">🐍 Python</span>
+                        </div>
+
                         <button class="agent-arrow-btn" aria-label="Learn more about Operations AI">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
@@ -788,32 +712,32 @@
                 <div class="timeline-grid">
                     <div class="timeline-item card-3d">
                         <div class="step-num glow-blue-ring">01</div>
-                        <h4>Tell Us Your Workflow</h4>
-                        <p>Share your business goals, tools, and exact requirements.</p>
+                        <h4>DISCOVER</h4>
+                        <p>Tell Us Your Workflow & Business Goals</p>
                     </div>
 
                     <div class="timeline-item card-3d">
                         <div class="step-num glow-cyan-ring">02</div>
-                        <h4>We Design Your Agent</h4>
-                        <p>Create a custom robotic AI architecture tailored to your business.</p>
+                        <h4>DESIGN</h4>
+                        <p>We Design Your Custom AI Architecture</p>
                     </div>
 
                     <div class="timeline-item card-3d">
                         <div class="step-num glow-purple-ring">03</div>
-                        <h4>Connect Your Tools</h4>
-                        <p>Integrate your apps, APIs, databases, and communication channels.</p>
+                        <h4>BUILD</h4>
+                        <p>Connect Your Apps, APIs & Data Systems</p>
                     </div>
 
                     <div class="timeline-item card-3d">
                         <div class="step-num glow-orange-ring">04</div>
-                        <h4>Train & Test</h4>
-                        <p>Fine-tune model prompts with real company data and edge-case scenarios.</p>
+                        <h4>TEST</h4>
+                        <p>Train & Fine-Tune Model Edge Cases</p>
                     </div>
 
                     <div class="timeline-item card-3d">
                         <div class="step-num glow-pink-ring">05</div>
-                        <h4>Deploy Your AI Employee</h4>
-                        <p>Go live 24/7 and watch your business scale automatically.</p>
+                        <h4>DEPLOY</h4>
+                        <p>Go Live 24/7 & Scale Automatically</p>
                     </div>
                 </div>
             </div>
