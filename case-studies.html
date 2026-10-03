@@ -88,13 +88,13 @@
                     <a href="index.html">Home</a> <span>/</span> <span>CASE STUDIES & METRICS</span>
                 </div>
                 <h1 class="subpage-hero-title">
-                    Empirical Proven <span class="text-glow">Business Impact</span>
+                    Proven <span class="text-glow">Business Impact</span>
                 </h1>
                 <p class="subpage-hero-desc">
-                    Discover how fast-growing brands, fintech companies, and global logistics providers scale operations with AGENTSPACE 3D robotics neural agents.
+                    Discover how fast-growing brands, fintech platforms, and global logistics providers scale operations with Factonix neural AI agents.
                 </p>
                 <div class="hero-btns">
-                    <a href="#case-studies-list" class="btn btn-primary btn-glow">View Verified Metrics</a>
+                    <a href="#case-studies-list" class="btn btn-primary btn-glow">Explore Client Results</a>
                     <a href="contact.html" class="btn btn-secondary">Request Custom ROI Study</a>
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <img src="assets/images/cta-robot-hologram.png" alt="3D Case Studies Telemetry Visual" class="subpage-robot-img">
                     <div class="subpage-hud-badge">
                         <div class="hud-pulse-dot"></div>
-                        <span>VERIFIED CLIENT IMPACT: 10X AVG ROI</span>
+                        <span>DOCUMENTED CLIENT IMPACT: 10X AVG ROI</span>
                     </div>
                 </div>
             </div>
@@ -114,99 +114,199 @@
     <!-- Detailed Case Studies Section -->
     <section class="section" id="case-studies-list">
         <div class="container">
-            <div class="section-header text-center" style="text-align: center; margin-bottom: 50px;">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 30px;">
                 <div class="section-label">TELEMETRY PROOF</div>
                 <h2 class="section-title">Before & After AI Deployment Results</h2>
             </div>
 
+            <!-- Compact Category Filter Tabs -->
+            <div class="cs-filter-wrapper">
+                <div class="cs-filter-bar">
+                    <button class="cs-filter-btn active" data-filter="all">ALL</button>
+                    <button class="cs-filter-btn" data-filter="ecommerce">E-COMMERCE</button>
+                    <button class="cs-filter-btn" data-filter="fintech">FINTECH</button>
+                    <button class="cs-filter-btn" data-filter="logistics">LOGISTICS</button>
+                    <button class="cs-filter-btn" data-filter="saas">SAAS</button>
+                </div>
+            </div>
+
             <!-- Case Study 1 -->
-            <div class="case-study-card card-3d">
+            <div class="case-study-card card-3d" data-category="ecommerce">
                 <div class="case-study-content">
-                    <span class="case-study-badge">E-COMMERCE & RETAIL</span>
+                    <div class="cs-meta-row">
+                        <span class="cs-num-badge">CASE STUDY 01</span>
+                        <span class="cs-dot-sep">•</span>
+                        <span class="case-study-badge">E-COMMERCE & RETAIL</span>
+                    </div>
                     <h3 class="case-study-title">Global Apparel Brand Automates 40,000 Monthly DMs & Support Tickets</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
-                        Facing massive inquiry volume on Instagram and Shopify support, the brand deployed INSTAGUARD DM agents and SUPPORTR-X customer service pods to handle 24/7 order tracking, returns, and promo code distribution.
+                    
+                    <span class="cs-section-label">CHALLENGE & OPPORTUNITY</span>
+                    <p class="cs-challenge-text">
+                        High inquiry volume across Instagram and Shopify led to response backlogs during flash sales and product drops, spiking support desk overhead.
                     </p>
-                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: INSTAGUARD DM + SHOPIFY API + META GRAPH</div>
+
+                    <span class="cs-section-label">AI SOLUTION DEPLOYED</span>
+                    <p class="cs-solution-text">
+                        Deployed INSTAGUARD DM agents and SUPPORTR-X customer service pods to handle 24/7 order tracking, returns, and promo code distribution.
+                    </p>
+
+                    <div class="cs-tech-line">
+                        <span>KEY TECH:</span> INSTAGUARD DM + SHOPIFY API + META GRAPH
+                    </div>
                 </div>
 
                 <div class="case-study-metrics-grid">
-                    <div class="metric-comparison-row">
-                        <span class="metric-lbl">Response Time:</span>
-                        <div><span class="metric-before">4.5 Hours</span> <span class="metric-after">12 Seconds</span></div>
+                    <div class="metric-comparison-header">
+                        <span>PERFORMANCE METRIC</span>
+                        <span>BEFORE → AFTER</span>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">First Contact Resolution:</span>
-                        <div><span class="metric-before">34%</span> <span class="metric-after">91%</span></div>
+                        <span class="metric-lbl">Response Time</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">4.5 Hours</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">12 Seconds</span>
+                        </div>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">Monthly Support Overhead:</span>
-                        <div><span class="metric-before">$42,000/mo</span> <span class="metric-after">$8,500/mo</span></div>
+                        <span class="metric-lbl">First Contact Resolution</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">34%</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">91%</span>
+                        </div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Monthly Support Overhead</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">$42,000/mo</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">$8,500/mo</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Case Study 2 -->
-            <div class="case-study-card card-3d">
+            <div class="case-study-card card-3d" data-category="fintech saas">
                 <div class="case-study-content">
-                    <span class="case-study-badge">FINTECH & SAAS</span>
+                    <div class="cs-meta-row">
+                        <span class="cs-num-badge">CASE STUDY 02</span>
+                        <span class="cs-dot-sep">•</span>
+                        <span class="case-study-badge">FINTECH & SAAS</span>
+                    </div>
                     <h3 class="case-study-title">FinTech Platform Boosts Lead Conversion Rate by 3.4x</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
-                        High-value inbound lead requests were going cold over weekends. By deploying LEADR-3000, incoming prospects were qualified within 10 seconds and instantly scheduled into executive calendars.
+
+                    <span class="cs-section-label">CHALLENGE & OPPORTUNITY</span>
+                    <p class="cs-challenge-text">
+                        High-value inbound lead requests were going cold over weekends and outside standard operating hours, slowing demo conversion pipelines.
                     </p>
-                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: LEADR-3000 + HUBSPOT CRM + CALENDLY API</div>
+
+                    <span class="cs-section-label">AI SOLUTION DEPLOYED</span>
+                    <p class="cs-solution-text">
+                        Deployed LEADR-3000 to qualify incoming prospects within 10 seconds and instantly schedule high-intent meetings into executive calendars.
+                    </p>
+
+                    <div class="cs-tech-line">
+                        <span>KEY TECH:</span> LEADR-3000 + HUBSPOT CRM + CALENDLY API
+                    </div>
                 </div>
 
                 <div class="case-study-metrics-grid">
-                    <div class="metric-comparison-row">
-                        <span class="metric-lbl">Lead Contact Speed:</span>
-                        <div><span class="metric-before">22 Hours</span> <span class="metric-after">8 Seconds</span></div>
+                    <div class="metric-comparison-header">
+                        <span>PERFORMANCE METRIC</span>
+                        <span>BEFORE → AFTER</span>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">Demo Booking Rate:</span>
-                        <div><span class="metric-before">11%</span> <span class="metric-after">38%</span></div>
+                        <span class="metric-lbl">Lead Contact Speed</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">22 Hours</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">8 Seconds</span>
+                        </div>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">ARR Impact:</span>
-                        <div><span class="metric-before">Baseline</span> <span class="metric-after">+$1.4M ARR</span></div>
+                        <span class="metric-lbl">Demo Booking Rate</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">11%</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">38%</span>
+                        </div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">ARR Impact</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">Baseline</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">+$1.4M ARR</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Case Study 3 -->
-            <div class="case-study-card card-3d">
+            <div class="case-study-card card-3d" data-category="logistics">
                 <div class="case-study-content">
-                    <span class="case-study-badge">LOGISTICS & FREIGHT</span>
+                    <div class="cs-meta-row">
+                        <span class="cs-num-badge">CASE STUDY 03</span>
+                        <span class="cs-dot-sep">•</span>
+                        <span class="case-study-badge">LOGISTICS & FREIGHT</span>
+                    </div>
                     <h3 class="case-study-title">Automated Bill of Lading Document Extraction Saves 14,000 Hours</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">
-                        The operations team spent thousands of hours manually copying data from PDF bills of lading into ERP systems. DISPATCH-BOT autonomous OCR parsing reduced processing time to seconds.
+
+                    <span class="cs-section-label">CHALLENGE & OPPORTUNITY</span>
+                    <p class="cs-challenge-text">
+                        Operations team spent thousands of hours manually copying structured and unstructured cargo data from PDF bills of lading into legacy ERP systems.
                     </p>
-                    <div style="font-weight: 700; color: #0284c7; font-size: 0.85rem; letter-spacing: 1px;">KEY TECH: DISPATCH-BOT + MULTI-PAGE VISION OCR + REST API</div>
+
+                    <span class="cs-section-label">AI SOLUTION DEPLOYED</span>
+                    <p class="cs-solution-text">
+                        DISPATCH-BOT autonomous OCR parsing engine reduced document intake and data verification time to seconds with zero manual intervention.
+                    </p>
+
+                    <div class="cs-tech-line">
+                        <span>KEY TECH:</span> DISPATCH-BOT + MULTI-PAGE VISION OCR + REST API
+                    </div>
                 </div>
 
                 <div class="case-study-metrics-grid">
-                    <div class="metric-comparison-row">
-                        <span class="metric-lbl">Doc Processing Time:</span>
-                        <div><span class="metric-before">25 Mins</span> <span class="metric-after">1.2 Seconds</span></div>
+                    <div class="metric-comparison-header">
+                        <span>PERFORMANCE METRIC</span>
+                        <span>BEFORE → AFTER</span>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">Data Entry Errors:</span>
-                        <div><span class="metric-before">8.4%</span> <span class="metric-after">0.02%</span></div>
+                        <span class="metric-lbl">Doc Processing Time</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">25 Mins</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">1.2 Seconds</span>
+                        </div>
                     </div>
                     <div class="metric-comparison-row">
-                        <span class="metric-lbl">Staff Hours Reclaimed:</span>
-                        <div><span class="metric-before">0 hrs</span> <span class="metric-after">14,000 hrs/yr</span></div>
+                        <span class="metric-lbl">Data Entry Errors</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">8.4%</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">0.02%</span>
+                        </div>
+                    </div>
+                    <div class="metric-comparison-row">
+                        <span class="metric-lbl">Staff Hours Reclaimed</span>
+                        <div class="metric-vals-flex">
+                            <span class="metric-before">0 hrs</span>
+                            <span class="metric-arrow">→</span>
+                            <span class="metric-after">14,000 hrs/yr</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="contact.html" class="btn btn-primary btn-glow">Schedule Case Study Deep Dive →</a>
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="contact.html" class="btn btn-primary btn-glow">Discuss Your Business Challenge →</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
     <!-- Footer Section -->
     <footer class="footer">
         <div class="container footer-container">

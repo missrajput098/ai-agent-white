@@ -13521,6 +13521,855 @@ body.robotics-mode .modal-cta-row {
     border-top-color: rgba(0, 240, 255, 0.2);
 }
 
+/* ==========================================
+   CASE STUDIES PAGE REFINEMENTS
+   ========================================== */
+
+/* Category Filter Bar */
+.cs-filter-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+
+.cs-filter-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-full);
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: none;
+}
+
+.cs-filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.cs-filter-btn {
+    background: transparent;
+    border: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-tech);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #475569;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.cs-filter-btn:hover {
+    color: var(--brand-action);
+    background: rgba(10, 91, 216, 0.05);
+}
+
+.cs-filter-btn.active {
+    background: var(--brand-action);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(10, 91, 216, 0.25);
+}
+
+/* Case Study 2-Column Card Styles */
+.case-study-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(10, 91, 216, 0.12);
+    border-color: rgba(10, 91, 216, 0.3);
+}
+
+@media (max-width: 991px) {
+    .case-study-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+    }
+}
+
+.cs-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.cs-num-badge {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.cs-dot-sep {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+}
+
+.case-study-badge {
+    display: inline-block;
+    background: rgba(10, 91, 216, 0.08);
+    color: var(--brand-action);
+    border: 1px solid rgba(10, 91, 216, 0.2);
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.case-study-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    margin-bottom: 16px;
+    line-height: 1.35;
+}
+
+.cs-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--brand-action);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.cs-challenge-text, .cs-solution-text {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 14px;
+}
+
+.cs-tech-line {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(226, 232, 240, 0.9);
+}
+
+/* Dark Metrics Panel Styling */
+.case-study-metrics-grid {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(30, 41, 59, 0.8);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.metric-comparison-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.metric-comparison-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(51, 65, 85, 0.4);
+}
+
+.metric-comparison-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.metric-lbl {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.metric-vals-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.metric-before {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.15);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.metric-arrow {
+    color: #00f0ff;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.metric-after {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #4ade80;
+    background: rgba(16, 185, 129, 0.15);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* Robotics Mode Overrides for Case Studies */
+body.robotics-mode .cs-filter-bar {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(0, 240, 255, 0.25);
+}
+
+body.robotics-mode .cs-filter-btn {
+    color: #94a3b8;
+}
+
+body.robotics-mode .cs-filter-btn:hover {
+    color: #00f0ff;
+    background: rgba(0, 240, 255, 0.1);
+}
+
+body.robotics-mode .cs-filter-btn.active {
+    background: #00f0ff;
+    color: #030712;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+body.robotics-mode .case-study-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.robotics-mode .case-study-card:hover {
+    border-color: #00f0ff;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+}
+
+body.robotics-mode .case-study-title {
+    color: #ffffff;
+}
+
+body.robotics-mode .cs-challenge-text,
+body.robotics-mode .cs-solution-text {
+    color: #94a3b8;
+}
+
+body.robotics-mode .cs-num-badge,
+body.robotics-mode .cs-section-label,
+body.robotics-mode .cs-tech-line {
+    color: #00f0ff;
+}
+
+body.robotics-mode .case-study-badge {
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+/* ==========================================
+   ABOUT US PAGE REFINEMENTS
+   ========================================== */
+
+/* Company Overview & Principles Grid */
+.about-company-desc {
+    max-width: 780px;
+    margin: 0 auto 40px auto;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.about-principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.principle-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.03);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.principle-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(10, 91, 216, 0.08);
+    border-color: rgba(10, 91, 216, 0.25);
+}
+
+.principle-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: rgba(10, 91, 216, 0.08);
+    color: var(--brand-action);
+    border: 1px solid rgba(10, 91, 216, 0.2);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.principle-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    margin-bottom: 10px;
+}
+
+.principle-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Engineering Team Equal Height & Layout Normalization */
+#team .agents-full-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: stretch;
+}
+
+#team .agent-pod-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.03);
+}
+
+#team .agent-pod-card .agent-avatar-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 3px solid var(--brand-action);
+    box-shadow: 0 0 20px rgba(10, 91, 216, 0.2);
+    flex-shrink: 0;
+}
+
+#team .agent-pod-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    margin-bottom: 4px;
+}
+
+#team .agent-role-badge {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+#team .agent-pod-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* Final About CTA Section */
+.about-cta-box {
+    background: linear-gradient(135deg, rgba(3, 47, 104, 0.04) 0%, rgba(10, 91, 216, 0.08) 100%);
+    border: 1px solid rgba(10, 91, 216, 0.15);
+    border-radius: var(--radius-lg);
+    padding: 56px 36px;
+    text-align: center;
+}
+
+.about-cta-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    margin-bottom: 12px;
+}
+
+.about-cta-desc {
+    max-width: 600px;
+    margin: 0 auto 28px auto;
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Responsive Overrides for About Us */
+@media (max-width: 991px) {
+    .about-principles-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    #team .agents-full-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-cta-box {
+        padding: 40px 20px;
+    }
+    .about-cta-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* Robotics Mode Overrides for About Us */
+body.robotics-mode .principle-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.robotics-mode .principle-badge {
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+body.robotics-mode .principle-title {
+    color: #ffffff;
+}
+
+body.robotics-mode .principle-desc,
+body.robotics-mode .about-company-desc {
+    color: #94a3b8;
+}
+
+body.robotics-mode #team .agent-pod-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(0, 240, 255, 0.25);
+}
+
+body.robotics-mode #team .agent-pod-title {
+    color: #ffffff;
+}
+
+body.robotics-mode #team .agent-role-badge {
+    color: #00f0ff;
+}
+
+body.robotics-mode #team .agent-pod-desc {
+    color: #94a3b8;
+}
+
+body.robotics-mode .about-cta-box {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+body.robotics-mode .about-cta-title {
+    color: #ffffff;
+}
+
+body.robotics-mode .about-cta-desc {
+    color: #94a3b8;
+}
+
+/* Hero Container Overlay Card */
+.studio-hero-card {
+    background: radial-gradient(circle at 50% 0%, rgba(10, 91, 216, 0.06) 0%, rgba(255, 255, 255, 0.95) 75%);
+    border: 1px solid rgba(10, 91, 216, 0.12);
+    border-radius: var(--radius-lg);
+    padding: 48px 32px 36px 32px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.04);
+    margin-bottom: 24px;
+}
+
+.studio-hero-section .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    line-height: 1.25;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+/* Subordinate 4-Step Guide Ribbon */
+.wf-guide-ribbon {
+    opacity: 0.92;
+    border-color: rgba(226, 232, 240, 0.8);
+    background: rgba(248, 250, 252, 0.8);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+}
+
+.wf-guide-step .guide-step-text strong {
+    font-size: 0.82rem;
+    color: #334155;
+}
+
+/* 5-Stage Numbered Steps Progression (Clean Card Layout) */
+.numbered-steps-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.numbered-step-card {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.numbered-step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(10, 91, 216, 0.08);
+    border-color: rgba(10, 91, 216, 0.3);
+}
+
+.numbered-step-card .card-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.numbered-step-card .card-step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.numbered-step-card .step-num-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--brand-action);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-action-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    background: rgba(10, 91, 216, 0.06);
+    border: 1px solid rgba(10, 91, 216, 0.15);
+    color: var(--brand-action);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.step-arrow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Process-Oriented How-It-Works Flow */
+.how-it-works-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 36px 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.03);
+}
+
+.how-nodes-row {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 24px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.how-node-card {
+    flex: 1;
+    min-width: 150px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.how-node-card.outcome-node {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(10, 91, 216, 0.08) 100%);
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+.how-node-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.how-node-title {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--brand-text);
+}
+
+.how-node-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.how-node-list li {
+    font-size: 0.8rem;
+    color: #475569;
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.how-node-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--brand-action);
+}
+
+/* Light Key Benefits Summary Grid */
+.key-benefits-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 18px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.benefit-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(10, 91, 216, 0.08);
+    color: var(--brand-action);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.benefit-text-box h5 {
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: var(--brand-text);
+    margin-bottom: 2px;
+}
+
+.benefit-text-box p {
+    font-size: 0.76rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Premium Final CTA Container */
+.studio-cta-box {
+    background: linear-gradient(135deg, rgba(3, 47, 104, 0.04) 0%, rgba(10, 91, 216, 0.08) 100%);
+    border: 1px solid rgba(10, 91, 216, 0.18);
+    border-radius: var(--radius-lg);
+    padding: 48px;
+    margin-top: 48px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.04);
+}
+
+.studio-cta-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 36px;
+    align-items: center;
+}
+
+.studio-cta-box .cta-banner-img {
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.1);
+    max-height: 240px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Responsive Overrides */
+@media (max-width: 991px) {
+    .studio-hero-section .hero-title {
+        font-size: 2rem;
+    }
+    .numbered-steps-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .step-arrow-connector {
+        transform: rotate(90deg);
+        margin: 4px 0;
+    }
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .studio-cta-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Robotics Mode Overrides for Workflow Studio */
+body.robotics-mode .studio-hero-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(0, 240, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.robotics-mode .numbered-step-card,
+body.robotics-mode .how-it-works-wrapper,
+body.robotics-mode .key-benefits-wrapper,
+body.robotics-mode .how-node-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(0, 240, 255, 0.25);
+}
+
+body.robotics-mode .step-action-tag {
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+body.robotics-mode .step-arrow-connector {
+    color: #00f0ff;
+}
+
+body.robotics-mode .benefit-item {
+    background: rgba(30, 41, 59, 0.7);
+    border-color: rgba(0, 240, 255, 0.2);
+}
+
+body.robotics-mode .benefit-text-box h5,
+body.robotics-mode .how-node-title {
+    color: #ffffff;
+}
+
+body.robotics-mode .benefit-text-box p,
+body.robotics-mode .how-node-list li {
+    color: #94a3b8;
+}
+
+body.robotics-mode .studio-cta-box {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: rgba(0, 240, 255, 0.3);
+}
+
+
 
 
 

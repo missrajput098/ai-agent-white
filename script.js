@@ -2179,6 +2179,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
+    // Case Studies Page Category Filtering
+    // ==========================================
+    const csFilterBtns = document.querySelectorAll('.cs-filter-btn');
+    const csCards = document.querySelectorAll('.case-study-card');
+
+    if (csFilterBtns.length > 0 && csCards.length > 0) {
+        csFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                csFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if (typeof playCyberClick === 'function') {
+                    playCyberClick();
+                }
+
+                const filterVal = btn.getAttribute('data-filter') || 'all';
+
+                csCards.forEach(card => {
+                    const categories = (card.getAttribute('data-category') || '').toLowerCase();
+                    if (filterVal === 'all' || categories.includes(filterVal)) {
+                        card.style.display = 'grid';
+                        card.style.opacity = '1';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // ==========================================
     // Scroll-Driven Sequential Roadmap Reveal Engine
     // ==========================================
     const roadmapSteps = document.querySelectorAll('.roadmap-step-item');
