@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // AI Agents Catalog Category Filter Tabs (ai-agents.html)
+    // AI Agents Catalog Category Filter Tabs & Modal Engine (ai-agents.html)
     // ==========================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const agentPodCards = document.querySelectorAll('.agent-pod-card');
@@ -396,13 +396,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active');
 
                 const filter = btn.getAttribute('data-filter');
+                let visibleCount = 0;
 
                 agentPodCards.forEach(card => {
                     const cat = card.getAttribute('data-category');
+                    card.classList.remove('filtering-in');
+
                     if (filter === 'all' || cat === filter) {
                         card.style.display = 'flex';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0) scale(1)';
+                        card.style.opacity = '0';
+                        const delay = visibleCount * 0.06;
+                        card.style.animationDelay = `${delay}s`;
+                        void card.offsetWidth;
+                        card.classList.add('filtering-in');
+                        visibleCount++;
                     } else {
                         card.style.display = 'none';
                         card.style.opacity = '0';
@@ -411,6 +418,207 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Agent Details Modal Dataset & Interactivity
+    const agentDetailsData = {
+        'leadr-3000': {
+            name: 'LEADR-3000',
+            role: 'Sales Qualifier Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>`,
+            desc: 'LEADR-3000 operates as an autonomous sales representative. It engages incoming inbound leads across web forms, live chat, and email within 10 seconds, conducts dynamic qualification interviews based on your ICP, overcomes common prospect objections, and automatically schedules meetings onto your sales reps calendars.',
+            caps: [
+                'Instant 10-second response latency for incoming inbound leads',
+                'Deep CRM synchronization with HubSpot, Salesforce & Calendly',
+                'Multi-channel outreach via WhatsApp & Email sequences',
+                '3.4x average boost in lead-to-booked demo conversion rate'
+            ],
+            chips: ['HubSpot', 'Salesforce', 'Calendly', 'WhatsApp', 'Email CRM'],
+            workflow: ['LEAD ARRIVES', 'AI UNDERSTANDS', 'AI QUALIFIES', 'CRM UPDATED', 'FOLLOW-UP / BOOKING'],
+            deployUrl: 'contact.html?agent=LEADR-3000'
+        },
+        'supportr-x': {
+            name: 'SUPPORTR-X',
+            role: 'CX Support Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+            desc: 'SUPPORTR-X handles tier 1 through tier 3 customer service requests autonomously 24/7. It connects directly with your Shopify, ERP, or warehouse databases to fetch live order updates, issue refunds, update shipping addresses, and escalate complex edge cases with full context to human agents.',
+            caps: [
+                '24/7 continuous resolution of customer inquiries with zero queue times',
+                'Direct live integration with Zendesk, Gorgias & Shopify admin APIs',
+                '92% First Contact Resolution (FCR) rate across e-commerce support',
+                'Multilingual support supporting over 50+ languages natively'
+            ],
+            chips: ['Zendesk', 'Gorgias', 'Shopify', 'Intercom', 'REST APIs'],
+            workflow: ['INQUIRY IN', 'INTENT & ORDER CHECK', 'KNOWLEDGE SEARCH', 'ACTION (REFUND/UPDATE)', 'RESOLVED 24/7'],
+            deployUrl: 'contact.html?agent=SUPPORTR-X'
+        },
+        'instaguard': {
+            name: 'INSTAGUARD',
+            role: 'Social DM Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+            desc: 'INSTAGUARD monitors your Instagram account for story mentions, comment keyword triggers, and incoming DMs. It immediately engages followers with personalized conversational messages, delivers discount codes, collects email/phone opt-ins, and tracks campaign ROI.',
+            caps: [
+                'Official Meta API compliance for Instagram DMs & comments',
+                'Automated story mention & comment keyword trigger responses',
+                'Human-like natural conversational pacing to prevent spam flags',
+                'Direct opt-in lead collection synced to your email marketing software'
+            ],
+            chips: ['Meta API', 'Instagram DM', 'Shopify', 'Klaviyo'],
+            workflow: ['DM / COMMENT', 'TRIGGER & SENTIMENT', 'OFFER MATCHED', 'AUTO DM SENT', 'OPT-IN SAVED'],
+            deployUrl: 'contact.html?agent=INSTAGUARD'
+        },
+        'dispatch-bot': {
+            name: 'DISPATCH-BOT',
+            role: 'Workflow Ops Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+            desc: 'DISPATCH-BOT handles back-office operational tasks. It parses PDFs, extracts invoice data, performs OCR document verification, syncs cross-tool databases, and alerts team members on Slack or Microsoft Teams when anomalies or bottlenecks occur.',
+            caps: [
+                'Seamless connection with Zapier, Make, and custom webhooks',
+                'Advanced OCR parsing for multi-page invoices & receipts',
+                'Autonomous Slack & Microsoft Teams anomaly notification alerts',
+                'Cross-tool data sync ensuring zero manual data entry errors'
+            ],
+            chips: ['Zapier', 'Make', 'Slack', 'Teams', 'Webhooks'],
+            workflow: ['DOC / WEBHOOK', 'OCR & PARSING', 'DATA VALIDATION', 'WORKFLOW EXECUTION', 'SLACK / CRM SYNC'],
+            deployUrl: 'contact.html?agent=DISPATCH-BOT'
+        },
+        'voice-nexus': {
+            name: 'VOICE-NEXUS',
+            role: 'AI Phone Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+            desc: 'VOICE-NEXUS is an ultra-low latency sub-second voice AI agent designed for phone interactions. It places outbound appointment confirmation calls, handles inbound phone dispatch, transfers calls to live agents when necessary, and logs structured transcripts directly into your CRM.',
+            caps: [
+                'Sub-second ultra-low latency conversational voice pipeline',
+                'Twilio & Retell AI integration with ultra-realistic human voices',
+                'Intelligent call transfer logic to human representatives',
+                'Automatic audio transcription & summary logging to CRM'
+            ],
+            chips: ['Twilio', 'Retell AI', 'Phone API', 'HubSpot'],
+            workflow: ['PHONE CALL', 'SPEECH-TO-TEXT', 'INTENT LOGIC', 'HUMAN VOICE SYNT', 'CALL LOGGED'],
+            deployUrl: 'contact.html?agent=VOICE-NEXUS'
+        },
+        'dataflex': {
+            name: 'DATAFLEX',
+            role: 'Enterprise SQL Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+            desc: 'DATAFLEX connects to your enterprise database warehouse (Postgres, Snowflake, BigQuery) and vector search store. Executive team members can ask plain English questions, and DATAFLEX safely translates intent into validated SQL queries to return instant charts and tables.',
+            caps: [
+                'Enterprise RAG vector search & database architecture',
+                'Strict zero data leakage & read-only safety permissions',
+                'Instant conversion of natural language prompts to complex SQL',
+                'Automated executive reporting & chart generation'
+            ],
+            chips: ['Postgres', 'Snowflake', 'Vector DB', 'BigQuery'],
+            workflow: ['NL QUESTION', 'SCHEMA & RAG LOOKUP', 'SECURE SQL GEN', 'QUERY RUN', 'INSIGHT REPORT'],
+            deployUrl: 'contact.html?agent=DATAFLEX'
+        }
+    };
+
+    const modalOverlay = document.getElementById('agentModalOverlay');
+    const modalCloseBtn = document.getElementById('agentModalClose');
+    const viewDetailsBtns = document.querySelectorAll('.view-agent-details-btn');
+
+    function openAgentModal(agentKey) {
+        const data = agentDetailsData[agentKey];
+        if (!data || !modalOverlay) return;
+
+        document.getElementById('modalAgentIcon').innerHTML = data.icon;
+        document.getElementById('modalAgentStatus').innerHTML = `<span class="status-pulse-dot"></span> ${data.status}`;
+        document.getElementById('modalAgentName').innerText = data.name;
+        document.getElementById('modalAgentRole').innerText = data.role;
+        document.getElementById('modalAgentDesc').innerText = data.desc;
+
+        // Populate capabilities
+        const capsList = document.getElementById('modalAgentCaps');
+        capsList.innerHTML = '';
+        data.caps.forEach(cap => {
+            const li = document.createElement('li');
+            li.className = 'modal-cap-item';
+            li.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ${cap}`;
+            capsList.appendChild(li);
+        });
+
+        // Populate chips
+        const chipsWrapper = document.getElementById('modalAgentChips');
+        chipsWrapper.innerHTML = '';
+        data.chips.forEach(chip => {
+            const span = document.createElement('span');
+            span.className = 'integration-chip';
+            span.innerText = chip;
+            chipsWrapper.appendChild(span);
+        });
+
+        // Populate workflow pipeline
+        const wfWrapper = document.getElementById('modalAgentWorkflow');
+        wfWrapper.innerHTML = '';
+        data.workflow.forEach((stepText, idx) => {
+            const stepChip = document.createElement('div');
+            stepChip.className = 'wf-step-chip';
+            stepChip.innerHTML = `<span>${stepText}</span>`;
+            wfWrapper.appendChild(stepChip);
+
+            if (idx < data.workflow.length - 1) {
+                const arrow = document.createElement('span');
+                arrow.className = 'wf-arrow';
+                arrow.innerHTML = '↓';
+                wfWrapper.appendChild(arrow);
+            }
+        });
+
+        // Update CTA link
+        const deployBtn = document.getElementById('modalDeployBtn');
+        if (deployBtn) {
+            deployBtn.setAttribute('href', data.deployUrl);
+        }
+
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Animate workflow chips sequentially
+        const stepChips = wfWrapper.querySelectorAll('.wf-step-chip');
+        stepChips.forEach((chip, index) => {
+            setTimeout(() => {
+                chip.classList.add('active-step');
+            }, index * 200);
+        });
+    }
+
+    function closeAgentModal() {
+        if (!modalOverlay) return;
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    viewDetailsBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const agentKey = btn.getAttribute('data-agent');
+            openAgentModal(agentKey);
+        });
+    });
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeAgentModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeAgentModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+            closeAgentModal();
+        }
+    });
 
     // ==========================================
     // Futuristic Preloader Animation
@@ -489,88 +697,575 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // Hero Scroll Image Sequence
+    // 3D Isometric Brand Theme Floating Boxes Automation Engine
     // ==========================================
-    const scrollTrack = document.querySelector('.hero-scroll-track');
-    const img1 = document.getElementById('heroImg1');
-    const img2 = document.getElementById('heroImg2');
-    const img3 = document.getElementById('heroImg3');
-
-    function handleHeroScrollSequence() {
-        if (!scrollTrack || !img1 || !img2 || !img3) return;
-
-        const rect = scrollTrack.getBoundingClientRect();
-        const trackHeight = scrollTrack.offsetHeight - window.innerHeight;
-        if (trackHeight <= 0) return;
-
-        const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 1);
-
-        if (progress < 0.33) {
-            img1.classList.add('active');
-            img2.classList.remove('active');
-            img3.classList.remove('active');
-        } else if (progress >= 0.33 && progress < 0.66) {
-            img1.classList.remove('active');
-            img2.classList.add('active');
-            img3.classList.remove('active');
-        } else {
-            img1.classList.remove('active');
-            img2.classList.remove('active');
-            img3.classList.add('active');
+    const heroBoxes3DData = {
+        instagram: {
+            boxes: [
+                {
+                    title: "01 // BUILD & TRIGGER",
+                    badge: "AUTOMATION",
+                    nodes: [
+                        { icon: "⚡", label: "Trigger", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ACCELERATE & DRAFT",
+                    badge: "CONTENT",
+                    nodes: [
+                        { icon: "✍️", label: "Create Content", dotClass: "green-dot" },
+                        { icon: "🏷️", label: "Caption AI", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // SCALE & PUBLISH",
+                    badge: "INSTAGRAM",
+                    nodes: [
+                        { icon: "🎨", label: "Create Image", dotClass: "pink-dot" },
+                        { icon: "📸", label: "Publish", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        whatsapp: {
+            boxes: [
+                {
+                    title: "01 // INBOUND & TRIAGE",
+                    badge: "SUPPORT",
+                    nodes: [
+                        { icon: "💬", label: "Incoming Message", dotClass: "green-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // CONTEXT & REPLY",
+                    badge: "LLM RAG",
+                    nodes: [
+                        { icon: "🔍", label: "Understand", dotClass: "pink-dot" },
+                        { icon: "🤖", label: "Generate Reply", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // REVIEW & DISPATCH",
+                    badge: "WHATSAPP",
+                    nodes: [
+                        { icon: "👤", label: "Human Review", dotClass: "green-dot" },
+                        { icon: "📲", label: "Send Reply", dotClass: "pink-dot" }
+                    ]
+                }
+            ]
+        },
+        leads: {
+            boxes: [
+                {
+                    title: "01 // CAPTURE & QUALIFY",
+                    badge: "LEAD GEN",
+                    nodes: [
+                        { icon: "🌐", label: "New Lead", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ENRICH & SCORE",
+                    badge: "CLEARBIT",
+                    nodes: [
+                        { icon: "📊", label: "Qualify", dotClass: "green-dot" },
+                        { icon: "⭐", label: "Score Fit", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // CRM & HANDOFF",
+                    badge: "SALESFORCE",
+                    nodes: [
+                        { icon: "🔄", label: "CRM Sync", dotClass: "pink-dot" },
+                        { icon: "🤝", label: "Follow-up", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        email: {
+            boxes: [
+                {
+                    title: "01 // INBOUND MAIL",
+                    badge: "INBOX",
+                    nodes: [
+                        { icon: "📧", label: "Inbound Email", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // CLASSIFY & DRAFT",
+                    badge: "PARSER",
+                    nodes: [
+                        { icon: "✍️", label: "Draft Reply", dotClass: "green-dot" },
+                        { icon: "📁", label: "Categorize", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // DISPATCH & COMPLETE",
+                    badge: "SENDGRID",
+                    nodes: [
+                        { icon: "📤", label: "Dispatch Mail", dotClass: "pink-dot" },
+                        { icon: "🎉", label: "Inbox Zero", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        sales: {
+            boxes: [
+                {
+                    title: "01 // DEMO SIGNAL",
+                    badge: "ZOOM AI",
+                    nodes: [
+                        { icon: "🎥", label: "Demo Call", dotClass: "pink-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // PROPOSAL & QUOTE",
+                    badge: "DECK AI",
+                    nodes: [
+                        { icon: "📄", label: "Generate Quote", dotClass: "green-dot" },
+                        { icon: "📨", label: "Send Follow-up", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // NUDGE & CLOSE",
+                    badge: "WON DEAL",
+                    nodes: [
+                        { icon: "⏰", label: "Set Nudge", dotClass: "pink-dot" },
+                        { icon: "🏆", label: "Deal Closed", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        analytics: {
+            boxes: [
+                {
+                    title: "01 // CRON & PIPELINE",
+                    badge: "AUDIT",
+                    nodes: [
+                        { icon: "⏱️", label: "Scheduled Cron", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // LOGS & INSIGHTS",
+                    badge: "ROI METRICS",
+                    nodes: [
+                        { icon: "📈", label: "Audit Logs", dotClass: "green-dot" },
+                        { icon: "✨", label: "AI Insights", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // HUD & BROADCAST",
+                    badge: "REPORT",
+                    nodes: [
+                        { icon: "📊", label: "Build HUD", dotClass: "pink-dot" },
+                        { icon: "📡", label: "Executive Push", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        content: {
+            boxes: [
+                {
+                    title: "01 // PROMPT & STRATEGY",
+                    badge: "IDEATION",
+                    nodes: [
+                        { icon: "💡", label: "Prompt Input", dotClass: "cyan-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "pink-dot" }
+                    ]
+                },
+                {
+                    title: "02 // RESEARCH & DRAFT",
+                    badge: "COPYWRITING",
+                    nodes: [
+                        { icon: "🔎", label: "Research", dotClass: "green-dot" },
+                        { icon: "📝", label: "Draft Copy", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // VISUALS & SYNC",
+                    badge: "DALL-E 3",
+                    nodes: [
+                        { icon: "🖼️", label: "Visual Engine", dotClass: "pink-dot" },
+                        { icon: "🚀", label: "Publish & Sync", dotClass: "green-dot" }
+                    ]
+                }
+            ]
+        },
+        crm: {
+            boxes: [
+                {
+                    title: "01 // WEBHOOK & TRIAGE",
+                    badge: "HUBSPOT",
+                    nodes: [
+                        { icon: "🔔", label: "Webhook Event", dotClass: "pink-dot" },
+                        { icon: "🧠", label: "AI Agent", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "02 // ASSIGN & ENRICH",
+                    badge: "CLEARBIT",
+                    nodes: [
+                        { icon: "🎯", label: "Assign Rep", dotClass: "green-dot" },
+                        { icon: "📞", label: "Enrich Contact", dotClass: "cyan-dot" }
+                    ]
+                },
+                {
+                    title: "03 // SLACK & PIPELINE",
+                    badge: "AUTOMATED",
+                    nodes: [
+                        { icon: "📢", label: "Slack Alert", dotClass: "pink-dot" },
+                        { icon: "⚡", label: "Pipeline Sync", dotClass: "green-dot" }
+                    ]
+                }
+            ]
         }
-    }
+    };
 
-    // ==========================================
-    // AI Solutions Sticky Scroll Feature Showcase
-    // ==========================================
-    const solTrack = document.querySelector('.solutions-scroll-track');
-    const solStages = document.querySelectorAll('.sol-step-stage');
-    const stepNavBtns = document.querySelectorAll('.step-nav-btn');
+    function initHero3DBoxesEngine() {
+        const trackEl = document.getElementById('boxes3DTrack');
+        const badges = document.querySelectorAll('.floating-badge');
 
-    function handleSolutionsScrollSequence() {
-        if (!solTrack || solStages.length === 0) return;
+        if (!trackEl) return;
 
-        const rect = solTrack.getBoundingClientRect();
-        const trackHeight = solTrack.offsetHeight - window.innerHeight;
-        if (trackHeight <= 0) return;
+        let activeServiceKey = 'instagram';
+        let animationTimers = [];
+        let boxElements = [];
 
-        const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 0.999);
-        const stepIndex = Math.floor(progress * solStages.length);
+        function clearTimers() {
+            animationTimers.forEach(t => clearTimeout(t));
+            animationTimers = [];
+        }
 
-        solStages.forEach((stage, idx) => {
-            if (idx === stepIndex) {
-                stage.classList.add('active');
+        function updateBadgeHighlight(wfKey) {
+            badges.forEach(b => {
+                const bWf = b.getAttribute('data-workflow');
+                if (bWf === wfKey) {
+                    b.classList.add('active-wf');
+                } else {
+                    b.classList.remove('active-wf');
+                }
+            });
+        }
+
+        function switchService(newKey) {
+            clearTimers();
+
+            // Smooth exit current 3D boxes
+            if (boxElements.length > 0) {
+                boxElements.forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform += ' translateY(40px) scale(0.85)';
+                    el.style.transition = 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+
+                animationTimers.push(setTimeout(() => {
+                    runSequentialBoxAnimation(newKey);
+                }, 350));
             } else {
-                stage.classList.remove('active');
+                runSequentialBoxAnimation(newKey);
             }
-        });
+        }
 
-        stepNavBtns.forEach((btn, idx) => {
-            if (idx === stepIndex) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
+        function runSequentialBoxAnimation(serviceKey) {
+            clearTimers();
+            activeServiceKey = serviceKey;
+            updateBadgeHighlight(serviceKey);
 
-    stepNavBtns.forEach((btn, idx) => {
-        btn.addEventListener('click', () => {
-            if (!solTrack) return;
-            const trackTop = solTrack.offsetTop;
-            const trackHeight = solTrack.offsetHeight - window.innerHeight;
-            const targetScroll = trackTop + (trackHeight * (idx / solStages.length)) + 10;
-            window.scrollTo({
-                top: targetScroll,
-                behavior: 'smooth'
+            trackEl.innerHTML = '';
+            boxElements = [];
+
+            const serviceData = heroBoxes3DData[serviceKey] || heroBoxes3DData.instagram;
+            const boxes = serviceData.boxes;
+
+            // Sequential timing config
+            const boxInterval = 2300; // time between box entries
+
+            boxes.forEach((boxData, boxIdx) => {
+                animationTimers.push(setTimeout(() => {
+                    // Step A & B: Create 3D Purple Box & Drop In from Above
+                    const boxEl = document.createElement('div');
+                    boxEl.className = `box-3d-item box-entering ${boxIdx === 0 ? 'active-box' : ''}`;
+
+                    const topOffset = boxIdx * 115;
+                    const scaleVal = (1 - boxIdx * 0.04).toFixed(3);
+                    const zVal = -boxIdx * 30;
+                    const rotXVal = 24;
+                    const rotYVal = -18;
+
+                    boxEl.style.top = `${topOffset}px`;
+                    boxEl.style.transform = `translateY(0px) rotateX(${rotXVal}deg) rotateY(${rotYVal}deg) scale(${scaleVal}) translateZ(${zVal}px)`;
+                    boxEl.style.zIndex = 30 - boxIdx;
+
+                    boxEl.innerHTML = `
+                        <div class="box-3d-header" id="boxHeader_${boxIdx}">
+                            <span class="box-3d-title">${boxData.title}</span>
+                            <span class="box-3d-badge">${boxData.badge}</span>
+                        </div>
+                        <div class="box-nodes-container" id="boxNodes_${boxIdx}">
+                            <svg class="box-flow-svg" viewBox="0 0 100 12" preserveAspectRatio="none">
+                                <path d="M 10 6 L 90 6" class="box-flow-line" id="flowLine_${boxIdx}"></path>
+                            </svg>
+                            <div class="mini-node-pill" id="nodeA_${boxIdx}">
+                                <span class="mini-node-dot ${boxData.nodes[0].dotClass}"></span>
+                                <span class="mini-node-label">${boxData.nodes[0].icon} ${boxData.nodes[0].label}</span>
+                            </div>
+                            <div class="mini-node-pill" id="nodeB_${boxIdx}">
+                                <span class="mini-node-dot ${boxData.nodes[1].dotClass}"></span>
+                                <span class="mini-node-label">${boxData.nodes[1].icon} ${boxData.nodes[1].label}</span>
+                            </div>
+                        </div>
+                    `;
+
+                    trackEl.appendChild(boxEl);
+                    boxElements.push(boxEl);
+
+                    if (typeof playCyberBeep === 'function') {
+                        playCyberBeep(650 + boxIdx * 80, 0.03);
+                    }
+
+                    // Step C: Header Title Appears (T + 380ms)
+                    animationTimers.push(setTimeout(() => {
+                        const headerEl = boxEl.querySelector(`#boxHeader_${boxIdx}`);
+                        if (headerEl) headerEl.classList.add('title-visible');
+                    }, 380));
+
+                    // Step D: Node 1 Appears (T + 750ms)
+                    animationTimers.push(setTimeout(() => {
+                        const nodeA = boxEl.querySelector(`#nodeA_${boxIdx}`);
+                        if (nodeA) nodeA.classList.add('node-visible');
+                    }, 750));
+
+                    // Step D2: Connecting Line Draws (T + 1150ms)
+                    animationTimers.push(setTimeout(() => {
+                        const flowLine = boxEl.querySelector(`#flowLine_${boxIdx}`);
+                        if (flowLine) flowLine.classList.add('line-drawn');
+                    }, 1150));
+
+                    // Step D3: Node 2 Appears (T + 1500ms)
+                    animationTimers.push(setTimeout(() => {
+                        const nodeB = boxEl.querySelector(`#nodeB_${boxIdx}`);
+                        if (nodeB) nodeB.classList.add('node-visible');
+                    }, 1500));
+
+                }, boxIdx * boxInterval));
+            });
+
+            // Step F: Infinite Loop Reset after all boxes arrive & complete
+            const totalDuration = boxes.length * boxInterval + 2600;
+            animationTimers.push(setTimeout(() => {
+                switchService(serviceKey);
+            }, totalDuration));
+        }
+
+        // Bind Floating Pill Buttons
+        badges.forEach(badge => {
+            badge.addEventListener('click', (e) => {
+                e.preventDefault();
+                const wfKey = badge.getAttribute('data-workflow');
+                if (wfKey && heroBoxes3DData[wfKey]) {
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                    switchService(wfKey);
+                }
             });
         });
-    });
 
-    window.addEventListener('scroll', () => {
-        handleHeroScrollSequence();
-        handleSolutionsScrollSequence();
-    });
+        // Start default flow (Instagram)
+        runSequentialBoxAnimation('instagram');
+    }
+
+    initHero3DBoxesEngine();
+
+    // ==========================================
+    // Live Stats Section Count-Up Observer (SECTION 2)
+    // ==========================================
+    function initStatsCounterEngine() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        if (statNumbers.length === 0) return;
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetEl = entry.target;
+                    const targetVal = parseFloat(targetEl.getAttribute('data-target'));
+                    if (isNaN(targetVal)) return;
+
+                    let current = 0;
+                    const duration = 1400;
+                    const stepTime = 25;
+                    const steps = duration / stepTime;
+                    const increment = targetVal / steps;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= targetVal) {
+                            current = targetVal;
+                            clearInterval(timer);
+                        }
+                        if (Number.isInteger(targetVal)) {
+                            targetEl.innerText = Math.floor(current);
+                        } else {
+                            targetEl.innerText = current.toFixed(1);
+                        }
+                    }, stepTime);
+
+                    obs.unobserve(targetEl);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(num => observer.observe(num));
+    }
+    initStatsCounterEngine();
+
+    // ==========================================
+    // Connected Visual Pipeline Sequential Node Activation (SECTION 3)
+    // ==========================================
+    function initPipelineFlowEngine() {
+        const pipelineTrack = document.getElementById('visualPipelineTrack');
+        if (!pipelineTrack) return;
+
+        const nodes = pipelineTrack.querySelectorAll('.pipeline-step-node');
+        let currentNodeIdx = 0;
+
+        setInterval(() => {
+            nodes.forEach((node, idx) => {
+                if (idx === currentNodeIdx) {
+                    node.classList.add('active');
+                } else {
+                    node.classList.remove('active');
+                }
+            });
+            currentNodeIdx = (currentNodeIdx + 1) % nodes.length;
+        }, 2200);
+    }
+    initPipelineFlowEngine();
+
+    // ==========================================
+    // AI Capability Showcase Split Workspace Engine (SECTION 5)
+    // ==========================================
+    const capabilityData = {
+        create: {
+            title: "AI Content & Media Generation Engine",
+            tag: "CREATION PIPELINE",
+            nodes: [
+                { icon: "💡", label: "Idea" },
+                { icon: "🧠", label: "AI Agent" },
+                { icon: "⚙️", label: "Generate" },
+                { icon: "🚀", label: "Publish" }
+            ],
+            status: "Generating Instagram post copy, graphic visual, and hashtag suite...",
+            progress: "100%"
+        },
+        automate: {
+            title: "Autonomous Workflow Automation Hub",
+            tag: "AUTOMATION ENGINE",
+            nodes: [
+                { icon: "⚡", label: "Trigger" },
+                { icon: "🧠", label: "AI Agent" },
+                { icon: "🔀", label: "Decision" },
+                { icon: "⚙️", label: "Action" }
+            ],
+            status: "Synchronizing API payloads & executing background Celery job...",
+            progress: "100%"
+        },
+        analyze: {
+            title: "Predictive Analytics & Intelligence Engine",
+            tag: "BUSINESS INTELLIGENCE",
+            nodes: [
+                { icon: "📊", label: "Data" },
+                { icon: "🔎", label: "AI Analysis" },
+                { icon: "💡", label: "Insights" },
+                { icon: "📈", label: "Report" }
+            ],
+            status: "Synthesizing 45k data records into executive revenue forecast...",
+            progress: "100%"
+        },
+        sell: {
+            title: "Sales Lead Qualification & Conversion Pipeline",
+            tag: "LEAD CONVERSION",
+            nodes: [
+                { icon: "🎯", label: "Lead" },
+                { icon: "⭐", label: "Qualification" },
+                { icon: "📨", label: "Follow-up" },
+                { icon: "🔄", label: "CRM" }
+            ],
+            status: "Prospect scored 96/100 (Enterprise fit) — Calendly invite dispatched.",
+            progress: "100%"
+        },
+        support: {
+            title: "24/7 AI Customer Care & Support Pod",
+            tag: "SUPPORT ENGINE",
+            nodes: [
+                { icon: "💬", label: "Message" },
+                { icon: "🧠", label: "Understand" },
+                { icon: "🤖", label: "Reply" },
+                { icon: "✅", label: "Resolve" }
+            ],
+            status: "Inquiry resolved in 1.4s with 99.8% customer satisfaction score.",
+            progress: "100%"
+        }
+    };
+
+    function initCapShowcaseEngine() {
+        const tabBtns = document.querySelectorAll('.cap-tab-btn');
+        const stageEl = document.getElementById('capWorkspaceStage');
+
+        if (!stageEl || tabBtns.length === 0) return;
+
+        function renderCapabilityFlow(capKey) {
+            const data = capabilityData[capKey] || capabilityData.create;
+
+            let nodesHtml = data.nodes.map((node, idx) => `
+                <div class="cap-node-card" style="animation-delay: ${idx * 0.08}s">
+                    <span class="cap-node-icon">${node.icon}</span>
+                    <span class="cap-node-label">${node.label}</span>
+                </div>
+                ${idx < data.nodes.length - 1 ? '<span class="cap-arrow-sep">→</span>' : ''}
+            `).join('');
+
+            stageEl.innerHTML = `
+                <div class="cap-flow-display">
+                    <div class="cap-flow-header">
+                        <h3 class="cap-flow-title">${data.title}</h3>
+                        <span class="box-3d-badge">${data.tag}</span>
+                    </div>
+
+                    <div class="cap-flow-nodes-row">
+                        ${nodesHtml}
+                    </div>
+
+                    <div class="cap-execution-preview">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span class="status-dot green-pulse"></span>
+                            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${data.status}</span>
+                        </div>
+                        <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--brand-action);">${data.progress}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const capKey = btn.getAttribute('data-cap');
+                if (typeof playCyberClick === 'function') playCyberClick();
+                renderCapabilityFlow(capKey);
+            });
+        });
+
+        // Render initial default tab (CREATE)
+        renderCapabilityFlow('create');
+    }
+
+    initCapShowcaseEngine();
 
     // ==========================================
     // Fullscreen Constellation Particle Canvas
@@ -942,6 +1637,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculateROISavings();
 
+    // Solutions Page ROI Telemetry Calculator Engine (solutions.html)
+    const solTeamSlider = document.getElementById('teamSizeSlider');
+    const solSalarySlider = document.getElementById('avgSalarySlider');
+    const solHoursSlider = document.getElementById('hoursTaskSlider');
+
+    const solTeamVal = document.getElementById('teamSizeVal');
+    const solSalaryVal = document.getElementById('avgSalaryVal');
+    const solHoursVal = document.getElementById('hoursTaskVal');
+
+    const solAnnualSavings = document.getElementById('annualSavingsVal');
+    const solHoursSaved = document.getElementById('hoursSavedVal');
+    const solSpeedUpVal = document.getElementById('speedUpVal');
+    const solSpeedVal = document.getElementById('roiSpeedVal');
+
+    let currentSavingsDisplay = 152100;
+
+    function animateROINumber(element, startVal, endVal, prefix = '$', suffix = '') {
+        if (!element) return;
+        const duration = 200;
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.round(startVal + (endVal - startVal) * progress);
+            element.innerText = `${prefix}${current.toLocaleString()}${suffix}`;
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    function updateSolutionsROI() {
+        if (!solTeamSlider || !solSalarySlider || !solHoursSlider) return;
+
+        const team = parseInt(solTeamSlider.value);
+        const salary = parseInt(solSalarySlider.value);
+        const hoursPerWeek = parseInt(solHoursSlider.value);
+
+        if (solTeamVal) solTeamVal.innerText = `${team} People`;
+        if (solSalaryVal) solSalaryVal.innerText = `$${salary.toLocaleString()}/yr`;
+        if (solHoursVal) solHoursVal.innerText = `${hoursPerWeek} hrs/wk`;
+
+        const hourlyRate = salary / 2000;
+        const weeklyHoursSavedTotal = team * hoursPerWeek * 0.65;
+        const annualHoursSavedTotal = Math.round(weeklyHoursSavedTotal * 52);
+        const annualGrossSavings = Math.round(annualHoursSavedTotal * hourlyRate);
+
+        if (solAnnualSavings) {
+            animateROINumber(solAnnualSavings, currentSavingsDisplay, annualGrossSavings, '$');
+            currentSavingsDisplay = annualGrossSavings;
+        }
+
+        if (solHoursSaved) {
+            solHoursSaved.innerText = `${annualHoursSavedTotal.toLocaleString()} hrs/yr`;
+        }
+
+        if (solSpeedUpVal) {
+            const speedUpMult = (1 + (hoursPerWeek / 40) * 7.5).toFixed(1);
+            solSpeedUpVal.innerText = `${speedUpMult}x`;
+        }
+
+        if (solSpeedVal) {
+            const weeksPayback = Math.max(1, Math.round(10 / Math.sqrt(team)));
+            solSpeedVal.innerText = `${weeksPayback} ${weeksPayback === 1 ? 'Week' : 'Weeks'}`;
+        }
+    }
+
+    if (solTeamSlider && solSalarySlider && solHoursSlider) {
+        [solTeamSlider, solSalarySlider, solHoursSlider].forEach(slider => {
+            slider.addEventListener('input', updateSolutionsROI);
+        });
+        updateSolutionsROI();
+    }
+
     // ==========================================
     // Portfolio Category Filtering & Live Search Engine
     // ==========================================
@@ -953,6 +1724,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeBtn = document.querySelector('#portfolioFilterBar .filter-btn.active');
         const filterVal = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
         const searchQuery = portfolioSearchInput ? portfolioSearchInput.value.toLowerCase().trim() : '';
+        const emptyStateEl = document.getElementById('portfolioEmptyState');
+        let visibleCount = 0;
 
         portfolioCardItems.forEach(card => {
             const categories = card.getAttribute('data-category') || '';
@@ -963,12 +1736,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = !searchQuery || cardText.includes(searchQuery) || cardTags.includes(searchQuery);
 
             if (matchesCategory && matchesSearch) {
-                card.style.display = 'flex';
+                card.style.display = (card.classList.contains('featured-build-card') || card.querySelector('.featured-build-card')) ? 'block' : 'flex';
                 card.style.opacity = '1';
+                visibleCount++;
             } else {
                 card.style.display = 'none';
             }
         });
+
+        if (emptyStateEl) {
+            if (visibleCount === 0) {
+                emptyStateEl.style.display = 'block';
+            } else {
+                emptyStateEl.style.display = 'none';
+            }
+        }
     }
 
     if (portfolioFilterBtns.length > 0 && portfolioCardItems.length > 0) {
@@ -988,42 +1770,114 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Architecture Specifications Modal Logic
+    // ==========================================
+    // Dynamic Reusable Case Study Detail Modal Engine
+    // ==========================================
     const archModalOverlay = document.getElementById('archModalOverlay');
     const archModalBody = document.getElementById('archModalBody');
-    const closeArchModal = document.getElementById('closeArchModal');
-    const openArchBtns = document.querySelectorAll('.open-arch-modal');
 
     const projectSpecsData = {
         instaguard: {
-            title: 'INSTAGUARD 360 — Architecture & Workflow Specs',
-            badge: 'INSTAGRAM & SHOPIFY BOT',
+            badge: 'SOCIAL & COMMERCE',
+            title: 'INSTAGUARD 360 — Instagram & Shopify Agent',
+            desc: 'Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>@shop_luxe_ai • Instagram DM</span><span class="ui-pill-success">LIVE API</span></div>
+                    <div class="ui-chat-bubble">Hi! Is Cyber Hoodie size M in stock?</div>
+                    <div class="ui-chat-reply">⚡ 14 in stock! Code INSTA15 gets 15% off: shopluxe.ai/m</div>
+                </div>
+            `,
+            metrics: [
+                { val: '40k+', lbl: 'DMs / Month' },
+                { val: '12s', lbl: 'Avg Response' },
+                { val: '+38%', lbl: 'Conv Rate Lift' },
+                { val: '99.4%', lbl: 'Order Accuracy' }
+            ],
+            workflow: ['Customer DM Inquiry', 'AI Intent Engine', 'Shopify API Check', 'Instant DM Reply', 'CRM Logged'],
+            chips: ['Python', 'Meta Graph API', 'Shopify REST', 'OpenAI GPT-4o', 'Redis Cache'],
             specs: [
                 { label: 'Neural Engine', val: 'OpenAI GPT-4o + Custom Fine-Tuned Prompt Pipeline' },
                 { label: 'Primary Webhooks', val: 'Meta Graph API v19.0 (Instagram DMs & Comments)' },
-                { label: 'Commerce Integration', val: 'Shopify Admin REST API + Webhooks (Live Inventory & Orders)' },
+                { label: 'Commerce Integration', val: 'Shopify Admin REST API + Webhooks (Live Stock & Orders)' },
                 { label: 'Database & Caching', val: 'Redis Cloud Cache (Sub-5ms Session State)' },
-                { label: 'Execution Speed', val: '12 Seconds Average Full-Resolution Cycle' },
-                { label: 'Security Protocols', val: 'HMAC Signature Verification & AES-256 Token Encryption' }
+                { label: 'Execution Speed', val: '12 Seconds Average Resolution Cycle' },
+                { label: 'Security Protocols', val: 'HMAC Signature Verification & AES-256 Encryption' }
             ],
-            desc: 'This build monitors incoming Instagram Direct Messages and comment threads. Upon receiving a product or order status inquiry, the agent extracts order IDs or product keywords, verifies user authorization, calls Shopify APIs for live stock or shipping tracking, and constructs a human-like response with tracking links and promo codes.'
+            impact: {
+                before: [
+                    'Manual IG DM replies taking 6+ hours',
+                    'High abandoned cart rates on social inquiries',
+                    'Zero inventory cross-checking available'
+                ],
+                after: [
+                    'Instant 12-second automated responses 24/7',
+                    '+38% increase in social checkout conversion',
+                    'Real-time live Shopify inventory sync'
+                ]
+            },
+            ctaUrl: 'contact.html?project=INSTAGUARD-360'
         },
         pipelinemax: {
-            title: 'PIPELINE-MAX — Architecture & Workflow Specs',
-            badge: 'SALES QUALIFICATION BOT',
+            badge: 'SALES & CRM',
+            title: 'PIPELINE-MAX — Enterprise B2B Lead Qualification Agent',
+            desc: 'Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>SALESFORCE BANT EVALUATOR</span><span class="ui-pill-success">AUTO-PILOT</span></div>
+                    <div class="ui-score-badge"><span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">TechCorp (250 Staff)</span><span style="font-family:var(--font-hud); font-size:0.9rem; font-weight:800; color:var(--brand-action);">98 / 100</span></div>
+                    <div style="font-family:var(--font-mono); font-size:0.7rem; color:#475569;">✓ Budget & Decision Maker Verified • Demo Booked</div>
+                </div>
+            `,
+            metrics: [
+                { val: '98/100', lbl: 'Lead Fit Score' },
+                { val: '14ms', lbl: 'Inference Latency' },
+                { val: '10x', lbl: 'Booked Demos' },
+                { val: '100%', lbl: 'Salesforce Sync' }
+            ],
+            workflow: ['Web Form Submission', 'Apollo Profile Enrichment', 'BANT AI Scoring (0-100)', 'Calendly Meeting Booking', 'Salesforce Opportunity Logged'],
+            chips: ['Salesforce CRM', 'Apollo API', 'Calendly API', 'Node.js', 'OAuth 2.0'],
             specs: [
                 { label: 'Core Classifier', val: 'BANT (Budget, Authority, Need, Timeline) Neural Scoring' },
                 { label: 'Enrichment API', val: 'Apollo REST API + LinkedIn Company Scraper' },
                 { label: 'CRM Synchronization', val: 'Salesforce Enterprise REST & Bulk API 2.0' },
                 { label: 'Scheduling Engine', val: 'Calendly API v2 Webhook Handler' },
                 { label: 'Execution Speed', val: '14ms Response & Scoring Latency' },
-                { label: 'Security Protocols', val: 'OAuth 2.0 Mutual TLS & Enterprise Encrypted Vault' }
+                { label: 'Security Protocols', val: 'OAuth 2.0 Mutual TLS & Enterprise Vault' }
             ],
-            desc: 'PIPELINE-MAX processes inbound web demo requests instantly. It enriches the lead profile against Apollo.io to retrieve company revenue, headcount, and tech stack. The neural classifier assigns a BANT score (0-100). Leads scoring > 80 automatically receive a calendar booking link and are logged into Salesforce with full transcript telemetry.'
+            impact: {
+                before: [
+                    'Leads sitting untouched for 24+ hours',
+                    'Unqualified leads wasting sales reps demo calls',
+                    'Manual CRM data entry friction'
+                ],
+                after: [
+                    'Sub-second instant lead enrichment & scoring',
+                    '10x increase in qualified meetings booked',
+                    '100% automated Salesforce profile logging'
+                ]
+            },
+            ctaUrl: 'contact.html?project=PIPELINE-MAX'
         },
         supportrx: {
-            title: 'SUPPORTR-X — Architecture & Workflow Specs',
-            badge: 'OMNICHANNEL SUPPORT POD',
+            badge: 'SUPPORT & CX',
+            title: 'SUPPORTR-X — Fintech Omnichannel Support Pod',
+            desc: 'Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>AUTH0 & PINECONE VECTOR</span><span class="ui-pill-success">24/7 SUPPORT</span></div>
+                    <div class="ui-chat-bubble">Need to rotate API token & upgrade plan</div>
+                    <div class="ui-chat-reply">✓ Auth0 Verified • Token rotated & Zendesk #8492 resolved</div>
+                </div>
+            `,
+            metrics: [
+                { val: '98.9%', lbl: 'Resolution Rate' },
+                { val: '1.8s', lbl: 'Ticket Closure' },
+                { val: '24/7', lbl: 'Availability' },
+                { val: '5.0 CSAT', lbl: 'Customer Rating' }
+            ],
+            workflow: ['Customer Ticket Received', 'Auth0 Token Verification', 'Pinecone RAG Vector Lookup', 'Stripe API Execution', 'Zendesk Resolution'],
+            chips: ['Auth0', 'Stripe SDK', 'Twilio API', 'Pinecone Vector', 'Zendesk REST'],
             specs: [
                 { label: 'Vector Knowledge Base', val: 'Pinecone Vector DB + OpenAI Embeddings' },
                 { label: 'Identity Provider', val: 'Auth0 JWT Bearer Token Validation' },
@@ -1032,24 +1886,78 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: '1.8 Seconds Ticket Closure' },
                 { label: 'Security Protocols', val: 'SOC2 Type II Compliant & PCI-DSS Shielded' }
             ],
-            desc: 'Designed for high-security fintech platforms, SUPPORTR-X handles customer billing queries, subscription plan changes, and API key rotations. It authenticates users via Auth0 JWT, executes requested changes directly in Stripe SDK, updates Zendesk ticket history, and notifies users over Twilio WhatsApp.'
+            impact: {
+                before: [
+                    'High customer support queue backlog',
+                    'Slow response times for billing & token queries',
+                    'Overwhelmed tier-1 support representatives'
+                ],
+                after: [
+                    '98.9% First Contact Resolution (FCR)',
+                    '1.8-second average ticket resolution',
+                    'Zero human intervention for routine actions'
+                ]
+            },
+            ctaUrl: 'contact.html?project=SUPPORTR-X'
         },
         logiflow: {
-            title: 'LOGI-FLOW — Architecture & Workflow Specs',
-            badge: 'LOGISTICS & INVENTORY BOT',
+            badge: 'OPERATIONS',
+            title: 'LOGI-FLOW — Warehouse & Inventory Sync Agent',
+            desc: 'Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>ERP & SHOPIFY RECONCILIATION</span><span class="ui-pill-success">45,000 SKUs</span></div>
+                    <table class="ui-table-grid"><tr><td>SKU-8842 (Sensor)</td><td style="color:#ef4444; font-weight:700;">4 Left</td></tr><tr><td>Action Taken</td><td style="color:#10b981; font-weight:700;">PO Sent + Slack Alert</td></tr></table>
+                </div>
+            `,
+            metrics: [
+                { val: '45,000', lbl: 'SKUs Monitored' },
+                { val: '100%', lbl: 'System Uptime' },
+                { val: '850', lbl: 'Auto POs / Day' },
+                { val: '0', lbl: 'Stockout Anomalies' }
+            ],
+            workflow: ['Hourly Batch Scan', 'PostgreSQL Query', 'Threshold Check', 'Slack Channel Push', 'Automated PO Dispatch'],
+            chips: ['Python Celery', 'PostgreSQL', 'Slack API', 'Shopify Admin', 'Redis Queue'],
             specs: [
                 { label: 'Background Worker', val: 'Python Celery + Redis Task Queue' },
                 { label: 'Database Layer', val: 'PostgreSQL Relational DB (45,000 SKUs)' },
                 { label: 'Alerting Channel', val: 'Slack Bot Webhooks & WhatsApp Admin Push' },
                 { label: 'PO Engine', val: 'Automated ERP Purchase Order Dispatcher' },
                 { label: 'Execution Speed', val: 'Hourly Batch Cron & Real-Time Stream' },
-                { label: 'Security Protocols', val: 'Internal VPN Tunnel & Encrypted Database Connections' }
+                { label: 'Security Protocols', val: 'Internal VPN Tunnel & Encrypted DB Connections' }
             ],
-            desc: 'LOGI-FLOW runs continuous inventory checks across 45,000 SKUs across 4 warehouse locations. It cross-references current stock levels against historical velocity. When stock drops below re-order thresholds, it posts structured alerts to Slack and generates draft Purchase Orders for manager approval.'
+            impact: {
+                before: [
+                    'Frequent unexpected warehouse stockouts',
+                    'Manual inventory counting across 4 locations',
+                    'Delayed purchase order issuance'
+                ],
+                after: [
+                    '100% real-time inventory accuracy',
+                    '850 automated purchase orders daily',
+                    'Instant Slack notifications for low-stock alerts'
+                ]
+            },
+            ctaUrl: 'contact.html?project=LOGI-FLOW'
         },
         audiencegen: {
-            title: 'AUDIENCE-GEN — Architecture & Workflow Specs',
-            badge: 'COLD OUTREACH PIPELINE',
+            badge: 'SOCIAL & SALES',
+            title: 'AUDIENCE-GEN — Cold Outreach & Lead Scraper Agent',
+            desc: 'Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>APOLLO & ZEROBOUNCE</span><span class="ui-pill-success">500 LEADS/DAY</span></div>
+                    <table class="ui-table-grid"><tr><td>Alex V. (CTO @ ScaleAI)</td><td style="color:#10b981; font-weight:700;">Validated</td></tr><tr><td>5-Stage Email Cadence</td><td style="color:var(--brand-action); font-weight:700;">Stage 2 Sent</td></tr></table>
+                </div>
+            `,
+            metrics: [
+                { val: '500/day', lbl: 'Leads Scraped' },
+                { val: '+34%', lbl: 'Reply Rate' },
+                { val: '4.5x', lbl: 'Pipeline Lift' },
+                { val: '99.8%', lbl: 'Deliverability' }
+            ],
+            workflow: ['Target Prospect Scrape', 'ZeroBounce Validation', 'LangChain Personalization', 'SendGrid Multi-SMTP Outreach', 'Meeting Booked'],
+            chips: ['Apollo Scraper', 'ZeroBounce', 'SendGrid SDK', 'LangChain', 'GPT-4'],
             specs: [
                 { label: 'Scraper & Data Pipeline', val: 'Apollo.io + Custom LinkedIn Prospect Extractor' },
                 { label: 'Email Deliverability', val: 'ZeroBounce Real-Time API Validation' },
@@ -1058,11 +1966,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: '500 High-Intent Leads Processed Daily' },
                 { label: 'Security Protocols', val: 'DKIM, SPF, DMARC Authentication Shield' }
             ],
-            desc: 'AUDIENCE-GEN automates cold lead generation by identifying target executive titles (CTOs, VP of Eng), validating deliverability via ZeroBounce to maintain sender reputation, and personalizing email sequences based on recent company news and tech stack signals.'
+            impact: {
+                before: [
+                    'Low email open and response rates',
+                    'High spam bounce rates damaging domain reputation',
+                    'Hours spent manually researching prospects'
+                ],
+                after: [
+                    '+34% response rate boost',
+                    '99.8% verified deliverability rate',
+                    '4.5x growth in qualified sales pipeline'
+                ]
+            },
+            ctaUrl: 'contact.html?project=AUDIENCE-GEN'
         },
         whatsappflow: {
-            title: 'WHATSAPP-FLOW — Architecture & Workflow Specs',
-            badge: 'WHATSAPP COMMERCE AGENT',
+            badge: 'SOCIAL & COMMERCE',
+            title: 'WHATSAPP-FLOW — WhatsApp Conversational Commerce Agent',
+            desc: 'Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>WHATSAPP CLOUD API</span><span class="ui-pill-success">CART RECOVERY</span></div>
+                    <div class="ui-chat-bubble">Can I complete order for Skincare Set?</div>
+                    <div class="ui-chat-reply">💳 Order #W-4091 ready! Pay via Stripe: wa.pay/4091</div>
+                </div>
+            `,
+            metrics: [
+                { val: '15,000', lbl: 'Monthly Chats' },
+                { val: '88%', lbl: 'Open Rate' },
+                { val: '+25%', lbl: 'Cart Recovery' },
+                { val: '< 1s', lbl: 'Message Delivery' }
+            ],
+            workflow: ['Customer WhatsApp Chat', 'Catalog Search', 'Cart Recovery Alert', 'Stripe Link Generation', 'Order Confirmed'],
+            chips: ['WhatsApp API', 'Stripe SDK', 'MongoDB Atlas', 'FastAPI', 'Python'],
             specs: [
                 { label: 'Messaging Provider', val: 'Meta WhatsApp Business Cloud API' },
                 { label: 'Payment Gateway', val: 'Stripe & Razorpay Payment Link APIs' },
@@ -1071,50 +2007,176 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: 'Sub-Second Message Delivery' },
                 { label: 'Security Protocols', val: 'End-to-End Encrypted Message Payload' }
             ],
-            desc: 'WHATSAPP-FLOW turns WhatsApp into a 24/7 automated sales counter. Customers can browse visual product catalogs inside WhatsApp chat, trigger instant payment links, receive automated order updates, and recover abandoned carts with targeted incentives.'
+            impact: {
+                before: [
+                    'High cart abandonment on mobile web',
+                    'Delayed manual response to customer inquiries',
+                    'Friction in mobile checkout flows'
+                ],
+                after: [
+                    '+25% cart recovery rate',
+                    '88% message open rate on WhatsApp',
+                    'Sub-second automated Stripe payment links'
+                ]
+            },
+            ctaUrl: 'contact.html?project=WHATSAPP-FLOW'
         }
     };
 
-    if (openArchBtns.length > 0 && archModalOverlay && archModalBody) {
-        openArchBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projKey = btn.getAttribute('data-project');
-                const p = projectSpecsData[projKey];
-                if (p) {
-                    let specsHtml = p.specs.map(s => `
-                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(203,213,225,0.4); padding: 8px 0; font-size: 0.85rem;">
-                            <strong style="color:var(--primary-blue); font-family:var(--font-mono);">${s.label}:</strong>
-                            <span style="color:var(--text-muted); text-align:right;">${s.val}</span>
-                        </div>
-                    `).join('');
+    function renderCaseStudyModal(p) {
+        if (!p || !archModalBody) return;
 
-                    archModalBody.innerHTML = `
-                        <div style="display:inline-block; font-size:0.72rem; padding:4px 10px; background:rgba(37,99,235,0.1); border:1px solid var(--primary-blue); border-radius:12px; color:var(--primary-blue); margin-bottom:12px; font-weight:700;">${p.badge}</div>
-                        <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:14px; color:#0f172a;" class="section-title">${p.title}</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">${p.desc}</p>
-                        <div style="background:rgba(241,245,249,0.8); border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-bottom:16px;" class="mock-card">
-                            <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:10px; color:#0f172a; text-transform:uppercase; letter-spacing:0.5px;">SYSTEM TELEMETRY SPECS</h4>
-                            ${specsHtml}
-                        </div>
-                    `;
-                    archModalOverlay.style.display = 'flex';
-                }
-            });
-        });
+        const metricsHtml = p.metrics.map(m => `
+            <div class="modal-metric-card">
+                <span class="modal-metric-val">${m.val}</span>
+                <span class="modal-metric-lbl">${m.lbl}</span>
+            </div>
+        `).join('');
 
-        if (closeArchModal) {
-            closeArchModal.addEventListener('click', () => {
-                archModalOverlay.style.display = 'none';
-            });
+        const workflowHtml = p.workflow.map((step, idx) => `
+            <div class="modal-wf-node">${step}</div>
+            ${idx < p.workflow.length - 1 ? '<span class="modal-wf-arrow">→</span>' : ''}
+        `).join('');
+
+        const chipsHtml = p.chips.map(chip => `
+            <span class="modal-tech-pill">${chip}</span>
+        `).join('');
+
+        const specsHtml = p.specs.map(s => `
+            <div class="modal-spec-card">
+                <span class="modal-spec-label">${s.label}</span>
+                <span class="modal-spec-val">${s.val}</span>
+            </div>
+        `).join('');
+
+        const beforeList = p.impact.before.map(item => `<li>❌ ${item}</li>`).join('');
+        const afterList = p.impact.after.map(item => `<li>⚡ ${item}</li>`).join('');
+
+        archModalBody.innerHTML = `
+            <!-- Header Row -->
+            <div class="modal-header-row">
+                <div>
+                    <span class="modal-category-badge">[ ${p.badge} ]</span>
+                    <h2 class="modal-main-title">${p.title}</h2>
+                    <p class="modal-subtitle-text">${p.desc}</p>
+                </div>
+                <button class="modal-close-btn" id="closeCaseStudyModalBtn" aria-label="Close Case Study Viewer">✕</button>
+            </div>
+
+            <!-- Hero Visual Panel -->
+            <div class="modal-hero-visual">
+                ${p.visualHtml}
+            </div>
+
+            <!-- Key Results Metrics -->
+            <div class="modal-metrics-grid">
+                ${metricsHtml}
+            </div>
+
+            <!-- How The Agent Works (Workflow) -->
+            <div class="modal-workflow-box">
+                <div class="modal-section-title">⚡ How The Agent Works (Automation Pipeline)</div>
+                <div class="modal-workflow-steps">
+                    ${workflowHtml}
+                </div>
+            </div>
+
+            <!-- Integrations & Technology -->
+            <div class="modal-integrations-box">
+                <div class="modal-section-title">🛠️ Integrations & Technology</div>
+                <div class="modal-chips-flex">
+                    ${chipsHtml}
+                </div>
+            </div>
+
+            <!-- Telemetry Specifications -->
+            <div class="modal-specs-box">
+                <div class="modal-section-title">📊 System Telemetry & Architecture Specs</div>
+                <div class="modal-specs-grid">
+                    ${specsHtml}
+                </div>
+            </div>
+
+            <!-- Business Impact Comparison -->
+            <div class="modal-impact-box">
+                <div class="modal-section-title">📈 Business Impact Comparison</div>
+                <div class="modal-impact-grid">
+                    <div class="modal-impact-card before">
+                        <div class="impact-card-title">Before AI Automation</div>
+                        <ul class="impact-list">${beforeList}</ul>
+                    </div>
+                    <div class="modal-impact-card after">
+                        <div class="impact-card-title">After AI Agent Deployment</div>
+                        <ul class="impact-list">${afterList}</ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Bar -->
+            <div class="modal-cta-row">
+                <div>
+                    <h4 style="font-size:1rem; font-weight:800; color:var(--brand-text); margin-bottom:4px;">Want an AI Agent like this for your business?</h4>
+                    <p style="font-size:0.82rem; color:#64748b;">We design and deploy custom neural workflows in days.</p>
+                </div>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <a href="${p.ctaUrl}" class="btn btn-primary btn-glow btn-sm">
+                        Build Something Similar →
+                    </a>
+                    <button class="btn btn-secondary btn-sm" id="closeCaseStudyModalFooterBtn">
+                        Close
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const btnHeader = document.getElementById('closeCaseStudyModalBtn');
+        const btnFooter = document.getElementById('closeCaseStudyModalFooterBtn');
+
+        if (btnHeader) btnHeader.addEventListener('click', closeCaseStudyModal);
+        if (btnFooter) btnFooter.addEventListener('click', closeCaseStudyModal);
+    }
+
+    function openCaseStudyModal(projKey) {
+        const p = projectSpecsData[projKey] || projectSpecsData['instaguard'];
+        if (p && archModalOverlay) {
+            renderCaseStudyModal(p);
+            archModalOverlay.classList.add('active');
+            archModalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
+    }
 
+    function closeCaseStudyModal() {
+        if (!archModalOverlay) return;
+        archModalOverlay.classList.remove('active');
+        setTimeout(() => {
+            archModalOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 200);
+    }
+
+    document.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('.open-arch-modal');
+        if (openBtn) {
+            e.preventDefault();
+            const projKey = openBtn.getAttribute('data-project');
+            openCaseStudyModal(projKey);
+        }
+    });
+
+    if (archModalOverlay) {
         archModalOverlay.addEventListener('click', (e) => {
             if (e.target === archModalOverlay) {
-                archModalOverlay.style.display = 'none';
+                closeCaseStudyModal();
             }
         });
     }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && archModalOverlay && archModalOverlay.classList.contains('active')) {
+            closeCaseStudyModal();
+        }
+    });
 
     // ==========================================
     // Scroll-Driven Sequential Roadmap Reveal Engine
@@ -2172,5 +3234,519 @@ document.addEventListener('DOMContentLoaded', () => {
         btnStopAutoPlay.addEventListener('click', stopAutoPlayWorkflow);
     }
 
+    // ==========================================
+    // REALISTIC LIVE AUTOMATION WALKTHROUGH DEMO ENGINE
+    // ==========================================
+    function initInteractiveWalkthroughEngine() {
+        const walkthroughContainers = document.querySelectorAll('.interactive-walkthrough-section');
+        if (!walkthroughContainers.length) return;
+
+        walkthroughContainers.forEach(container => {
+            const viewport = container.querySelector('.walkthrough-viewport');
+            const stage = container.querySelector('.canvas-stage');
+            const callout = container.querySelector('.wf-callout-tooltip');
+            const calloutTag = container.querySelector('#calloutStepTag');
+            const calloutText = container.querySelector('#calloutText');
+            const playBtn = container.querySelector('#demoPlayBtn');
+            const playBtnText = container.querySelector('#playBtnText');
+            const playIcon = container.querySelector('#playIcon');
+            const pauseIcon = container.querySelector('#pauseIcon');
+            const prevBtn = container.querySelector('#demoPrevBtn');
+            const nextBtn = container.querySelector('#demoNextBtn');
+            const resetBtn = container.querySelector('#resetCameraBtn');
+            const segmentsTrack = container.querySelector('#timelineSegmentsTrack');
+            const stepIndicator = container.querySelector('#demoStepIndicator');
+
+            if (!viewport || !stage) return;
+
+            let currentTabKey = 'crm';
+            let currentStep = 0; // 0 = Full Overview, 1-5 = Focused Nodes
+            let isAutoPlaying = false;
+            let autoPlayTimer = null;
+
+            const nodeCenters = {
+                1: { id: 'node-agent', x: 190, y: 212 },
+                2: { id: 'node-router', x: 430, y: 220 },
+                3: { id: 'node-slack', x: 740, y: 110 },
+                4: { id: 'node-gmail', x: 740, y: 330 },
+                5: { id: 'node-search', x: 470, y: 430 }
+            };
+
+            const tabBlueprints = {
+                crm: {
+                    title: 'CRM Automation — Inbound Lead Engine & Dispatch',
+                    nodes: {
+                        1: { name: 'Make AI Agent <span class="badge-mini">inbound</span>', sub: 'Run Lead Triage Agent' },
+                        2: { name: 'Router <span class="badge-num">Score > 80</span>', sub: 'ICP Lead Triage' },
+                        3: { name: 'Slack <span class="badge-num">hot-deals</span>', sub: 'Instant Sales Alert' },
+                        4: { name: 'Gmail <span class="badge-num">welcome-seq</span>', sub: 'Send Intro Email' },
+                        5: { name: 'AI Web Search <span class="badge-num">clearbit</span>', sub: 'Company RAG Intel' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // CRM AUTOMATION', text: 'Full end-to-end CRM automation blueprint. Inbound lead capture ➔ AI enrichment ➔ Triage router ➔ Instant Slack & Gmail dispatch.' },
+                        { step: 1, tag: 'STEP 1 // INBOUND LEAD AGENT', text: 'Captures inbound web forms, calls, and chat inquiries in real-time, ingesting lead metadata.' },
+                        { step: 2, tag: 'STEP 2 // NEURAL ICP TRIAGE ROUTER', text: 'Evaluates lead fit score against ICP metrics. Routes deals >= 80 to high-priority sales tracks.' },
+                        { step: 3, tag: 'STEP 3 // REAL-TIME SLACK DISPATCH', text: 'Instantly alerts key account executives in #hot-leads with complete lead context & ICP score.' },
+                        { step: 4, tag: 'STEP 4 // HYPER-PERSONALIZED EMAIL', text: 'Dispatches custom welcome email sequence and meeting booking link directly via Gmail.' },
+                        { step: 5, tag: 'STEP 5 // DEEP DATA ENRICHMENT RAG', text: 'Executes web search & Clearbit lookup to enrich target company tech stack and executive roster.' }
+                    ]
+                },
+                social: {
+                    title: 'Social Media Automation — Autonomous Content Engine',
+                    nodes: {
+                        1: { name: 'Social AI Planner <span class="badge-mini">viral</span>', sub: 'Trend & Prompt Engine' },
+                        2: { name: 'Router <span class="badge-num">Quality > 90</span>', sub: 'Brand & Safety Gate' },
+                        3: { name: 'LinkedIn / X <span class="badge-num">social-post</span>', sub: 'Auto Post & Schedule' },
+                        4: { name: 'Visual AI <span class="badge-num">DALL-E 3</span>', sub: 'Generate Banner Assets' },
+                        5: { name: 'Social Listener <span class="badge-num">24/7</span>', sub: 'Monitor Brand Mentions' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // SOCIAL MEDIA ENGINE', text: 'Autonomous social media pipeline. Scans trends ➔ Generates copy & graphics ➔ Quality router ➔ Multi-platform scheduling.' },
+                        { step: 1, tag: 'STEP 1 // SOCIAL AI PLANNER', text: 'Generates high-engagement social posts, carousel scripts, and hashtags based on tech trends.' },
+                        { step: 2, tag: 'STEP 2 // BRAND & SAFETY ROUTER', text: 'Verifies post tone, compliance guardrails, and quality score before publishing.' },
+                        { step: 3, tag: 'STEP 3 // MULTI-PLATFORM DISPATCH', text: 'Schedules and posts approved copy across LinkedIn, Twitter/X, and Instagram.' },
+                        { step: 4, tag: 'STEP 4 // VISUAL ASSET GENERATION', text: 'Creates futuristic 3D visual banners and graphics matching post context.' },
+                        { step: 5, tag: 'STEP 5 // 24/7 SOCIAL LISTENING', text: 'Monitors brand mentions, competitor posts, and industry keywords in real time.' }
+                    ]
+                },
+                ecom: {
+                    title: 'E-commerce Automation — Abandoned Cart & Recovery',
+                    nodes: {
+                        1: { name: 'Cart Recovery Agent <span class="badge-mini">checkout</span>', sub: 'Real-time Cart Tracker' },
+                        2: { name: 'Router <span class="badge-num">CLV Filter</span>', sub: 'VIP vs Standard Recovery' },
+                        3: { name: 'WhatsApp <span class="badge-num">instant-coupon</span>', sub: 'Send Dynamic Promo' },
+                        4: { name: 'Email Recovery <span class="badge-num">abandoned-series</span>', sub: '3-Touch Email Sequence' },
+                        5: { name: 'Price Optimizer <span class="badge-num">margin-ai</span>', sub: 'Calculate Discount %' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // E-COMMERCE RECOVERY', text: 'Cart recovery workflow. Detects cart abandonment ➔ Calculates optimal discount ➔ WhatsApp & Email omnichannel engagement.' },
+                        { step: 1, tag: 'STEP 1 // CART RECOVERY AGENT', text: 'Detects abandoned checkouts on Shopify/WooCommerce within 60 seconds of inactivity.' },
+                        { step: 2, tag: 'STEP 2 // VIP SEGMENT ROUTER', text: 'Evaluates customer lifetime value (CLV) to determine personalized recovery incentive.' },
+                        { step: 3, tag: 'STEP 3 // WHATSAPP PROMO DISPATCH', text: 'Sends conversational WhatsApp message with one-click checkout coupon link.' },
+                        { step: 4, tag: 'STEP 4 // OMNICHANNEL EMAIL SERIES', text: 'Fires automated 3-touch follow-up emails highlighting saved cart items.' },
+                        { step: 5, tag: 'STEP 5 // DYNAMIC MARGIN CALCULATOR', text: 'Computes product profit margins to customize discount offer without eroding margin.' }
+                    ]
+                },
+                b2b: {
+                    title: 'B2B Sales Automation — Outbound Account Intelligence',
+                    nodes: {
+                        1: { name: 'SDR AI Agent <span class="badge-mini">intent</span>', sub: 'Outbound Signal Collector' },
+                        2: { name: 'Router <span class="badge-num">Tier-1 Account</span>', sub: 'Enterprise Filter Gate' },
+                        3: { name: 'Sales Rep Alert <span class="badge-num">Slack SDR</span>', sub: 'Handoff to Account Exec' },
+                        4: { name: 'Cold Outreach <span class="badge-num">sequence-3</span>', sub: 'Personalized Email Flow' },
+                        5: { name: 'Executive Intel <span class="badge-num">sec-10k</span>', sub: 'Financial & News Scraper' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // B2B OUTBOUND SALES', text: 'Enterprise B2B outreach pipeline. Detects account intent ➔ Scrapes executive news ➔ Tier-1 router ➔ Sales rep handoff.' },
+                        { step: 1, tag: 'STEP 1 // OUTBOUND INTENT AGENT', text: 'Captures target account intent signals, job hirings, and tech stack additions.' },
+                        { step: 2, tag: 'STEP 2 // ENTERPRISE TIER ROUTER', text: 'Filters Tier-1 enterprise target accounts for high-touch human sales handoffs.' },
+                        { step: 3, tag: 'STEP 3 // ACCOUNT EXEC HANDOFF', text: 'Creates CRM deal task and notifies designated Account Executive in Slack.' },
+                        { step: 4, tag: 'STEP 4 // PERSONALIZED OUTREACH', text: 'Launches multi-channel email outreach referencing recent company news and pain points.' },
+                        { step: 5, tag: 'STEP 5 // DEEP EXECUTIVE RESEARCH', text: 'Scrapes 10-K filings, press releases, and earnings calls for hyper-personalized messaging.' }
+                    ]
+                },
+                education: {
+                    title: 'Education Automation — AI Tutor & Student Onboarding',
+                    nodes: {
+                        1: { name: 'AI Tutor Agent <span class="badge-mini">24/7 student</span>', sub: 'Inquiry & Support Handler' },
+                        2: { name: 'Router <span class="badge-num">Triage Filter</span>', sub: 'AI Answer vs Mentor Escalate' },
+                        3: { name: 'Mentor Channel <span class="badge-num">slack-tutor</span>', sub: 'Escalate Complex Query' },
+                        4: { name: 'Student Portal <span class="badge-num">weekly-summary</span>', sub: 'Progress Report Email' },
+                        5: { name: 'Curriculum RAG <span class="badge-num">vector-db</span>', sub: 'Search Course Knowledge' }
+                    },
+                    steps: [
+                        { step: 0, tag: 'BLUEPRINT OVERVIEW // EDUCATION AUTOMATION', text: 'Smart student support pipeline. Ingests questions ➔ Queries course RAG ➔ AI tutor answers ➔ Escalates edge cases to mentors.' },
+                        { step: 1, tag: 'STEP 1 // AI TUTOR AGENT', text: 'Answers student course questions 24/7 across portal chat and messaging apps.' },
+                        { step: 2, tag: 'STEP 2 // SUPPORT TRIAGE ROUTER', text: 'Determines if question can be answered by RAG knowledge or requires faculty review.' },
+                        { step: 3, tag: 'STEP 3 // FACULTY MENTOR ESCALATION', text: 'Alerts course TA or professor in Slack when student requires detailed human guidance.' },
+                        { step: 4, tag: 'STEP 4 // WEEKLY PROGRESS EMAIL', text: 'Generates weekly learning analytics summary and study recommendations for students.' },
+                        { step: 5, tag: 'STEP 5 // CURRICULUM VECTOR RAG', text: 'Searches high-dimensional course textbooks, syllabus PDFs, and lecture transcripts.' }
+                    ]
+                }
+            };
+
+            function updateBlueprintUI(tabKey) {
+                currentTabKey = tabKey;
+                const blueprint = tabBlueprints[tabKey] || tabBlueprints.crm;
+
+                // Update Workflow Theme Accent Class
+                container.classList.remove('wf-theme-crm', 'wf-theme-social', 'wf-theme-ecom', 'wf-theme-b2b', 'wf-theme-education');
+                container.classList.add(`wf-theme-${tabKey}`);
+
+                // Update Demo Title Text
+                const titleText = container.querySelector('#demoTitleText');
+                if (titleText) titleText.textContent = blueprint.title;
+
+                // Update Nodes
+                Object.keys(blueprint.nodes).forEach(stepNum => {
+                    const nodeData = blueprint.nodes[stepNum];
+                    const nodeEl = container.querySelector(`.wf-node[data-step="${stepNum}"]`);
+                    if (nodeEl) {
+                        const nameEl = nodeEl.querySelector('.node-name');
+                        const subEl = nodeEl.querySelector('.node-sub');
+                        if (nameEl && nodeData.name) nameEl.innerHTML = nodeData.name;
+                        if (subEl && nodeData.sub) subEl.textContent = nodeData.sub;
+                    }
+                });
+
+                renderTimelineSegments();
+            }
+
+            function renderTimelineSegments() {
+                if (!segmentsTrack) return;
+                segmentsTrack.innerHTML = '';
+
+                // Overview Pill (Step 0)
+                const ovPill = document.createElement('div');
+                ovPill.className = `timeline-segment-pill ${currentStep === 0 ? 'active' : 'completed'}`;
+                ovPill.title = 'Full Workflow Overview';
+                ovPill.innerHTML = '<div class="timeline-segment-fill"></div>';
+                ovPill.addEventListener('click', () => {
+                    stopAutoPlay();
+                    goToStep(0);
+                });
+                segmentsTrack.appendChild(ovPill);
+
+                // Step Pills 1-5
+                for (let i = 1; i <= 5; i++) {
+                    const pill = document.createElement('div');
+                    pill.className = `timeline-segment-pill ${i === currentStep ? 'active' : (i < currentStep ? 'completed' : '')}`;
+                    pill.title = `Step ${i}`;
+                    pill.innerHTML = '<div class="timeline-segment-fill"></div>';
+                    pill.addEventListener('click', () => {
+                        stopAutoPlay();
+                        goToStep(i);
+                    });
+                    segmentsTrack.appendChild(pill);
+                }
+            }
+
+            function goToStep(stepIndex) {
+                currentStep = stepIndex;
+
+                const blueprint = tabBlueprints[currentTabKey] || tabBlueprints.crm;
+                const allNodes = stage.querySelectorAll('.wf-node');
+
+                // Canvas viewport dimension bounds
+                const vWidth = viewport.clientWidth || 1000;
+                const vHeight = viewport.clientHeight || 520;
+
+                if (currentStep === 0) {
+                    // Full Workflow Overview
+                    viewport.classList.remove('wf-canvas-dimmed');
+                    allNodes.forEach(n => n.classList.remove('active-focus'));
+
+                    // Scale stage to fit overview nicely
+                    const scaleX = vWidth / 1000;
+                    const scaleY = vHeight / 520;
+                    const fitScale = Math.min(scaleX, scaleY) * 0.92;
+                    const transX = (vWidth - 1000 * fitScale) / 2;
+                    const transY = (vHeight - 520 * fitScale) / 2;
+
+                    stage.style.transform = `translate(${transX}px, ${transY}px) scale(${fitScale})`;
+
+                    const overviewInfo = blueprint.steps.find(s => s.step === 0);
+                    if (overviewInfo && callout) {
+                        if (calloutTag) calloutTag.textContent = overviewInfo.tag;
+                        if (calloutText) calloutText.textContent = overviewInfo.text;
+                        // Position callout at top center
+                        callout.className = 'wf-callout-tooltip arrow-top';
+                        callout.style.left = `${1000 / 2 - 160}px`;
+                        callout.style.top = `30px`;
+                        callout.classList.remove('hidden');
+                    }
+
+                    if (stepIndicator) stepIndicator.textContent = 'Full Overview';
+                    renderTimelineSegments();
+
+                    if (typeof playCyberBeep === 'function') playCyberBeep(600, 0.03);
+                    return;
+                }
+
+                // Focused Node Mode
+                viewport.classList.add('wf-canvas-dimmed');
+                allNodes.forEach(node => {
+                    const nStep = parseInt(node.getAttribute('data-step'));
+                    if (nStep === currentStep) {
+                        node.classList.add('active-focus');
+                    } else {
+                        node.classList.remove('active-focus');
+                    }
+                });
+
+                const centerData = nodeCenters[currentStep];
+                if (!centerData) return;
+
+                const targetNode = container.querySelector(`.wf-node[data-step="${currentStep}"]`);
+                let nodeX = centerData.x;
+                let nodeY = centerData.y;
+
+                if (targetNode) {
+                    nodeX = targetNode.offsetLeft + targetNode.offsetWidth / 2;
+                    nodeY = targetNode.offsetTop + targetNode.offsetHeight / 2;
+                }
+
+                const zoomLevel = 1.32;
+                const transX = vWidth / 2 - nodeX * zoomLevel;
+                const transY = vHeight / 2 - nodeY * zoomLevel;
+
+                stage.style.transform = `translate(${transX}px, ${transY}px) scale(${zoomLevel})`;
+
+                // Update Callout Tooltip
+                const stepInfo = blueprint.steps.find(s => s.step === currentStep);
+                if (stepInfo && callout) {
+                    if (calloutTag) calloutTag.textContent = stepInfo.tag;
+                    if (calloutText) calloutText.textContent = stepInfo.text;
+
+                    positionCallout(nodeX, nodeY);
+                }
+
+                if (stepIndicator) stepIndicator.textContent = `Step ${currentStep} of 5`;
+                renderTimelineSegments();
+
+                if (typeof playCyberBeep === 'function') playCyberBeep(650 + currentStep * 70, 0.03);
+            }
+
+            function positionCallout(nodeX, nodeY) {
+                if (!callout) return;
+                callout.classList.remove('hidden');
+
+                // Dynamic pointer arrow positioning around active node
+                if (nodeY > 330) {
+                    // Position above node (arrow pointing down)
+                    callout.className = 'wf-callout-tooltip arrow-top';
+                    callout.style.left = `${nodeX - 160}px`;
+                    callout.style.top = `${nodeY - 145}px`;
+                } else if (nodeX > 620) {
+                    // Position to the left of node (arrow pointing right)
+                    callout.className = 'wf-callout-tooltip arrow-left';
+                    callout.style.left = `${nodeX - 350}px`;
+                    callout.style.top = `${nodeY - 45}px`;
+                } else if (nodeY < 150) {
+                    // Position below node (arrow pointing up)
+                    callout.className = 'wf-callout-tooltip arrow-bottom';
+                    callout.style.left = `${nodeX - 160}px`;
+                    callout.style.top = `${nodeY + 55}px`;
+                } else {
+                    // Position to the right of node (arrow pointing left)
+                    callout.className = 'wf-callout-tooltip arrow-right';
+                    callout.style.left = `${nodeX + 160}px`;
+                    callout.style.top = `${nodeY - 45}px`;
+                }
+            }
+
+            function nextStep() {
+                let nextS = currentStep + 1;
+                if (nextS > 5) nextS = 0;
+                goToStep(nextS);
+            }
+
+            function prevStep() {
+                let prevS = currentStep - 1;
+                if (prevS < 0) prevS = 5;
+                goToStep(prevS);
+            }
+
+            function startAutoPlay() {
+                if (isAutoPlaying) return;
+                isAutoPlaying = true;
+                if (playBtnText) playBtnText.textContent = 'Pause Demo';
+                if (playIcon) playIcon.style.display = 'none';
+                if (pauseIcon) pauseIcon.style.display = 'inline-block';
+
+                autoPlayTimer = setInterval(() => {
+                    nextStep();
+                }, 3500);
+            }
+
+            function stopAutoPlay() {
+                if (!isAutoPlaying) return;
+                isAutoPlaying = false;
+                if (autoPlayTimer) clearInterval(autoPlayTimer);
+                autoPlayTimer = null;
+                if (playBtnText) playBtnText.textContent = 'Play Demo';
+                if (playIcon) playIcon.style.display = 'inline-block';
+                if (pauseIcon) pauseIcon.style.display = 'none';
+            }
+
+            if (playBtn) {
+                playBtn.addEventListener('click', () => {
+                    if (isAutoPlaying) stopAutoPlay();
+                    else startAutoPlay();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    nextStep();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    prevStep();
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    stopAutoPlay();
+                    goToStep(0);
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            }
+
+            // Bind Direct Node Clicks
+            const allNodes = stage.querySelectorAll('.wf-node');
+            allNodes.forEach(node => {
+                node.addEventListener('click', () => {
+                    stopAutoPlay();
+                    const step = parseInt(node.getAttribute('data-step'));
+                    if (step !== undefined && !isNaN(step)) goToStep(step);
+                    if (typeof playCyberClick === 'function') playCyberClick();
+                });
+            });
+
+            // Bind Studio Navigation Tabs (Restart animation & auto-play on tab switch)
+            const tabButtons = document.querySelectorAll('.studio-tab-btn');
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabKey = btn.getAttribute('data-tab');
+                    if (tabKey && tabBlueprints[tabKey]) {
+                        tabButtons.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+
+                        // Switch Tab Pane on Studio Page if applicable
+                        const panes = document.querySelectorAll('.studio-tab-pane');
+                        panes.forEach(pane => {
+                            if (pane.id === `pane-${tabKey}`) pane.classList.add('active');
+                            else pane.classList.remove('active');
+                        });
+
+                        // Stop previous timer, update blueprint, reset overview step
+                        stopAutoPlay();
+                        updateBlueprintUI(tabKey);
+                        goToStep(0);
+
+                        // Restart SVG flow pulse animations
+                        const motionAnims = stage.querySelectorAll('animateMotion');
+                        motionAnims.forEach(anim => {
+                            try {
+                                if (typeof anim.beginElement === 'function') {
+                                    anim.beginElement();
+                                }
+                            } catch (e) {}
+                        });
+
+                        if (typeof playCyberClick === 'function') playCyberClick();
+
+                        // Automatically restart auto-play demo walkthrough for the new tab
+                        setTimeout(() => {
+                            startAutoPlay();
+                        }, 500);
+                    }
+                });
+            });
+
+            // Bind Step Cards on Page to Viewport Camera
+            const stepCards = document.querySelectorAll('.numbered-step-card, .how-node-card');
+            stepCards.forEach((card, idx) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const stepNum = (idx % 5) + 1;
+                    viewport.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    stopAutoPlay();
+                    goToStep(stepNum);
+                });
+            });
+
+            // Initial load
+            updateBlueprintUI('crm');
+            setTimeout(() => {
+                goToStep(0);
+            }, 300);
+        });
+    }
+
+    initInteractiveWalkthroughEngine();
+
+    // ==========================================
+    // Solution Cards Workflow Animation Controller
+    // ==========================================
+    function initSolutionWorkflows() {
+        const cards = document.querySelectorAll('.biz-sol-card');
+        if (!cards.length) return;
+
+        let autoCardIndex = 0;
+        let autoTimer = null;
+        let isHoveringAnyCard = false;
+        let activeInterval = null;
+
+        function animateSequence(card, callback) {
+            if (activeInterval) {
+                clearInterval(activeInterval);
+                activeInterval = null;
+            }
+            const elements = card.querySelectorAll('.sol-wf-step, .sol-wf-arrow');
+            if (!elements.length) {
+                if (callback) callback();
+                return;
+            }
+
+            elements.forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+
+            let idx = 0;
+            activeInterval = setInterval(() => {
+                if (idx < elements.length) {
+                    elements[idx].classList.add('wf-active');
+                    idx++;
+                } else {
+                    clearInterval(activeInterval);
+                    activeInterval = null;
+                    setTimeout(() => {
+                        elements.forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                        if (callback) callback();
+                    }, 800);
+                }
+            }, 180);
+        }
+
+        function cycleAutoAnimation() {
+            if (isHoveringAnyCard) return;
+            const targetCard = cards[autoCardIndex];
+            animateSequence(targetCard, () => {
+                autoCardIndex = (autoCardIndex + 1) % cards.length;
+                autoTimer = setTimeout(cycleAutoAnimation, 4000);
+            });
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                isHoveringAnyCard = true;
+                if (autoTimer) clearTimeout(autoTimer);
+                cards.forEach(c => {
+                    c.querySelectorAll('.sol-wf-step, .sol-wf-arrow').forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                });
+                animateSequence(card);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                isHoveringAnyCard = false;
+                card.querySelectorAll('.sol-wf-step, .sol-wf-arrow').forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                if (autoTimer) clearTimeout(autoTimer);
+                autoTimer = setTimeout(cycleAutoAnimation, 4000);
+            });
+        });
+
+        autoTimer = setTimeout(cycleAutoAnimation, 3000);
+    }
+
+    initSolutionWorkflows();
 });
+
 

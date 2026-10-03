@@ -97,6 +97,14 @@
 
             <div class="subpage-hero-visual">
                 <div class="subpage-robot-card card-3d">
+                    <div class="matrix-pills-container">
+                        <div class="matrix-pill pill-sales"><span class="pill-dot"></span> Sales</div>
+                        <div class="matrix-pill pill-support"><span class="pill-dot"></span> Support</div>
+                        <div class="matrix-pill pill-social"><span class="pill-dot"></span> Social</div>
+                        <div class="matrix-pill pill-workflow"><span class="pill-dot"></span> Workflow</div>
+                        <div class="matrix-pill pill-voice"><span class="pill-dot"></span> Voice</div>
+                        <div class="matrix-pill pill-data"><span class="pill-dot"></span> Data</div>
+                    </div>
                     <img src="assets/images/capabilities-robot.png" alt="3D AI Agent Pod Hologram" class="subpage-robot-img">
                     <div class="subpage-hud-badge">
                         <div class="hud-pulse-dot"></div>
@@ -130,115 +138,304 @@
             <!-- Agents Grid -->
             <div class="agents-full-grid">
                 <!-- Agent 1: Lead Gen -->
-                <div class="agent-pod-card card-3d" data-category="sales">
+                <div class="agent-pod-card card-3d" data-category="sales" data-agent-id="leadr-3000">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">LEADR-3000 (Sales Qualifier)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">LEADR-3000</h3>
+                        <span class="agent-role-badge">Sales Qualifier</span>
+                    </div>
                     <p class="agent-pod-desc">Engages incoming leads within 10 seconds, conducts qualification interviews, overcomes objections, and books meetings into your CRM Calendar.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> HubSpot, Salesforce & Calendly Sync</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 3.4x Lead-to-Booked Demo Conversion</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-touch WhatsApp & Email Sequences</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy LEADR-3000</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">HubSpot</span>
+                            <span class="integration-chip">Salesforce</span>
+                            <span class="integration-chip">Calendly</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="leadr-3000">View Details</button>
+                        <a href="contact.html?agent=LEADR-3000" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
 
                 <!-- Agent 2: Support -->
-                <div class="agent-pod-card card-3d" data-category="support">
+                <div class="agent-pod-card card-3d" data-category="support" data-agent-id="supportr-x">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">SUPPORTR-X (CX Support Agent)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">SUPPORTR-X</h3>
+                        <span class="agent-role-badge">CX Support Agent</span>
+                    </div>
                     <p class="agent-pod-desc">Resolves tier 1-3 customer inquiries 24/7, accesses real-time shipping/order databases, and performs actions like refunds or address changes.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zendesk, Gorgias & Shopify Integration</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 92% First Contact Resolution Rate</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multilingual (50+ Languages)</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy SUPPORTR-X</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">Zendesk</span>
+                            <span class="integration-chip">Gorgias</span>
+                            <span class="integration-chip">Shopify</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="supportr-x">View Details</button>
+                        <a href="contact.html?agent=SUPPORTR-X" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
 
                 <!-- Agent 3: Social IG -->
-                <div class="agent-pod-card card-3d" data-category="social">
+                <div class="agent-pod-card card-3d" data-category="social" data-agent-id="instaguard">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">INSTAGUARD (Social DM Agent)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">INSTAGUARD</h3>
+                        <span class="agent-role-badge">Social DM Agent</span>
+                    </div>
                     <p class="agent-pod-desc">Monitors Instagram DMs, comment triggers, and story replies. Automatically sends personalized discount links and collects opt-ins.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Meta API Official Integration</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Story Mention & Keyword Automation</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Human-like Conversational Pacing</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy INSTAGUARD</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">Meta API</span>
+                            <span class="integration-chip">Instagram DM</span>
+                            <span class="integration-chip">Shopify</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="instaguard">View Details</button>
+                        <a href="contact.html?agent=INSTAGUARD" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
 
                 <!-- Agent 4: Operations -->
-                <div class="agent-pod-card card-3d" data-category="ops">
+                <div class="agent-pod-card card-3d" data-category="ops" data-agent-id="dispatch-bot">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">DISPATCH-BOT (Workflow Ops)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">DISPATCH-BOT</h3>
+                        <span class="agent-role-badge">Workflow Ops</span>
+                    </div>
                     <p class="agent-pod-desc">Automates internal operations: document processing, invoice extraction, cross-tool data sync, and emergency anomaly notifications.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zapier, Make & Custom Webhooks</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> OCR & Multi-page PDF Parsing</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Autonomous Slack/Teams Reporting</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy DISPATCH-BOT</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">Zapier</span>
+                            <span class="integration-chip">Make</span>
+                            <span class="integration-chip">Slack</span>
+                            <span class="integration-chip">Teams</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="dispatch-bot">View Details</button>
+                        <a href="contact.html?agent=DISPATCH-BOT" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
 
                 <!-- Agent 5: Voice -->
-                <div class="agent-pod-card card-3d" data-category="social">
+                <div class="agent-pod-card card-3d" data-category="social" data-agent-id="voice-nexus">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">VOICE-NEXUS (AI Phone Agent)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">VOICE-NEXUS</h3>
+                        <span class="agent-role-badge">AI Phone Agent</span>
+                    </div>
                     <p class="agent-pod-desc">Ultra-low latency sub-second conversational voice agent for inbound phone calls, appointment confirm calls, and customer dispatch.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Twilio & Retell AI Voice Pipeline</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ultra-realistic Human Voices & Accents</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Automatic Call Transcript Summaries</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy VOICE-NEXUS</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">Twilio</span>
+                            <span class="integration-chip">Retell AI</span>
+                            <span class="integration-chip">Phone API</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="voice-nexus">View Details</button>
+                        <a href="contact.html?agent=VOICE-NEXUS" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
 
                 <!-- Agent 6: Enterprise Knowledge -->
-                <div class="agent-pod-card card-3d" data-category="ops">
+                <div class="agent-pod-card card-3d" data-category="ops" data-agent-id="dataflex">
                     <div class="agent-pod-header">
                         <div class="agent-icon-box">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                         </div>
-                        <span class="agent-status-tag">STATUS: DEPLOYABLE</span>
+                        <span class="agent-status-tag"><span class="status-pulse-dot"></span> READY TO DEPLOY</span>
                     </div>
-                    <h3 class="agent-pod-title">DATAFLEX (Enterprise SQL Agent)</h3>
+                    <div class="agent-title-row">
+                        <h3 class="agent-pod-title">DATAFLEX</h3>
+                        <span class="agent-role-badge">Enterprise SQL Agent</span>
+                    </div>
                     <p class="agent-pod-desc">Connects to your Postgres/Snowflake database and vector store. Enables natural language analytics queries for executive reporting.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> RAG Vector Database Architecture</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zero Data Leakage Guarantee</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Natural Language to SQL Execution</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Deploy DATAFLEX</a>
+                    <div class="agent-integrations-section">
+                        <span class="agent-chips-label">NATIVE INTEGRATIONS</span>
+                        <div class="agent-chips-wrapper">
+                            <span class="integration-chip">Postgres</span>
+                            <span class="integration-chip">Snowflake</span>
+                            <span class="integration-chip">Vector DB</span>
+                        </div>
+                    </div>
+                    <div class="agent-card-actions">
+                        <button type="button" class="btn btn-secondary btn-sm view-agent-details-btn" data-agent="dataflex">View Details</button>
+                        <a href="contact.html?agent=DATAFLEX" class="btn btn-primary btn-sm">Deploy Agent</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Compact Section: Idea to Deployment Pipeline -->
+    <section class="section section-compact-pipeline">
+        <div class="container container-fluid">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 36px;">
+                <div class="section-label">DEPLOYMENT ARCHITECTURE</div>
+                <h2 class="section-title" style="font-size: 2rem;">How Your AI Agent Goes From Idea to Deployment</h2>
+                <p class="section-subtitle" style="margin: 0 auto; max-width: 580px; font-size: 0.98rem;">A streamlined 5-step process to deploy production-ready AI agents into your business stack.</p>
+            </div>
+
+            <div class="pipeline-flow-wrapper">
+                <div class="pipeline-connector-line"></div>
+                
+                <div class="pipeline-steps-grid">
+                    <div class="pipeline-step-card">
+                        <div class="pipeline-step-num">01</div>
+                        <div class="pipeline-step-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        </div>
+                        <h4 class="pipeline-step-title">DEFINE</h4>
+                        <p class="pipeline-step-desc">Specify agent scope, triggers, guardrails, and key success metrics.</p>
+                    </div>
+
+                    <div class="pipeline-step-card">
+                        <div class="pipeline-step-num">02</div>
+                        <div class="pipeline-step-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        </div>
+                        <h4 class="pipeline-step-title">TRAIN</h4>
+                        <p class="pipeline-step-desc">Ingest enterprise documentation, SOPs, FAQs, and brand guidelines.</p>
+                    </div>
+
+                    <div class="pipeline-step-card">
+                        <div class="pipeline-step-num">03</div>
+                        <div class="pipeline-step-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <h4 class="pipeline-step-title">CONNECT</h4>
+                        <p class="pipeline-step-desc">Securely integrate CRM, databases, messaging apps, and custom APIs.</p>
+                    </div>
+
+                    <div class="pipeline-step-card">
+                        <div class="pipeline-step-num">04</div>
+                        <div class="pipeline-step-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                        </div>
+                        <h4 class="pipeline-step-title">TEST</h4>
+                        <p class="pipeline-step-desc">Simulate edge cases, stress-test responses, and verify security protocols.</p>
+                    </div>
+
+                    <div class="pipeline-step-card">
+                        <div class="pipeline-step-num">05</div>
+                        <div class="pipeline-step-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+                        </div>
+                        <h4 class="pipeline-step-title">DEPLOY</h4>
+                        <p class="pipeline-step-desc">Activate agent live with 24/7 autonomous monitoring & real-time analytics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Agent Details Modal -->
+    <div class="agent-modal-overlay" id="agentModalOverlay" tabindex="-1" aria-hidden="true">
+        <div class="agent-modal-container">
+            <button type="button" class="agent-modal-close" id="agentModalClose" aria-label="Close details modal">&times;</button>
+            
+            <div class="agent-modal-header">
+                <div class="agent-modal-icon" id="modalAgentIcon"></div>
+                <div class="agent-modal-titles">
+                    <div class="agent-modal-status" id="modalAgentStatus"><span class="status-pulse-dot"></span> READY TO DEPLOY</div>
+                    <h3 class="agent-modal-name" id="modalAgentName">Agent Name</h3>
+                    <span class="agent-modal-role" id="modalAgentRole">Agent Role</span>
+                </div>
+            </div>
+
+            <div class="agent-modal-body">
+                <div class="modal-section">
+                    <h4 class="modal-section-title">What This Agent Does</h4>
+                    <p class="modal-section-text" id="modalAgentDesc"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">Key Capabilities</h4>
+                    <ul class="modal-caps-list" id="modalAgentCaps"></ul>
+                </div>
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">Native Integrations</h4>
+                    <div class="agent-chips-wrapper" id="modalAgentChips"></div>
+                </div>
+
+                <div class="modal-section">
+                    <h4 class="modal-section-title">How It Works Workflow</h4>
+                    <div class="modal-workflow-pipeline" id="modalAgentWorkflow"></div>
+                </div>
+            </div>
+
+            <div class="agent-modal-footer">
+                <a href="contact.html" class="btn btn-primary btn-glow modal-deploy-link" id="modalDeployBtn">Deploy This Agent</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Section -->
     <footer class="footer">
