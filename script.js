@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // AI Agents Catalog Category Filter Tabs (ai-agents.html)
+    // AI Agents Catalog Category Filter Tabs & Modal Engine (ai-agents.html)
     // ==========================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const agentPodCards = document.querySelectorAll('.agent-pod-card');
@@ -396,13 +396,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active');
 
                 const filter = btn.getAttribute('data-filter');
+                let visibleCount = 0;
 
                 agentPodCards.forEach(card => {
                     const cat = card.getAttribute('data-category');
+                    card.classList.remove('filtering-in');
+
                     if (filter === 'all' || cat === filter) {
                         card.style.display = 'flex';
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0) scale(1)';
+                        card.style.opacity = '0';
+                        const delay = visibleCount * 0.06;
+                        card.style.animationDelay = `${delay}s`;
+                        void card.offsetWidth;
+                        card.classList.add('filtering-in');
+                        visibleCount++;
                     } else {
                         card.style.display = 'none';
                         card.style.opacity = '0';
@@ -411,6 +418,207 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Agent Details Modal Dataset & Interactivity
+    const agentDetailsData = {
+        'leadr-3000': {
+            name: 'LEADR-3000',
+            role: 'Sales Qualifier Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>`,
+            desc: 'LEADR-3000 operates as an autonomous sales representative. It engages incoming inbound leads across web forms, live chat, and email within 10 seconds, conducts dynamic qualification interviews based on your ICP, overcomes common prospect objections, and automatically schedules meetings onto your sales reps calendars.',
+            caps: [
+                'Instant 10-second response latency for incoming inbound leads',
+                'Deep CRM synchronization with HubSpot, Salesforce & Calendly',
+                'Multi-channel outreach via WhatsApp & Email sequences',
+                '3.4x average boost in lead-to-booked demo conversion rate'
+            ],
+            chips: ['HubSpot', 'Salesforce', 'Calendly', 'WhatsApp', 'Email CRM'],
+            workflow: ['LEAD ARRIVES', 'AI UNDERSTANDS', 'AI QUALIFIES', 'CRM UPDATED', 'FOLLOW-UP / BOOKING'],
+            deployUrl: 'contact.html?agent=LEADR-3000'
+        },
+        'supportr-x': {
+            name: 'SUPPORTR-X',
+            role: 'CX Support Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+            desc: 'SUPPORTR-X handles tier 1 through tier 3 customer service requests autonomously 24/7. It connects directly with your Shopify, ERP, or warehouse databases to fetch live order updates, issue refunds, update shipping addresses, and escalate complex edge cases with full context to human agents.',
+            caps: [
+                '24/7 continuous resolution of customer inquiries with zero queue times',
+                'Direct live integration with Zendesk, Gorgias & Shopify admin APIs',
+                '92% First Contact Resolution (FCR) rate across e-commerce support',
+                'Multilingual support supporting over 50+ languages natively'
+            ],
+            chips: ['Zendesk', 'Gorgias', 'Shopify', 'Intercom', 'REST APIs'],
+            workflow: ['INQUIRY IN', 'INTENT & ORDER CHECK', 'KNOWLEDGE SEARCH', 'ACTION (REFUND/UPDATE)', 'RESOLVED 24/7'],
+            deployUrl: 'contact.html?agent=SUPPORTR-X'
+        },
+        'instaguard': {
+            name: 'INSTAGUARD',
+            role: 'Social DM Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+            desc: 'INSTAGUARD monitors your Instagram account for story mentions, comment keyword triggers, and incoming DMs. It immediately engages followers with personalized conversational messages, delivers discount codes, collects email/phone opt-ins, and tracks campaign ROI.',
+            caps: [
+                'Official Meta API compliance for Instagram DMs & comments',
+                'Automated story mention & comment keyword trigger responses',
+                'Human-like natural conversational pacing to prevent spam flags',
+                'Direct opt-in lead collection synced to your email marketing software'
+            ],
+            chips: ['Meta API', 'Instagram DM', 'Shopify', 'Klaviyo'],
+            workflow: ['DM / COMMENT', 'TRIGGER & SENTIMENT', 'OFFER MATCHED', 'AUTO DM SENT', 'OPT-IN SAVED'],
+            deployUrl: 'contact.html?agent=INSTAGUARD'
+        },
+        'dispatch-bot': {
+            name: 'DISPATCH-BOT',
+            role: 'Workflow Ops Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+            desc: 'DISPATCH-BOT handles back-office operational tasks. It parses PDFs, extracts invoice data, performs OCR document verification, syncs cross-tool databases, and alerts team members on Slack or Microsoft Teams when anomalies or bottlenecks occur.',
+            caps: [
+                'Seamless connection with Zapier, Make, and custom webhooks',
+                'Advanced OCR parsing for multi-page invoices & receipts',
+                'Autonomous Slack & Microsoft Teams anomaly notification alerts',
+                'Cross-tool data sync ensuring zero manual data entry errors'
+            ],
+            chips: ['Zapier', 'Make', 'Slack', 'Teams', 'Webhooks'],
+            workflow: ['DOC / WEBHOOK', 'OCR & PARSING', 'DATA VALIDATION', 'WORKFLOW EXECUTION', 'SLACK / CRM SYNC'],
+            deployUrl: 'contact.html?agent=DISPATCH-BOT'
+        },
+        'voice-nexus': {
+            name: 'VOICE-NEXUS',
+            role: 'AI Phone Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`,
+            desc: 'VOICE-NEXUS is an ultra-low latency sub-second voice AI agent designed for phone interactions. It places outbound appointment confirmation calls, handles inbound phone dispatch, transfers calls to live agents when necessary, and logs structured transcripts directly into your CRM.',
+            caps: [
+                'Sub-second ultra-low latency conversational voice pipeline',
+                'Twilio & Retell AI integration with ultra-realistic human voices',
+                'Intelligent call transfer logic to human representatives',
+                'Automatic audio transcription & summary logging to CRM'
+            ],
+            chips: ['Twilio', 'Retell AI', 'Phone API', 'HubSpot'],
+            workflow: ['PHONE CALL', 'SPEECH-TO-TEXT', 'INTENT LOGIC', 'HUMAN VOICE SYNT', 'CALL LOGGED'],
+            deployUrl: 'contact.html?agent=VOICE-NEXUS'
+        },
+        'dataflex': {
+            name: 'DATAFLEX',
+            role: 'Enterprise SQL Agent',
+            status: 'READY TO DEPLOY',
+            icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+            desc: 'DATAFLEX connects to your enterprise database warehouse (Postgres, Snowflake, BigQuery) and vector search store. Executive team members can ask plain English questions, and DATAFLEX safely translates intent into validated SQL queries to return instant charts and tables.',
+            caps: [
+                'Enterprise RAG vector search & database architecture',
+                'Strict zero data leakage & read-only safety permissions',
+                'Instant conversion of natural language prompts to complex SQL',
+                'Automated executive reporting & chart generation'
+            ],
+            chips: ['Postgres', 'Snowflake', 'Vector DB', 'BigQuery'],
+            workflow: ['NL QUESTION', 'SCHEMA & RAG LOOKUP', 'SECURE SQL GEN', 'QUERY RUN', 'INSIGHT REPORT'],
+            deployUrl: 'contact.html?agent=DATAFLEX'
+        }
+    };
+
+    const modalOverlay = document.getElementById('agentModalOverlay');
+    const modalCloseBtn = document.getElementById('agentModalClose');
+    const viewDetailsBtns = document.querySelectorAll('.view-agent-details-btn');
+
+    function openAgentModal(agentKey) {
+        const data = agentDetailsData[agentKey];
+        if (!data || !modalOverlay) return;
+
+        document.getElementById('modalAgentIcon').innerHTML = data.icon;
+        document.getElementById('modalAgentStatus').innerHTML = `<span class="status-pulse-dot"></span> ${data.status}`;
+        document.getElementById('modalAgentName').innerText = data.name;
+        document.getElementById('modalAgentRole').innerText = data.role;
+        document.getElementById('modalAgentDesc').innerText = data.desc;
+
+        // Populate capabilities
+        const capsList = document.getElementById('modalAgentCaps');
+        capsList.innerHTML = '';
+        data.caps.forEach(cap => {
+            const li = document.createElement('li');
+            li.className = 'modal-cap-item';
+            li.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ${cap}`;
+            capsList.appendChild(li);
+        });
+
+        // Populate chips
+        const chipsWrapper = document.getElementById('modalAgentChips');
+        chipsWrapper.innerHTML = '';
+        data.chips.forEach(chip => {
+            const span = document.createElement('span');
+            span.className = 'integration-chip';
+            span.innerText = chip;
+            chipsWrapper.appendChild(span);
+        });
+
+        // Populate workflow pipeline
+        const wfWrapper = document.getElementById('modalAgentWorkflow');
+        wfWrapper.innerHTML = '';
+        data.workflow.forEach((stepText, idx) => {
+            const stepChip = document.createElement('div');
+            stepChip.className = 'wf-step-chip';
+            stepChip.innerHTML = `<span>${stepText}</span>`;
+            wfWrapper.appendChild(stepChip);
+
+            if (idx < data.workflow.length - 1) {
+                const arrow = document.createElement('span');
+                arrow.className = 'wf-arrow';
+                arrow.innerHTML = '↓';
+                wfWrapper.appendChild(arrow);
+            }
+        });
+
+        // Update CTA link
+        const deployBtn = document.getElementById('modalDeployBtn');
+        if (deployBtn) {
+            deployBtn.setAttribute('href', data.deployUrl);
+        }
+
+        modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Animate workflow chips sequentially
+        const stepChips = wfWrapper.querySelectorAll('.wf-step-chip');
+        stepChips.forEach((chip, index) => {
+            setTimeout(() => {
+                chip.classList.add('active-step');
+            }, index * 200);
+        });
+    }
+
+    function closeAgentModal() {
+        if (!modalOverlay) return;
+        modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    viewDetailsBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const agentKey = btn.getAttribute('data-agent');
+            openAgentModal(agentKey);
+        });
+    });
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeAgentModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeAgentModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalOverlay && modalOverlay.classList.contains('active')) {
+            closeAgentModal();
+        }
+    });
 
     // ==========================================
     // Futuristic Preloader Animation
@@ -1429,6 +1637,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculateROISavings();
 
+    // Solutions Page ROI Telemetry Calculator Engine (solutions.html)
+    const solTeamSlider = document.getElementById('teamSizeSlider');
+    const solSalarySlider = document.getElementById('avgSalarySlider');
+    const solHoursSlider = document.getElementById('hoursTaskSlider');
+
+    const solTeamVal = document.getElementById('teamSizeVal');
+    const solSalaryVal = document.getElementById('avgSalaryVal');
+    const solHoursVal = document.getElementById('hoursTaskVal');
+
+    const solAnnualSavings = document.getElementById('annualSavingsVal');
+    const solHoursSaved = document.getElementById('hoursSavedVal');
+    const solSpeedUpVal = document.getElementById('speedUpVal');
+    const solSpeedVal = document.getElementById('roiSpeedVal');
+
+    let currentSavingsDisplay = 152100;
+
+    function animateROINumber(element, startVal, endVal, prefix = '$', suffix = '') {
+        if (!element) return;
+        const duration = 200;
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.round(startVal + (endVal - startVal) * progress);
+            element.innerText = `${prefix}${current.toLocaleString()}${suffix}`;
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    function updateSolutionsROI() {
+        if (!solTeamSlider || !solSalarySlider || !solHoursSlider) return;
+
+        const team = parseInt(solTeamSlider.value);
+        const salary = parseInt(solSalarySlider.value);
+        const hoursPerWeek = parseInt(solHoursSlider.value);
+
+        if (solTeamVal) solTeamVal.innerText = `${team} People`;
+        if (solSalaryVal) solSalaryVal.innerText = `$${salary.toLocaleString()}/yr`;
+        if (solHoursVal) solHoursVal.innerText = `${hoursPerWeek} hrs/wk`;
+
+        const hourlyRate = salary / 2000;
+        const weeklyHoursSavedTotal = team * hoursPerWeek * 0.65;
+        const annualHoursSavedTotal = Math.round(weeklyHoursSavedTotal * 52);
+        const annualGrossSavings = Math.round(annualHoursSavedTotal * hourlyRate);
+
+        if (solAnnualSavings) {
+            animateROINumber(solAnnualSavings, currentSavingsDisplay, annualGrossSavings, '$');
+            currentSavingsDisplay = annualGrossSavings;
+        }
+
+        if (solHoursSaved) {
+            solHoursSaved.innerText = `${annualHoursSavedTotal.toLocaleString()} hrs/yr`;
+        }
+
+        if (solSpeedUpVal) {
+            const speedUpMult = (1 + (hoursPerWeek / 40) * 7.5).toFixed(1);
+            solSpeedUpVal.innerText = `${speedUpMult}x`;
+        }
+
+        if (solSpeedVal) {
+            const weeksPayback = Math.max(1, Math.round(10 / Math.sqrt(team)));
+            solSpeedVal.innerText = `${weeksPayback} ${weeksPayback === 1 ? 'Week' : 'Weeks'}`;
+        }
+    }
+
+    if (solTeamSlider && solSalarySlider && solHoursSlider) {
+        [solTeamSlider, solSalarySlider, solHoursSlider].forEach(slider => {
+            slider.addEventListener('input', updateSolutionsROI);
+        });
+        updateSolutionsROI();
+    }
+
     // ==========================================
     // Portfolio Category Filtering & Live Search Engine
     // ==========================================
@@ -1440,6 +1724,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeBtn = document.querySelector('#portfolioFilterBar .filter-btn.active');
         const filterVal = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
         const searchQuery = portfolioSearchInput ? portfolioSearchInput.value.toLowerCase().trim() : '';
+        const emptyStateEl = document.getElementById('portfolioEmptyState');
+        let visibleCount = 0;
 
         portfolioCardItems.forEach(card => {
             const categories = card.getAttribute('data-category') || '';
@@ -1450,12 +1736,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = !searchQuery || cardText.includes(searchQuery) || cardTags.includes(searchQuery);
 
             if (matchesCategory && matchesSearch) {
-                card.style.display = 'flex';
+                card.style.display = (card.classList.contains('featured-build-card') || card.querySelector('.featured-build-card')) ? 'block' : 'flex';
                 card.style.opacity = '1';
+                visibleCount++;
             } else {
                 card.style.display = 'none';
             }
         });
+
+        if (emptyStateEl) {
+            if (visibleCount === 0) {
+                emptyStateEl.style.display = 'block';
+            } else {
+                emptyStateEl.style.display = 'none';
+            }
+        }
     }
 
     if (portfolioFilterBtns.length > 0 && portfolioCardItems.length > 0) {
@@ -1475,42 +1770,114 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Architecture Specifications Modal Logic
+    // ==========================================
+    // Dynamic Reusable Case Study Detail Modal Engine
+    // ==========================================
     const archModalOverlay = document.getElementById('archModalOverlay');
     const archModalBody = document.getElementById('archModalBody');
-    const closeArchModal = document.getElementById('closeArchModal');
-    const openArchBtns = document.querySelectorAll('.open-arch-modal');
 
     const projectSpecsData = {
         instaguard: {
-            title: 'INSTAGUARD 360 — Architecture & Workflow Specs',
-            badge: 'INSTAGRAM & SHOPIFY BOT',
+            badge: 'SOCIAL & COMMERCE',
+            title: 'INSTAGUARD 360 — Instagram & Shopify Agent',
+            desc: 'Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>@shop_luxe_ai • Instagram DM</span><span class="ui-pill-success">LIVE API</span></div>
+                    <div class="ui-chat-bubble">Hi! Is Cyber Hoodie size M in stock?</div>
+                    <div class="ui-chat-reply">⚡ 14 in stock! Code INSTA15 gets 15% off: shopluxe.ai/m</div>
+                </div>
+            `,
+            metrics: [
+                { val: '40k+', lbl: 'DMs / Month' },
+                { val: '12s', lbl: 'Avg Response' },
+                { val: '+38%', lbl: 'Conv Rate Lift' },
+                { val: '99.4%', lbl: 'Order Accuracy' }
+            ],
+            workflow: ['Customer DM Inquiry', 'AI Intent Engine', 'Shopify API Check', 'Instant DM Reply', 'CRM Logged'],
+            chips: ['Python', 'Meta Graph API', 'Shopify REST', 'OpenAI GPT-4o', 'Redis Cache'],
             specs: [
                 { label: 'Neural Engine', val: 'OpenAI GPT-4o + Custom Fine-Tuned Prompt Pipeline' },
                 { label: 'Primary Webhooks', val: 'Meta Graph API v19.0 (Instagram DMs & Comments)' },
-                { label: 'Commerce Integration', val: 'Shopify Admin REST API + Webhooks (Live Inventory & Orders)' },
+                { label: 'Commerce Integration', val: 'Shopify Admin REST API + Webhooks (Live Stock & Orders)' },
                 { label: 'Database & Caching', val: 'Redis Cloud Cache (Sub-5ms Session State)' },
-                { label: 'Execution Speed', val: '12 Seconds Average Full-Resolution Cycle' },
-                { label: 'Security Protocols', val: 'HMAC Signature Verification & AES-256 Token Encryption' }
+                { label: 'Execution Speed', val: '12 Seconds Average Resolution Cycle' },
+                { label: 'Security Protocols', val: 'HMAC Signature Verification & AES-256 Encryption' }
             ],
-            desc: 'This build monitors incoming Instagram Direct Messages and comment threads. Upon receiving a product or order status inquiry, the agent extracts order IDs or product keywords, verifies user authorization, calls Shopify APIs for live stock or shipping tracking, and constructs a human-like response with tracking links and promo codes.'
+            impact: {
+                before: [
+                    'Manual IG DM replies taking 6+ hours',
+                    'High abandoned cart rates on social inquiries',
+                    'Zero inventory cross-checking available'
+                ],
+                after: [
+                    'Instant 12-second automated responses 24/7',
+                    '+38% increase in social checkout conversion',
+                    'Real-time live Shopify inventory sync'
+                ]
+            },
+            ctaUrl: 'contact.html?project=INSTAGUARD-360'
         },
         pipelinemax: {
-            title: 'PIPELINE-MAX — Architecture & Workflow Specs',
-            badge: 'SALES QUALIFICATION BOT',
+            badge: 'SALES & CRM',
+            title: 'PIPELINE-MAX — Enterprise B2B Lead Qualification Agent',
+            desc: 'Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>SALESFORCE BANT EVALUATOR</span><span class="ui-pill-success">AUTO-PILOT</span></div>
+                    <div class="ui-score-badge"><span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700;">TechCorp (250 Staff)</span><span style="font-family:var(--font-hud); font-size:0.9rem; font-weight:800; color:var(--brand-action);">98 / 100</span></div>
+                    <div style="font-family:var(--font-mono); font-size:0.7rem; color:#475569;">✓ Budget & Decision Maker Verified • Demo Booked</div>
+                </div>
+            `,
+            metrics: [
+                { val: '98/100', lbl: 'Lead Fit Score' },
+                { val: '14ms', lbl: 'Inference Latency' },
+                { val: '10x', lbl: 'Booked Demos' },
+                { val: '100%', lbl: 'Salesforce Sync' }
+            ],
+            workflow: ['Web Form Submission', 'Apollo Profile Enrichment', 'BANT AI Scoring (0-100)', 'Calendly Meeting Booking', 'Salesforce Opportunity Logged'],
+            chips: ['Salesforce CRM', 'Apollo API', 'Calendly API', 'Node.js', 'OAuth 2.0'],
             specs: [
                 { label: 'Core Classifier', val: 'BANT (Budget, Authority, Need, Timeline) Neural Scoring' },
                 { label: 'Enrichment API', val: 'Apollo REST API + LinkedIn Company Scraper' },
                 { label: 'CRM Synchronization', val: 'Salesforce Enterprise REST & Bulk API 2.0' },
                 { label: 'Scheduling Engine', val: 'Calendly API v2 Webhook Handler' },
                 { label: 'Execution Speed', val: '14ms Response & Scoring Latency' },
-                { label: 'Security Protocols', val: 'OAuth 2.0 Mutual TLS & Enterprise Encrypted Vault' }
+                { label: 'Security Protocols', val: 'OAuth 2.0 Mutual TLS & Enterprise Vault' }
             ],
-            desc: 'PIPELINE-MAX processes inbound web demo requests instantly. It enriches the lead profile against Apollo.io to retrieve company revenue, headcount, and tech stack. The neural classifier assigns a BANT score (0-100). Leads scoring > 80 automatically receive a calendar booking link and are logged into Salesforce with full transcript telemetry.'
+            impact: {
+                before: [
+                    'Leads sitting untouched for 24+ hours',
+                    'Unqualified leads wasting sales reps demo calls',
+                    'Manual CRM data entry friction'
+                ],
+                after: [
+                    'Sub-second instant lead enrichment & scoring',
+                    '10x increase in qualified meetings booked',
+                    '100% automated Salesforce profile logging'
+                ]
+            },
+            ctaUrl: 'contact.html?project=PIPELINE-MAX'
         },
         supportrx: {
-            title: 'SUPPORTR-X — Architecture & Workflow Specs',
-            badge: 'OMNICHANNEL SUPPORT POD',
+            badge: 'SUPPORT & CX',
+            title: 'SUPPORTR-X — Fintech Omnichannel Support Pod',
+            desc: 'Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>AUTH0 & PINECONE VECTOR</span><span class="ui-pill-success">24/7 SUPPORT</span></div>
+                    <div class="ui-chat-bubble">Need to rotate API token & upgrade plan</div>
+                    <div class="ui-chat-reply">✓ Auth0 Verified • Token rotated & Zendesk #8492 resolved</div>
+                </div>
+            `,
+            metrics: [
+                { val: '98.9%', lbl: 'Resolution Rate' },
+                { val: '1.8s', lbl: 'Ticket Closure' },
+                { val: '24/7', lbl: 'Availability' },
+                { val: '5.0 CSAT', lbl: 'Customer Rating' }
+            ],
+            workflow: ['Customer Ticket Received', 'Auth0 Token Verification', 'Pinecone RAG Vector Lookup', 'Stripe API Execution', 'Zendesk Resolution'],
+            chips: ['Auth0', 'Stripe SDK', 'Twilio API', 'Pinecone Vector', 'Zendesk REST'],
             specs: [
                 { label: 'Vector Knowledge Base', val: 'Pinecone Vector DB + OpenAI Embeddings' },
                 { label: 'Identity Provider', val: 'Auth0 JWT Bearer Token Validation' },
@@ -1519,24 +1886,78 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: '1.8 Seconds Ticket Closure' },
                 { label: 'Security Protocols', val: 'SOC2 Type II Compliant & PCI-DSS Shielded' }
             ],
-            desc: 'Designed for high-security fintech platforms, SUPPORTR-X handles customer billing queries, subscription plan changes, and API key rotations. It authenticates users via Auth0 JWT, executes requested changes directly in Stripe SDK, updates Zendesk ticket history, and notifies users over Twilio WhatsApp.'
+            impact: {
+                before: [
+                    'High customer support queue backlog',
+                    'Slow response times for billing & token queries',
+                    'Overwhelmed tier-1 support representatives'
+                ],
+                after: [
+                    '98.9% First Contact Resolution (FCR)',
+                    '1.8-second average ticket resolution',
+                    'Zero human intervention for routine actions'
+                ]
+            },
+            ctaUrl: 'contact.html?project=SUPPORTR-X'
         },
         logiflow: {
-            title: 'LOGI-FLOW — Architecture & Workflow Specs',
-            badge: 'LOGISTICS & INVENTORY BOT',
+            badge: 'OPERATIONS',
+            title: 'LOGI-FLOW — Warehouse & Inventory Sync Agent',
+            desc: 'Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>ERP & SHOPIFY RECONCILIATION</span><span class="ui-pill-success">45,000 SKUs</span></div>
+                    <table class="ui-table-grid"><tr><td>SKU-8842 (Sensor)</td><td style="color:#ef4444; font-weight:700;">4 Left</td></tr><tr><td>Action Taken</td><td style="color:#10b981; font-weight:700;">PO Sent + Slack Alert</td></tr></table>
+                </div>
+            `,
+            metrics: [
+                { val: '45,000', lbl: 'SKUs Monitored' },
+                { val: '100%', lbl: 'System Uptime' },
+                { val: '850', lbl: 'Auto POs / Day' },
+                { val: '0', lbl: 'Stockout Anomalies' }
+            ],
+            workflow: ['Hourly Batch Scan', 'PostgreSQL Query', 'Threshold Check', 'Slack Channel Push', 'Automated PO Dispatch'],
+            chips: ['Python Celery', 'PostgreSQL', 'Slack API', 'Shopify Admin', 'Redis Queue'],
             specs: [
                 { label: 'Background Worker', val: 'Python Celery + Redis Task Queue' },
                 { label: 'Database Layer', val: 'PostgreSQL Relational DB (45,000 SKUs)' },
                 { label: 'Alerting Channel', val: 'Slack Bot Webhooks & WhatsApp Admin Push' },
                 { label: 'PO Engine', val: 'Automated ERP Purchase Order Dispatcher' },
                 { label: 'Execution Speed', val: 'Hourly Batch Cron & Real-Time Stream' },
-                { label: 'Security Protocols', val: 'Internal VPN Tunnel & Encrypted Database Connections' }
+                { label: 'Security Protocols', val: 'Internal VPN Tunnel & Encrypted DB Connections' }
             ],
-            desc: 'LOGI-FLOW runs continuous inventory checks across 45,000 SKUs across 4 warehouse locations. It cross-references current stock levels against historical velocity. When stock drops below re-order thresholds, it posts structured alerts to Slack and generates draft Purchase Orders for manager approval.'
+            impact: {
+                before: [
+                    'Frequent unexpected warehouse stockouts',
+                    'Manual inventory counting across 4 locations',
+                    'Delayed purchase order issuance'
+                ],
+                after: [
+                    '100% real-time inventory accuracy',
+                    '850 automated purchase orders daily',
+                    'Instant Slack notifications for low-stock alerts'
+                ]
+            },
+            ctaUrl: 'contact.html?project=LOGI-FLOW'
         },
         audiencegen: {
-            title: 'AUDIENCE-GEN — Architecture & Workflow Specs',
-            badge: 'COLD OUTREACH PIPELINE',
+            badge: 'SOCIAL & SALES',
+            title: 'AUDIENCE-GEN — Cold Outreach & Lead Scraper Agent',
+            desc: 'Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>APOLLO & ZEROBOUNCE</span><span class="ui-pill-success">500 LEADS/DAY</span></div>
+                    <table class="ui-table-grid"><tr><td>Alex V. (CTO @ ScaleAI)</td><td style="color:#10b981; font-weight:700;">Validated</td></tr><tr><td>5-Stage Email Cadence</td><td style="color:var(--brand-action); font-weight:700;">Stage 2 Sent</td></tr></table>
+                </div>
+            `,
+            metrics: [
+                { val: '500/day', lbl: 'Leads Scraped' },
+                { val: '+34%', lbl: 'Reply Rate' },
+                { val: '4.5x', lbl: 'Pipeline Lift' },
+                { val: '99.8%', lbl: 'Deliverability' }
+            ],
+            workflow: ['Target Prospect Scrape', 'ZeroBounce Validation', 'LangChain Personalization', 'SendGrid Multi-SMTP Outreach', 'Meeting Booked'],
+            chips: ['Apollo Scraper', 'ZeroBounce', 'SendGrid SDK', 'LangChain', 'GPT-4'],
             specs: [
                 { label: 'Scraper & Data Pipeline', val: 'Apollo.io + Custom LinkedIn Prospect Extractor' },
                 { label: 'Email Deliverability', val: 'ZeroBounce Real-Time API Validation' },
@@ -1545,11 +1966,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: '500 High-Intent Leads Processed Daily' },
                 { label: 'Security Protocols', val: 'DKIM, SPF, DMARC Authentication Shield' }
             ],
-            desc: 'AUDIENCE-GEN automates cold lead generation by identifying target executive titles (CTOs, VP of Eng), validating deliverability via ZeroBounce to maintain sender reputation, and personalizing email sequences based on recent company news and tech stack signals.'
+            impact: {
+                before: [
+                    'Low email open and response rates',
+                    'High spam bounce rates damaging domain reputation',
+                    'Hours spent manually researching prospects'
+                ],
+                after: [
+                    '+34% response rate boost',
+                    '99.8% verified deliverability rate',
+                    '4.5x growth in qualified sales pipeline'
+                ]
+            },
+            ctaUrl: 'contact.html?project=AUDIENCE-GEN'
         },
         whatsappflow: {
-            title: 'WHATSAPP-FLOW — Architecture & Workflow Specs',
-            badge: 'WHATSAPP COMMERCE AGENT',
+            badge: 'SOCIAL & COMMERCE',
+            title: 'WHATSAPP-FLOW — WhatsApp Conversational Commerce Agent',
+            desc: 'Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.',
+            visualHtml: `
+                <div class="card-micro-ui" style="width:100%; height:100%; margin:0; border:none; background:transparent;">
+                    <div class="ui-mockup-header"><span>WHATSAPP CLOUD API</span><span class="ui-pill-success">CART RECOVERY</span></div>
+                    <div class="ui-chat-bubble">Can I complete order for Skincare Set?</div>
+                    <div class="ui-chat-reply">💳 Order #W-4091 ready! Pay via Stripe: wa.pay/4091</div>
+                </div>
+            `,
+            metrics: [
+                { val: '15,000', lbl: 'Monthly Chats' },
+                { val: '88%', lbl: 'Open Rate' },
+                { val: '+25%', lbl: 'Cart Recovery' },
+                { val: '< 1s', lbl: 'Message Delivery' }
+            ],
+            workflow: ['Customer WhatsApp Chat', 'Catalog Search', 'Cart Recovery Alert', 'Stripe Link Generation', 'Order Confirmed'],
+            chips: ['WhatsApp API', 'Stripe SDK', 'MongoDB Atlas', 'FastAPI', 'Python'],
             specs: [
                 { label: 'Messaging Provider', val: 'Meta WhatsApp Business Cloud API' },
                 { label: 'Payment Gateway', val: 'Stripe & Razorpay Payment Link APIs' },
@@ -1558,50 +2007,176 @@ document.addEventListener('DOMContentLoaded', () => {
                 { label: 'Execution Speed', val: 'Sub-Second Message Delivery' },
                 { label: 'Security Protocols', val: 'End-to-End Encrypted Message Payload' }
             ],
-            desc: 'WHATSAPP-FLOW turns WhatsApp into a 24/7 automated sales counter. Customers can browse visual product catalogs inside WhatsApp chat, trigger instant payment links, receive automated order updates, and recover abandoned carts with targeted incentives.'
+            impact: {
+                before: [
+                    'High cart abandonment on mobile web',
+                    'Delayed manual response to customer inquiries',
+                    'Friction in mobile checkout flows'
+                ],
+                after: [
+                    '+25% cart recovery rate',
+                    '88% message open rate on WhatsApp',
+                    'Sub-second automated Stripe payment links'
+                ]
+            },
+            ctaUrl: 'contact.html?project=WHATSAPP-FLOW'
         }
     };
 
-    if (openArchBtns.length > 0 && archModalOverlay && archModalBody) {
-        openArchBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const projKey = btn.getAttribute('data-project');
-                const p = projectSpecsData[projKey];
-                if (p) {
-                    let specsHtml = p.specs.map(s => `
-                        <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(203,213,225,0.4); padding: 8px 0; font-size: 0.85rem;">
-                            <strong style="color:var(--primary-blue); font-family:var(--font-mono);">${s.label}:</strong>
-                            <span style="color:var(--text-muted); text-align:right;">${s.val}</span>
-                        </div>
-                    `).join('');
+    function renderCaseStudyModal(p) {
+        if (!p || !archModalBody) return;
 
-                    archModalBody.innerHTML = `
-                        <div style="display:inline-block; font-size:0.72rem; padding:4px 10px; background:rgba(37,99,235,0.1); border:1px solid var(--primary-blue); border-radius:12px; color:var(--primary-blue); margin-bottom:12px; font-weight:700;">${p.badge}</div>
-                        <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:14px; color:#0f172a;" class="section-title">${p.title}</h3>
-                        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">${p.desc}</p>
-                        <div style="background:rgba(241,245,249,0.8); border:1px solid #cbd5e1; border-radius:10px; padding:16px; margin-bottom:16px;" class="mock-card">
-                            <h4 style="font-size:0.9rem; font-weight:700; margin-bottom:10px; color:#0f172a; text-transform:uppercase; letter-spacing:0.5px;">SYSTEM TELEMETRY SPECS</h4>
-                            ${specsHtml}
-                        </div>
-                    `;
-                    archModalOverlay.style.display = 'flex';
-                }
-            });
-        });
+        const metricsHtml = p.metrics.map(m => `
+            <div class="modal-metric-card">
+                <span class="modal-metric-val">${m.val}</span>
+                <span class="modal-metric-lbl">${m.lbl}</span>
+            </div>
+        `).join('');
 
-        if (closeArchModal) {
-            closeArchModal.addEventListener('click', () => {
-                archModalOverlay.style.display = 'none';
-            });
+        const workflowHtml = p.workflow.map((step, idx) => `
+            <div class="modal-wf-node">${step}</div>
+            ${idx < p.workflow.length - 1 ? '<span class="modal-wf-arrow">→</span>' : ''}
+        `).join('');
+
+        const chipsHtml = p.chips.map(chip => `
+            <span class="modal-tech-pill">${chip}</span>
+        `).join('');
+
+        const specsHtml = p.specs.map(s => `
+            <div class="modal-spec-card">
+                <span class="modal-spec-label">${s.label}</span>
+                <span class="modal-spec-val">${s.val}</span>
+            </div>
+        `).join('');
+
+        const beforeList = p.impact.before.map(item => `<li>❌ ${item}</li>`).join('');
+        const afterList = p.impact.after.map(item => `<li>⚡ ${item}</li>`).join('');
+
+        archModalBody.innerHTML = `
+            <!-- Header Row -->
+            <div class="modal-header-row">
+                <div>
+                    <span class="modal-category-badge">[ ${p.badge} ]</span>
+                    <h2 class="modal-main-title">${p.title}</h2>
+                    <p class="modal-subtitle-text">${p.desc}</p>
+                </div>
+                <button class="modal-close-btn" id="closeCaseStudyModalBtn" aria-label="Close Case Study Viewer">✕</button>
+            </div>
+
+            <!-- Hero Visual Panel -->
+            <div class="modal-hero-visual">
+                ${p.visualHtml}
+            </div>
+
+            <!-- Key Results Metrics -->
+            <div class="modal-metrics-grid">
+                ${metricsHtml}
+            </div>
+
+            <!-- How The Agent Works (Workflow) -->
+            <div class="modal-workflow-box">
+                <div class="modal-section-title">⚡ How The Agent Works (Automation Pipeline)</div>
+                <div class="modal-workflow-steps">
+                    ${workflowHtml}
+                </div>
+            </div>
+
+            <!-- Integrations & Technology -->
+            <div class="modal-integrations-box">
+                <div class="modal-section-title">🛠️ Integrations & Technology</div>
+                <div class="modal-chips-flex">
+                    ${chipsHtml}
+                </div>
+            </div>
+
+            <!-- Telemetry Specifications -->
+            <div class="modal-specs-box">
+                <div class="modal-section-title">📊 System Telemetry & Architecture Specs</div>
+                <div class="modal-specs-grid">
+                    ${specsHtml}
+                </div>
+            </div>
+
+            <!-- Business Impact Comparison -->
+            <div class="modal-impact-box">
+                <div class="modal-section-title">📈 Business Impact Comparison</div>
+                <div class="modal-impact-grid">
+                    <div class="modal-impact-card before">
+                        <div class="impact-card-title">Before AI Automation</div>
+                        <ul class="impact-list">${beforeList}</ul>
+                    </div>
+                    <div class="modal-impact-card after">
+                        <div class="impact-card-title">After AI Agent Deployment</div>
+                        <ul class="impact-list">${afterList}</ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA Bar -->
+            <div class="modal-cta-row">
+                <div>
+                    <h4 style="font-size:1rem; font-weight:800; color:var(--brand-text); margin-bottom:4px;">Want an AI Agent like this for your business?</h4>
+                    <p style="font-size:0.82rem; color:#64748b;">We design and deploy custom neural workflows in days.</p>
+                </div>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <a href="${p.ctaUrl}" class="btn btn-primary btn-glow btn-sm">
+                        Build Something Similar →
+                    </a>
+                    <button class="btn btn-secondary btn-sm" id="closeCaseStudyModalFooterBtn">
+                        Close
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const btnHeader = document.getElementById('closeCaseStudyModalBtn');
+        const btnFooter = document.getElementById('closeCaseStudyModalFooterBtn');
+
+        if (btnHeader) btnHeader.addEventListener('click', closeCaseStudyModal);
+        if (btnFooter) btnFooter.addEventListener('click', closeCaseStudyModal);
+    }
+
+    function openCaseStudyModal(projKey) {
+        const p = projectSpecsData[projKey] || projectSpecsData['instaguard'];
+        if (p && archModalOverlay) {
+            renderCaseStudyModal(p);
+            archModalOverlay.classList.add('active');
+            archModalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
+    }
 
+    function closeCaseStudyModal() {
+        if (!archModalOverlay) return;
+        archModalOverlay.classList.remove('active');
+        setTimeout(() => {
+            archModalOverlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 200);
+    }
+
+    document.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('.open-arch-modal');
+        if (openBtn) {
+            e.preventDefault();
+            const projKey = openBtn.getAttribute('data-project');
+            openCaseStudyModal(projKey);
+        }
+    });
+
+    if (archModalOverlay) {
         archModalOverlay.addEventListener('click', (e) => {
             if (e.target === archModalOverlay) {
-                archModalOverlay.style.display = 'none';
+                closeCaseStudyModal();
             }
         });
     }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && archModalOverlay && archModalOverlay.classList.contains('active')) {
+            closeCaseStudyModal();
+        }
+    });
 
     // ==========================================
     // Scroll-Driven Sequential Roadmap Reveal Engine
@@ -3099,5 +3674,79 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initInteractiveWalkthroughEngine();
+
+    // ==========================================
+    // Solution Cards Workflow Animation Controller
+    // ==========================================
+    function initSolutionWorkflows() {
+        const cards = document.querySelectorAll('.biz-sol-card');
+        if (!cards.length) return;
+
+        let autoCardIndex = 0;
+        let autoTimer = null;
+        let isHoveringAnyCard = false;
+        let activeInterval = null;
+
+        function animateSequence(card, callback) {
+            if (activeInterval) {
+                clearInterval(activeInterval);
+                activeInterval = null;
+            }
+            const elements = card.querySelectorAll('.sol-wf-step, .sol-wf-arrow');
+            if (!elements.length) {
+                if (callback) callback();
+                return;
+            }
+
+            elements.forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+
+            let idx = 0;
+            activeInterval = setInterval(() => {
+                if (idx < elements.length) {
+                    elements[idx].classList.add('wf-active');
+                    idx++;
+                } else {
+                    clearInterval(activeInterval);
+                    activeInterval = null;
+                    setTimeout(() => {
+                        elements.forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                        if (callback) callback();
+                    }, 800);
+                }
+            }, 180);
+        }
+
+        function cycleAutoAnimation() {
+            if (isHoveringAnyCard) return;
+            const targetCard = cards[autoCardIndex];
+            animateSequence(targetCard, () => {
+                autoCardIndex = (autoCardIndex + 1) % cards.length;
+                autoTimer = setTimeout(cycleAutoAnimation, 4000);
+            });
+        }
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                isHoveringAnyCard = true;
+                if (autoTimer) clearTimeout(autoTimer);
+                cards.forEach(c => {
+                    c.querySelectorAll('.sol-wf-step, .sol-wf-arrow').forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                });
+                animateSequence(card);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                isHoveringAnyCard = false;
+                card.querySelectorAll('.sol-wf-step, .sol-wf-arrow').forEach(el => el.classList.remove('wf-active', 'wf-completed'));
+                if (autoTimer) clearTimeout(autoTimer);
+                autoTimer = setTimeout(cycleAutoAnimation, 4000);
+            });
+        });
+
+        autoTimer = setTimeout(cycleAutoAnimation, 3000);
+    }
+
+    initSolutionWorkflows();
 });
+
 

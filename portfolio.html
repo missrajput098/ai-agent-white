@@ -82,7 +82,7 @@
 
     <!-- Subpage Hero Header Banner -->
     <section class="subpage-hero">
-        <div class="container container-fluid subpage-hero-grid">
+        <div class="portfolio-container-contained subpage-hero-grid portfolio-hero-contained">
             <div class="subpage-hero-content">
                 <div class="breadcrumb-nav">
                     <a href="index.html">Home</a> <span>/</span> <span>ENGINEERED AI BUILDS</span>
@@ -107,9 +107,9 @@
                 <!-- Live Portfolio Telemetry Stats Bar -->
                 <div class="portfolio-hero-stats">
                     <div class="portfolio-stat-box">
-                        <span class="stat-label-text">DEPLOYS LIVE</span>
+                        <span class="stat-label-text">AI DEPLOYMENTS</span>
                         <span class="stat-num-val">520+</span>
-                        <span class="stat-sub-detail">Active Neural Agents</span>
+                        <span class="stat-sub-detail">Active Neural Systems</span>
                     </div>
                     <div class="portfolio-stat-box">
                         <span class="stat-label-text">SYSTEM UPTIME</span>
@@ -122,9 +122,9 @@
                         <span class="stat-sub-detail">Inference & Webhooks</span>
                     </div>
                     <div class="portfolio-stat-box">
-                        <span class="stat-label-text">CLIENT SAVINGS</span>
+                        <span class="stat-label-text">TOTAL CLIENT ROI</span>
                         <span class="stat-num-val text-violet">$4.2M+</span>
-                        <span class="stat-sub-detail">Total Annual ROI</span>
+                        <span class="stat-sub-detail">Annual Savings Delivered</span>
                     </div>
                 </div>
             </div>
@@ -143,8 +143,8 @@
 
     <!-- Portfolio Category Filter, Live Search & Grid Section -->
     <section class="section" id="portfolio-grid-section">
-        <div class="container container-fluid">
-            <div class="text-center margin-bottom-40">
+        <div class="portfolio-container-contained">
+            <div class="text-center margin-bottom-30">
                 <div class="cap-badge">
                     <span class="sparkle-icon">✦</span>
                     <span>PORTFOLIO SHOWCASE</span>
@@ -154,15 +154,15 @@
             </div>
 
             <!-- Toolbar: Filter Tabs & Live Search Input -->
-            <div class="portfolio-toolbar-container">
+            <div class="portfolio-toolbar-container margin-bottom-30">
                 <div class="portfolio-filter-row">
                     <div class="filter-tab-wrapper" style="margin: 0;">
                         <div class="filter-tab-bar" id="portfolioFilterBar">
                             <button class="filter-btn active" data-filter="all">⚡ All Builds (6)</button>
                             <button class="filter-btn" data-filter="sales">🎯 Sales & CRM (2)</button>
-                            <button class="filter-btn" data-filter="support">💬 Support AI (2)</button>
+                            <button class="filter-btn" data-filter="support">💬 Support & CX (2)</button>
                             <button class="filter-btn" data-filter="ops">⚙️ Operations (1)</button>
-                            <button class="filter-btn" data-filter="social">📲 Social & E-Com (2)</button>
+                            <button class="filter-btn" data-filter="social">📲 Social & Commerce (2)</button>
                         </div>
                     </div>
 
@@ -173,373 +173,371 @@
                 </div>
             </div>
 
-            <!-- Portfolio Cards Grid -->
-            <div class="grid-3 action-cards-grid" id="portfolioCardsGrid">
-                
-                <!-- Build Card 1: INSTAGUARD 360 -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="social ecommerce" data-tags="python meta graph api shopify webhook gpt-4o instagram">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">INSTAGUARD 360</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/capabilities-robot.png" alt="Instagram & Shopify AI Agent">
-                    </div>
-
-                    <h3 class="card-title-heading">Instagram & Shopify Conversational Agent</h3>
-                    <p class="card-description-text">
-                        Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">Python</span>
-                        <span class="tech-tag-pill">Meta Graph API</span>
-                        <span class="tech-tag-pill">Shopify Webhook</span>
-                        <span class="tech-tag-pill">GPT-4o</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">40k+</span>
-                            <span class="t-metric-lbl">DMs / MO</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">12s</span>
-                            <span class="t-metric-lbl">RESPONSE</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">+38%</span>
-                            <span class="t-metric-lbl">CONV. RATE</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="instaguard">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Build Card 2: PIPELINE-MAX -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="sales" data-tags="salesforce crm apollo api calendly api node.js b2b lead">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">PIPELINE-MAX</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/cta-banner-full.png" alt="Sales AI Agent Visual">
-                    </div>
-
-                    <h3 class="card-title-heading">Enterprise B2B Lead Qualification Agent</h3>
-                    <p class="card-description-text">
-                        Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">Salesforce CRM</span>
-                        <span class="tech-tag-pill">Apollo API</span>
-                        <span class="tech-tag-pill">Calendly API</span>
-                        <span class="tech-tag-pill">Node.js</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">98/100</span>
-                            <span class="t-metric-lbl">ACCURACY</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">14ms</span>
-                            <span class="t-metric-lbl">LATENCY</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">10x</span>
-                            <span class="t-metric-lbl">MEETINGS</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="pipelinemax">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Build Card 3: SUPPORTR-X -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="support" data-tags="auth0 stripe sdk twilio pinecone vector zendesk fintech">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">SUPPORTR-X</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ENTERPRISE</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/cta-robot-hologram.png" alt="Support AI Agent Visual">
-                    </div>
-
-                    <h3 class="card-title-heading">Fintech Omnichannel Customer Support Pod</h3>
-                    <p class="card-description-text">
-                        Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">Auth0</span>
-                        <span class="tech-tag-pill">Stripe SDK</span>
-                        <span class="tech-tag-pill">Twilio API</span>
-                        <span class="tech-tag-pill">Pinecone Vector</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">1.8s</span>
-                            <span class="t-metric-lbl">RESOLVE</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">99.9%</span>
-                            <span class="t-metric-lbl">ACCURACY</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">5.0</span>
-                            <span class="t-metric-lbl">CSAT SCORE</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="supportrx">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Build Card 4: LOGI-FLOW -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="ops" data-tags="python celery postgresql slack api shopify admin erp inventory">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">LOGI-FLOW</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/robot-hero.jpg" alt="Logistics AI Agent Visual">
-                    </div>
-
-                    <h3 class="card-title-heading">Warehouse & Inventory Sync Agent</h3>
-                    <p class="card-description-text">
-                        Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">Python Celery</span>
-                        <span class="tech-tag-pill">PostgreSQL</span>
-                        <span class="tech-tag-pill">Slack API</span>
-                        <span class="tech-tag-pill">Shopify Admin</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">45,000</span>
-                            <span class="t-metric-lbl">SKUS SYNCED</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">100%</span>
-                            <span class="t-metric-lbl">UPTIME</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">850</span>
-                            <span class="t-metric-lbl">AUTO POS/DAY</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="logiflow">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Build Card 5: AUDIENCE-GEN -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="social sales" data-tags="apollo scraper zerobounce sendgrid sdk langchain email outreach">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">AUDIENCE-GEN</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/bg-last.png" alt="LeadGen AI Agent Visual">
-                    </div>
-
-                    <h3 class="card-title-heading">Cold Outreach & Lead Scraper Agent</h3>
-                    <p class="card-description-text">
-                        Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">Apollo Scraper</span>
-                        <span class="tech-tag-pill">ZeroBounce</span>
-                        <span class="tech-tag-pill">SendGrid SDK</span>
-                        <span class="tech-tag-pill">LangChain</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">500/day</span>
-                            <span class="t-metric-lbl">LEADS</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">+34%</span>
-                            <span class="t-metric-lbl">REPLY RATE</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">4.5x</span>
-                            <span class="t-metric-lbl">PIPELINE</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="audiencegen">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Build Card 6: WHATSAPP-FLOW -->
-                <div class="portfolio-build-card portfolio-card-item" data-category="social ecommerce" data-tags="whatsapp cloud api stripe razorpay mongodb fastapi ecommerce">
-                    <div class="card-top-row">
-                        <span class="card-code-badge">WHATSAPP-FLOW</span>
-                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
-                    </div>
-
-                    <div class="portfolio-img-container">
-                        <img src="assets/images/agent.png" alt="WhatsApp AI Agent Visual">
-                    </div>
-
-                    <h3 class="card-title-heading">WhatsApp Conversational Commerce Agent</h3>
-                    <p class="card-description-text">
-                        Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.
-                    </p>
-
-                    <div class="card-tags-wrapper">
-                        <span class="tech-tag-pill">WhatsApp API</span>
-                        <span class="tech-tag-pill">Stripe SDK</span>
-                        <span class="tech-tag-pill">MongoDB</span>
-                        <span class="tech-tag-pill">FastAPI</span>
-                    </div>
-
-                    <div class="card-telemetry-box">
-                        <div class="t-metric-col">
-                            <span class="t-metric-val">15,000</span>
-                            <span class="t-metric-lbl">CHATS</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-cyan">88%</span>
-                            <span class="t-metric-lbl">OPEN RATE</span>
-                        </div>
-                        <div class="t-metric-col">
-                            <span class="t-metric-val text-green">+25%</span>
-                            <span class="t-metric-lbl">CART RECOVERY</span>
-                        </div>
-                    </div>
-
-                    <div class="card-action-row">
-                        <button class="btn btn-secondary btn-sm btn-arch-spec open-arch-modal" data-project="whatsappflow">
-                            ⚡ View Architecture Specs
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Embedded Live AI Agent Simulator Section -->
-    <section class="section simulator-section" id="simulator">
-        <div class="container container-fluid sim-container">
-            <div class="text-center margin-bottom-40">
-                <div class="cap-badge">
-                    <span class="sparkle-icon">⚡</span>
-                    <span>LIVE AGENT SIMULATOR</span>
-                </div>
-                <h2 class="section-title text-center">Test Drive an <span class="text-glow">AI Agent Live</span></h2>
-                <p class="section-subtitle text-center">Select an agent profile below to watch real-time neural execution, API webhooks, and metric streaming.</p>
+            <!-- Empty Search Results State Container -->
+            <div class="portfolio-empty-state" id="portfolioEmptyState" style="display: none;">
+                <span class="portfolio-empty-icon">🔍</span>
+                <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">No Deployments Found</h4>
+                <p class="portfolio-empty-text">No neural builds matched your active filter or search query.</p>
+                <button class="btn btn-secondary btn-sm" onclick="document.querySelector('#portfolioFilterBar .filter-btn[data-filter=all]').click(); document.getElementById('portfolioSearchInput').value=''; document.getElementById('portfolioSearchInput').dispatchEvent(new Event('input'));">
+                    Reset All Filters
+                </button>
             </div>
 
-            <div class="sim-terminal-wrapper">
-                <div class="sim-terminal-header">
-                    <div class="sim-dots">
-                        <span class="sim-dot red"></span>
-                        <span class="sim-dot yellow"></span>
-                        <span class="sim-dot green"></span>
-                        <span style="font-family:var(--font-mono); font-size:0.78rem; color:#94a3b8; margin-left:6px;">agent-space-neural-core.v4</span>
+            <!-- FEATURED CASE STUDY (Project 1 Spotlight) -->
+            <div class="portfolio-build-card portfolio-card-item margin-bottom-40" data-category="social ecommerce" data-tags="python meta graph api shopify webhook gpt-4o instagram">
+                <div class="featured-build-card card-3d">
+                    <div class="featured-badge-row">
+                        <span class="featured-badge">✦ FEATURED CASE STUDY</span>
+                        <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
                     </div>
 
-                    <div class="sim-tabs-bar">
-                        <button class="sim-tab-btn active" data-agent="sales">⚡ Sales AI</button>
-                        <button class="sim-tab-btn" data-agent="support">💬 Support AI</button>
-                        <button class="sim-tab-btn" data-agent="ops">⚙️ Operations AI</button>
-                        <button class="sim-tab-btn" data-agent="leadgen">🎯 LeadGen AI</button>
-                    </div>
+                    <div class="featured-grid-container">
+                        <div class="featured-content-col">
+                            <div class="case-card-visual" style="height: 200px; margin-bottom: 16px;">
+                                <div class="card-micro-ui" style="height: 100%; margin: 0; background: transparent; border: none;">
+                                    <div class="ui-mockup-header">
+                                        <span>@shop_luxe_ai • Instagram DM</span>
+                                        <span class="ui-pill-success">LIVE API</span>
+                                    </div>
+                                    <div class="ui-chat-bubble">Hi! Is Cyber Hoodie size M in stock?</div>
+                                    <div class="ui-chat-reply">⚡ 14 in stock! Code INSTA15 gets 15% off: shopluxe.ai/m</div>
+                                </div>
+                            </div>
+                            <h3>Instagram & Shopify Conversational Agent</h3>
+                            <p class="featured-challenge-text">
+                                Automated DM & comment handling engine connected directly to Shopify API. Resolves order status queries, checks live inventory, and distributes personalized discount codes 24/7.
+                            </p>
 
-                    <div class="sim-status-live">
-                        <span class="status-dot green-pulse"></span> SYSTEM LIVE <span id="simLiveTime" class="sim-live-time">[ --:--:-- ]</span>
-                    </div>
-                </div>
-
-                <div class="sim-terminal-grid">
-                    <div class="sim-console-pane">
-                        <div class="sim-console-logs" id="simConsoleLogs">
-                            <!-- Typewriter logs dynamically inserted via script.js -->
-                        </div>
-                        <div class="sim-log-prompt">
-                            <span style="color:#10b981;">agent@neural-core:~$</span> <span class="sim-typewriter-cursor"></span>
-                        </div>
-                    </div>
-
-                    <div class="sim-metrics-pane">
-                        <div class="sim-metric-card">
-                            <div class="sim-metric-label">Tokens Processed / Sec</div>
-                            <div class="sim-metric-val" id="simMetricTokens">14,820</div>
+                            <div class="card-tags-wrapper">
+                                <span class="tech-tag-pill">Python</span>
+                                <span class="tech-tag-pill">Meta Graph API</span>
+                                <span class="tech-tag-pill">Shopify Webhook</span>
+                                <span class="tech-tag-pill">GPT-4o</span>
+                            </div>
                         </div>
 
-                        <div class="sim-metric-card">
-                            <div class="sim-metric-label">Average API Latency</div>
-                            <div class="sim-metric-val" id="simMetricLatency">14ms</div>
-                        </div>
+                        <div class="featured-metrics-col">
+                            <div class="featured-stat-row">
+                                <div>
+                                    <span class="f-stat-num">40k+</span>
+                                    <span class="f-stat-lbl">DMs / Month</span>
+                                </div>
+                                <div>
+                                    <span class="f-stat-num text-cyan">12s</span>
+                                    <span class="f-stat-lbl">Avg Response</span>
+                                </div>
+                                <div>
+                                    <span class="f-stat-num text-green">+38%</span>
+                                    <span class="f-stat-lbl">Conv. Rate</span>
+                                </div>
+                            </div>
 
-                        <div class="sim-metric-card">
-                            <div class="sim-metric-label">Model Accuracy Score</div>
-                            <div class="sim-metric-val" id="simMetricAccuracy">99.8%</div>
-                        </div>
-
-                        <div class="sim-metric-card">
-                            <div class="sim-metric-label">Automated Workflows / Day</div>
-                            <div class="sim-metric-val" id="simMetricTasks">1,420</div>
-                            <div class="sim-progress-bar">
-                                <div class="sim-progress-fill" id="simProgressFill"></div>
+                            <div style="text-align: center;">
+                                <button class="btn btn-primary btn-glow open-arch-modal" data-project="instaguard" style="width: 100%;">
+                                    View Full Case Study →
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- COMPACT 3-COLUMN CASE STUDY GRID (Projects 2–6) -->
+            <div class="portfolio-3col-grid" id="portfolioCardsGrid">
+                
+                <!-- Build Card 2: PIPELINE-MAX -->
+                <div class="portfolio-case-card portfolio-card-item" data-category="sales" data-tags="salesforce crm apollo api calendly api node.js b2b lead">
+                    <div>
+                        <div class="case-card-top">
+                            <span class="card-code-badge">PIPELINE-MAX</span>
+                            <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
+                        </div>
+
+                        <div class="case-card-visual">
+                            <div class="card-micro-ui" style="height: 100%; margin: 0; border: none; background: transparent;">
+                                <div class="ui-mockup-header">
+                                    <span>SALESFORCE BANT EVALUATOR</span>
+                                    <span class="ui-pill-success">AUTO-PILOT</span>
+                                </div>
+                                <div class="ui-score-badge">
+                                    <span style="font-family:var(--font-mono); font-size:0.72rem; font-weight:700;">TechCorp (250 Staff)</span>
+                                    <span style="font-family:var(--font-hud); font-size:0.88rem; font-weight:800; color:var(--brand-action);">98 / 100</span>
+                                </div>
+                                <div style="font-family:var(--font-mono); font-size:0.68rem; color:#475569;">✓ Budget & Decision Maker Verified</div>
+                            </div>
+                        </div>
+
+                        <h3 class="case-card-title">Enterprise B2B Lead Qualification Agent</h3>
+                        <p class="case-card-desc">
+                            Autonomous BANT lead qualification system that evaluates web form submissions, enriches company profiles via Apollo REST API, and books qualified meetings into Salesforce.
+                        </p>
+
+                        <div class="card-tags-wrapper" style="margin-bottom: 12px;">
+                            <span class="tech-tag-pill">Salesforce CRM</span>
+                            <span class="tech-tag-pill">Apollo API</span>
+                            <span class="tech-tag-pill">Node.js</span>
+                        </div>
+                    </div>
+
+                    <div class="case-card-footer">
+                        <div class="card-telemetry-box" style="margin-bottom: 12px; padding: 8px;">
+                            <div class="t-metric-col">
+                                <span class="t-metric-val" style="font-size: 1rem;">98/100</span>
+                                <span class="t-metric-lbl">SCORE</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-cyan" style="font-size: 1rem;">14ms</span>
+                                <span class="t-metric-lbl">LATENCY</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-green" style="font-size: 1rem;">10x</span>
+                                <span class="t-metric-lbl">MEETINGS</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-sm open-arch-modal" data-project="pipelinemax" style="width: 100%;">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Build Card 3: SUPPORTR-X -->
+                <div class="portfolio-case-card portfolio-card-item" data-category="support" data-tags="auth0 stripe sdk twilio pinecone vector zendesk fintech">
+                    <div>
+                        <div class="case-card-top">
+                            <span class="card-code-badge">SUPPORTR-X</span>
+                            <span class="card-status-pill"><span class="status-dot green-pulse"></span> ENTERPRISE</span>
+                        </div>
+
+                        <div class="case-card-visual">
+                            <div class="card-micro-ui" style="height: 100%; margin: 0; border: none; background: transparent;">
+                                <div class="ui-mockup-header">
+                                    <span>AUTH0 & PINECONE VECTOR</span>
+                                    <span class="ui-pill-success">24/7 SUPPORT</span>
+                                </div>
+                                <div class="ui-chat-bubble">Need to rotate API token & upgrade plan</div>
+                                <div class="ui-chat-reply">✓ Auth0 Verified • Token rotated & Zendesk resolved</div>
+                            </div>
+                        </div>
+
+                        <h3 class="case-card-title">Fintech Omnichannel Customer Support Pod</h3>
+                        <p class="case-card-desc">
+                            Secure multi-lingual customer support agent equipped with Auth0 token validation, Stripe billing management, API key rotation, and Zendesk ticket routing.
+                        </p>
+
+                        <div class="card-tags-wrapper" style="margin-bottom: 12px;">
+                            <span class="tech-tag-pill">Auth0</span>
+                            <span class="tech-tag-pill">Stripe SDK</span>
+                            <span class="tech-tag-pill">Pinecone Vector</span>
+                        </div>
+                    </div>
+
+                    <div class="case-card-footer">
+                        <div class="card-telemetry-box" style="margin-bottom: 12px; padding: 8px;">
+                            <div class="t-metric-col">
+                                <span class="t-metric-val" style="font-size: 1rem;">1.8s</span>
+                                <span class="t-metric-lbl">RESOLVE</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-cyan" style="font-size: 1rem;">99.9%</span>
+                                <span class="t-metric-lbl">ACCURACY</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-green" style="font-size: 1rem;">5.0</span>
+                                <span class="t-metric-lbl">CSAT</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-sm open-arch-modal" data-project="supportrx" style="width: 100%;">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Build Card 4: LOGI-FLOW -->
+                <div class="portfolio-case-card portfolio-card-item" data-category="ops" data-tags="python celery postgresql slack api shopify admin erp inventory">
+                    <div>
+                        <div class="case-card-top">
+                            <span class="card-code-badge">LOGI-FLOW</span>
+                            <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
+                        </div>
+
+                        <div class="case-card-visual">
+                            <div class="card-micro-ui" style="height: 100%; margin: 0; border: none; background: transparent;">
+                                <div class="ui-mockup-header">
+                                    <span>ERP & SHOPIFY RECONCILIATION</span>
+                                    <span class="ui-pill-success">45,000 SKUs</span>
+                                </div>
+                                <table class="ui-table-grid">
+                                    <tr><td>SKU-8842 (Sensor)</td><td style="color:#ef4444; font-weight:700;">4 Left</td></tr>
+                                    <tr><td>Action Taken</td><td style="color:#10b981; font-weight:700;">PO Sent + Slack Alert</td></tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h3 class="case-card-title">Warehouse & Inventory Sync Agent</h3>
+                        <p class="case-card-desc">
+                            Cron inventory reconciliation agent scanning 45,000 SKUs hourly across ERP databases, alerting low-stock anomalies to Slack channels, and generating automated POs.
+                        </p>
+
+                        <div class="card-tags-wrapper" style="margin-bottom: 12px;">
+                            <span class="tech-tag-pill">Python Celery</span>
+                            <span class="tech-tag-pill">PostgreSQL</span>
+                            <span class="tech-tag-pill">Slack API</span>
+                        </div>
+                    </div>
+
+                    <div class="case-card-footer">
+                        <div class="card-telemetry-box" style="margin-bottom: 12px; padding: 8px;">
+                            <div class="t-metric-col">
+                                <span class="t-metric-val" style="font-size: 1rem;">45,000</span>
+                                <span class="t-metric-lbl">SKUS</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-cyan" style="font-size: 1rem;">100%</span>
+                                <span class="t-metric-lbl">UPTIME</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-green" style="font-size: 1rem;">850</span>
+                                <span class="t-metric-lbl">POS/DAY</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-sm open-arch-modal" data-project="logiflow" style="width: 100%;">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Build Card 5: AUDIENCE-GEN -->
+                <div class="portfolio-case-card portfolio-card-item" data-category="social sales" data-tags="apollo scraper zerobounce sendgrid sdk langchain email outreach">
+                    <div>
+                        <div class="case-card-top">
+                            <span class="card-code-badge">AUDIENCE-GEN</span>
+                            <span class="card-status-pill"><span class="status-dot green-pulse"></span> AUTO-PILOT</span>
+                        </div>
+
+                        <div class="case-card-visual">
+                            <div class="card-micro-ui" style="height: 100%; margin: 0; border: none; background: transparent;">
+                                <div class="ui-mockup-header">
+                                    <span>APOLLO & ZEROBOUNCE</span>
+                                    <span class="ui-pill-success">500 LEADS/DAY</span>
+                                </div>
+                                <table class="ui-table-grid">
+                                    <tr><td>Alex V. (CTO @ ScaleAI)</td><td style="color:#10b981; font-weight:700;">Validated</td></tr>
+                                    <tr><td>5-Stage Email Cadence</td><td style="color:var(--brand-action); font-weight:700;">Stage 2 Sent</td></tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h3 class="case-card-title">Cold Outreach & Lead Scraper Agent</h3>
+                        <p class="case-card-desc">
+                            Scrapes decision-maker prospects on LinkedIn & Apollo, validates deliverability via ZeroBounce API, and launches hyper-personalized 5-stage email sequences.
+                        </p>
+
+                        <div class="card-tags-wrapper" style="margin-bottom: 12px;">
+                            <span class="tech-tag-pill">Apollo Scraper</span>
+                            <span class="tech-tag-pill">ZeroBounce</span>
+                            <span class="tech-tag-pill">SendGrid</span>
+                        </div>
+                    </div>
+
+                    <div class="case-card-footer">
+                        <div class="card-telemetry-box" style="margin-bottom: 12px; padding: 8px;">
+                            <div class="t-metric-col">
+                                <span class="t-metric-val" style="font-size: 1rem;">500/day</span>
+                                <span class="t-metric-lbl">LEADS</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-cyan" style="font-size: 1rem;">+34%</span>
+                                <span class="t-metric-lbl">REPLY</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-green" style="font-size: 1rem;">4.5x</span>
+                                <span class="t-metric-lbl">PIPELINE</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-sm open-arch-modal" data-project="audiencegen" style="width: 100%;">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Build Card 6: WHATSAPP-FLOW -->
+                <div class="portfolio-case-card portfolio-card-item" data-category="social ecommerce" data-tags="whatsapp cloud api stripe razorpay mongodb fastapi ecommerce">
+                    <div>
+                        <div class="case-card-top">
+                            <span class="card-code-badge">WHATSAPP-FLOW</span>
+                            <span class="card-status-pill"><span class="status-dot green-pulse"></span> ONLINE</span>
+                        </div>
+
+                        <div class="case-card-visual">
+                            <div class="card-micro-ui" style="height: 100%; margin: 0; border: none; background: transparent;">
+                                <div class="ui-mockup-header">
+                                    <span>WHATSAPP CLOUD API</span>
+                                    <span class="ui-pill-success">CART RECOVERY</span>
+                                </div>
+                                <div class="ui-chat-bubble">Can I complete order for Skincare Set?</div>
+                                <div class="ui-chat-reply">💳 Order #W-4091 ready! Pay via Stripe</div>
+                            </div>
+                        </div>
+
+                        <h3 class="case-card-title">WhatsApp Conversational Commerce Agent</h3>
+                        <p class="case-card-desc">
+                            Interactive WhatsApp Cloud API bot performing product catalog searches, cart recovery alerts, automated payment link generation, and post-purchase updates.
+                        </p>
+
+                        <div class="card-tags-wrapper" style="margin-bottom: 12px;">
+                            <span class="tech-tag-pill">WhatsApp API</span>
+                            <span class="tech-tag-pill">Stripe SDK</span>
+                            <span class="tech-tag-pill">FastAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="case-card-footer">
+                        <div class="card-telemetry-box" style="margin-bottom: 12px; padding: 8px;">
+                            <div class="t-metric-col">
+                                <span class="t-metric-val" style="font-size: 1rem;">15,000</span>
+                                <span class="t-metric-lbl">CHATS</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-cyan" style="font-size: 1rem;">88%</span>
+                                <span class="t-metric-lbl">OPEN RATE</span>
+                            </div>
+                            <div class="t-metric-col">
+                                <span class="t-metric-val text-green" style="font-size: 1rem;">+25%</span>
+                                <span class="t-metric-lbl">RECOVERY</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-sm open-arch-modal" data-project="whatsappflow" style="width: 100%;">
+                            View Case Study →
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- CTA Banner Section -->
+    <!-- Compact Premium CTA Banner Section -->
     <section class="cta-section">
-        <div class="container container-fluid">
-            <div class="cta-banner card-3d text-center" style="padding: 60px 24px;">
+        <div class="portfolio-cta-contained">
+            <div class="cta-banner card-3d text-center" style="padding: 48px 24px;">
                 <div class="cap-badge margin-bottom-20">
                     <span class="sparkle-icon">✦</span>
                     <span>READY TO AUTOMATE YOUR BUSINESS?</span>
                 </div>
-                <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 20px;">
+                <h2 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px;">
                     Let's Build Your <span class="text-glow">Custom AI Agent</span>
                 </h2>
-                <p class="section-subtitle" style="max-width: 650px; margin: 0 auto 36px;">
-                    Schedule a live 1-on-1 strategy call with our AI engineers. We'll map your business workflows, design custom neural architecture, and build your prototype in days.
+                <p class="section-subtitle" style="max-width: 600px; margin: 0 auto 28px;">
+                    Schedule a live strategy call with our AI engineers. We'll map your business workflows, design custom neural architecture, and build your prototype in days.
                 </p>
                 <div class="hero-btns" style="justify-content: center;">
                     <a href="contact.html" class="btn btn-primary btn-glow">
-                        Book a Live Demo
-                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        Book a Live Demo →
                     </a>
                     <a href="contact.html#configurator" class="btn btn-secondary">
                         Configure Your AI
@@ -549,10 +547,9 @@
         </div>
     </section>
 
-    <!-- Architecture Modal Popup Overlay -->
-    <div class="arch-modal-overlay" id="archModalOverlay" style="display: none; position: fixed; inset: 0; width: 100vw; height: 100vh; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999999; opacity: 1; pointer-events: auto; justify-content: center; align-items: center;">
-        <div class="preloader-content" style="max-width: 680px; width: 92%; padding: 28px; text-align: left; position: relative;" id="archModalContent">
-            <button id="closeArchModal" style="position: absolute; top: 16px; right: 16px; background: transparent; border: none; color: #94a3b8; font-size: 1.5rem; cursor: pointer; padding: 4px 8px; line-height: 1;">✕</button>
+    <!-- Case Study Detail Modal Overlay -->
+    <div class="arch-modal-overlay" id="archModalOverlay">
+        <div class="arch-modal-container" id="archModalContent">
             <div id="archModalBody">
                 <!-- Dynamically loaded via script.js -->
             </div>

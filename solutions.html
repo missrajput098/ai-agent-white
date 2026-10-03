@@ -93,9 +93,12 @@
                 <p class="subpage-hero-desc">
                     Custom neural agent orchestration engineered to integrate into your existing tech stack, automate repetitive operations, and scale productivity exponentially.
                 </p>
+                <div class="hero-capability-strip">
+                    <span>Sales</span> • <span>Customer Support</span> • <span>Workflow Automation</span> • <span>Data Intelligence</span> • <span>Voice AI</span> • <span>Custom Integrations</span>
+                </div>
                 <div class="hero-btns">
                     <a href="#roi-calculator" class="btn btn-primary btn-glow">Calculate ROI Savings</a>
-                    <a href="#capabilities" class="btn btn-secondary">View Core Solutions ↓</a>
+                    <a href="#business-solutions" class="btn btn-secondary">View Business Solutions ↓</a>
                 </div>
             </div>
 
@@ -112,9 +115,9 @@
     </section>
 
     <!-- Interactive ROI Calculator Section -->
-    <section class="section" id="roi-calculator">
+    <section class="section section-compact-roi" id="roi-calculator">
         <div class="container">
-            <div class="section-header text-center" style="text-align: center; margin-bottom: 40px;">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 30px;">
                 <div class="section-label">INTERACTIVE TELEMETRY CALCULATOR</div>
                 <h2 class="section-title">Calculate Your AI Automation ROI</h2>
                 <p class="section-subtitle" style="margin: 0 auto; max-width: 650px;">Drag the sliders below to estimate annual hours reclaimed and cost savings with AGENTSPACE custom AI agents.</p>
@@ -148,9 +151,9 @@
                 </div>
 
                 <div class="roi-output-box">
-                    <div class="roi-output-label" style="font-size: 0.85rem; letter-spacing: 2px; color: #94a3b8; text-transform: uppercase;">ESTIMATED ANNUAL COST SAVINGS</div>
+                    <div class="roi-output-label">ESTIMATED ANNUAL COST SAVINGS</div>
                     <div class="roi-output-number" id="annualSavingsVal">$152,100</div>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Projected net impact from 65% repetitive workflow automation.</p>
+                    <p class="roi-output-subtext">Projected net impact from 65% repetitive workflow automation.</p>
 
                     <div class="roi-metrics-trio">
                         <div class="roi-mini-metric">
@@ -158,7 +161,7 @@
                             <div class="roi-mini-lbl">Hours Saved/Yr</div>
                         </div>
                         <div class="roi-mini-metric">
-                            <div class="roi-mini-val">3.8x</div>
+                            <div class="roi-mini-val" id="speedUpVal">3.8x</div>
                             <div class="roi-mini-lbl">Speed Up</div>
                         </div>
                         <div class="roi-mini-metric">
@@ -171,15 +174,227 @@
         </div>
     </section>
 
-    <!-- Core Solutions Showcase Grid -->
+    <!-- Solutions For Your Business Section -->
+    <section class="section" id="business-solutions">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 44px;">
+                <div class="section-label">WORKFLOW AUTOMATION MATRIX</div>
+                <h2 class="section-title">Solutions For Your Business</h2>
+                <p class="section-subtitle" style="margin: 0 auto; max-width: 620px;">Deploy custom AI agents across the workflows that matter most to your business.</p>
+            </div>
+
+            <div class="solutions-business-grid">
+                <!-- Solution 1: Sales AI -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Sales AI</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Automate inbound qualification, prospect scoring, CRM updates, and instant follow-ups.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Lead</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Qualify</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Score</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">CRM</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Follow-up</span>
+                    </div>
+                </div>
+
+                <!-- Solution 2: Customer Support AI -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Customer Support AI</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Deliver 24/7 instant resolutions, order lookups, refunds, and smart escalations.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Message</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Understand</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Resolve</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Escalate</span>
+                    </div>
+                </div>
+
+                <!-- Solution 3: Operations AI -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Operations AI</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Streamline cross-tool data flow, document extraction, decision logic, and automated tasks.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Trigger</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Extract</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Decide</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Execute</span>
+                    </div>
+                </div>
+
+                <!-- Solution 4: Marketing AI -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Marketing AI</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Scale campaign creation, dynamic personalization, cross-channel publishing & analytics.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Idea</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Create</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Personalize</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Publish</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Analyze</span>
+                    </div>
+                </div>
+
+                <!-- Solution 5: Data Intelligence -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Data Intelligence</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Turn enterprise data warehouses into conversational natural language analytics & reporting.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Data</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Analyze</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Insight</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Report</span>
+                    </div>
+                </div>
+
+                <!-- Solution 6: Voice AI -->
+                <div class="biz-sol-card">
+                    <div class="biz-sol-header">
+                        <div class="biz-sol-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="biz-sol-title-wrap">
+                            <h3 class="biz-sol-title">Voice AI</h3>
+                            <span class="biz-sol-tag"><span class="status-pulse-dot"></span> AI AGENT</span>
+                        </div>
+                    </div>
+                    <p class="biz-sol-desc">Power sub-second conversational voice calls, inbound dispatching, and auto CRM updates.</p>
+                    <div class="sol-workflow-row">
+                        <span class="sol-wf-step">Call</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Understand</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Respond</span>
+                        <span class="sol-wf-arrow">→</span>
+                        <span class="sol-wf-step">Update CRM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compact Connected Architecture Flow Section -->
+    <section class="section section-arch-flow" id="architecture-flow">
+        <div class="container">
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 38px;">
+                <div class="section-label">CONNECTED SYSTEM ARCHITECTURE</div>
+                <h2 class="section-title">How Your AI Solution Works</h2>
+                <p class="section-subtitle" style="margin: 0 auto; max-width: 600px;">A single connected neural pipeline linking your data to enterprise execution systems.</p>
+            </div>
+
+            <div class="arch-flow-wrapper">
+                <div class="arch-flow-connector-line"></div>
+                <div class="arch-flow-steps">
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">01</div>
+                        <h4 class="arch-step-name">YOUR BUSINESS</h4>
+                        <p class="arch-step-sub">Workflows & Intent</p>
+                    </div>
+                    <div class="arch-flow-arrow">→</div>
+
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">02</div>
+                        <h4 class="arch-step-name">YOUR DATA</h4>
+                        <p class="arch-step-sub">SOPs & Databases</p>
+                    </div>
+                    <div class="arch-flow-arrow">→</div>
+
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">03</div>
+                        <h4 class="arch-step-name">AI ORCHESTRATION</h4>
+                        <p class="arch-step-sub">Guardrails & Routing</p>
+                    </div>
+                    <div class="arch-flow-arrow">→</div>
+
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">04</div>
+                        <h4 class="arch-step-name">SPECIALIZED AGENTS</h4>
+                        <p class="arch-step-sub">Sales, Support & Ops</p>
+                    </div>
+                    <div class="arch-flow-arrow">→</div>
+
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">05</div>
+                        <h4 class="arch-step-name">TOOLS & APIS</h4>
+                        <p class="arch-step-sub">CRMs, Webhooks & Apps</p>
+                    </div>
+                    <div class="arch-flow-arrow">→</div>
+
+                    <div class="arch-step-node">
+                        <div class="arch-step-badge">06</div>
+                        <h4 class="arch-step-name">BUSINESS SYSTEMS</h4>
+                        <p class="arch-step-sub">Automated Execution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Pillars Showcase Grid (2x2 Balanced Grid) -->
     <section class="section" id="capabilities">
         <div class="container">
-            <div class="section-header text-center" style="text-align: center; margin-bottom: 50px;">
-                <div class="section-label">FOUR PILLARS OF INTEGRATION</div>
+            <div class="section-header text-center" style="text-align: center; margin-bottom: 44px;">
+                <div class="section-label">TECHNICAL ARCHITECTURE PILLARS</div>
                 <h2 class="section-title">Built For Modern Enterprise Complexity</h2>
             </div>
 
-            <div class="agents-full-grid">
+            <div class="tech-pillars-grid">
                 <!-- Solution 1 -->
                 <div class="agent-pod-card card-3d">
                     <div class="agent-pod-header">
@@ -188,11 +403,18 @@
                         </div>
                     </div>
                     <h3 class="agent-pod-title">Multi-Tool API Integration</h3>
-                    <p class="agent-pod-desc">Connect AI agents directly into Salesforce, HubSpot, Stripe, Notion, Slack, Google Workspace, and custom REST/GraphQL APIs with zero friction.</p>
+                    <p class="agent-pod-desc">Connect AI agents directly into your CRM, Slack, databases, and custom APIs with zero friction.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> 500+ Pre-built API Connectors</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Real-time Webhook Triggers</li>
                     </ul>
+                    <div class="agent-chips-wrapper" style="margin-top: 14px;">
+                        <span class="integration-chip">Salesforce</span>
+                        <span class="integration-chip">HubSpot</span>
+                        <span class="integration-chip">Stripe</span>
+                        <span class="integration-chip">Slack</span>
+                        <span class="integration-chip">Notion</span>
+                    </div>
                 </div>
 
                 <!-- Solution 2 -->
@@ -203,11 +425,17 @@
                         </div>
                     </div>
                     <h3 class="agent-pod-title">Custom LLM Fine-Tuning</h3>
-                    <p class="agent-pod-desc">We fine-tune open and closed LLMs (GPT-4o, Claude 3.5, Llama 3) on your exact company SOPs, domain glossaries, and brand tone guidelines.</p>
+                    <p class="agent-pod-desc">Fine-tune leading LLMs on your company SOPs, domain knowledge, and brand guidelines with RAG.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zero Hallucination Guardrails</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Proprietary RAG Knowledge Engine</li>
                     </ul>
+                    <div class="agent-chips-wrapper" style="margin-top: 14px;">
+                        <span class="integration-chip">GPT</span>
+                        <span class="integration-chip">Claude</span>
+                        <span class="integration-chip">Llama</span>
+                        <span class="integration-chip">RAG</span>
+                    </div>
                 </div>
 
                 <!-- Solution 3 -->
@@ -218,11 +446,17 @@
                         </div>
                     </div>
                     <h3 class="agent-pod-title">Multi-Agent Swarm Coordination</h3>
-                    <p class="agent-pod-desc">Deploy teams of specialized agents that hand off tasks dynamically — e.g. Researcher Agent -> Analyst Agent -> Execution Agent -> Verification Agent.</p>
+                    <p class="agent-pod-desc">Deploy coordinated teams of specialized agents that hand off tasks dynamically with human oversight.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Autonomous Decision Routing</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Human-in-the-Loop Fallbacks</li>
                     </ul>
+                    <div class="agent-chips-wrapper" style="margin-top: 14px;">
+                        <span class="integration-chip">Researcher</span>
+                        <span class="integration-chip">Analyst</span>
+                        <span class="integration-chip">Executor</span>
+                        <span class="integration-chip">Verifier</span>
+                    </div>
                 </div>
 
                 <!-- Solution 4 -->
@@ -233,15 +467,22 @@
                         </div>
                     </div>
                     <h3 class="agent-pod-title">Enterprise Security & Compliance</h3>
-                    <p class="agent-pod-desc">Bank-grade encryption, SOC2 readiness, HIPAA compliance, and isolated VPC deployment ensures your data never leaves your secure perimeter.</p>
+                    <p class="agent-pod-desc">Bank-grade encryption, SOC2 readiness, HIPAA compliance, and isolated VPC deployment.</p>
                     <ul class="agent-spec-list">
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> AES-256 Bit Encryption</li>
                         <li class="agent-spec-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Private On-Premise / VPC Hosting</li>
                     </ul>
+                    <div class="agent-chips-wrapper" style="margin-top: 14px;">
+                        <span class="integration-chip">Encryption</span>
+                        <span class="integration-chip">VPC</span>
+                        <span class="integration-chip">Compliance</span>
+                        <span class="integration-chip">Private Hosting</span>
+                    </div>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 12px; font-weight: 600;">Tell us your workflow. We'll map the AI architecture.</p>
                 <a href="contact.html" class="btn btn-primary btn-glow">Request Custom Solution Blueprint →</a>
             </div>
         </div>
