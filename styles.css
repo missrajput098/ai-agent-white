@@ -812,13 +812,7 @@ img {
 }
 
 #constellationCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
+    display: none !important;
 }
 
 .glow-orb {
@@ -1037,11 +1031,11 @@ img {
     0% {
         opacity: 0;
         transform: translateY(-130px) rotateX(32deg) rotateY(-24deg) rotateZ(8deg) scale(1.1) translateZ(60px);
-        filter: blur(8px);
+        filter: none;
     }
     100% {
         opacity: 1;
-        filter: blur(0px);
+        filter: none;
     }
 }
 
@@ -1241,11 +1235,11 @@ body.robotics-mode .box-3d-item.active-box {
     0% {
         opacity: 0;
         transform: translateY(-60px) scale(1.08) translateZ(50px) rotateX(-8deg);
-        filter: blur(6px);
+        filter: none;
     }
     100% {
         opacity: 1;
-        filter: blur(0px);
+        filter: none;
     }
 }
 
@@ -3389,13 +3383,7 @@ body.robotics-mode .floating-badge.active-wf {
 
 /* Spark Trail Canvas */
 .cursor-spark-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 99998;
+    display: none !important;
 }
 
 /* Hide default cursor on desktops for interactive feel */
@@ -10810,25 +10798,26 @@ body.robotics-mode .t-metric-val {
 .tag-1st { top: -20px; right: -10px; }
 .tag-2nd { bottom: -20px; right: -10px; }
 
-/* Canvas Dim Overlay & Inactive Node Dimming */
+/* Canvas Dim Overlay & Inactive Node Dimming - Disabled blur & dimming for crystal clear playback */
 .canvas-dim-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(241, 245, 249, 0.6);
-    opacity: 0;
+    background: transparent;
+    opacity: 0 !important;
     pointer-events: none;
-    transition: opacity 0.4s ease;
+    display: none !important;
     z-index: 8;
 }
 
 .walkthrough-viewport.wf-canvas-dimmed .canvas-dim-overlay {
-    opacity: 1;
+    opacity: 0 !important;
+    display: none !important;
 }
 
 .walkthrough-viewport.wf-canvas-dimmed .wf-node:not(.active-focus) {
-    opacity: 0.65 !important;
-    filter: grayscale(0.1);
-    transform: scale(0.97);
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
 }
 
 /* Floating Callout Tooltip (Light Mode Box) */
@@ -11147,11 +11136,13 @@ body.robotics-mode .branch-tag {
 }
 
 body.robotics-mode .canvas-dim-overlay {
-    background: rgba(9, 13, 22, 0.45);
+    display: none !important;
+    opacity: 0 !important;
 }
 
 body.robotics-mode .walkthrough-viewport.wf-canvas-dimmed .wf-node:not(.active-focus) {
-    opacity: 0.72 !important;
+    opacity: 1 !important;
+    filter: none !important;
 }
 
 body.robotics-mode .wf-callout-tooltip {
@@ -11566,8 +11557,9 @@ body.robotics-mode .visual-pipeline-track {
 }
 
 .video-overlay {
-    background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.5) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
-    backdrop-filter: blur(4px) !important;
+    background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 .pipeline-step-node {
