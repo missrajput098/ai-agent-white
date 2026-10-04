@@ -2,47 +2,48 @@
    AGENTSPACE - Light Default + Robotics Mode Dual Theme
    ========================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --brand-primary: #032f68;
-    --brand-primary-hover: #021f47;
-    --brand-accent: #ff5a16;
-    --brand-accent-hover: #e74d0c;
-    --brand-action: #0a5bd8;
-    --brand-action-hover: #1555d9;
-    --brand-text: #111b3d;
-    --brand-logo: #123fb7;
+    /* Apple Signature Brand Palette */
+    --brand-primary: #0071e3;
+    --brand-primary-hover: #0077ed;
+    --brand-accent: #0071e3;
+    --brand-accent-hover: #0077ed;
+    --brand-action: #2997ff;
+    --brand-action-hover: #0071e3;
+    --brand-text: #1d1d1f;
+    --brand-logo: #0071e3;
 
-    --bg-dark: #f8fafc;
+    --bg-dark: #f5f5f7;
     --bg-surface: #ffffff;
-    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-card: rgba(255, 255, 255, 0.85);
     --bg-card-hover: #ffffff;
     
-    --primary-blue: var(--brand-primary);
-    --primary-cyan: var(--brand-action);
-    --accent-violet: var(--brand-accent);
-    --accent-green: #16a34a;
-    --accent-glow: rgba(255, 90, 22, 0.18);
+    --primary-blue: #0071e3;
+    --primary-cyan: #2997ff;
+    --accent-violet: #af52de;
+    --accent-green: #34c759;
+    --accent-glow: rgba(0, 113, 227, 0.15);
     
-    --text-main: var(--brand-text);
-    --text-muted: #334155;
-    --text-dim: #475569;
+    --text-main: #1d1d1f;
+    --text-muted: #86868b;
+    --text-dim: #6e6e73;
     
-    --border-color: rgba(3, 47, 104, 0.15);
-    --border-glow: rgba(255, 90, 22, 0.35);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --border-glow: rgba(0, 113, 227, 0.3);
     
-    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-hud: 'Orbitron', sans-serif;
+    --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    --font-hud: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --font-tech: 'Rajdhani', sans-serif;
+    --font-tech: 'Plus Jakarta Sans', sans-serif;
     
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-full: 9999px;
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-full: 980px;
 
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* SVG & Icon Safeguards */
@@ -3381,15 +3382,17 @@ body.robotics-mode .floating-badge.active-wf {
     box-shadow: 0 0 14px rgba(225, 29, 72, 0.6);
 }
 
-/* Spark Trail Canvas */
-.cursor-spark-canvas {
+/* Disable retro sci-fi crosshair cursor and restore natural mouse interaction */
+.sci-cursor-container {
     display: none !important;
 }
 
-/* Hide default cursor on desktops for interactive feel */
 @media (min-width: 1025px) {
     body, a, button, input, textarea, select, .card-3d, .sol-card, .agent-card, .bouncing-agent-img {
-        cursor: crosshair !important;
+        cursor: auto !important;
+    }
+    a, button, [role="button"], .prompt-chip, .sim-tab-btn, .channel-pill {
+        cursor: pointer !important;
     }
 }
 
@@ -14360,6 +14363,1077 @@ body.robotics-mode .studio-cta-box {
     background: rgba(15, 23, 42, 0.9);
     border-color: rgba(0, 240, 255, 0.3);
 }
+
+/* ==========================================
+   REALISTIC HOME PAGE DUAL-THEME STYLING
+   ========================================== */
+
+/* ------------------------------------------
+   1. DEFAULT LIGHT THEME STYLES
+   ------------------------------------------ */
+.realistic-hero-card {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+}
+
+.realistic-chat-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(16px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.agent-avatar-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agent-avatar-img {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #032f68, #0a5bd8);
+    padding: 2px;
+}
+
+.agent-avatar-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: #16a34a;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(22, 163, 74, 0.6);
+}
+
+.agent-avatar-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #0f172a;
+}
+
+.agent-status-text {
+    font-size: 0.76rem;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.header-channel-badges {
+    display: flex;
+    gap: 6px;
+}
+
+.channel-pill {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: #e2e8f0;
+    color: #334155;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.channel-pill.active {
+    background: #dbeafe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+/* Chat Card Body */
+.chat-card-body {
+    padding: 20px;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #ffffff;
+}
+
+.chat-timestamp {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.msg-bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    animation: fadeInMsg 0.35s ease forwards;
+}
+
+@keyframes fadeInMsg {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-msg {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #032f68, #0a5bd8);
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 14px rgba(3, 47, 104, 0.2);
+}
+
+.ai-msg {
+    align-self: flex-start;
+    background: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-bottom-left-radius: 4px;
+}
+
+.msg-sender {
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+.user-msg .msg-sender { color: #93c5fd; }
+.ai-msg .msg-sender { color: #0284c7; }
+
+.ai-action-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.action-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+/* Chat Card Prompts */
+.chat-card-prompts {
+    padding: 14px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.prompt-chip-label {
+    display: block;
+    font-size: 0.74rem;
+    color: #475569;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.prompt-chips-wrapper {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.prompt-chip {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.prompt-chip:hover {
+    border-color: #0284c7;
+    color: #032f68;
+    background: #f0f9ff;
+}
+
+.prompt-chip.active {
+    background: #032f68;
+    border-color: #032f68;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(3, 47, 104, 0.25);
+}
+
+/* Floating Live Badges */
+.hero-live-badge {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+    z-index: 10;
+}
+
+.badge-left {
+    bottom: -15px;
+    left: -20px;
+}
+
+.badge-right {
+    top: 20px;
+    right: -20px;
+}
+
+.hero-live-badge .badge-icon {
+    font-size: 1.2rem;
+}
+
+.hero-live-badge .badge-content-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-live-badge strong {
+    font-size: 0.82rem;
+    color: #0f172a;
+}
+
+.hero-live-badge span {
+    font-size: 0.72rem;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .hero-live-badge { display: none; }
+}
+
+/* Live Activity Ticker Bar */
+.live-activity-bar {
+    background: #f1f5f9;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 0;
+    overflow: hidden;
+}
+
+.activity-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.activity-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 0.78rem;
+    color: #032f68;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.status-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #16a34a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #16a34a;
+    animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+.activity-ticker-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.activity-ticker-track {
+    display: flex;
+    gap: 30px;
+    white-space: nowrap;
+    animation: marqueeTicker 28s linear infinite;
+}
+
+.activity-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeTicker {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.activity-item {
+    font-size: 0.82rem;
+    color: #334155;
+    background: #ffffff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.activity-item strong {
+    color: #0f172a;
+}
+
+/* Realistic Simulator Workspace */
+.realistic-sim-wrapper {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.sim-title-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #475569;
+    margin-left: 8px;
+}
+
+.sim-realistic-content {
+    padding: 30px;
+    min-height: 420px;
+    background: #f8fafc;
+}
+
+.sim-chat-view {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sim-channel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+.sim-channel-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.sim-messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+.sim-user-bubble {
+    align-self: flex-end;
+    background: #032f68;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 16px;
+    border-bottom-right-radius: 4px;
+    max-width: 75%;
+    font-size: 0.92rem;
+    box-shadow: 0 4px 15px rgba(3, 47, 104, 0.2);
+}
+
+.sim-ai-bubble {
+    align-self: flex-start;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    padding: 14px 20px;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    max-width: 80%;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.sim-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.sim-action-card {
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: #0369a1;
+    font-weight: 600;
+}
+
+.sim-input-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.sim-text-input {
+    flex: 1;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #0f172a;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.sim-text-input:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.2);
+}
+
+.sim-send-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #032f68, #0a5bd8);
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sim-send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(3, 47, 104, 0.3);
+}
+
+/* Comparison Section */
+.comparison-section {
+    padding: 80px 0;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .comparison-grid { grid-template-columns: 1fr; }
+}
+
+.comparison-card {
+    padding: 36px 30px;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.old-way-card {
+    border-color: #fca5a5;
+    background: #fef2f2;
+}
+
+.ai-way-card {
+    border-color: #86efac;
+    background: #f0fdf4;
+    box-shadow: 0 10px 30px rgba(22, 163, 74, 0.08);
+}
+
+.comp-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 20px;
+    margin-bottom: 24px;
+}
+
+.old-badge {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+}
+
+.ai-badge {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+.comp-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.comp-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #334155;
+    line-height: 1.5;
+}
+
+.old-way-card .comp-list li strong { color: #991b1b; }
+.ai-way-card .comp-list li strong { color: #166534; }
+
+.comp-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+
+/* ------------------------------------------
+   2. ROBOTICS MODE (DARK THEME) OVERRIDES
+   ------------------------------------------ */
+body.robotics-mode .realistic-chat-card {
+    background: rgba(11, 20, 38, 0.92) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.15) !important;
+}
+
+body.robotics-mode .chat-card-header {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15) !important;
+}
+
+body.robotics-mode .agent-name {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .agent-status-text {
+    color: #00ff9d !important;
+}
+
+body.robotics-mode .channel-pill {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #94a3b8 !important;
+}
+
+body.robotics-mode .channel-pill.active {
+    background: rgba(0, 240, 255, 0.2) !important;
+    color: #00f0ff !important;
+    border-color: rgba(0, 240, 255, 0.4) !important;
+}
+
+body.robotics-mode .chat-card-body {
+    background: rgba(11, 20, 38, 0.95) !important;
+}
+
+body.robotics-mode .user-msg {
+    background: linear-gradient(135deg, #2563eb, #00f0ff) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .ai-msg {
+    background: rgba(30, 41, 59, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #f8fafc !important;
+}
+
+body.robotics-mode .ai-msg .msg-sender {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .action-tag {
+    background: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+body.robotics-mode .chat-card-prompts {
+    background: rgba(10, 15, 30, 0.95) !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.15) !important;
+}
+
+body.robotics-mode .prompt-chip-label {
+    color: #94a3b8 !important;
+}
+
+body.robotics-mode .prompt-chip {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .prompt-chip:hover {
+    border-color: #00f0ff !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .prompt-chip.active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(0, 240, 255, 0.3)) !important;
+    border-color: #00f0ff !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .hero-live-badge {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.robotics-mode .hero-live-badge strong {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .hero-live-badge span {
+    color: #94a3b8 !important;
+}
+
+body.robotics-mode .live-activity-bar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border-top: 1px solid rgba(0, 240, 255, 0.2) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .activity-title {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .activity-item {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .activity-item strong {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .realistic-sim-wrapper {
+    background: rgba(11, 20, 38, 0.95) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+body.robotics-mode .sim-title-label {
+    color: #94a3b8 !important;
+}
+
+body.robotics-mode .sim-realistic-content {
+    background: rgba(10, 15, 30, 0.6) !important;
+}
+
+body.robotics-mode .sim-channel-header {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+body.robotics-mode .sim-channel-title {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .sim-user-bubble {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .sim-ai-bubble {
+    background: rgba(30, 41, 59, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .sim-action-card {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .sim-text-input {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .sim-send-btn {
+    background: linear-gradient(135deg, #2563eb, #00f0ff) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .comparison-card {
+    background: rgba(15, 23, 42, 0.7) !important;
+}
+
+body.robotics-mode .old-way-card {
+    border-color: rgba(239, 68, 68, 0.3) !important;
+    background: rgba(239, 68, 68, 0.05) !important;
+}
+
+body.robotics-mode .ai-way-card {
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    background: rgba(16, 185, 129, 0.08) !important;
+}
+
+body.robotics-mode .sim-ai-bubble .msg-sender {
+    color: #00f0ff !important;
+}
+
+.sim-ai-bubble .msg-sender {
+    color: #0284c7;
+}
+
+body.robotics-mode .comp-list li {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .old-way-card .comp-list li strong { color: #f87171 !important; }
+body.robotics-mode .ai-way-card .comp-list li strong { color: #34d399 !important; }
+
+/* ==========================================
+   🍏 APPLE DESIGN SYSTEM (MINIMALIST & BENTO)
+   ========================================== */
+
+/* Apple Clean Typography & Spacing */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif !important;
+    letter-spacing: -0.01em;
+}
+
+.hero-title {
+    font-size: clamp(2.4rem, 5.2vw, 4.4rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.06 !important;
+    color: #1d1d1f !important;
+}
+
+body.robotics-mode .hero-title {
+    color: #f5f5f7 !important;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.4rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.025em !important;
+    line-height: 1.12 !important;
+    color: #1d1d1f !important;
+}
+
+body.robotics-mode .section-title {
+    color: #f5f5f7 !important;
+}
+
+.section-subtitle {
+    font-size: 1.15rem !important;
+    color: #86868b !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+.text-glow {
+    background: linear-gradient(135deg, #0071e3 0%, #2997ff 50%, #af52de 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    filter: none !important;
+}
+
+.sub-tag, .cap-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 980px;
+    background: rgba(0, 113, 227, 0.08);
+    color: #0071e3;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 113, 227, 0.18);
+    text-transform: uppercase;
+}
+
+body.robotics-mode .sub-tag, body.robotics-mode .cap-badge {
+    background: rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    border-color: rgba(0, 240, 255, 0.25);
+}
+
+/* Apple Pill Buttons */
+.btn {
+    border-radius: 980px !important;
+    font-weight: 600 !important;
+    padding: 14px 28px !important;
+    font-size: 0.95rem !important;
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.btn-primary {
+    background: #0071e3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 18px rgba(0, 113, 227, 0.25) !important;
+}
+
+.btn-primary:hover {
+    background: #0077ed !important;
+    transform: scale(1.02) translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0, 113, 227, 0.35) !important;
+}
+
+.btn-secondary {
+    background: rgba(0, 0, 0, 0.04) !important;
+    color: #0071e3 !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 113, 227, 0.08) !important;
+    transform: scale(1.02) translateY(-2px) !important;
+}
+
+body.robotics-mode .btn-secondary {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #00f0ff !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Apple Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+body.robotics-mode .navbar {
+    background: rgba(22, 22, 23, 0.85) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.nav-links a {
+    color: #1d1d1f !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    transition: color 0.2s ease !important;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #0071e3 !important;
+}
+
+body.robotics-mode .nav-links a {
+    color: #f5f5f7 !important;
+}
+
+body.robotics-mode .nav-links a:hover, body.robotics-mode .nav-links a.active {
+    color: #00f0ff !important;
+}
+
+/* Apple Hero Chat Frame */
+.realistic-chat-card {
+    border-radius: 28px !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 0 40px rgba(0, 113, 227, 0.1) !important;
+    backdrop-filter: blur(24px) !important;
+}
+
+.chat-card-header {
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    padding: 18px 24px !important;
+}
+
+.user-msg {
+    background: #0071e3 !important;
+    color: #ffffff !important;
+    border-radius: 20px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.ai-msg {
+    background: #e9e9eb !important;
+    color: #1d1d1f !important;
+    border-radius: 20px !important;
+    border-bottom-left-radius: 4px !important;
+    border: none !important;
+}
+
+body.robotics-mode .ai-msg {
+    background: #2c2c2e !important;
+    color: #f5f5f7 !important;
+}
+
+.prompt-chip {
+    border-radius: 980px !important;
+    padding: 8px 16px !important;
+    font-weight: 500 !important;
+}
+
+.prompt-chip.active {
+    background: #0071e3 !important;
+    color: #ffffff !important;
+    border-color: #0071e3 !important;
+    box-shadow: 0 4px 14px rgba(0, 113, 227, 0.3) !important;
+}
+
+/* 🍏 APPLE BENTO GRID LAYOUT (AI Agents Showcase) */
+.agents-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+@media (max-width: 992px) {
+    .agents-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+.agent-card {
+    border-radius: 28px !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    backdrop-filter: blur(20px) !important;
+    padding: 32px !important;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.agent-card:hover {
+    transform: translateY(-6px) scale(1.01) !important;
+    box-shadow: 0 20px 45px rgba(0, 113, 227, 0.12), 0 0 1px rgba(0, 0, 0, 0.1) !important;
+    border-color: rgba(0, 113, 227, 0.3) !important;
+}
+
+/* Bento Card Grid Spans */
+@media (min-width: 993px) {
+    .agents-grid .agent-card:nth-child(1) { grid-column: span 2; }
+    .agents-grid .agent-card:nth-child(2) { grid-column: span 1; }
+    .agents-grid .agent-card:nth-child(3) { grid-column: span 1; }
+    .agents-grid .agent-card:nth-child(4) { grid-column: span 2; }
+    .agents-grid .agent-card:nth-child(5) { grid-column: span 3; }
+}
+
+body.robotics-mode .agent-card {
+    background: rgba(22, 22, 23, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.robotics-mode .agent-card:hover {
+    border-color: rgba(0, 240, 255, 0.4) !important;
+    box-shadow: 0 20px 50px rgba(0, 240, 255, 0.2) !important;
+}
+
+.agent-card-body h3 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: #1d1d1f !important;
+    margin-bottom: 10px !important;
+}
+
+body.robotics-mode .agent-card-body h3 {
+    color: #ffffff !important;
+}
+
+.agent-card-body p {
+    font-size: 0.98rem !important;
+    color: #86868b !important;
+    line-height: 1.5 !important;
+    margin-bottom: 20px !important;
+}
+
+.tool-chip {
+    padding: 6px 14px !important;
+    border-radius: 980px !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: #1d1d1f !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+}
+
+body.robotics-mode .tool-chip {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f5f5f7 !important;
+}
+
+/* Apple CTA Section */
+.cta-banner {
+    border-radius: 36px !important;
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4) !important;
+    padding: 60px 40px !important;
+}
+
+.cta-heading {
+    font-size: clamp(2.2rem, 4vw, 3.6rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.1 !important;
+    color: #ffffff !important;
+}
+
+.cta-sub {
+    color: #a1a1a6 !important;
+    font-size: 1.2rem !important;
+}
+
+
 
 
 

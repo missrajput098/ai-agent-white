@@ -114,16 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Speech Synthesis Engine for Audio Navigation
     // ==========================================
     function speakText(text) {
-        if (!audioEnabled || !('speechSynthesis' in window)) return;
-        try {
-            window.speechSynthesis.cancel();
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.rate = 1.0;
-            utterance.pitch = 1.0;
-            utterance.volume = 1.0;
-            utterance.lang = 'en-US';
-            window.speechSynthesis.speak(utterance);
-        } catch (e) {}
+        return; // Speech synthesis disabled for natural user experience
     }
 
     function getNavSpeechText(el) {
@@ -3661,6 +3652,223 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initSolutionWorkflows();
+
+    // ==========================================
+    // REALISTIC HERO DEMO SCENARIO ENGINE
+    // ==========================================
+    const heroPromptChips = document.querySelectorAll('.prompt-chip');
+    const heroUserText = document.getElementById('heroUserText');
+    const heroAiText = document.getElementById('heroAiText');
+    const heroActionTags = document.getElementById('heroActionTags');
+    const heroChannelBadge = document.getElementById('heroChannelBadge');
+
+    const heroScenarios = {
+        ecommerce: {
+            badge: 'WhatsApp AI',
+            badgeClass: 'wa-pill',
+            user: 'Hi! Do you have custom pricing for e-commerce stores? Can your AI handle WhatsApp orders automatically?',
+            ai: 'Yes! 🛍️ I monitor your WhatsApp 24/7, answer product queries, send direct checkout links, and automatically log orders into Shopify & CRM.',
+            tags: ['⚡ Stock Checked: 48 units', '📊 Synced to CRM', '💳 Stripe Payment Generated']
+        },
+        leadgen: {
+            badge: 'Instagram DM AI',
+            badgeClass: 'insta-pill',
+            user: 'Loved your reel on AI workflow automation! Can I get a pricing quote for my 15-person agency team?',
+            ai: 'Thanks! 🚀 For a 15-person team, our Custom AI Agent reduces manual tasks by ~60 hrs/week ($2,700 monthly savings). Should I email you our full ROI breakdown or book a call?',
+            tags: ['⚡ ROI Calculated', '📊 Lead Saved to HubSpot', '📅 Calendly Slot Reserved']
+        },
+        support: {
+            badge: 'Support AI',
+            badgeClass: 'sales-pill',
+            user: 'Where is my order #78921? It hasn\'t arrived yet.',
+            ai: 'Hi Sarah! 📦 Order #78921 is out for delivery today via FedEx (Tracking #FX-99281). Expected arrival: Before 5:00 PM today!',
+            tags: ['⚡ Queried FedEx API', 'STATUS: Out for Delivery', '📩 SMS Alert Sent']
+        },
+        booking: {
+            badge: 'Sales AI',
+            badgeClass: 'wa-pill',
+            user: 'Can I schedule a 15-minute demo with your AI engineering team for tomorrow afternoon?',
+            ai: 'Awesome! 📅 I have open slots tomorrow at 2:00 PM and 4:30 PM EST. Which time works best for you?',
+            tags: ['⚡ Google Calendar Synced', '📊 Lead Score: 98/100', '✉️ Invite Sent']
+        }
+    };
+
+    if (heroPromptChips.length > 0) {
+        heroPromptChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                heroPromptChips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+
+                const key = chip.getAttribute('data-scenario');
+                const scenario = heroScenarios[key];
+                if (!scenario) return;
+
+                if (heroUserText && heroAiText) {
+                    heroUserText.style.opacity = '0';
+                    heroAiText.style.opacity = '0';
+
+                    setTimeout(() => {
+                        if (heroChannelBadge) {
+                            heroChannelBadge.textContent = scenario.badge;
+                        }
+                        heroUserText.textContent = scenario.user;
+                        heroAiText.textContent = scenario.ai;
+
+                        if (heroActionTags) {
+                            heroActionTags.innerHTML = scenario.tags.map(t => `<span class="action-tag">${t}</span>`).join('');
+                        }
+
+                        heroUserText.style.opacity = '1';
+                        heroAiText.style.opacity = '1';
+                    }, 200);
+                }
+            });
+        });
+    }
+
+    // ==========================================
+    // REALISTIC WORKSPACE SIMULATOR ENGINE
+    // ==========================================
+    const simBtns = document.querySelectorAll('.realistic-sim-wrapper .sim-tab-btn');
+    const simContainer = document.getElementById('simRealisticContainer');
+
+    const simProfiles = {
+        whatsapp: {
+            title: '💬 WhatsApp Business Support AI',
+            user: 'Hey, I placed an order yesterday but didn\'t get a tracking number. Can you help?',
+            ai: 'Hi Alex! 👋 I found your order #WA-99201. Your package was dispatched this morning via DHL (Tracking: #DHL-881923). You can track it live here: dhl.com/track/881923',
+            actions: [
+                '⚡ Verified WhatsApp Number API',
+                '📦 Fetched Shopify Logistics Data',
+                '📩 Sent Tracking SMS'
+            ]
+        },
+        instagram: {
+            title: '📸 Instagram DM Lead Qualification AI',
+            user: 'Hey! Saw your post on social media automation. How much does a custom AI agent cost for real estate leads?',
+            ai: 'Hey there! 🏡 Our Real Estate AI Agent captures IG DMs, qualifies buyer budgets, collects phone numbers, and auto-assigns hot leads to your agents in 3 seconds!',
+            actions: [
+                '📸 Meta Instagram Graph API Active',
+                '🎯 Lead Qualified: Real Estate Buyer',
+                '📲 Pushed Alert to Salesforce'
+            ]
+        },
+        voice: {
+            title: '🎙️ Inbound Voice AI Telephony Assistant',
+            user: '[Inbound Phone Call] "Hello, I\'d like to schedule a consultation for legal advice regarding property law."',
+            ai: 'Voice AI: "Certainly! I can schedule you with our senior property lawyer. Are you free this Thursday at 10:00 AM or Friday at 2:30 PM?"',
+            actions: [
+                '🎙️ Real-Time Audio Transcription (12ms)',
+                '📅 Synced Outlook Calendar',
+                '📞 Call Summary Logged'
+            ]
+        },
+        email: {
+            title: '✉️ Email & CRM Co-Pilot',
+            user: 'Subject: RFP Inquiry for Enterprise License - 250 Seats',
+            ai: 'AI Draft: "Thank you for reaching out! Attached is our Enterprise Proposal PDF. Based on 250 seats, your estimated annual ROI is 420%. I have CC\'d our VP of Sales."',
+            actions: [
+                '✉️ Gmail API Triggered',
+                '📊 Salesforce Opportunity Created ($45k)',
+                '📄 PDF Brochure Generated'
+            ]
+        }
+    };
+
+    function renderRealisticSim(key) {
+        if (!simContainer) return;
+        const profile = simProfiles[key] || simProfiles.whatsapp;
+
+        simContainer.innerHTML = `
+            <div class="sim-chat-view">
+                <div class="sim-channel-header">
+                    <div class="sim-channel-title">
+                        <span class="status-dot green-pulse"></span>
+                        <span>${profile.title}</span>
+                    </div>
+                    <span class="action-tag">Autonomous Mode</span>
+                </div>
+
+                <div class="sim-messages-list" id="simMsgList">
+                    <div class="sim-user-bubble">
+                        <div class="msg-sender">Visitor / Prospect</div>
+                        <div>${profile.user}</div>
+                    </div>
+
+                    <div class="sim-ai-bubble">
+                        <div class="msg-sender">🤖 Factonix AI Agent</div>
+                        <div>${profile.ai}</div>
+
+                        <div class="sim-actions-grid">
+                            ${profile.actions.map(a => `<div class="sim-action-card">${a}</div>`).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sim-input-row">
+                    <input type="text" class="sim-text-input" id="simUserPrompt" placeholder="Type a sample customer question (e.g. 'What are your working hours?')..." />
+                    <button class="sim-send-btn" id="simSendBtn">Send ➔</button>
+                </div>
+            </div>
+        `;
+
+        const simInput = document.getElementById('simUserPrompt');
+        const simSend = document.getElementById('simSendBtn');
+        const msgList = document.getElementById('simMsgList');
+
+        function handleCustomMsg() {
+            if (!simInput || !simInput.value.trim() || !msgList) return;
+            const text = simInput.value.trim();
+            simInput.value = '';
+
+            const userDiv = document.createElement('div');
+            userDiv.className = 'sim-user-bubble';
+            userDiv.innerHTML = `<div class="msg-sender">You</div><div>${text}</div>`;
+            msgList.appendChild(userDiv);
+            msgList.scrollTop = msgList.scrollHeight;
+
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'sim-ai-bubble';
+            typingDiv.innerHTML = `<div class="msg-sender">🤖 Factonix AI Agent</div><div><em>AI Agent is thinking & executing API tools...</em></div>`;
+            
+            setTimeout(() => {
+                msgList.appendChild(typingDiv);
+                msgList.scrollTop = msgList.scrollHeight;
+            }, 300);
+
+            setTimeout(() => {
+                typingDiv.innerHTML = `
+                    <div class="msg-sender">🤖 Factonix AI Agent</div>
+                    <div>Thanks for asking! Our custom AI agents adapt to your exact business rules, connect to your existing database, and reply instantly 24/7!</div>
+                    <div class="sim-actions-grid">
+                        <div class="sim-action-card">⚡ Custom Query Processed</div>
+                        <div class="sim-action-card">📊 Synced to CRM</div>
+                    </div>
+                `;
+                msgList.scrollTop = msgList.scrollHeight;
+            }, 1200);
+        }
+
+        if (simSend && simInput) {
+            simSend.addEventListener('click', handleCustomMsg);
+            simInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleCustomMsg();
+            });
+        }
+    }
+
+    if (simBtns.length > 0) {
+        simBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                simBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const key = btn.getAttribute('data-sim');
+                renderRealisticSim(key);
+            });
+        });
+
+        renderRealisticSim('whatsapp');
+    }
 });
 
 
