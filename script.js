@@ -1141,109 +1141,399 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const capabilityData = {
         create: {
-            title: "AI Content & Media Generation Engine",
+            title: "AI Content & Multi-Format Media Generator",
             tag: "CREATION PIPELINE",
-            nodes: [
-                { icon: "💡", label: "Idea" },
-                { icon: "🧠", label: "AI Agent" },
-                { icon: "⚙️", label: "Generate" },
-                { icon: "🚀", label: "Publish" }
+            summary: "Generates high-converting social media posts, AI graphic visuals, email newsletters, and video scripts automatically matched to your brand tone.",
+            metrics: [
+                { val: "< 3.2s", label: "Generation Speed" },
+                { val: "Multi-Platform", label: "Auto Format" },
+                { val: "100%", label: "Brand Tone Sync" }
             ],
-            status: "Generating Instagram post copy, graphic visual, and hashtag suite...",
-            progress: "100%"
+            pipeline: [
+                { icon: "💡", label: "Topic Prompt", sub: "User / Cron" },
+                { icon: "🧠", label: "Factonix Copy LLM", sub: "Brand Voice" },
+                { icon: "🎨", label: "Image Engine", sub: "SDXL / Midjourney" },
+                { icon: "🚀", label: "Auto Publish", sub: "Social APIs" }
+            ],
+            features: [
+                "Generates captions, hashtags, and 4K visuals in seconds",
+                "Learns your exact brand voice and tone guidelines",
+                "Direct auto-publish to Instagram, LinkedIn, X & Facebook"
+            ],
+            mockupHeader: "📸 INSTAGRAM CONTENT GENERATOR MOCKUP",
+            mockupContent: `
+                <div class="cap-social-mock-card">
+                    <div class="social-mock-header">
+                        <div class="social-mock-user">
+                            <div class="user-avatar-mini">✨</div>
+                            <div>
+                                <strong>@factonix_ai</strong>
+                                <span class="badge-mini">AI Generated • 2s ago</span>
+                            </div>
+                        </div>
+                        <span class="status-dot green-pulse"></span>
+                    </div>
+                    <div class="social-mock-body">
+                        <p class="mock-caption-txt">
+                            "Stop losing weekend leads. ⚡ Our custom AI agents handle customer inquiries 24/7 on WhatsApp & Instagram with sub-second response times."
+                        </p>
+                        <div class="mock-hashtags-row">
+                            <span class="mock-tag">#AIAgents</span>
+                            <span class="mock-tag">#Automation</span>
+                            <span class="mock-tag">#BusinessGrowth</span>
+                            <span class="mock-tag">#Factonix</span>
+                        </div>
+                        <div class="mock-visual-box">
+                            <div class="visual-placeholder">
+                                <span class="visual-icon">🎨</span>
+                                <div>
+                                    <strong>AI Visual Generated (1080x1080)</strong>
+                                    <p>Futuristic workspace with neon cyan glowing AI network</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-mock-footer">
+                        <div class="mock-stats">❤️ 1,482 Likes • 💬 194 Comments</div>
+                        <button class="mock-btn-action" onclick="if(typeof playCyberClick==='function')playCyberClick(); this.innerText='✅ Copied to Clipboard!'; setTimeout(()=>this.innerText='📋 Copy Generated Content', 2000);">
+                            📋 Copy Generated Content
+                        </button>
+                    </div>
+                </div>
+            `
         },
         automate: {
-            title: "Autonomous Workflow Automation Hub",
-            tag: "AUTOMATION ENGINE",
-            nodes: [
-                { icon: "⚡", label: "Trigger" },
-                { icon: "🧠", label: "AI Agent" },
-                { icon: "🔀", label: "Decision" },
-                { icon: "⚙️", label: "Action" }
+            title: "Autonomous Cross-Tool Workflow Orchestrator",
+            tag: "NEURAL PIPELINE ENGINE",
+            summary: "Connects your software stack (Shopify, HubSpot, Slack, QuickBooks) to automatically trigger, process, and record complex operations without human delay.",
+            metrics: [
+                { val: "14ms", label: "API Response" },
+                { val: "0.00%", label: "Data Error Rate" },
+                { val: "35+ Hrs", label: "Saved / Week" }
             ],
-            status: "Synchronizing API payloads & executing background Celery job...",
-            progress: "100%"
+            pipeline: [
+                { icon: "⚡", label: "Webhook Trigger", sub: "New Event" },
+                { icon: "🧠", label: "Context Parsing", sub: "Neural Extract" },
+                { icon: "🔀", label: "Decision Branch", sub: "Rule Engine" },
+                { icon: "⚙️", label: "Multi-App Action", sub: "CRM & ERP Sync" }
+            ],
+            features: [
+                "Bi-directional instant sync across 1,000+ business tools",
+                "Self-healing error recovery & automated Slack notifications",
+                "Custom Python / Webhook logic execution in secure sandboxes"
+            ],
+            mockupHeader: "⚙️ REAL-TIME WORKFLOW EXECUTION MAP",
+            mockupContent: `
+                <div class="cap-wf-mock-card">
+                    <div class="wf-mock-status-bar">
+                        <span>STATUS: <strong class="text-glow">LIVE PIPELINE RUNNING</strong></span>
+                        <span class="status-dot green-pulse"></span>
+                    </div>
+                    <div class="wf-node-list">
+                        <div class="wf-node-item active-node">
+                            <span class="wf-node-badge green">01</span>
+                            <div class="wf-node-info">
+                                <strong>Shopify New Order Received (#8492)</strong>
+                                <span class="wf-node-sub">Payload: $420.00 • Customer: David K.</span>
+                            </div>
+                            <span class="wf-check">✅ 0.02s</span>
+                        </div>
+                        <div class="wf-node-item active-node">
+                            <span class="wf-node-badge cyan">02</span>
+                            <div class="wf-node-info">
+                                <strong>AI Invoice Extraction & Compliance Check</strong>
+                                <span class="wf-node-sub">Tax ID verified • PDF invoice generated</span>
+                            </div>
+                            <span class="wf-check">✅ 0.18s</span>
+                        </div>
+                        <div class="wf-node-item active-node">
+                            <span class="wf-node-badge purple">03</span>
+                            <div class="wf-node-info">
+                                <strong>HubSpot CRM Deal Updated & Slack #sales Alert</strong>
+                                <span class="wf-node-sub">Stage: Closed Won • Alert sent to team</span>
+                            </div>
+                            <span class="wf-check">✅ 0.04s</span>
+                        </div>
+                        <div class="wf-node-item active-node">
+                            <span class="wf-node-badge orange">04</span>
+                            <div class="wf-node-info">
+                                <strong>QuickBooks Invoice Logged & Customer Receipt Emailed</strong>
+                                <span class="wf-node-sub">Receipt #QR-9401 sent via SendGrid API</span>
+                            </div>
+                            <span class="wf-check">✅ 0.06s</span>
+                        </div>
+                    </div>
+                </div>
+            `
         },
         analyze: {
-            title: "Predictive Analytics & Intelligence Engine",
-            tag: "BUSINESS INTELLIGENCE",
-            nodes: [
-                { icon: "📊", label: "Data" },
-                { icon: "🔎", label: "AI Analysis" },
-                { icon: "💡", label: "Insights" },
-                { icon: "📈", label: "Report" }
+            title: "Predictive Enterprise Intelligence & SQL Engine",
+            tag: "REVENUE & DATA BI",
+            summary: "Queries your data warehouse, runs vector search analysis, and synthesizes 50,000+ customer records into actionable executive summaries and live visual charts.",
+            metrics: [
+                { val: "0.4s", label: "SQL Latency" },
+                { val: "99.9%", label: "Query Accuracy" },
+                { val: "SOC2", label: "Zero Leakage" }
             ],
-            status: "Synthesizing 45k data records into executive revenue forecast...",
-            progress: "100%"
+            pipeline: [
+                { icon: "📊", label: "Data Source", sub: "SQL / Snowflake" },
+                { icon: "🔎", label: "Vector RAG", sub: "Semantic Index" },
+                { icon: "🧠", label: "SQL Synthesis", sub: "Auto Query" },
+                { icon: "📈", label: "Executive HUD", sub: "Live Chart" }
+            ],
+            features: [
+                "Instant plain English to SQL query conversion",
+                "Automated daily executive email & Slack summaries",
+                "Detects revenue anomalies and churn risk drivers early"
+            ],
+            mockupHeader: "📊 EXECUTIVE BI & REVENUE DASHBOARD",
+            mockupContent: `
+                <div class="cap-bi-mock-card">
+                    <div class="bi-header-row">
+                        <div>
+                            <span class="bi-badge">EXECUTIVE SUMMARY</span>
+                            <h4 class="bi-card-title">Monthly Revenue Growth & AI Impact</h4>
+                        </div>
+                        <span class="bi-trend-pill">+42.8% MoM 🚀</span>
+                    </div>
+                    
+                    <!-- Dynamic mini chart bars -->
+                    <div class="bi-chart-container">
+                        <div class="chart-bar-group">
+                            <div class="chart-bar-fill" style="height: 40%;"></div>
+                            <span class="chart-lbl">W1</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar-fill" style="height: 55%;"></div>
+                            <span class="chart-lbl">W2</span>
+                        </div>
+                        <div class="chart-bar-group">
+                            <div class="chart-bar-fill" style="height: 75%;"></div>
+                            <span class="chart-lbl">W3</span>
+                        </div>
+                        <div class="chart-bar-group active-bar">
+                            <div class="chart-bar-fill" style="height: 98%;"></div>
+                            <span class="chart-lbl">W4</span>
+                        </div>
+                    </div>
+
+                    <div class="bi-insight-box">
+                        <span class="sparkle-icon">💡</span>
+                        <div>
+                            <strong>AI Neural Key Finding:</strong>
+                            <p>High-tier customer conversion increased by 18.4% following WhatsApp instant bot launch. Recommended budget reallocation: +15% to Meta campaigns.</p>
+                        </div>
+                    </div>
+                </div>
+            `
         },
         sell: {
-            title: "Sales Lead Qualification & Conversion Pipeline",
-            tag: "LEAD CONVERSION",
-            nodes: [
-                { icon: "🎯", label: "Lead" },
-                { icon: "⭐", label: "Qualification" },
-                { icon: "📨", label: "Follow-up" },
-                { icon: "🔄", label: "CRM" }
+            title: "Autonomous Sales Prospecting & Booking Engine",
+            tag: "REVENUE CONVERSION",
+            summary: "Engages inbound website leads, scores intent, answers pre-sale inquiries, and books qualified meetings directly onto your sales reps' Calendly schedules.",
+            metrics: [
+                { val: "< 45s", label: "Lead Qualification" },
+                { val: "+3.4x", label: "Booking Conversion" },
+                { val: "96/100", label: "Intent Score" }
             ],
-            status: "Prospect scored 96/100 (Enterprise fit) — Calendly invite dispatched.",
-            progress: "100%"
+            pipeline: [
+                { icon: "🎯", label: "Inbound Lead", sub: "Form / Chat" },
+                { icon: "⭐", label: "BANT Scoring", sub: "Qualification" },
+                { icon: "📨", label: "Personalized Pitch", sub: "Context Reply" },
+                { icon: "📅", label: "Demo Booked", sub: "Calendly API" }
+            ],
+            features: [
+                "Calculates BANT (Budget, Authority, Need, Timeline) score",
+                "Automatic CRM lead logging into HubSpot & Salesforce",
+                "Instant SMS & WhatsApp calendar reminder dispatch"
+            ],
+            mockupHeader: "🎯 QUALIFIED LEAD CARD & BOOKING PREVIEW",
+            mockupContent: `
+                <div class="cap-lead-mock-card">
+                    <div class="lead-header-row">
+                        <div class="lead-user-avatar">SR</div>
+                        <div class="lead-info">
+                            <strong>Sarah M.</strong>
+                            <span>VP Growth • SaaS Enterprise</span>
+                        </div>
+                        <div class="lead-score-pill">Score: 96 / 100 🔥</div>
+                    </div>
+
+                    <div class="lead-metrics-row">
+                        <div class="lead-m-item">
+                            <span>Budget</span>
+                            <strong>$25,000 / mo</strong>
+                        </div>
+                        <div class="lead-m-item">
+                            <span>Timeline</span>
+                            <strong>Immediate</strong>
+                        </div>
+                        <div class="lead-m-item">
+                            <span>Team Size</span>
+                            <strong>150+ Employees</strong>
+                        </div>
+                    </div>
+
+                    <div class="lead-action-box">
+                        <div class="lead-status-line">
+                            <span class="status-dot green-pulse"></span>
+                            <span><strong>ACTION TAKEN:</strong> Calendly demo scheduled for Tomorrow at 2:00 PM</span>
+                        </div>
+                        <div class="crm-badge-strip">
+                            <span>✅ HubSpot Deal Created ($25,000)</span>
+                            <span>✅ Slack Alert Sent</span>
+                        </div>
+                    </div>
+                </div>
+            `
         },
         support: {
-            title: "24/7 AI Customer Care & Support Pod",
-            tag: "SUPPORT ENGINE",
-            nodes: [
-                { icon: "💬", label: "Message" },
-                { icon: "🧠", label: "Understand" },
-                { icon: "🤖", label: "Reply" },
-                { icon: "✅", label: "Resolve" }
+            title: "24/7 Sub-Second AI Customer Care Pod",
+            tag: "ALWAYS-ON SUPPORT",
+            summary: "Provides instant human-grade support across WhatsApp, Web Chat, and Email in 50+ languages, resolving 85%+ of inquiries autonomously.",
+            metrics: [
+                { val: "< 0.8s", label: "Response Latency" },
+                { val: "99.8%", label: "CSAT Score" },
+                { val: "< 4%", label: "Human Escalation" }
             ],
-            status: "Inquiry resolved in 1.4s with 99.8% customer satisfaction score.",
-            progress: "100%"
+            pipeline: [
+                { icon: "💬", label: "Customer Query", sub: "WhatsApp / Web" },
+                { icon: "🧠", label: "Intent Engine", sub: "NLP & Sentiment" },
+                { icon: "🤖", label: "KB Retrieval", sub: "Smart Lookup" },
+                { icon: "✅", label: "Instant Answer", sub: "Issue Resolved" }
+            ],
+            features: [
+                "Supports 50+ languages with native dialect understanding",
+                "Integrates with Zendesk, Freshdesk, and custom DBs",
+                "Smooth fallback hand-off to live agents when required"
+            ],
+            mockupHeader: "🎧 LIVE CUSTOMER CARE CHAT SIMULATION",
+            mockupContent: `
+                <div class="cap-support-mock-card">
+                    <div class="support-chat-header">
+                        <div class="agent-avatar-mini">🤖</div>
+                        <div>
+                            <strong>Factonix Support AI</strong>
+                            <span class="online-tag">● Online (24/7 Support)</span>
+                        </div>
+                        <span class="csat-pill">⭐⭐⭐⭐⭐ CSAT 99.8%</span>
+                    </div>
+
+                    <div class="support-chat-body">
+                        <!-- Customer msg -->
+                        <div class="chat-bubble customer-bubble">
+                            <p>Hi, where is my order #8492? I need to know if it will arrive before Friday.</p>
+                            <span class="bubble-time">10:42 AM</span>
+                        </div>
+
+                        <!-- AI Response msg -->
+                        <div class="chat-bubble ai-bubble">
+                            <p>Hi David! 👋 Order #8492 has shipped via FedEx Express. It is currently in transit and scheduled for delivery <strong>Today by 4:00 PM</strong>.</p>
+                            <div class="track-link-pill">
+                                📦 Tracking #: FX-98492104 • <a href="#" onclick="return false;">Track Live Package ➔</a>
+                            </div>
+                            <span class="bubble-time">10:42 AM • 0.4s response</span>
+                        </div>
+                    </div>
+
+                    <div class="support-chat-footer">
+                        <span class="resolved-badge">✅ Issue Resolved Autonomously</span>
+                    </div>
+                </div>
+            `
         }
     };
 
     function initCapShowcaseEngine() {
-        const tabBtns = document.querySelectorAll('.cap-tab-btn');
+        const segBtns = document.querySelectorAll('.cap-seg-btn, .cap-tab-btn');
         const stageEl = document.getElementById('capWorkspaceStage');
 
-        if (!stageEl || tabBtns.length === 0) return;
+        if (!stageEl || segBtns.length === 0) return;
 
         function renderCapabilityFlow(capKey) {
             const data = capabilityData[capKey] || capabilityData.create;
 
-            let nodesHtml = data.nodes.map((node, idx) => `
-                <div class="cap-node-card" style="animation-delay: ${idx * 0.08}s">
-                    <span class="cap-node-icon">${node.icon}</span>
-                    <span class="cap-node-label">${node.label}</span>
+            // Pipeline node step markup
+            const pipelineHtml = data.pipeline.map((step, idx) => `
+                <div class="bento-pipe-step">
+                    <div class="pipe-node-icon">${step.icon}</div>
+                    <div class="pipe-node-info">
+                        <strong>${step.label}</strong>
+                        <span>${step.sub}</span>
+                    </div>
                 </div>
-                ${idx < data.nodes.length - 1 ? '<span class="cap-arrow-sep">→</span>' : ''}
+                ${idx < data.pipeline.length - 1 ? '<div class="pipe-node-arr">➔</div>' : ''}
             `).join('');
 
+            // Metrics mini-grid markup
+            const metricsHtml = data.metrics.map(m => `
+                <div class="bento-mini-metric">
+                    <div class="metric-val text-glow">${m.val}</div>
+                    <div class="metric-lbl">${m.label}</div>
+                </div>
+            `).join('');
+
+            // Features list markup
+            const featuresHtml = data.features.map(f => `
+                <div class="bento-feat-item">
+                    <span class="feat-check">✅</span>
+                    <span>${f}</span>
+                </div>
+            `).join('');
+
+            // Complete Bento Grid Layout
             stageEl.innerHTML = `
-                <div class="cap-flow-display">
-                    <div class="cap-flow-header">
-                        <h3 class="cap-flow-title">${data.title}</h3>
-                        <span class="box-3d-badge">${data.tag}</span>
-                    </div>
-
-                    <div class="cap-flow-nodes-row">
-                        ${nodesHtml}
-                    </div>
-
-                    <div class="cap-execution-preview">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span class="status-dot green-pulse"></span>
-                            <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${data.status}</span>
+                <div class="cap-bento-grid">
+                    <!-- LEFT COLUMN: Pipeline, Metrics & Details -->
+                    <div class="cap-bento-left">
+                        <div class="bento-left-header">
+                            <span class="cap-badge mini-badge">${data.tag}</span>
+                            <h3 class="bento-title">${data.title}</h3>
+                            <p class="bento-summary">${data.summary}</p>
                         </div>
-                        <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--brand-action);">${data.progress}</span>
+
+                        <!-- Metrics Grid -->
+                        <div class="bento-metrics-grid">
+                            ${metricsHtml}
+                        </div>
+
+                        <!-- Horizontal Connected Node Pipeline -->
+                        <div class="bento-pipeline-box">
+                            <div class="bento-pipe-title">⚡ NEURAL PIPELINE ARCHITECTURE</div>
+                            <div class="bento-pipe-track">
+                                ${pipelineHtml}
+                            </div>
+                        </div>
+
+                        <!-- Feature highlights -->
+                        <div class="bento-features-list">
+                            ${featuresHtml}
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Interactive Live Visual Mockup Preview -->
+                    <div class="cap-bento-right">
+                        <div class="bento-mockup-wrapper">
+                            <div class="mockup-top-bar">
+                                <div class="sim-dots">
+                                    <span class="sim-dot red"></span>
+                                    <span class="sim-dot yellow"></span>
+                                    <span class="sim-dot green"></span>
+                                </div>
+                                <span class="mockup-header-title">${data.mockupHeader}</span>
+                            </div>
+                            <div class="mockup-stage-body">
+                                ${data.mockupContent}
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;
         }
 
-        tabBtns.forEach(btn => {
+        segBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
+                segBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const capKey = btn.getAttribute('data-cap');
@@ -1252,7 +1542,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Render initial default tab (CREATE)
+        // Render default tab (CREATE)
         renderCapabilityFlow('create');
     }
 
@@ -2204,8 +2494,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let draftTextMap = {
         social: `🤖 Autonomous AI Agents are no longer the future — they are here today in 2026.\n\nWe deployed our new Neural AI Pod to automate 80% of repetitive workflows across CRM, email, and social publishing.\n\nKey Takeaways:\n1️⃣ Sub-50ms execution speed\n2️⃣ Enterprise PII guardrail protection\n3️⃣ Seamless Human-in-the-Loop sign-off\n\nWhat workflow are you automating first? 👇\n\n#AI #Automation #TechTrends #FutureOfWork`,
         crm: `Qualified Lead Object: Acme Corp\nContact: Alex Mercer (VP of Engineering)\nCompany Revenue: $12M/yr | Tech Stack: React, Node, AWS\nCalculated ICP Fit Score: 96/100 (Enterprise Tier)\nAction: Created HubSpot Deal #4401 valued at $45,000 ARR with automated follow-up sequence.`,
-        email: `Dear Alex,\n\nThank you for reaching out regarding our Neural AI Agent Pod upgrade. We have reviewed your account requirements and processed your priority ticket #8842.\n\nYour API key rate limits have been upgraded to 5,000 requests/min with sub-30ms guarantee.\n\nBest regards,\nAGENTSPACE Neural Support Team`,
-        meeting: `Event: 🤖 AGENTSPACE Neural Pipeline Architecture Demo\nDate: Today at 3:30 PM - 4:00 PM EST\nAttendees: Alex Mercer (alex@acmecorp.com) & Tech Lead\nVideo Link: https://meet.google.com/xyz-agt-demo\nAgenda: 1. Neural Agent Overview 2. Guardrails Scan 3. Live CRM Integration`,
+        email: `Dear Alex,\n\nThank you for reaching out regarding our Neural AI Agent Pod upgrade. We have reviewed your account requirements and processed your priority ticket #8842.\n\nYour API key rate limits have been upgraded to 5,000 requests/min with sub-30ms guarantee.\n\nBest regards,\nFactonix Neural Support Team`,
+        meeting: `Event: 🤖 Factonix Neural Pipeline Architecture Demo\nDate: Today at 3:30 PM - 4:00 PM EST\nAttendees: Alex Mercer (alex@acmecorp.com) & Tech Lead\nVideo Link: https://meet.google.com/xyz-agt-demo\nAgenda: 1. Neural Agent Overview 2. Guardrails Scan 3. Live CRM Integration`,
         ecom: `Support Ticket #8842 Approved for Instant Refund.\nCustomer: Sarah Jenkins | Order ID: #8842\nRefund Amount: $120.00 | Gateway: Stripe charge ch_3N8x\nConfirmation Email Dispatched with tracking payload.`
     };
 
@@ -3665,66 +3955,102 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroScenarios = {
         ecommerce: {
             badge: 'WhatsApp AI',
-            badgeClass: 'wa-pill',
             user: 'Hi! Do you have custom pricing for e-commerce stores? Can your AI handle WhatsApp orders automatically?',
             ai: 'Yes! 🛍️ I monitor your WhatsApp 24/7, answer product queries, send direct checkout links, and automatically log orders into Shopify & CRM.',
             tags: ['⚡ Stock Checked: 48 units', '📊 Synced to CRM', '💳 Stripe Payment Generated']
         },
         leadgen: {
-            badge: 'Instagram DM AI',
-            badgeClass: 'insta-pill',
-            user: 'Loved your reel on AI workflow automation! Can I get a pricing quote for my 15-person agency team?',
-            ai: 'Thanks! 🚀 For a 15-person team, our Custom AI Agent reduces manual tasks by ~60 hrs/week ($2,700 monthly savings). Should I email you our full ROI breakdown or book a call?',
-            tags: ['⚡ ROI Calculated', '📊 Lead Saved to HubSpot', '📅 Calendly Slot Reserved']
+            badge: 'Lead Qualification AI',
+            user: 'Loved your reel on AI workflow automation! Can I get a pricing quote & qualification for my 15-person agency team?',
+            ai: 'Thanks! 🎯 For a 15-person team, our Custom Lead Qualification AI Agent reduces manual intake tasks by ~60 hrs/week ($2,700 monthly savings). Would you like to schedule a 15-min live demo call for tomorrow?',
+            tags: ['⚡ Lead Score: 98/100 (High Fit)', '📊 Saved to HubSpot CRM', '📅 Calendly Slot Reserved']
         },
         support: {
-            badge: 'Support AI',
-            badgeClass: 'sales-pill',
+            badge: '24/7 Support AI',
             user: 'Where is my order #78921? It hasn\'t arrived yet.',
-            ai: 'Hi Sarah! 📦 Order #78921 is out for delivery today via FedEx (Tracking #FX-99281). Expected arrival: Before 5:00 PM today!',
+            ai: 'Hi Sarah! 💬 Order #78921 is out for delivery today via FedEx (Tracking #FX-99281). Expected arrival: Before 5:00 PM today!',
             tags: ['⚡ Queried FedEx API', 'STATUS: Out for Delivery', '📩 SMS Alert Sent']
         },
         booking: {
-            badge: 'Sales AI',
-            badgeClass: 'wa-pill',
+            badge: 'Sales Booking AI',
             user: 'Can I schedule a 15-minute demo with your AI engineering team for tomorrow afternoon?',
             ai: 'Awesome! 📅 I have open slots tomorrow at 2:00 PM and 4:30 PM EST. Which time works best for you?',
             tags: ['⚡ Google Calendar Synced', '📊 Lead Score: 98/100', '✉️ Invite Sent']
         }
     };
 
+    function switchHeroScenario(key, clickedEl) {
+        const scenario = heroScenarios[key];
+        if (!scenario) return;
+
+        // Update active class on chips
+        if (heroPromptChips.length > 0) {
+            heroPromptChips.forEach(c => c.classList.remove('active', 'chip-clicked-pulse'));
+        }
+        if (clickedEl) {
+            clickedEl.classList.add('active', 'chip-clicked-pulse');
+            setTimeout(() => clickedEl.classList.remove('chip-clicked-pulse'), 450);
+        }
+
+        // Play click audio feedback if available
+        if (typeof playCyberClick === 'function') playCyberClick();
+
+        if (heroUserText && heroAiText) {
+            heroUserText.style.transition = 'opacity 0.15s ease';
+            heroAiText.style.transition = 'opacity 0.15s ease';
+            heroUserText.style.opacity = '0';
+            heroAiText.style.opacity = '0';
+
+            setTimeout(() => {
+                if (heroChannelBadge) {
+                    heroChannelBadge.textContent = scenario.badge;
+                }
+                heroUserText.textContent = scenario.user;
+                heroAiText.innerHTML = `<em>🤖 Factonix AI Agent is thinking & executing API tools...</em>`;
+
+                if (heroActionTags) {
+                    heroActionTags.innerHTML = `<span class="action-tag">⚡ Processing scenario intent...</span>`;
+                }
+
+                heroUserText.style.opacity = '1';
+                heroAiText.style.opacity = '1';
+
+                // Display final response after simulated neural processing
+                setTimeout(() => {
+                    heroAiText.style.opacity = '0';
+                    setTimeout(() => {
+                        heroAiText.textContent = scenario.ai;
+                        if (heroActionTags) {
+                            heroActionTags.innerHTML = scenario.tags.map((t, i) => `<span class="action-tag" style="animation: fadeInUp 0.3s ease forwards ${i * 0.08}s">${t}</span>`).join('');
+                        }
+                        heroAiText.style.opacity = '1';
+                    }, 150);
+                }, 350);
+            }, 150);
+        }
+    }
+
     if (heroPromptChips.length > 0) {
         heroPromptChips.forEach(chip => {
-            chip.addEventListener('click', () => {
-                heroPromptChips.forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-
-                const key = chip.getAttribute('data-scenario');
-                const scenario = heroScenarios[key];
-                if (!scenario) return;
-
-                if (heroUserText && heroAiText) {
-                    heroUserText.style.opacity = '0';
-                    heroAiText.style.opacity = '0';
-
-                    setTimeout(() => {
-                        if (heroChannelBadge) {
-                            heroChannelBadge.textContent = scenario.badge;
-                        }
-                        heroUserText.textContent = scenario.user;
-                        heroAiText.textContent = scenario.ai;
-
-                        if (heroActionTags) {
-                            heroActionTags.innerHTML = scenario.tags.map(t => `<span class="action-tag">${t}</span>`).join('');
-                        }
-
-                        heroUserText.style.opacity = '1';
-                        heroAiText.style.opacity = '1';
-                    }, 200);
-                }
+            chip.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const targetBtn = e.target.closest('.prompt-chip');
+                if (!targetBtn) return;
+                const key = targetBtn.getAttribute('data-scenario');
+                switchHeroScenario(key, targetBtn);
             });
         });
     }
+
+    // Global document event listener as fallback for hero prompt chips
+    document.addEventListener('click', (e) => {
+        const targetBtn = e.target.closest('.prompt-chip');
+        if (targetBtn && targetBtn.hasAttribute('data-scenario')) {
+            const key = targetBtn.getAttribute('data-scenario');
+            switchHeroScenario(key, targetBtn);
+        }
+    });
 
     // ==========================================
     // REALISTIC WORKSPACE SIMULATOR ENGINE
@@ -3868,6 +4194,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         renderRealisticSim('whatsapp');
+    }
+
+    const sidePresetBtns = document.querySelectorAll('.side-preset-btn');
+    if (sidePresetBtns.length > 0) {
+        sidePresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const preset = btn.getAttribute('data-preset');
+                if (preset === 'tracking') {
+                    const waBtn = document.querySelector('.sim-tab-btn[data-sim="whatsapp"]');
+                    if (waBtn) waBtn.click();
+                } else if (preset === 'lead') {
+                    const instaBtn = document.querySelector('.sim-tab-btn[data-sim="instagram"]');
+                    if (instaBtn) instaBtn.click();
+                } else if (preset === 'call') {
+                    const voiceBtn = document.querySelector('.sim-tab-btn[data-sim="voice"]');
+                    if (voiceBtn) voiceBtn.click();
+                }
+            });
+        });
     }
 });
 

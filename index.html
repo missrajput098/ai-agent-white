@@ -141,7 +141,7 @@
                                 <span class="prompt-chip-label">Click a realistic scenario to test live:</span>
                                 <div class="prompt-chips-wrapper">
                                     <button class="prompt-chip active" data-scenario="ecommerce">🛍️ E-Commerce Order</button>
-                                    <button class="prompt-chip" data-scenario="leadgen">🎯 Lead Qualification</button>
+                                    <!-- <button class="prompt-chip" data-scenario="leadgen">🎯 Lead Qualification</button> -->
                                     <button class="prompt-chip" data-scenario="support">💬 WhatsApp Support</button>
                                     <button class="prompt-chip" data-scenario="booking">📅 Demo Booking</button>
                                 </div>
@@ -390,111 +390,196 @@
         </div>
     </section>
 
-    <!-- Interactive Live AI Agent Simulator Section -->
+    <!-- Interactive Live AI Agent Simulator Section with Vertical Sidebar Command Center -->
     <section class="section simulator-section" id="simulator">
         <div class="container container-fluid sim-container">
-            <div class="text-center margin-bottom-40">
-                <div class="cap-badge">
-                    <span class="sparkle-icon">⚡</span>
-                    <span>LIVE AGENT WORKSPACE SIMULATOR</span>
+            
+            <!-- Main 2-Column Workspace Grid -->
+            <div class="sim-main-2col-grid">
+                
+                <!-- LEFT COLUMN: Title + Interactive Simulator Window -->
+                <div class="sim-left-col">
+                    <div class="sim-header-left margin-bottom-24">
+                        <div class="cap-badge">
+                            <span class="sparkle-icon">⚡</span>
+                            <span>LIVE AGENT WORKSPACE SIMULATOR</span>
+                        </div>
+                        <h2 class="section-title text-left margin-top-12" style="margin-bottom: 8px;">Test Drive an <span class="text-glow">AI Agent Live</span></h2>
+                        <p class="section-subtitle text-left" style="margin-bottom: 0; max-width: 100%;">
+                            Select an agent profile below to watch real-time customer conversations, automated actions, and instant integrations.
+                        </p>
+                    </div>
+
+                    <!-- Simulator Window -->
+                    <div class="sim-terminal-wrapper realistic-sim-wrapper">
+                        <div class="sim-terminal-header">
+                            <div class="sim-dots">
+                                <span class="sim-dot red"></span>
+                                <span class="sim-dot yellow"></span>
+                                <span class="sim-dot green"></span>
+                                <span class="sim-title-label">Interactive AI Co-Pilot Simulator</span>
+                            </div>
+
+                            <div class="sim-tabs-bar">
+                                <button class="sim-tab-btn active" data-sim="whatsapp">📱 WhatsApp</button>
+                                <button class="sim-tab-btn" data-sim="instagram">📸 Instagram</button>
+                                <button class="sim-tab-btn" data-sim="voice">🎙️ Voice AI</button>
+                                <button class="sim-tab-btn" data-sim="email">✉️ Email CRM</button>
+                            </div>
+
+                            <div class="sim-status-live">
+                                <span class="status-dot green-pulse"></span> LIVE
+                            </div>
+                        </div>
+
+                        <div class="sim-realistic-content" id="simRealisticContainer">
+                            <!-- Dynamic realistic conversation rendered by script.js -->
+                        </div>
+                    </div>
                 </div>
-                <h2 class="section-title text-center">Test Drive an <span class="text-glow">AI Agent Live</span></h2>
-                <p class="section-subtitle text-center">Select an agent profile below to watch real-time customer conversations, automated actions, and instant integrations.</p>
+
+                <!-- RIGHT COLUMN: Vertical Sidebar Panel (Workflow Studio + Live Command Center) -->
+                <div class="sim-right-col">
+                    
+                    <!-- Top Card: Workflow Studio CTA -->
+                    <div class="studio-mini-cta-card margin-bottom-20" id="workflow-studio">
+                        <div class="studio-badge-row">
+                            <span class="cap-badge studio-badge">⚙️ WORKFLOW STUDIO</span>
+                        </div>
+                        <h3 class="studio-card-title">Let's Start Your <span class="text-glow">AI Workflow</span></h3>
+                        <p class="studio-card-desc">Design, simulate, and auto-publish neural workflows in our interactive studio.</p>
+                        <div class="studio-btn-row">
+                            <a href="workflow-studio.html" class="btn btn-primary btn-sm btn-simulate-pulse">🚀 Let's Start AI Workflow ➔</a>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Panel: Vertical Live AI Command & Metrics UI -->
+                    <div class="sim-vertical-side-panel">
+                        <div class="side-panel-header">
+                            <span class="status-pulse-dot"></span>
+                            <strong>LIVE AGENT COMMAND CENTER</strong>
+                        </div>
+
+                        <!-- Metric Mini Grid -->
+                        <div class="side-panel-metrics">
+                            <div class="side-metric-box">
+                                <div class="metric-val text-glow">0.4s</div>
+                                <div class="metric-lbl">Response Time</div>
+                            </div>
+                            <div class="side-metric-box">
+                                <div class="metric-val text-glow">99.4%</div>
+                                <div class="metric-lbl">Accuracy Score</div>
+                            </div>
+                            <div class="side-metric-box">
+                                <div class="metric-val text-glow">12ms</div>
+                                <div class="metric-lbl">API Latency</div>
+                            </div>
+                            <div class="side-metric-box">
+                                <div class="metric-val text-glow">24/7</div>
+                                <div class="metric-lbl">Uptime SLA</div>
+                            </div>
+                        </div>
+
+                        <!-- Live Action Traces Log Stream -->
+                        <div class="side-panel-logs">
+                            <div class="log-title">⚡ REAL-TIME ACTION TRACE</div>
+                            <div class="log-stream-list" id="sidePanelLogList">
+                                <div class="side-log-item">
+                                    <span class="log-badge green">CONNECTED</span>
+                                    <span class="log-txt">Meta Graph API Active</span>
+                                </div>
+                                <div class="side-log-item">
+                                    <span class="log-badge blue">WEBHOOK</span>
+                                    <span class="log-txt">Shopify Inventory Queried</span>
+                                </div>
+                                <div class="side-log-item">
+                                    <span class="log-badge purple">CRM SYNC</span>
+                                    <span class="log-txt">Lead Profile Logged</span>
+                                </div>
+                                <div class="side-log-item">
+                                    <span class="log-badge orange">PAYMENT</span>
+                                    <span class="log-txt">Stripe Checkout Ready</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Preset Scenario Pills -->
+                        <div class="side-panel-presets">
+                            <div class="preset-title">QUICK TEST SCENARIOS:</div>
+                            <div class="preset-pills-list">
+                                <button class="side-preset-btn" data-preset="tracking">📦 Check Order Status</button>
+                                <button class="side-preset-btn" data-preset="lead">🎯 Qualify $10k Prospect</button>
+                                <button class="side-preset-btn" data-preset="call">📞 Book Lawyer Demo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="sim-terminal-wrapper realistic-sim-wrapper">
-                <div class="sim-terminal-header">
-                    <div class="sim-dots">
-                        <span class="sim-dot red"></span>
-                        <span class="sim-dot yellow"></span>
-                        <span class="sim-dot green"></span>
-                        <span class="sim-title-label">Interactive AI Co-Pilot Simulator</span>
-                    </div>
-
-                    <div class="sim-tabs-bar">
-                        <button class="sim-tab-btn active" data-sim="whatsapp">📱 WhatsApp Support</button>
-                        <button class="sim-tab-btn" data-sim="instagram">📸 Instagram LeadGen</button>
-                        <button class="sim-tab-btn" data-sim="voice">🎙️ Voice & Call AI</button>
-                        <button class="sim-tab-btn" data-sim="email">✉️ Email & CRM Co-Pilot</button>
-                    </div>
-
-                    <div class="sim-status-live">
-                        <span class="status-dot green-pulse"></span> SYSTEM LIVE
-                    </div>
-                </div>
-
-                <div class="sim-realistic-content" id="simRealisticContainer">
-                    <!-- Dynamic realistic conversation rendered by script.js -->
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Section 5: AI Capability Showcase (What Should Your AI Do?) -->
     <section class="section capabilities-showcase-section" id="ai-solutions">
         <div class="container container-fluid">
-            <div class="text-center margin-bottom-40">
+            <!-- Section Header -->
+            <div class="text-center margin-bottom-32">
                 <div class="cap-badge">
                     <span class="sparkle-icon">✦</span>
-                    <span>AI CAPABILITY SHOWCASE</span>
+                    <span>ENTERPRISE AI CAPABILITY SHOWCASE</span>
                 </div>
                 <h2 class="section-title text-center">What Should Your <span class="text-glow">AI Do?</span></h2>
-                <p class="section-subtitle text-center">Select an AI capability below to see live node flows and automated actions in motion.</p>
+                <p class="section-subtitle text-center">
+                    Select an AI capability below to see real-world neural pipelines, automated actions, and live visual outputs in action.
+                </p>
             </div>
 
-            <div class="cap-showcase-layout">
-                <!-- LEFT SIDE: Compact Vertical Tabs -->
-                <div class="cap-tabs-vertical" id="capTabsVertical">
-                    <button class="cap-tab-btn active" data-cap="create">
-                        <span class="cap-tab-num">01</span>
-                        <div class="cap-tab-text">
-                            <strong>CREATE</strong>
-                            <span>Content & Design</span>
-                        </div>
-                        <span class="cap-tab-indicator"></span>
+            <!-- Apple-Style Segmented Control Filter Pills Bar -->
+            <div class="cap-segmented-wrapper margin-bottom-32">
+                <div class="cap-segmented-bar" id="capSegmentedBar">
+                    <button class="cap-seg-btn active" data-cap="create">
+                        <span class="cap-seg-icon">🎨</span>
+                        <span class="cap-seg-text">
+                            <span class="cap-seg-title">CREATE</span>
+                            <span class="cap-seg-sub">Content & Media</span>
+                        </span>
                     </button>
-
-                    <button class="cap-tab-btn" data-cap="automate">
-                        <span class="cap-tab-num">02</span>
-                        <div class="cap-tab-text">
-                            <strong>AUTOMATE</strong>
-                            <span>Workflows & Tasks</span>
-                        </div>
-                        <span class="cap-tab-indicator"></span>
+                    <button class="cap-seg-btn" data-cap="automate">
+                        <span class="cap-seg-icon">⚡</span>
+                        <span class="cap-seg-text">
+                            <span class="cap-seg-title">AUTOMATE</span>
+                            <span class="cap-seg-sub">Workflows & Tasks</span>
+                        </span>
                     </button>
-
-                    <button class="cap-tab-btn" data-cap="analyze">
-                        <span class="cap-tab-num">03</span>
-                        <div class="cap-tab-text">
-                            <strong>ANALYZE</strong>
-                            <span>Data & Insights</span>
-                        </div>
-                        <span class="cap-tab-indicator"></span>
+                    <button class="cap-seg-btn" data-cap="analyze">
+                        <span class="cap-seg-icon">📊</span>
+                        <span class="cap-seg-text">
+                            <span class="cap-seg-title">ANALYZE</span>
+                            <span class="cap-seg-sub">Data & Intelligence</span>
+                        </span>
                     </button>
-
-                    <button class="cap-tab-btn" data-cap="sell">
-                        <span class="cap-tab-num">04</span>
-                        <div class="cap-tab-text">
-                            <strong>SELL</strong>
-                            <span>Leads & Conversions</span>
-                        </div>
-                        <span class="cap-tab-indicator"></span>
+                    <button class="cap-seg-btn" data-cap="sell">
+                        <span class="cap-seg-icon">🎯</span>
+                        <span class="cap-seg-text">
+                            <span class="cap-seg-title">SELL</span>
+                            <span class="cap-seg-sub">Leads & Conversion</span>
+                        </span>
                     </button>
-
-                    <button class="cap-tab-btn" data-cap="support">
-                        <span class="cap-tab-num">05</span>
-                        <div class="cap-tab-text">
-                            <strong>SUPPORT</strong>
-                            <span>24/7 Customer Care</span>
-                        </div>
-                        <span class="cap-tab-indicator"></span>
+                    <button class="cap-seg-btn" data-cap="support">
+                        <span class="cap-seg-icon">🎧</span>
+                        <span class="cap-seg-text">
+                            <span class="cap-seg-title">SUPPORT</span>
+                            <span class="cap-seg-sub">24/7 Customer Care</span>
+                        </span>
                     </button>
                 </div>
+            </div>
 
-                <!-- RIGHT SIDE: Dynamic AI Workspace -->
-                <div class="cap-workspace-stage" id="capWorkspaceStage">
-                    <!-- Dynamic capability content injected & animated by script.js -->
-                </div>
+            <!-- Interactive Stage Container (Dynamic Bento Grid Rendered by JavaScript) -->
+            <div class="cap-bento-stage" id="capWorkspaceStage">
+                <!-- Dynamically populated by renderCapabilityFlow() in script.js -->
             </div>
         </div>
     </section>
@@ -521,7 +606,7 @@
                     </div>
                     <div class="agent-img-box">
                         <div class="scan-line"></div>
-                        <img src="assets/images/avatar-social.jpg" alt="Social AI Cyber Avatar">
+                        <img src="assets/images/agent_social_pro.jpg" alt="Social AI Content Generator Dashboard">
                     </div>
                     <div class="agent-card-body">
                         <h3>Social AI</h3>
@@ -548,7 +633,7 @@
                     </div>
                     <div class="agent-img-box">
                         <div class="scan-line"></div>
-                        <img src="assets/images/avatar-sales.jpg" alt="Sales AI Cyborg Avatar">
+                        <img src="assets/images/agent_sales_pro.jpg" alt="Sales AI Lead Qualification Dashboard">
                     </div>
                     <div class="agent-card-body">
                         <h3>Sales AI</h3>
@@ -575,7 +660,7 @@
                     </div>
                     <div class="agent-img-box">
                         <div class="scan-line"></div>
-                        <img src="assets/images/avatar-support.jpg" alt="Support AI Specialist Avatar">
+                        <img src="assets/images/agent_support_pro.jpg" alt="Support AI Customer Care Interface">
                     </div>
                     <div class="agent-card-body">
                         <h3>Support AI</h3>
@@ -602,7 +687,7 @@
                     </div>
                     <div class="agent-img-box">
                         <div class="scan-line"></div>
-                        <img src="assets/images/avatar-ops.jpg" alt="Operations AI Robot Avatar">
+                        <img src="assets/images/agent_ops_pro.jpg" alt="Operations AI Workflow Architecture Diagram">
                     </div>
                     <div class="agent-card-body">
                         <h3>Operations AI</h3>
@@ -639,25 +724,7 @@
         </div>
     </section>
 
-    <!-- Interactive AI Workflow Studio Feature Banner -->
-    <section class="section workflow-studio-section" id="workflow-studio" style="padding: 60px 0;">
-        <div class="container">
-            <div class="studio-cta-box text-center" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(0, 240, 255, 0.06)); border: 1px solid rgba(0, 240, 255, 0.25); border-radius: var(--radius-lg); padding: 50px 30px;">
-                <div class="cap-badge margin-bottom-20" style="margin: 0 auto 16px;">
-                    <span class="sparkle-icon">⚙️</span>
-                    <span>STANDALONE INTERACTIVE STUDIO</span>
-                </div>
-                <h2 class="section-title text-center" style="margin-bottom: 12px;">Let's Start Your <span class="text-glow">AI Workflow</span></h2>
-                <p class="section-subtitle text-center" style="max-width: 760px; margin: 0 auto 24px;">
-                    Design, simulate, and auto-publish neural workflows in our dedicated interactive studio. Experience prompt search, today's social theme discovery, human approval gates, and live platform publishing.
-                </p>
-                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="workflow-studio.html" class="btn btn-primary btn-simulate-pulse" style="font-size: 1rem; padding: 14px 28px;">🚀 Let's Start AI Workflow ➔</a>
-                    <a href="how-it-works.html" class="btn btn-secondary" style="font-size: 1rem; padding: 14px 28px;">Explore How It Works</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Section 7: Timeline (How It Works) -->
     <section class="section timeline-section" id="how-it-works">
