@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloaderFill = document.getElementById('preloaderFill');
     const preloaderPercent = document.getElementById('preloaderPercent');
 
-    if (preloaderOverlay && preloaderRobot && preloaderTypedText && preloaderFill && preloaderPercent) {
+    if (preloaderOverlay && preloaderTypedText && preloaderFill && preloaderPercent) {
         const welcomeMessage = "WELCOME TO AGENT FACTONIX";
         let currentProgress = 0;
         const totalDuration = 1800;
@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentProgress += increment;
             if (currentProgress > 100) currentProgress = 100;
 
-            preloaderRobot.style.left = `${currentProgress}%`;
+            if (preloaderRobot) preloaderRobot.style.left = `${currentProgress}%`;
             if (preloaderLaser) preloaderLaser.style.width = `${currentProgress}%`;
 
             preloaderFill.style.width = `${currentProgress}%`;
