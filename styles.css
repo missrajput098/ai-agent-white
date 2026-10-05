@@ -4517,55 +4517,65 @@ body.robotics-mode .wf-step-chip {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.68rem;
+    font-size: 0.65rem;
     font-weight: 700;
-    color: var(--brand-action);
-    letter-spacing: 0.8px;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    width: fit-content;
 }
 
 .biz-sol-desc {
     font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.5;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     flex-grow: 1;
 }
 
-.biz-wf-pipeline {
+/* Workflow Pipeline & Step Row Container */
+.biz-wf-pipeline,
+.sol-workflow-row {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 4px;
-    background: rgba(248, 250, 252, 0.95);
-    border: 1px solid rgba(226, 232, 240, 0.9);
+    justify-content: space-between;
+    gap: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     padding: 8px 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: auto;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.biz-wf-pipeline::-webkit-scrollbar {
-    display: none;
-}
-
-.wf-node {
-    font-size: 0.72rem;
+.wf-node,
+.sol-wf-step {
+    font-size: 0.7rem;
     font-weight: 700;
-    color: var(--brand-primary);
+    color: #1e293b;
     background: #ffffff;
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 6px;
-    border: 1px solid rgba(3, 47, 104, 0.12);
-    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
     white-space: nowrap;
-    flex-shrink: 0;
+    text-align: center;
+    flex: 1 1 0px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: all 0.25s ease;
 }
 
-.wf-arr {
-    font-size: 0.72rem;
+.wf-arr,
+.sol-wf-arrow {
+    font-size: 0.75rem;
     font-weight: 800;
     color: #94a3b8;
     flex-shrink: 0;
@@ -14552,6 +14562,8 @@ body.robotics-mode .studio-cta-box {
     padding: 14px 20px;
     background: #f8fafc;
     border-top: 1px solid #e2e8f0;
+    position: relative;
+    z-index: 30;
 }
 
 .prompt-chip-label {
@@ -14566,30 +14578,46 @@ body.robotics-mode .studio-cta-box {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 35;
 }
 
 .prompt-chip {
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     background: #ffffff;
     border: 1px solid #cbd5e1;
     color: #334155;
     font-size: 0.78rem;
     font-weight: 600;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 40;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .prompt-chip:hover {
     border-color: #0284c7;
     color: #032f68;
     background: #f0f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.prompt-chip:active {
+    transform: translateY(0);
 }
 
 .prompt-chip.active {
-    background: #032f68;
-    border-color: #032f68;
+    background: var(--brand-action);
+    border-color: var(--brand-action);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(3, 47, 104, 0.25);
+    box-shadow: 0 4px 14px rgba(10, 91, 216, 0.3);
 }
 
 /* Floating Live Badges */
@@ -14608,8 +14636,18 @@ body.robotics-mode .studio-cta-box {
 }
 
 .badge-left {
-    bottom: -15px;
-    left: -20px;
+    bottom: 50px;
+    left: -25px;
+}
+
+.prompt-chip.chip-clicked-pulse {
+    animation: chipPulseGlow 0.4s ease forwards;
+}
+
+@keyframes chipPulseGlow {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(10, 91, 216, 0.4); }
+    50% { transform: scale(1.04); box-shadow: 0 0 15px 4px rgba(10, 91, 216, 0.25); }
+    100% { transform: scale(1); box-shadow: 0 4px 14px rgba(10, 91, 216, 0.3); }
 }
 
 .badge-right {
@@ -15355,6 +15393,28 @@ body.robotics-mode .ai-msg {
     border-color: rgba(0, 113, 227, 0.3) !important;
 }
 
+.agent-img-box {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.agent-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.agent-card:hover .agent-img-box img {
+    transform: scale(1.05);
+}
+
 /* Bento Card Grid Spans */
 @media (min-width: 993px) {
     .agents-grid .agent-card:nth-child(1) { grid-column: span 2; }
@@ -15432,6 +15492,1580 @@ body.robotics-mode .tool-chip {
     color: #a1a1a6 !important;
     font-size: 1.2rem !important;
 }
+
+/* Simulator & Workflow Studio Side-by-Side Header Grid */
+.sim-header-split-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 30px;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .sim-header-split-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.sim-header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.studio-mini-cta-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 113, 227, 0.2);
+    border-radius: 24px;
+    padding: 24px 28px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 113, 227, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.studio-mini-cta-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 113, 227, 0.16);
+    border-color: rgba(0, 113, 227, 0.4);
+}
+
+.studio-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin: 10px 0 6px;
+    color: #1d1d1f;
+    letter-spacing: -0.02em;
+}
+
+.studio-card-desc {
+    font-size: 0.88rem;
+    color: #86868b;
+    margin-bottom: 16px;
+    line-height: 1.45;
+}
+
+.studio-btn-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+body.robotics-mode .studio-mini-cta-card {
+    background: rgba(22, 22, 23, 0.85) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.robotics-mode .studio-card-title {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .studio-card-desc {
+    color: #cbd5e1 !important;
+}
+
+/* ==========================================
+   2-COLUMN WORKSPACE GRID (SIMULATOR + SIDEBAR)
+   ========================================== */
+.sim-main-2col-grid {
+    display: grid;
+    grid-template-columns: 1.22fr 0.78fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+@media (max-width: 992px) {
+    .sim-main-2col-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.sim-left-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.sim-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.margin-bottom-24 {
+    margin-bottom: 24px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-top-12 {
+    margin-top: 12px;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+/* Vertical Command Center Side Panel */
+.sim-vertical-side-panel {
+    background: #ffffff;
+    border: 1px solid rgba(0, 113, 227, 0.15);
+    border-radius: 24px;
+    padding: 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.side-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: #0071e3;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+/* Side Metrics Grid */
+.side-panel-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.side-metric-box {
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-metric-box .metric-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.side-metric-box .metric-lbl {
+    font-size: 0.72rem;
+    color: #86868b;
+    font-weight: 600;
+}
+
+/* Real-Time Action Log Stream */
+.side-panel-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.log-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #86868b;
+    letter-spacing: 0.5px;
+}
+
+.log-stream-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.side-log-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    font-size: 0.78rem;
+    color: #1d1d1f;
+}
+
+.log-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.log-badge.green { background: #dcfce7; color: #15803d; }
+.log-badge.blue { background: #e0f2fe; color: #0369a1; }
+.log-badge.purple { background: #f3e8ff; color: #7e22ce; }
+.log-badge.orange { background: #ffedd5; color: #c2410c; }
+
+/* Side Panel Presets */
+.side-panel-presets {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.preset-title {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #86868b;
+}
+
+.preset-pills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.side-preset-btn {
+    padding: 8px 14px;
+    border-radius: 980px;
+    background: #f5f5f7;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #1d1d1f;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.side-preset-btn:hover {
+    background: #0071e3;
+    color: #ffffff;
+    border-color: #0071e3;
+    transform: translateX(3px);
+}
+
+/* Robotics Mode Overrides for Vertical Side Panel */
+body.robotics-mode .sim-vertical-side-panel {
+    background: rgba(22, 22, 23, 0.85) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.robotics-mode .side-panel-header {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .side-metric-box {
+    background: rgba(30, 41, 59, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.robotics-mode .side-metric-box .metric-lbl,
+body.robotics-mode .log-title,
+body.robotics-mode .preset-title {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .side-log-item {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #f5f5f7 !important;
+}
+
+body.robotics-mode .side-preset-btn {
+    background: rgba(30, 41, 59, 0.8) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f5f5f7 !important;
+}
+
+body.robotics-mode .side-preset-btn:hover {
+    background: #00f0ff !important;
+    color: #030712 !important;
+    border-color: #00f0ff !important;
+}
+
+/* ==========================================
+   APPLE BENTO STAGE & SEGMENTED CONTROL STYLES (#ai-solutions)
+   ========================================== */
+
+/* 1. Apple-Style Segmented Control Filter Pills Bar */
+.cap-segmented-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 4px 0;
+}
+
+.cap-segmented-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.cap-segmented-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-full);
+    padding: 6px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    max-width: 100%;
+}
+
+.cap-seg-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: var(--radius-full);
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+
+.cap-seg-icon {
+    font-size: 1.15rem;
+    transition: transform 0.3s ease;
+}
+
+.cap-seg-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    line-height: 1.1;
+}
+
+.cap-seg-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.cap-seg-sub {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--text-dim);
+}
+
+.cap-seg-btn:hover {
+    background: rgba(10, 91, 216, 0.05);
+    color: var(--brand-action);
+}
+
+.cap-seg-btn:hover .cap-seg-icon {
+    transform: scale(1.15);
+}
+
+.cap-seg-btn.active {
+    background: var(--bg-surface);
+    border-color: rgba(10, 91, 216, 0.25);
+    box-shadow: 0 4px 14px rgba(10, 91, 216, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.cap-seg-btn.active .cap-seg-title {
+    color: var(--brand-action);
+}
+
+.cap-seg-btn.active .cap-seg-sub {
+    color: var(--brand-accent);
+}
+
+/* 2. Bento Card Stage Grid Layout */
+.cap-bento-stage {
+    position: relative;
+    width: 100%;
+}
+
+.cap-bento-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 28px;
+    align-items: stretch;
+    animation: bentoFadeIn 0.4s ease forwards;
+}
+
+@keyframes bentoFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 991px) {
+    .cap-bento-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3. Left Panel (Details, Metrics & Pipeline) */
+.cap-bento-left {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.bento-left-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cap-badge.mini-badge {
+    padding: 3px 10px;
+    font-size: 0.68rem;
+    align-self: flex-start;
+}
+
+.bento-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.bento-summary {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Metrics Mini-Grid */
+.bento-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.bento-mini-metric {
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 12px;
+    text-align: center;
+}
+
+.bento-mini-metric .metric-val {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--brand-action);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+
+.bento-mini-metric .metric-lbl {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Horizontal Pipeline Step Track */
+.bento-pipeline-box {
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 18px;
+}
+
+.bento-pipe-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.bento-pipe-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    overflow-x: auto;
+}
+
+.bento-pipe-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+    flex-shrink: 0;
+}
+
+.pipe-node-icon {
+    font-size: 1.1rem;
+}
+
+.pipe-node-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.pipe-node-info strong {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+.pipe-node-info span {
+    font-size: 0.66rem;
+    color: var(--text-muted);
+}
+
+.pipe-node-arr {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--brand-accent);
+    flex-shrink: 0;
+}
+
+/* Bento Features List */
+.bento-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.bento-feat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.feat-check {
+    font-size: 0.85rem;
+}
+
+/* 4. Right Panel (Interactive Mockup Window) */
+.cap-bento-right {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Default Light Theme - Crisp Clean Apple Light Mockup */
+.bento-mockup-wrapper {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.mockup-top-bar {
+    background: #f1f5f9;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.mockup-header-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--brand-action);
+    text-transform: uppercase;
+}
+
+.mockup-stage-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(241, 245, 249, 0.8) 100%);
+}
+
+/* Inner Social Mockup Styling (Light Mode) */
+.cap-social-mock-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    color: #0f172a;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.social-mock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.social-mock-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #7000ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.badge-mini {
+    display: block;
+    font-size: 0.68rem;
+    color: #64748b;
+}
+
+.mock-caption-txt {
+    font-size: 0.88rem;
+    color: #1e293b;
+    line-height: 1.45;
+    margin-bottom: 10px;
+}
+
+.mock-hashtags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.mock-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--brand-action);
+    background: rgba(10, 91, 216, 0.08);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.mock-visual-box {
+    background: #f8fafc;
+    border: 1px dashed rgba(10, 91, 216, 0.25);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.visual-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.visual-icon {
+    font-size: 1.8rem;
+}
+
+.visual-placeholder strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #0f172a;
+}
+
+.visual-placeholder p {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.social-mock-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mock-stats {
+    font-size: 0.78rem;
+    color: #475569;
+    font-weight: 600;
+}
+
+.mock-btn-action {
+    width: 100%;
+    padding: 9px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(10, 91, 216, 0.3);
+    background: rgba(10, 91, 216, 0.08);
+    color: var(--brand-action);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.mock-btn-action:hover {
+    background: var(--brand-action);
+    color: #ffffff;
+}
+
+/* Inner Workflow Execution Trace Styling (Light Mode) */
+.cap-wf-mock-card {
+    width: 100%;
+}
+
+.wf-mock-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: #475569;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.wf-node-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wf-node-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.wf-node-badge {
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.wf-node-badge.green { background: rgba(34, 197, 94, 0.15); color: #15803d; }
+.wf-node-badge.cyan { background: rgba(2, 132, 199, 0.15); color: #0369a1; }
+.wf-node-badge.purple { background: rgba(147, 51, 234, 0.15); color: #7e22ce; }
+.wf-node-badge.orange { background: rgba(234, 88, 12, 0.15); color: #c2410c; }
+
+.wf-node-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.wf-node-info strong {
+    font-size: 0.82rem;
+    color: #0f172a;
+}
+
+.wf-node-sub {
+    font-size: 0.7rem;
+    color: #64748b;
+}
+
+.wf-check {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #16a34a;
+}
+
+/* Inner BI Dashboard Mockup Styling (Light Mode) */
+.cap-bi-mock-card {
+    width: 100%;
+}
+
+.bi-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.bi-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: var(--brand-action);
+    letter-spacing: 1px;
+}
+
+.bi-card-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 2px 0 0 0;
+}
+
+.bi-trend-pill {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #15803d;
+    font-weight: 800;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.bi-chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    height: 120px;
+    padding: 10px 16px 0;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    margin-bottom: 16px;
+}
+
+.chart-bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.chart-bar-fill {
+    width: 100%;
+    max-width: 32px;
+    background: linear-gradient(180deg, #0284c7 0%, #0369a1 100%);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.6s ease;
+}
+
+.chart-bar-group.active-bar .chart-bar-fill {
+    background: linear-gradient(180deg, #16a34a 0%, #15803d 100%);
+    box-shadow: 0 0 10px rgba(22, 163, 74, 0.3);
+}
+
+.chart-lbl {
+    font-size: 0.68rem;
+    color: #64748b;
+    margin-top: 6px;
+    font-weight: 700;
+}
+
+.bi-insight-box {
+    display: flex;
+    gap: 10px;
+    background: #f8fafc;
+    border-left: 3px solid var(--brand-action);
+    padding: 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.8rem;
+    color: #334155;
+}
+
+.bi-insight-box strong {
+    color: #0f172a;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.bi-insight-box p {
+    margin: 0;
+    line-height: 1.35;
+    font-size: 0.78rem;
+}
+
+/* Inner Lead Card Mockup Styling (Light Mode) */
+.cap-lead-mock-card {
+    width: 100%;
+}
+
+.lead-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.lead-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f97316, #ef4444);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lead-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.lead-info strong {
+    font-size: 0.95rem;
+    color: #0f172a;
+}
+
+.lead-info span {
+    font-size: 0.75rem;
+    color: #64748b;
+}
+
+.lead-score-pill {
+    background: rgba(249, 115, 22, 0.12);
+    border: 1px solid rgba(249, 115, 22, 0.3);
+    color: #c2410c;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.lead-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.lead-m-item {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    padding: 8px 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.lead-m-item span {
+    font-size: 0.66rem;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.lead-m-item strong {
+    font-size: 0.8rem;
+    color: var(--brand-action);
+    margin-top: 2px;
+}
+
+.lead-action-box {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lead-status-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: #1e293b;
+}
+
+.crm-badge-strip {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #15803d;
+}
+
+/* Inner Customer Support Mockup Styling (Light Mode) */
+.cap-support-mock-card {
+    width: 100%;
+}
+
+.support-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    margin-bottom: 14px;
+}
+
+.agent-avatar-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981, #0284c7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.support-chat-header strong {
+    display: block;
+    font-size: 0.88rem;
+    color: #0f172a;
+}
+
+.online-tag {
+    font-size: 0.68rem;
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.csat-pill {
+    margin-left: auto;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.12);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.support-chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.chat-bubble {
+    max-width: 88%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    position: relative;
+}
+
+.customer-bubble {
+    align-self: flex-start;
+    background: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.ai-bubble {
+    align-self: flex-end;
+    background: rgba(10, 91, 216, 0.08);
+    border: 1px solid rgba(10, 91, 216, 0.2);
+    color: #0f172a;
+}
+
+.chat-bubble p {
+    margin: 0;
+}
+
+.bubble-time {
+    display: block;
+    font-size: 0.65rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.track-link-pill {
+    margin-top: 6px;
+    padding: 4px 8px;
+    background: rgba(10, 91, 216, 0.06);
+    border-radius: 4px;
+    font-size: 0.72rem;
+    color: var(--brand-action);
+}
+
+.track-link-pill a {
+    color: var(--brand-action);
+    font-weight: 700;
+}
+
+.support-chat-footer {
+    text-align: center;
+}
+
+.resolved-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #15803d;
+    background: rgba(34, 197, 94, 0.12);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+/* ==========================================
+   ROBOTICS MODE DARK THEME OVERRIDES FOR BENTO STAGE
+   ========================================== */
+body.robotics-mode .cap-segmented-bar {
+    background: rgba(11, 20, 38, 0.92) !important;
+    border-color: rgba(0, 240, 255, 0.35) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25) !important;
+}
+
+body.robotics-mode .cap-seg-title {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .cap-seg-sub {
+    color: #94a3b8 !important;
+}
+
+body.robotics-mode .cap-seg-btn.active {
+    background: rgba(0, 240, 255, 0.15) !important;
+    border-color: rgba(0, 240, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .cap-seg-btn.active .cap-seg-title {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .cap-seg-btn.active .cap-seg-sub {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .cap-bento-left {
+    background: rgba(11, 20, 38, 0.9) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .bento-title {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .bento-summary {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .bento-mini-metric,
+body.robotics-mode .bento-pipeline-box {
+    background: rgba(17, 30, 56, 0.8) !important;
+    border-color: rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .bento-mini-metric .metric-val {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .pipe-node-info strong {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .bento-feat-item {
+    color: #e2e8f0 !important;
+}
+
+body.robotics-mode .bento-mockup-wrapper {
+    background: #080d1a !important;
+    border-color: rgba(0, 240, 255, 0.3) !important;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .mockup-top-bar {
+    background: #0f172a !important;
+    border-bottom-color: rgba(0, 240, 255, 0.2) !important;
+}
+
+body.robotics-mode .mockup-header-title {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .mockup-stage-body {
+    background: radial-gradient(circle at 50% 30%, rgba(11, 20, 38, 0.9) 0%, #030712 100%) !important;
+}
+
+body.robotics-mode .cap-social-mock-card,
+body.robotics-mode .cap-wf-mock-card,
+body.robotics-mode .cap-bi-mock-card,
+body.robotics-mode .cap-lead-mock-card,
+body.robotics-mode .cap-support-mock-card {
+    background: rgba(11, 20, 38, 0.95) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    color: #ffffff !important;
+}
+
+body.robotics-mode .mock-caption-txt {
+    color: #e2e8f0 !important;
+}
+
+body.robotics-mode .mock-visual-box,
+body.robotics-mode .wf-node-item,
+body.robotics-mode .bi-chart-container,
+body.robotics-mode .bi-insight-box,
+body.robotics-mode .lead-m-item,
+body.robotics-mode .lead-action-box,
+body.robotics-mode .customer-bubble {
+    background: rgba(17, 30, 56, 0.8) !important;
+    border-color: rgba(0, 240, 255, 0.2) !important;
+    color: #f8fafc !important;
+}
+
+body.robotics-mode .visual-placeholder strong,
+body.robotics-mode .wf-node-info strong,
+body.robotics-mode .bi-card-title,
+body.robotics-mode .lead-info strong,
+body.robotics-mode .support-chat-header strong,
+body.robotics-mode .bi-insight-box strong {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .ai-bubble {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(112, 0, 255, 0.2)) !important;
+    border-color: rgba(0, 240, 255, 0.35) !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================
+   APPLE BENTO MISSION CARDS SECTION
+   ========================================== */
+.mission-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+}
+
+@media (max-width: 1023px) {
+    .mission-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .mission-bento-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mission-bento-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 28px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-bento-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb 0%, #0284c7 50%, #7c3aed 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.mission-bento-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(37, 99, 235, 0.3);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.12), 0 0 20px rgba(2, 132, 199, 0.06);
+}
+
+.mission-bento-card:hover::before {
+    opacity: 1;
+}
+
+.mission-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.mission-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.mission-bento-card:hover .mission-icon-box {
+    transform: scale(1.08) rotate(-3deg);
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.mission-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mission-card-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.mission-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    width: fit-content;
+}
+
+.mission-card-desc {
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 24px;
+}
+
+/* Custom Bottom Feature Widgets */
+.mission-widget {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: auto;
+}
+
+.widget-header-mini {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #64748b;
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.pulse-dot-green {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    display: inline-block;
+    animation: pulseGlow 1.8s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Widget 1: Progress Track */
+.widget-progress-track {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.widget-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb 0%, #0284c7 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+}
+
+.widget-chips-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.w-chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.w-chip.active-glow {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Widget 2: App Grid */
+.widget-app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.app-chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #1e293b;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 4px 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    transition: all 0.2s ease;
+}
+
+.app-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-1px);
+}
+
+/* Widget 3: Telemetry List */
+.widget-metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.impact-metric-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.impact-metric-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.impact-metric-row .lbl {
+    color: #475569;
+    font-weight: 500;
+}
+
+.impact-metric-row .val {
+    font-weight: 800;
+    font-size: 0.72rem;
+}
+
+.impact-metric-row .val.green { color: #059669; }
+.impact-metric-row .val.blue { color: #2563eb; }
+.impact-metric-row .val.cyan { color: #0284c7; }
+
+/* Dark Mode Overrides */
+body.robotics-mode .mission-bento-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+body.robotics-mode .mission-card-title {
+    color: #f8fafc;
+}
+
+body.robotics-mode .mission-card-desc {
+    color: #94a3b8;
+}
+
+body.robotics-mode .mission-tag-pill {
+    background: rgba(0, 240, 255, 0.12);
+    border-color: rgba(0, 240, 255, 0.3);
+    color: #00f0ff;
+}
+
+body.robotics-mode .mission-widget {
+    background: rgba(8, 13, 26, 0.9);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.robotics-mode .widget-header-mini {
+    color: #94a3b8;
+}
+
+body.robotics-mode .w-chip,
+body.robotics-mode .app-chip {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.robotics-mode .w-chip.active-glow {
+    background: #00f0ff;
+    color: #080d1a;
+    border-color: #00f0ff;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+}
+
+body.robotics-mode .impact-metric-row {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.robotics-mode .impact-metric-row .lbl {
+    color: #94a3b8;
+}
+
+body.robotics-mode .impact-metric-row .val.green { color: #10b981; }
+body.robotics-mode .impact-metric-row .val.blue { color: #38bdf8; }
+body.robotics-mode .impact-metric-row .val.cyan { color: #00f0ff; }
 
 
 
