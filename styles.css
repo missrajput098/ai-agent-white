@@ -17691,6 +17691,304 @@ body.robotics-mode .feature-details p {
     }
 }
 
+/* ==========================================================================
+   Autonomous Neural Pipeline Section (#neural-pipeline)
+   ========================================================================== */
+.three-step-section {
+    padding: 75px 0;
+    position: relative;
+    background: var(--bg-primary);
+}
+
+.neural-pipeline-container {
+    position: relative;
+}
+
+/* Connecting Glowing Flow Line (Desktop) */
+.neural-flow-line-track {
+    position: absolute;
+    top: 140px;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        rgba(16, 185, 129, 0.3), 
+        rgba(0, 240, 255, 0.5), 
+        rgba(168, 85, 247, 0.3));
+    z-index: 1;
+    border-radius: 2px;
+}
+
+.flow-pulse-particle {
+    position: absolute;
+    top: -3px;
+    width: 24px;
+    height: 9px;
+    border-radius: 10px;
+    background: #00f0ff;
+    box-shadow: 0 0 12px #00f0ff, 0 0 20px #00f0ff;
+    animation: flowMove 3s infinite linear;
+}
+
+.flow-pulse-particle.particle-2 {
+    animation-delay: 1.5s;
+}
+
+@keyframes flowMove {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+/* 3-Column Grid */
+.neural-pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Card Base */
+.neural-phase-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    position: relative;
+}
+
+.neural-phase-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(2, 132, 199, 0.15);
+}
+
+.phase-ingestion:hover { border-color: rgba(16, 185, 129, 0.5); }
+.phase-reasoning:hover { border-color: rgba(0, 240, 255, 0.5); }
+.phase-execution:hover { border-color: rgba(168, 85, 247, 0.5); }
+
+/* Card Top Header */
+.phase-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.phase-num-tag {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.tag-emerald { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.tag-cyan { background: rgba(2, 132, 199, 0.1); color: #0284c7; }
+.tag-purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+
+.phase-status-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #64748b;
+    font-family: var(--font-mono, monospace);
+}
+
+/* Icon Hub */
+.phase-icon-hub {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.hub-emerald { background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.25); }
+.hub-cyan { background: rgba(2, 132, 199, 0.12); color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.25); }
+.hub-purple { background: rgba(168, 85, 247, 0.12); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.25); }
+
+.hub-pulse-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 22px;
+    border: 1px solid currentColor;
+    opacity: 0.3;
+    animation: hubPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes hubPulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+/* Card Body Content */
+.phase-content h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 2px;
+}
+
+.phase-tagline {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #0284c7;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.phase-content p {
+    font-size: 0.88rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 18px;
+}
+
+/* Telemetry Badge inside phase */
+.phase-telemetry-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: var(--font-mono, monospace);
+    margin-bottom: 18px;
+}
+
+.pill-emerald { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.pill-cyan { background: #f0f9ff; color: #075985; border: 1px solid #bae6fd; }
+.pill-purple { background: #faf5ff; color: #6b21a8; border: 1px solid #e9d5ff; }
+
+/* Bullets Checklist */
+.phase-bullets-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.phase-bullets-list li {
+    font-size: 0.83rem;
+    color: #334155;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.check-bullet {
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.check-bullet.emerald { color: #10b981; }
+.check-bullet.cyan { color: #0284c7; }
+.check-bullet.purple { color: #a855f7; }
+
+/* Tech Chips */
+.phase-tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.p-chip {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #475569;
+}
+
+/* Robotics Mode (Dark Theme) Overrides for Neural Pipeline */
+body.robotics-mode .three-step-section {
+    background: transparent;
+}
+
+body.robotics-mode .neural-flow-line-track {
+    background: linear-gradient(90deg, 
+        rgba(16, 185, 129, 0.4), 
+        rgba(0, 240, 255, 0.8), 
+        rgba(168, 85, 247, 0.4));
+}
+
+body.robotics-mode .neural-phase-card {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.robotics-mode .neural-phase-card:hover {
+    box-shadow: 0 0 35px rgba(0, 240, 255, 0.25);
+}
+
+body.robotics-mode .tag-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+body.robotics-mode .tag-cyan { background: rgba(0, 240, 255, 0.15); color: #00f0ff; }
+body.robotics-mode .tag-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; }
+
+body.robotics-mode .hub-cyan { background: rgba(0, 240, 255, 0.15); color: #00f0ff; border-color: rgba(0, 240, 255, 0.3); }
+
+body.robotics-mode .phase-content h3 { color: #ffffff; }
+body.robotics-mode .phase-tagline { color: #00f0ff; }
+body.robotics-mode .phase-content p { color: #94a3b8; }
+
+body.robotics-mode .pill-emerald { background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+body.robotics-mode .pill-cyan { background: rgba(0, 240, 255, 0.15); color: #00f0ff; border-color: rgba(0, 240, 255, 0.3); }
+body.robotics-mode .pill-purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3); }
+
+body.robotics-mode .phase-bullets-list li { color: #cbd5e1; }
+body.robotics-mode .phase-tools-row { border-top-color: rgba(255, 255, 255, 0.08); }
+
+body.robotics-mode .p-chip {
+    background: rgba(15, 23, 42, 0.9);
+    color: #94a3b8;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsive Adjustments for Neural Pipeline */
+@media (max-width: 992px) {
+    .neural-pipeline-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .neural-flow-line-track {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .neural-phase-card {
+        padding: 24px 18px;
+    }
+}
+
+
 
 
 

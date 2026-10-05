@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // Futuristic Preloader Animation
+    // Dynamic Futuristic Preloader Animation (Page Navigation Contextual)
     // ==========================================
     const preloaderOverlay = document.getElementById('preloaderOverlay');
     const preloaderRobot = document.getElementById('preloaderRobot');
@@ -621,11 +621,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloaderFill = document.getElementById('preloaderFill');
     const preloaderPercent = document.getElementById('preloaderPercent');
 
+    const getPageLoaderMessage = () => {
+        const path = (window.location.pathname || '').toLowerCase();
+        if (path.includes('ai-agents.html')) {
+            return "INITIALIZING AI AGENTS HUB...";
+        } else if (path.includes('how-it-works.html')) {
+            return "MAPPING NEURAL WORKFLOW BLUEPRINT...";
+        } else if (path.includes('workflow-studio.html')) {
+            return "LOADING WORKFLOW STUDIO ENVIRONMENT...";
+        } else if (path.includes('solutions.html')) {
+            return "CONFIGURING ENTERPRISE AI SOLUTIONS...";
+        } else if (path.includes('case-studies.html')) {
+            return "FETCHING CASE STUDIES & METRICS...";
+        } else if (path.includes('about-us.html')) {
+            return "LOADING FACTONIX ENTERPRISE STORY...";
+        } else if (path.includes('contact.html')) {
+            return "CONNECTING TO SECURE DISPATCH CORE...";
+        } else if (path.includes('portfolio.html')) {
+            return "LOADING LIVE AI DEPLOYMENTS PORTFOLIO...";
+        }
+        return "INITIALIZING FACTONIX AI CORE...";
+    };
+
     if (preloaderOverlay && preloaderTypedText && preloaderFill && preloaderPercent) {
-        const welcomeMessage = "WELCOME TO AGENT FACTONIX";
+        const welcomeMessage = getPageLoaderMessage();
         let currentProgress = 0;
-        const totalDuration = 1800;
-        const intervalTime = 30;
+        const totalDuration = 1400;
+        const intervalTime = 25;
         const steps = totalDuration / intervalTime;
         const increment = 100 / steps;
 
@@ -646,17 +668,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(preloaderInterval);
                 setTimeout(() => {
                     preloaderOverlay.classList.add('loaded');
-                }, 300);
+                }, 200);
             }
         }, intervalTime);
 
         // Fallback safety timeout
         setTimeout(() => {
             if (preloaderOverlay) preloaderOverlay.classList.add('loaded');
-        }, 2200);
+        }, 1800);
     } else if (preloaderOverlay) {
         preloaderOverlay.classList.add('loaded');
     }
+
+    // Smooth Page Navigation Transition with Contextual Loader Text
+    document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript"]):not([href^="mailto"]):not([href^="tel"])').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#' || href.startsWith('#')) return;
+
+            if (href.endsWith('.html') || href === 'index.html' || href === '/') {
+                if (preloaderOverlay) {
+                    let navMsg = "NAVIGATING TO FACTONIX CORE...";
+                    if (href.includes('ai-agents.html')) navMsg = "NAVIGATING TO AI AGENTS HUB...";
+                    else if (href.includes('how-it-works.html')) navMsg = "MAPPING NEURAL WORKFLOWS...";
+                    else if (href.includes('workflow-studio.html')) navMsg = "LOADING WORKFLOW STUDIO...";
+                    else if (href.includes('solutions.html')) navMsg = "CONFIGURING ENTERPRISE SOLUTIONS...";
+                    else if (href.includes('case-studies.html')) navMsg = "FETCHING CASE STUDIES & METRICS...";
+                    else if (href.includes('about-us.html')) navMsg = "LOADING FACTONIX STORY...";
+                    else if (href.includes('contact.html')) navMsg = "OPENING SECURE DISPATCH CORE...";
+                    else if (href.includes('portfolio.html')) navMsg = "LOADING LIVE AI PORTFOLIO...";
+
+                    e.preventDefault();
+                    preloaderOverlay.classList.remove('loaded');
+                    if (preloaderTypedText) preloaderTypedText.innerText = navMsg;
+                    if (preloaderFill) preloaderFill.style.width = '100%';
+                    if (preloaderPercent) preloaderPercent.innerText = '100%';
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 300);
+                }
+            }
+        });
+    });
+
 
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');

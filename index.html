@@ -422,9 +422,9 @@
     </section>
 
     <!-- Three-Phase Neural Pipeline Section (Factonix Custom UI) -->
-    <section class="three-step-section">
+    <section class="section three-step-section" id="neural-pipeline">
         <div class="container container-fluid">
-            <div class="section-header text-center">
+            <div class="section-header text-center margin-bottom-40">
                 <div class="cap-badge">
                     <span class="sparkle-icon">⚡</span>
                     <span>AUTONOMOUS NEURAL ENGINE</span>
@@ -433,49 +433,137 @@
                 <p class="section-subtitle text-center">From multi-channel signal ingestion to real-time AI reasoning and zero-latency execution.</p>
             </div>
 
-            <div class="how-steps-wrap">
-                <!-- Step 1 -->
-                <div class="how-step">
-                    <div class="how-step-num" style="color:#10b981">01</div>
-                    <div class="how-step-icon" style="background:rgba(16, 185, 129, 0.12); color:#10b981">📲</div>
-                    <h3 class="how-step-title">Multi-Channel Signal Ingestion</h3>
-                    <p class="how-step-desc">Captures inbound web forms, WhatsApp messages, Instagram DMs, and voice calls into one unified neural event bus.</p>
-                    <div class="how-step-tags">
-                        <span class="how-step-tag" style="background:rgba(16,185,129,0.12); color:#10b981">WhatsApp API</span>
-                        <span class="how-step-tag" style="background:rgba(16,185,129,0.12); color:#10b981">Instagram RAG</span>
-                        <span class="how-step-tag" style="background:rgba(16,185,129,0.12); color:#10b981">Voice Telemetry</span>
-                        <span class="how-step-tag" style="background:rgba(16,185,129,0.12); color:#10b981">Web Sockets</span>
-                    </div>
+            <!-- Neural Pipeline Flow Container -->
+            <div class="neural-pipeline-container">
+                
+                <!-- Connector Flow Line (Desktop) -->
+                <div class="neural-flow-line-track">
+                    <div class="flow-pulse-particle particle-1"></div>
+                    <div class="flow-pulse-particle particle-2"></div>
                 </div>
 
-                <div class="how-step-divider">➔</div>
+                <div class="neural-pipeline-grid">
+                    
+                    <!-- Phase 01: Ingestion -->
+                    <div class="neural-phase-card card-3d phase-ingestion">
+                        <div class="phase-top-bar">
+                            <span class="phase-num-tag tag-emerald">PHASE 01 // INGESTION</span>
+                            <div class="phase-status-live">
+                                <span class="status-dot green-pulse"></span>
+                                <span>LIVE INGESTION</span>
+                            </div>
+                        </div>
 
-                <!-- Step 2 -->
-                <div class="how-step">
-                    <div class="how-step-num" style="color:#00f0ff">02</div>
-                    <div class="how-step-icon" style="background:rgba(0, 240, 255, 0.12); color:#00f0ff">🤖</div>
-                    <h3 class="how-step-title">Contextual Reasoning Engine</h3>
-                    <p class="how-step-desc">Evaluates intent, ingests business SOP memory, applies safety guardrails, and decides optimal actions in sub-seconds.</p>
-                    <div class="how-step-tags">
-                        <span class="how-step-tag" style="background:rgba(0, 240, 255, 0.12); color:#00f0ff">Sub-Second Latency</span>
-                        <span class="how-step-tag" style="background:rgba(0, 240, 255, 0.12); color:#00f0ff">10+ Languages</span>
-                        <span class="how-step-tag" style="background:rgba(0, 240, 255, 0.12); color:#00f0ff">Safety Guardrails</span>
+                        <div class="phase-icon-hub hub-emerald">
+                            <div class="hub-pulse-ring"></div>
+                            <span class="hub-icon">📲</span>
+                        </div>
+
+                        <div class="phase-content">
+                            <h3>Multi-Channel Signal Ingestion</h3>
+                            <span class="phase-tagline">Unified Omnichannel Event Bus</span>
+                            <p>Captures web forms, WhatsApp messages, Instagram DMs, voice streams, and webhooks into an isolated high-throughput event stream.</p>
+                            
+                            <div class="phase-telemetry-pill pill-emerald">
+                                <span>⚡ Latency: &lt;12ms</span>
+                                <span>• 10k Events/sec</span>
+                            </div>
+
+                            <ul class="phase-bullets-list">
+                                <li><span class="check-bullet emerald">✓</span> WhatsApp, Instagram, Web Chat & Voice Telemetry Ingestion</li>
+                                <li><span class="check-bullet emerald">✓</span> Real-Time Payload Normalization & Encryption</li>
+                                <li><span class="check-bullet emerald">✓</span> Instant Webhook Queue & Event Bus Dispatch</li>
+                            </ul>
+
+                            <div class="phase-tools-row">
+                                <span class="p-chip">WhatsApp API</span>
+                                <span class="p-chip">Meta Graph</span>
+                                <span class="p-chip">Voice Stream</span>
+                                <span class="p-chip">WebSockets</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="how-step-divider">➔</div>
+                    <!-- Phase 02: Reasoning -->
+                    <div class="neural-phase-card card-3d phase-reasoning glow-blue-card">
+                        <div class="phase-top-bar">
+                            <span class="phase-num-tag tag-cyan">PHASE 02 // REASONING</span>
+                            <div class="phase-status-live">
+                                <span class="status-dot cyan-pulse"></span>
+                                <span>NEURAL CORE</span>
+                            </div>
+                        </div>
 
-                <!-- Step 3 -->
-                <div class="how-step">
-                    <div class="how-step-num" style="color:#a855f7">03</div>
-                    <div class="how-step-icon" style="background:rgba(168, 85, 247, 0.12); color:#a855f7">📊</div>
-                    <h3 class="how-step-title">Automated System Execution</h3>
-                    <p class="how-step-desc">Triggers webhook workflows, updates CRM pipelines, schedules calendar bookings, and dispatches real-time alerts.</p>
-                    <div class="how-step-tags">
-                        <span class="how-step-tag" style="background:rgba(168,85,247,0.12); color:#a855f7">CRM Automation</span>
-                        <span class="how-step-tag" style="background:rgba(168,85,247,0.12); color:#a855f7">Shopify Sync</span>
-                        <span class="how-step-tag" style="background:rgba(168,85,247,0.12); color:#a855f7">Live Telemetry</span>
+                        <div class="phase-icon-hub hub-cyan">
+                            <div class="hub-pulse-ring"></div>
+                            <span class="hub-icon">🧠</span>
+                        </div>
+
+                        <div class="phase-content">
+                            <h3>Contextual Reasoning Engine</h3>
+                            <span class="phase-tagline">RAG Knowledge & Guardrail Processing</span>
+                            <p>Evaluates intent, queries business SOP memory, applies enterprise safety guardrails, and formulates sub-second decisions.</p>
+                            
+                            <div class="phase-telemetry-pill pill-cyan">
+                                <span>🧠 Accuracy: 99.4% CSAT</span>
+                                <span>• Sub-Second LLM</span>
+                            </div>
+
+                            <ul class="phase-bullets-list">
+                                <li><span class="check-bullet cyan">✓</span> RAG Vector Search across Custom Company Docs & SOPs</li>
+                                <li><span class="check-bullet cyan">✓</span> Enterprise Safety Guardrails & Hallucination Defense</li>
+                                <li><span class="check-bullet cyan">✓</span> Multi-Lingual Contextual Reasoning (50+ Languages)</li>
+                            </ul>
+
+                            <div class="phase-tools-row">
+                                <span class="p-chip">OpenAI GPT-4o</span>
+                                <span class="p-chip">RAG Vector DB</span>
+                                <span class="p-chip">SOP Memory</span>
+                                <span class="p-chip">Guardrails</span>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Phase 03: Execution -->
+                    <div class="neural-phase-card card-3d phase-execution">
+                        <div class="phase-top-bar">
+                            <span class="phase-num-tag tag-purple">PHASE 03 // EXECUTION</span>
+                            <div class="phase-status-live">
+                                <span class="status-dot purple-pulse"></span>
+                                <span>AUTONOMOUS EXEC</span>
+                            </div>
+                        </div>
+
+                        <div class="phase-icon-hub hub-purple">
+                            <div class="hub-pulse-ring"></div>
+                            <span class="hub-icon">⚡</span>
+                        </div>
+
+                        <div class="phase-content">
+                            <h3>Zero-Latency System Execution</h3>
+                            <span class="phase-tagline">Automated Webhooks & API Actions</span>
+                            <p>Executes API calls, logs qualified leads into CRM, schedules calendar bookings, dispatches Stripe payments, and alerts team members.</p>
+                            
+                            <div class="phase-telemetry-pill pill-purple">
+                                <span>🚀 Execution: &lt;0.4s</span>
+                                <span>• 0% Data Error</span>
+                            </div>
+
+                            <ul class="phase-bullets-list">
+                                <li><span class="check-bullet purple">✓</span> Automated CRM Sync (Salesforce, HubSpot, Pipedrive)</li>
+                                <li><span class="check-bullet purple">✓</span> Autonomous Calendar Booking & Payment Link Generation</li>
+                                <li><span class="check-bullet purple">✓</span> Instant Slack, Email & SMS Real-Time Alerts</li>
+                            </ul>
+
+                            <div class="phase-tools-row">
+                                <span class="p-chip">Salesforce</span>
+                                <span class="p-chip">Calendly</span>
+                                <span class="p-chip">Stripe</span>
+                                <span class="p-chip">Shopify</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
