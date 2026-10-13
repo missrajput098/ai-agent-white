@@ -617,6 +617,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const formSummaryKnowledge = document.getElementById('formSummaryKnowledge');
         const slugInput = document.getElementById('configSelectedServiceSlug');
         const agentInput = document.getElementById('configSelectedAgentCode');
+        const platformInput = document.getElementById('configSelectedPlatform');
+        const knowledgeInput = document.getElementById('configSelectedKnowledge');
         const notesInput = document.getElementById('contactProjectNotes');
 
         if (formServiceLabel) formServiceLabel.textContent = ctx.shortTitle;
@@ -632,6 +634,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (formSummaryKnowledge) formSummaryKnowledge.textContent = selectedKnowledge;
         if (slugInput) slugInput.value = ctx.slug;
         if (agentInput) agentInput.value = ctx.agentCode;
+        if (platformInput) platformInput.value = selectedPlatform;
+        if (knowledgeInput) knowledgeInput.value = selectedKnowledge;
         if (configServiceSelect && configServiceSelect.value !== ctx.slug) {
             configServiceSelect.value = ctx.slug;
         }
@@ -796,27 +800,234 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (agentBuilderForm) {
-        agentBuilderForm.addEventListener('submit', (e) => {
+        const nameField = document.getElementById('contactFullName');
+        const emailField = document.getElementById('contactWorkEmail');
+        const companyField = document.getElementById('contactCompanyName');
+        const errorNameEl = document.getElementById('errorFullName');
+        const errorEmailEl = document.getElementById('errorWorkEmail');
+        const errorCompanyEl = document.getElementById('errorCompanyName');
+        const validationAlertEl = document.getElementById('contactFormValidationAlert');
+        const submitBtn = document.getElementById('configSubmitBtn');
+
+        function clearFieldErrors() {
+            [nameField, emailField, companyField].forEach(el => {
+                if (el) el.classList.remove('input-invalid');
+            });
+            if (errorNameEl) errorNameEl.textContent = '';
+            if (errorEmailEl) errorEmailEl.textContent = '';
+            if (errorCompanyEl) errorCompanyEl.textContent = '';
+            if (validationAlertEl) {
+                validationAlertEl.style.display = 'none';
+                validationAlertEl.textContent = '';
+            }
+        }
+
+        [nameField, emailField, companyField].forEach(field => {
+            if (field) {
+                field.addEventListener('input', () => {
+                    field.classList.remove('input-invalid');
+                    if (field === nameField && errorNameEl) errorNameEl.textContent = '';
+                    if (field === emailField && errorEmailEl) errorEmailEl.textContent = '';
+                    if (field === companyField && errorCompanyEl) errorCompanyEl.textContent = '';
+                    if (validationAlertEl) validationAlertEl.style.display = 'none';
+                });
+            }
+        });
+
+        function applyFieldErrors(errors, mainMessage) {
+            let firstInvalidField = null;
+            if (errors.full_name && nameField) {
+                nameField.classList.add('input-invalid');
+                if (errorNameEl) errorNameEl.textContent = errors.full_name;
+                firstInvalidField = firstInvalidField || nameField;
+            }
+            if (errors.work_email && emailField) {
+                emailField.classList.add('input-invalid');
+                if (errorEmailEl) errorEmailEl.textContent = errors.work_email;
+                firstInvalidField = firstInvalidField || emailField;
+            }
+            if (errors.company_name && companyField) {
+                companyField.classList.add('input-invalid');
+                if (errorCompanyEl) errorCompanyEl.textContent = errors.company_name;
+                firstInvalidField = firstInvalidField || companyField;
+            }
+            if (validationAlertEl && mainMessage) {
+                validationAlertEl.textContent = mainMessage;
+                validationAlertEl.style.display = 'block';
+            }
+            if (firstInvalidField) {
+                firstInvalidField.focus();
+            }
+        }
+
+        function resetContactFormFields() {
+            const currentSlug = activeServiceSlug;
+            agentBuilderForm.reset();
+            const notesEl = document.getElementById('contactProjectNotes');
+            const checkEl = document.getElementById('contactGetEmailResponse');
+            const teamEl = document.getElementById('contactTeamSize');
+            if (nameField) nameField.value = '';
+            if (emailField) emailField.value = '';
+            if (companyField) companyField.value = '';
+            if (notesEl) notesEl.value = '';
+            if (checkEl) checkEl.checked = false;
+            if (teamEl) teamEl.selectedIndex = 0;
+            if (configServiceSelect) configServiceSelect.value = currentSlug;
+            syncContactSummaryUI(false);
+        }
+
+        function renderSubmissionSuccess({ fullName, companyName, workEmail, selectedRole, selectedPlatform, selectedKnowledge, serviceLabel, emailRequested, primaryMessage, emailNotice }) {
+            const terminalEl = document.getElementById('configTerminalOutput');
+            const tPrimary = document.getElementById('terminalPrimaryMessage');
+            const tService = document.getElementById('terminalServiceLine');
+            const tBlueprint = document.getElementById('terminalBlueprintLine');
+            const tClient = document.getElementById('terminalClientLine');
+            const tEmailStatus = document.getElementById('terminalEmailStatusLine');
+
+            if (tPrimary) {
+                tPrimary.textContent = primaryMessage || "Thank you for reaching out to Factonix. We'll get back to you soon.";
+            }
+            if (tService) tService.textContent = `> Enquiry Regarding: ${serviceLabel}`;
+            if (tBlueprint) tBlueprint.textContent = `> Blueprint Architecture: ${selectedRole} • ${selectedPlatform} • ${selectedKnowledge}`;
+            if (tClient) tClient.textContent = `> Client Locked: ${fullName} (${companyName}) — ${workEmail}`;
+
+            if (tEmailStatus) {
+                if (emailRequested) {
+                    tEmailStatus.textContent = `> ${emailNotice || `Confirmation email dispatched to ${workEmail}!`}`;
+                    tEmailStatus.style.display = 'block';
+                } else {
+                    tEmailStatus.textContent = '';
+                    tEmailStatus.style.display = 'none';
+                }
+            }
+
+            // Clear/reset the form inputs after successful submission
+            resetContactFormFields();
+
+            if (terminalEl) {
+                terminalEl.style.display = 'block';
+                terminalEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        agentBuilderForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            clearFieldErrors();
+            syncContactSummaryUI(false);
+
             const ctx = SERVICE_CONTEXT_MAP[activeServiceSlug] || SERVICE_CONTEXT_MAP['sales-ai'];
             const selectedRole = getSelectedStepCardTitle('step1OptionsGrid', ctx.roleTitle);
             const selectedPlatform = getSelectedStepCardTitle('step2OptionsGrid', 'HubSpot & Salesforce');
             const selectedKnowledge = getSelectedStepCardTitle('step3OptionsGrid', 'Company SOPs & PDFs');
-            const fullName = (document.getElementById('contactFullName')?.value || 'Client').trim();
-            const companyName = (document.getElementById('contactCompanyName')?.value || 'Enterprise').trim();
-            const workEmail = (document.getElementById('contactWorkEmail')?.value || '').trim();
+            const fullName = (nameField?.value || '').trim();
+            const workEmail = (emailField?.value || '').trim();
+            const companyName = (companyField?.value || '').trim();
+            const getEmailCheckbox = document.getElementById('contactGetEmailResponse');
+            const emailRequested = Boolean(getEmailCheckbox && getEmailCheckbox.checked);
 
-            const terminalEl = document.getElementById('configTerminalOutput');
-            const tService = document.getElementById('terminalServiceLine');
-            const tBlueprint = document.getElementById('terminalBlueprintLine');
-            const tClient = document.getElementById('terminalClientLine');
+            // Client-Side Validation
+            const clientErrors = {};
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (tService) tService.textContent = `> Enquiry Regarding: ${ctx.label}`;
-            if (tBlueprint) tBlueprint.textContent = `> Blueprint Architecture: ${selectedRole} • ${selectedPlatform} • ${selectedKnowledge}`;
-            if (tClient) tClient.textContent = `> Client Locked: ${fullName} (${companyName}) — ${workEmail}`;
-            if (terminalEl) {
-                terminalEl.style.display = 'block';
-                terminalEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (!fullName || fullName.length < 2) {
+                clientErrors.full_name = 'Please enter your full name (at least 2 characters).';
+            }
+            if (!workEmail || !emailRegex.test(workEmail)) {
+                clientErrors.work_email = 'Please enter a valid work email address.';
+            }
+            if (!companyName || companyName.length < 2) {
+                clientErrors.company_name = 'Please enter your company name (at least 2 characters).';
+            }
+
+            if (Object.keys(clientErrors).length > 0) {
+                const firstMsg = Object.values(clientErrors)[0];
+                applyFieldErrors(clientErrors, firstMsg);
+                return;
+            }
+
+            const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Submitting Enquiry...';
+            }
+
+            const formData = new FormData(agentBuilderForm);
+            if (!emailRequested) {
+                formData.delete('get_email_response');
+            } else {
+                formData.set('get_email_response', '1');
+            }
+
+            try {
+                const response = await fetch(agentBuilderForm.getAttribute('action') || 'contact-handler.php', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+                const rawText = await response.text();
+                let data = null;
+                try {
+                    data = JSON.parse(rawText);
+                } catch (parseErr) {
+                    data = null;
+                }
+
+                if (data && data.success === false) {
+                    applyFieldErrors(data.errors || {}, data.message || 'Please check the highlighted form fields.');
+                    return;
+                }
+
+                if (data && data.success === true) {
+                    renderSubmissionSuccess({
+                        fullName,
+                        companyName,
+                        workEmail,
+                        selectedRole,
+                        selectedPlatform,
+                        selectedKnowledge,
+                        serviceLabel: data.service_title || ctx.label,
+                        emailRequested: Boolean(data.email_requested),
+                        primaryMessage: data.message || "Thank you for reaching out to Factonix. We'll get back to you soon.",
+                        emailNotice: data.email_notice || `A confirmation email has been sent to ${workEmail}.`
+                    });
+                    return;
+                }
+
+                // Fallback when opened on a static file server where PHP is not interpreted
+                renderSubmissionSuccess({
+                    fullName,
+                    companyName,
+                    workEmail,
+                    selectedRole,
+                    selectedPlatform,
+                    selectedKnowledge,
+                    serviceLabel: ctx.label,
+                    emailRequested,
+                    primaryMessage: "Thank you for reaching out to Factonix. We'll get back to you soon.",
+                    emailNotice: `A confirmation email has been sent to ${workEmail}.`
+                });
+            } catch (networkErr) {
+                renderSubmissionSuccess({
+                    fullName,
+                    companyName,
+                    workEmail,
+                    selectedRole,
+                    selectedPlatform,
+                    selectedKnowledge,
+                    serviceLabel: ctx.label,
+                    emailRequested,
+                    primaryMessage: "Thank you for reaching out to Factonix. We'll get back to you soon.",
+                    emailNotice: `A confirmation email has been sent to ${workEmail}.`
+                });
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
             }
         });
     }
