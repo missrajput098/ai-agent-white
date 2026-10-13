@@ -300,14 +300,408 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 4-Step AI Agent Configurator Wizard (contact.html)
+    // 4-Step AI Agent Configurator Wizard & Context-Aware Service Engine (contact.html)
     // ==========================================
+    const SERVICE_CONTEXT_MAP = {
+        'build-my-agent': {
+            slug: 'build-my-agent',
+            cardService: 'build-my-agent',
+            label: 'Build My Agent — Custom AI Agent Pod',
+            shortTitle: 'Build My Agent',
+            heroHighlight: 'Build My AI Agent',
+            breadcrumb: 'BUILD MY AI AGENT POD',
+            codeTag: 'SERVICE // BUILD-MY-AGENT',
+            agentCode: 'CUSTOM-POD',
+            roleTitle: 'Build My Agent (Custom AI Pod)',
+            desc: 'Bespoke End-to-End Autonomous AI Agent Pod tailored to your business workflows, APIs, and team goals.',
+            platform: 'custom-rest',
+            knowledge: 'company-sops',
+            placeholder: 'e.g. Build a custom multi-agent pod for lead intake, CRM sync & support'
+        },
+        'sales-ai': {
+            slug: 'sales-ai',
+            cardService: 'sales-ai',
+            label: 'Sales AI — Lead Qualification & Booking (LEADR-3000)',
+            shortTitle: 'Sales & Lead Qualification AI',
+            heroHighlight: 'Sales AI Agent (LEADR-3000)',
+            breadcrumb: 'SALES AI AGENT DEPLOYMENT',
+            codeTag: 'SERVICE // LEADR-3000',
+            agentCode: 'LEADR-3000',
+            roleTitle: 'LEADR-3000 (Sales AI)',
+            desc: 'Autonomous B2B & B2C sales representative that qualifies leads in 10s, syncs CRM, and books demos 24/7.',
+            platform: 'hubspot-salesforce',
+            knowledge: 'company-sops',
+            placeholder: 'e.g. Qualify inbound leads and auto-schedule demos into HubSpot / Calendly'
+        },
+        'customer-support-ai': {
+            slug: 'customer-support-ai',
+            cardService: 'customer-support-ai',
+            label: 'Customer Support AI — 24/7 Omnichannel Care (SUPPORTR-X)',
+            shortTitle: 'Customer Support AI (SUPPORTR-X)',
+            heroHighlight: '24/7 Support AI (SUPPORTR-X)',
+            breadcrumb: 'CUSTOMER SUPPORT AI',
+            codeTag: 'SERVICE // SUPPORTR-X',
+            agentCode: 'SUPPORTR-X',
+            roleTitle: 'SUPPORTR-X (Support AI)',
+            desc: '24/7 Omnichannel Customer Support & Order Resolution across web chat, email, Zendesk, and Shopify.',
+            platform: 'zendesk-gorgias',
+            knowledge: 'website-urls',
+            placeholder: 'e.g. Resolve tier-1 & tier-2 support tickets and order status inquiries 24/7'
+        },
+        'social-automation': {
+            slug: 'social-automation',
+            cardService: 'social-automation',
+            label: 'Social Media Automation — Instagram & DM AI (INSTAGUARD)',
+            shortTitle: 'Social Media & Instagram DM AI',
+            heroHighlight: 'Instagram & Social DM AI',
+            breadcrumb: 'SOCIAL MEDIA AI AUTOMATION',
+            codeTag: 'SERVICE // INSTAGUARD',
+            agentCode: 'INSTAGUARD',
+            roleTitle: 'INSTAGUARD (Social AI)',
+            desc: 'Official Meta Graph API automation for Instagram DMs, comment keyword triggers, story replies, and lead capture.',
+            platform: 'meta-whatsapp',
+            knowledge: 'website-urls',
+            placeholder: 'e.g. Auto-reply to Instagram comments/DMs and send checkout or booking links'
+        },
+        'ai-automation': {
+            slug: 'ai-automation',
+            cardService: 'ai-automation',
+            label: 'AI Automation — Business & Operations Workflows (DISPATCH-BOT)',
+            shortTitle: 'AI Workflow Automation',
+            heroHighlight: 'AI Workflow Automation',
+            breadcrumb: 'AI WORKFLOW AUTOMATION',
+            codeTag: 'SERVICE // AI-AUTOMATION',
+            agentCode: 'DISPATCH-BOT',
+            roleTitle: 'AI Workflow Automation',
+            desc: 'End-to-end operational workflow automation, document OCR, ERP inventory sync, and cross-tool API orchestration.',
+            platform: 'custom-rest',
+            knowledge: 'company-sops',
+            placeholder: 'e.g. Automate back-office PDF parsing, CRM/ERP sync, and Slack alerts'
+        },
+        'whatsapp-automation': {
+            slug: 'whatsapp-automation',
+            cardService: 'whatsapp-automation',
+            label: 'WhatsApp Automation — 24/7 WhatsApp Sales & Booking Bot',
+            shortTitle: 'WhatsApp AI Automation',
+            heroHighlight: 'WhatsApp AI Automation',
+            breadcrumb: 'WHATSAPP AI AUTOMATION',
+            codeTag: 'SERVICE // WHATSAPP-FLOW',
+            agentCode: 'WHATSAPP-FLOW',
+            roleTitle: 'WhatsApp Automation',
+            desc: '24/7 WhatsApp Business Cloud API conversational agent for lead qualification, catalog sales, and instant bookings.',
+            platform: 'meta-whatsapp',
+            knowledge: 'website-urls',
+            placeholder: 'e.g. Automate WhatsApp customer inquiries, catalog checkout, and appointment booking'
+        },
+        'ecommerce': {
+            slug: 'ecommerce',
+            cardService: 'ecommerce',
+            label: 'E-commerce AI — Shopify / Order & Cart Recovery',
+            shortTitle: 'E-commerce AI Automation',
+            heroHighlight: 'E-commerce AI Agent',
+            breadcrumb: 'E-COMMERCE AI SOLUTIONS',
+            codeTag: 'SERVICE // ECOM-NEXUS',
+            agentCode: 'ECOM-NEXUS',
+            roleTitle: 'E-commerce AI',
+            desc: 'Autonomous Shopify & WooCommerce AI for abandoned cart recovery, live order tracking, and instant product recommendations.',
+            platform: 'zendesk-gorgias',
+            knowledge: 'website-urls',
+            placeholder: 'e.g. Recover abandoned carts on WhatsApp/IG and automate Shopify order tracking'
+        },
+        'web-development': {
+            slug: 'web-development',
+            cardService: 'web-development',
+            label: 'Web Development — AI Websites & Custom Web Apps',
+            shortTitle: 'AI Web & App Development',
+            heroHighlight: 'AI Web Development',
+            breadcrumb: 'AI WEB & APP DEVELOPMENT',
+            codeTag: 'SERVICE // WEB-ARCHITECT',
+            agentCode: 'WEB-ARCHITECT',
+            roleTitle: 'AI Web Development',
+            desc: 'High-conversion AI-powered websites, SaaS portals, and custom web applications with embedded autonomous agents.',
+            platform: 'custom-rest',
+            knowledge: 'website-urls',
+            placeholder: 'e.g. Build a high-conversion AI-integrated website or custom SaaS web portal'
+        },
+        'voice-ai': {
+            slug: 'voice-ai',
+            cardService: 'voice-ai',
+            label: 'Voice AI — Inbound & Outbound Phone Agent (VOICE-NEXUS)',
+            shortTitle: 'Voice AI Telephony Agent',
+            heroHighlight: 'Voice AI Phone Agent',
+            breadcrumb: 'VOICE AI TELEPHONY',
+            codeTag: 'SERVICE // VOICE-NEXUS',
+            agentCode: 'VOICE-NEXUS',
+            roleTitle: 'VOICE-NEXUS (Voice AI)',
+            desc: 'Sub-second human-grade inbound and outbound AI phone agent for call intake, appointment confirmation, and CRM logging.',
+            platform: 'hubspot-salesforce',
+            knowledge: 'company-sops',
+            placeholder: 'e.g. Automate inbound phone reception and outbound appointment reminder calls'
+        },
+        'data-intelligence': {
+            slug: 'data-intelligence',
+            cardService: 'data-intelligence',
+            label: 'Data Intelligence — SQL & Vector RAG Analytics (DATAFLEX)',
+            shortTitle: 'Enterprise Data & SQL AI',
+            heroHighlight: 'Data Intelligence AI (DATAFLEX)',
+            breadcrumb: 'DATA INTELLIGENCE & RAG',
+            codeTag: 'SERVICE // DATAFLEX',
+            agentCode: 'DATAFLEX',
+            roleTitle: 'DATAFLEX (Data AI)',
+            desc: 'Enterprise RAG vector search and natural-language-to-SQL intelligence for Postgres, Snowflake, and BigQuery.',
+            platform: 'custom-rest',
+            knowledge: 'sql-vector-rag',
+            placeholder: 'e.g. Connect internal SQL databases & documents for natural-language executive analytics'
+        },
+        'book-demo': {
+            slug: 'book-demo',
+            cardService: 'build-my-agent',
+            label: 'Book a Live Architecture Demo & Strategy Call',
+            shortTitle: 'Live Architecture Demo & Strategy Call',
+            heroHighlight: 'Live AI Architecture Demo',
+            breadcrumb: 'BOOK A LIVE DEMO',
+            codeTag: 'SERVICE // LIVE-DEMO',
+            agentCode: 'CUSTOM-POD',
+            roleTitle: 'Build My Agent (Live Demo)',
+            desc: 'Schedule a 1-on-1 live engineering walkthrough and custom AI architecture blueprint session with our team.',
+            platform: 'hubspot-salesforce',
+            knowledge: 'company-sops',
+            placeholder: 'e.g. Walk through a live demo tailored to our sales and customer support workflows'
+        }
+    };
+
+    const SERVICE_ALIAS_MAP = {
+        'build-my-agent': 'build-my-agent',
+        'build-agent': 'build-my-agent',
+        'custom-agent': 'build-my-agent',
+        'custom-ai-agent': 'build-my-agent',
+        'custom-architecture': 'build-my-agent',
+        'custom-pod': 'build-my-agent',
+        'sales-ai': 'sales-ai',
+        'leadr-3000': 'sales-ai',
+        'pipeline-max': 'sales-ai',
+        'audience-gen': 'sales-ai',
+        'crm-automation': 'sales-ai',
+        'b2b-sales': 'sales-ai',
+        'customer-support-ai': 'customer-support-ai',
+        'support-ai': 'customer-support-ai',
+        'customer-support': 'customer-support-ai',
+        'supportr-x': 'customer-support-ai',
+        'social-automation': 'social-automation',
+        'social-media-automation': 'social-automation',
+        'instagram-automation': 'social-automation',
+        'instaguard': 'social-automation',
+        'social-ai': 'social-automation',
+        'ai-automation': 'ai-automation',
+        'automation': 'ai-automation',
+        'workflow-automation': 'ai-automation',
+        'operations-ai': 'ai-automation',
+        'dispatch-bot': 'ai-automation',
+        'logi-flow': 'ai-automation',
+        'roi-study': 'ai-automation',
+        'whatsapp-automation': 'whatsapp-automation',
+        'whatsapp': 'whatsapp-automation',
+        'whatsapp-ai': 'whatsapp-automation',
+        'whatsapp-flow': 'whatsapp-automation',
+        'ecommerce': 'ecommerce',
+        'e-commerce': 'ecommerce',
+        'ecommerce-ai': 'ecommerce',
+        'shopify-ai': 'ecommerce',
+        'instaguard-360': 'ecommerce',
+        'web-development': 'web-development',
+        'web-dev': 'web-development',
+        'website-development': 'web-development',
+        'ai-website': 'web-development',
+        'voice-ai': 'voice-ai',
+        'voice-nexus': 'voice-ai',
+        'telephony-ai': 'voice-ai',
+        'data-intelligence': 'data-intelligence',
+        'dataflex': 'data-intelligence',
+        'data-ai': 'data-intelligence',
+        'sql-ai': 'data-intelligence',
+        'book-demo': 'book-demo',
+        'demo': 'book-demo',
+        'strategy-call': 'book-demo'
+    };
+
+    function resolveServiceSlugFromUrl() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const rawService = (params.get('service') || '').trim().toLowerCase();
+            const rawAgent = (params.get('agent') || '').trim().toLowerCase();
+            const rawProject = (params.get('project') || '').trim().toLowerCase();
+
+            if (rawService && SERVICE_ALIAS_MAP[rawService]) {
+                return { slug: SERVICE_ALIAS_MAP[rawService], fromUrl: true };
+            }
+            if (rawAgent && SERVICE_ALIAS_MAP[rawAgent]) {
+                return { slug: SERVICE_ALIAS_MAP[rawAgent], fromUrl: true };
+            }
+            if (rawProject && SERVICE_ALIAS_MAP[rawProject]) {
+                return { slug: SERVICE_ALIAS_MAP[rawProject], fromUrl: true };
+            }
+        } catch (err) {
+            // Safe fallback if URLSearchParams fails
+        }
+        return { slug: 'sales-ai', fromUrl: false };
+    }
+
     const configTabs = document.querySelectorAll('.config-step-tab');
     const configContents = document.querySelectorAll('.config-step-content');
     const nextBtn = document.getElementById('configNextBtn');
     const prevBtn = document.getElementById('configPrevBtn');
+    const stepActionsBar = document.getElementById('configStepActionsBar');
     const optionCards = document.querySelectorAll('.config-option-card');
+    const configServiceSelect = document.getElementById('configServiceSelect');
+    const agentBuilderForm = document.getElementById('agentBuilderForm');
     let currentConfigStep = 1;
+    let activeServiceSlug = 'sales-ai';
+
+    function getSelectedStepCardTitle(gridId, fallbackText) {
+        const grid = document.getElementById(gridId);
+        if (!grid) return fallbackText;
+        const sel = grid.querySelector('.config-option-card.selected');
+        if (!sel) return fallbackText;
+        const titleEl = sel.querySelector('.config-option-title');
+        return titleEl ? titleEl.textContent.trim() : fallbackText;
+    }
+
+    function syncContactSummaryUI(fromUrlContext = false) {
+        const ctx = SERVICE_CONTEXT_MAP[activeServiceSlug] || SERVICE_CONTEXT_MAP['sales-ai'];
+        const selectedRole = getSelectedStepCardTitle('step1OptionsGrid', ctx.roleTitle);
+        const selectedPlatform = getSelectedStepCardTitle('step2OptionsGrid', 'HubSpot & Salesforce');
+        const selectedKnowledge = getSelectedStepCardTitle('step3OptionsGrid', 'Company SOPs & PDFs');
+
+        // Update Top Context Banner
+        const bannerEl = document.getElementById('enquiryContextBanner');
+        const statusTextEl = document.getElementById('enquiryContextStatusText');
+        const codeTagEl = document.getElementById('enquiryContextCodeTag');
+        const bannerTitleEl = document.getElementById('enquiryContextServiceTitle');
+        const bannerDescEl = document.getElementById('enquiryContextServiceDesc');
+
+        if (bannerEl) {
+            if (fromUrlContext) {
+                bannerEl.classList.add('context-active-highlight');
+            }
+        }
+        if (statusTextEl) {
+            statusTextEl.textContent = fromUrlContext ? 'CTA SERVICE PRE-SELECTED' : 'ACTIVE ENQUIRY CONTEXT';
+        }
+        if (codeTagEl) codeTagEl.textContent = ctx.codeTag;
+        if (bannerTitleEl) bannerTitleEl.textContent = ctx.shortTitle;
+        if (bannerDescEl) bannerDescEl.textContent = ctx.desc;
+
+        // Update Hero Context Elements when a URL service context was provided
+        const heroBreadcrumb = document.getElementById('contactHeroBreadcrumb');
+        const heroHighlight = document.getElementById('contactHeroHighlight');
+        const hudBadgeText = document.getElementById('contactHudBadgeText');
+        if (fromUrlContext) {
+            if (heroBreadcrumb) heroBreadcrumb.textContent = ctx.breadcrumb;
+            if (heroHighlight) heroHighlight.textContent = ctx.heroHighlight;
+            if (hudBadgeText) hudBadgeText.textContent = `ENQUIRY LOCKED: ${ctx.shortTitle.toUpperCase()}`;
+        }
+
+        // Update Step 1 Pill Indicator
+        const step1Pill = document.getElementById('step1SelectedPill');
+        if (step1Pill) {
+            step1Pill.textContent = `Selected: ${ctx.shortTitle}`;
+        }
+
+        // Update Form Context Box & Inputs
+        const formServiceLabel = document.getElementById('formSelectedServiceLabel');
+        const formSourceChip = document.getElementById('formServiceSourceChip');
+        const formPreselectedBadge = document.getElementById('formPreselectedBadge');
+        const formSummaryService = document.getElementById('formSummaryService');
+        const formSummaryRole = document.getElementById('formSummaryRole');
+        const formSummaryPlatform = document.getElementById('formSummaryPlatform');
+        const formSummaryKnowledge = document.getElementById('formSummaryKnowledge');
+        const slugInput = document.getElementById('configSelectedServiceSlug');
+        const agentInput = document.getElementById('configSelectedAgentCode');
+        const notesInput = document.getElementById('contactProjectNotes');
+
+        if (formServiceLabel) formServiceLabel.textContent = ctx.shortTitle;
+        if (formSourceChip) {
+            formSourceChip.textContent = fromUrlContext ? 'PRE-SELECTED FROM CTA' : 'ACTIVE SERVICE';
+        }
+        if (formPreselectedBadge) {
+            formPreselectedBadge.textContent = fromUrlContext ? `✓ ${ctx.shortTitle} Pre-Selected` : `✓ ${ctx.shortTitle} Active`;
+        }
+        if (formSummaryService) formSummaryService.textContent = ctx.shortTitle;
+        if (formSummaryRole) formSummaryRole.textContent = selectedRole;
+        if (formSummaryPlatform) formSummaryPlatform.textContent = selectedPlatform;
+        if (formSummaryKnowledge) formSummaryKnowledge.textContent = selectedKnowledge;
+        if (slugInput) slugInput.value = ctx.slug;
+        if (agentInput) agentInput.value = ctx.agentCode;
+        if (configServiceSelect && configServiceSelect.value !== ctx.slug) {
+            configServiceSelect.value = ctx.slug;
+        }
+        if (notesInput && !notesInput.value) {
+            notesInput.placeholder = ctx.placeholder;
+        }
+    }
+
+    function applyServiceContext(serviceSlug, options = { updateUrl: false, fromUrl: false }) {
+        const normalizedSlug = SERVICE_ALIAS_MAP[(serviceSlug || '').toLowerCase()] || 'sales-ai';
+        const ctx = SERVICE_CONTEXT_MAP[normalizedSlug] || SERVICE_CONTEXT_MAP['sales-ai'];
+        activeServiceSlug = ctx.slug;
+
+        // 1. Highlight matching card in Step 1
+        const step1Grid = document.getElementById('step1OptionsGrid');
+        if (step1Grid) {
+            const cards = step1Grid.querySelectorAll('.config-option-card');
+            let matched = false;
+            cards.forEach(card => {
+                if (card.getAttribute('data-service') === ctx.cardService && !matched) {
+                    card.classList.add('selected');
+                    matched = true;
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+            if (!matched && cards.length > 0) {
+                cards[0].classList.add('selected');
+            }
+        }
+
+        // 2. Pre-select recommended Step 2 Platform card
+        const step2Grid = document.getElementById('step2OptionsGrid');
+        if (step2Grid && ctx.platform) {
+            const pCards = step2Grid.querySelectorAll('.config-option-card');
+            let pMatched = false;
+            pCards.forEach(card => {
+                if (card.getAttribute('data-platform') === ctx.platform && !pMatched) {
+                    card.classList.add('selected');
+                    pMatched = true;
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        }
+
+        // 3. Pre-select recommended Step 3 Knowledge card
+        const step3Grid = document.getElementById('step3OptionsGrid');
+        if (step3Grid && ctx.knowledge) {
+            const kCards = step3Grid.querySelectorAll('.config-option-card');
+            let kMatched = false;
+            kCards.forEach(card => {
+                if (card.getAttribute('data-knowledge') === ctx.knowledge && !kMatched) {
+                    card.classList.add('selected');
+                    kMatched = true;
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        }
+
+        // 4. Sync URL query param cleanly without reloading page when user changes service interactively
+        if (options.updateUrl && window.history && window.history.replaceState) {
+            const newUrl = `${window.location.pathname}?service=${encodeURIComponent(ctx.slug)}`;
+            window.history.replaceState({ service: ctx.slug }, '', newUrl);
+        }
+
+        // 5. Update Banner, Hero, and Form UI
+        syncContactSummaryUI(options.fromUrl);
+    }
 
     function goToConfigStep(step) {
         if (step < 1 || step > 4) return;
@@ -342,7 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nextBtn.style.display = 'none';
             } else {
                 nextBtn.style.display = 'inline-flex';
-                nextBtn.innerText = `Continue to Step ${currentConfigStep + 1} →`;
+                nextBtn.innerText = currentConfigStep === 3 ? 'Proceed to Schedule Demo →' : 'Next Step →';
             }
         }
     }
@@ -371,8 +765,67 @@ document.addEventListener('DOMContentLoaded', () => {
             const siblings = card.parentElement.querySelectorAll('.config-option-card');
             siblings.forEach(s => s.classList.remove('selected'));
             card.classList.add('selected');
+
+            const cardService = card.getAttribute('data-service');
+            if (cardService) {
+                applyServiceContext(cardService, { updateUrl: true, fromUrl: false });
+            } else {
+                syncContactSummaryUI(false);
+            }
         });
     });
+
+    if (configServiceSelect) {
+        configServiceSelect.addEventListener('change', (e) => {
+            applyServiceContext(e.target.value, { updateUrl: true, fromUrl: false });
+        });
+    }
+
+    const jumpToFormBtn = document.getElementById('enquiryJumpToFormBtn');
+    if (jumpToFormBtn) {
+        jumpToFormBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            goToConfigStep(4);
+            const formSec = document.getElementById('agentBuilderFormSection');
+            if (formSec) {
+                formSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const nameInput = document.getElementById('contactFullName');
+                if (nameInput) setTimeout(() => nameInput.focus(), 400);
+            }
+        });
+    }
+
+    if (agentBuilderForm) {
+        agentBuilderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const ctx = SERVICE_CONTEXT_MAP[activeServiceSlug] || SERVICE_CONTEXT_MAP['sales-ai'];
+            const selectedRole = getSelectedStepCardTitle('step1OptionsGrid', ctx.roleTitle);
+            const selectedPlatform = getSelectedStepCardTitle('step2OptionsGrid', 'HubSpot & Salesforce');
+            const selectedKnowledge = getSelectedStepCardTitle('step3OptionsGrid', 'Company SOPs & PDFs');
+            const fullName = (document.getElementById('contactFullName')?.value || 'Client').trim();
+            const companyName = (document.getElementById('contactCompanyName')?.value || 'Enterprise').trim();
+            const workEmail = (document.getElementById('contactWorkEmail')?.value || '').trim();
+
+            const terminalEl = document.getElementById('configTerminalOutput');
+            const tService = document.getElementById('terminalServiceLine');
+            const tBlueprint = document.getElementById('terminalBlueprintLine');
+            const tClient = document.getElementById('terminalClientLine');
+
+            if (tService) tService.textContent = `> Enquiry Regarding: ${ctx.label}`;
+            if (tBlueprint) tBlueprint.textContent = `> Blueprint Architecture: ${selectedRole} • ${selectedPlatform} • ${selectedKnowledge}`;
+            if (tClient) tClient.textContent = `> Client Locked: ${fullName} (${companyName}) — ${workEmail}`;
+            if (terminalEl) {
+                terminalEl.style.display = 'block';
+                terminalEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    }
+
+    // Initialize Contact Page Context from URL Query Parameter on Load
+    if (configTabs.length > 0 || agentBuilderForm) {
+        const resolved = resolveServiceSlugFromUrl();
+        applyServiceContext(resolved.slug, { updateUrl: false, fromUrl: resolved.fromUrl });
+    }
 
     // ==========================================
     // AI Agents Catalog Category Filter Tabs & Modal Engine (ai-agents.html)
@@ -426,7 +879,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['HubSpot', 'Salesforce', 'Calendly', 'WhatsApp', 'Email CRM'],
             workflow: ['LEAD ARRIVES', 'AI UNDERSTANDS', 'AI QUALIFIES', 'CRM UPDATED', 'FOLLOW-UP / BOOKING'],
-            deployUrl: 'contact.html?agent=LEADR-3000'
+            deployUrl: 'contact.html?service=sales-ai&agent=LEADR-3000'
         },
         'supportr-x': {
             name: 'SUPPORTR-X',
@@ -442,7 +895,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Zendesk', 'Gorgias', 'Shopify', 'Intercom', 'REST APIs'],
             workflow: ['INQUIRY IN', 'INTENT & ORDER CHECK', 'KNOWLEDGE SEARCH', 'ACTION (REFUND/UPDATE)', 'RESOLVED 24/7'],
-            deployUrl: 'contact.html?agent=SUPPORTR-X'
+            deployUrl: 'contact.html?service=customer-support-ai&agent=SUPPORTR-X'
         },
         'instaguard': {
             name: 'INSTAGUARD',
@@ -458,7 +911,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Meta API', 'Instagram DM', 'Shopify', 'Klaviyo'],
             workflow: ['DM / COMMENT', 'TRIGGER & SENTIMENT', 'OFFER MATCHED', 'AUTO DM SENT', 'OPT-IN SAVED'],
-            deployUrl: 'contact.html?agent=INSTAGUARD'
+            deployUrl: 'contact.html?service=social-automation&agent=INSTAGUARD'
         },
         'dispatch-bot': {
             name: 'DISPATCH-BOT',
@@ -474,7 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Zapier', 'Make', 'Slack', 'Teams', 'Webhooks'],
             workflow: ['DOC / WEBHOOK', 'OCR & PARSING', 'DATA VALIDATION', 'WORKFLOW EXECUTION', 'SLACK / CRM SYNC'],
-            deployUrl: 'contact.html?agent=DISPATCH-BOT'
+            deployUrl: 'contact.html?service=ai-automation&agent=DISPATCH-BOT'
         },
         'voice-nexus': {
             name: 'VOICE-NEXUS',
@@ -490,7 +943,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Twilio', 'Retell AI', 'Phone API', 'HubSpot'],
             workflow: ['PHONE CALL', 'SPEECH-TO-TEXT', 'INTENT LOGIC', 'HUMAN VOICE SYNT', 'CALL LOGGED'],
-            deployUrl: 'contact.html?agent=VOICE-NEXUS'
+            deployUrl: 'contact.html?service=voice-ai&agent=VOICE-NEXUS'
         },
         'dataflex': {
             name: 'DATAFLEX',
@@ -506,7 +959,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Postgres', 'Snowflake', 'Vector DB', 'BigQuery'],
             workflow: ['NL QUESTION', 'SCHEMA & RAG LOOKUP', 'SECURE SQL GEN', 'QUERY RUN', 'INSIGHT REPORT'],
-            deployUrl: 'contact.html?agent=DATAFLEX'
+            deployUrl: 'contact.html?service=data-intelligence&agent=DATAFLEX'
         }
     };
 
@@ -680,13 +1133,21 @@ document.addEventListener('DOMContentLoaded', () => {
         preloaderOverlay.classList.add('loaded');
     }
 
-    // Smooth Page Navigation Transition with Contextual Loader Text
+    // Ensure preloader overlay is cleared on browser Back/Forward cache restore
+    window.addEventListener('pageshow', () => {
+        if (preloaderOverlay) {
+            preloaderOverlay.classList.add('loaded');
+        }
+    });
+
+    // Smooth Page Navigation Transition with Contextual Loader Text (Supports Query Params like ?service=...)
     document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript"]):not([href^="mailto"]):not([href^="tel"])').forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (!href || href === '#' || href.startsWith('#')) return;
 
-            if (href.endsWith('.html') || href === 'index.html' || href === '/') {
+            const baseHref = href.split('#')[0].split('?')[0];
+            if (baseHref.endsWith('.html') || href === 'index.html' || href === '/') {
                 if (preloaderOverlay) {
                     let navMsg = "NAVIGATING TO FACTONIX CORE...";
                     if (href.includes('ai-agents.html')) navMsg = "NAVIGATING TO AI AGENTS HUB...";
@@ -695,6 +1156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     else if (href.includes('solutions.html')) navMsg = "CONFIGURING ENTERPRISE SOLUTIONS...";
                     else if (href.includes('case-studies.html')) navMsg = "FETCHING CASE STUDIES & METRICS...";
                     else if (href.includes('about-us.html')) navMsg = "LOADING FACTONIX STORY...";
+                    else if (href.includes('contact.html?service=')) navMsg = "LOCKING SERVICE CONTEXT & OPENING DISPATCH CORE...";
                     else if (href.includes('contact.html')) navMsg = "OPENING SECURE DISPATCH CORE...";
                     else if (href.includes('portfolio.html')) navMsg = "LOADING LIVE AI PORTFOLIO...";
 
@@ -706,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 300);
+                    }, 260);
                 }
             }
         });
@@ -2036,7 +2498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Real-time live Shopify inventory sync'
                 ]
             },
-            ctaUrl: 'contact.html?project=INSTAGUARD-360'
+            ctaUrl: 'contact.html?service=ecommerce&project=INSTAGUARD-360'
         },
         pipelinemax: {
             badge: 'SALES & CRM',
@@ -2077,7 +2539,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '100% automated Salesforce profile logging'
                 ]
             },
-            ctaUrl: 'contact.html?project=PIPELINE-MAX'
+            ctaUrl: 'contact.html?service=sales-ai&project=PIPELINE-MAX'
         },
         supportrx: {
             badge: 'SUPPORT & CX',
@@ -2118,7 +2580,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Zero human intervention for routine actions'
                 ]
             },
-            ctaUrl: 'contact.html?project=SUPPORTR-X'
+            ctaUrl: 'contact.html?service=customer-support-ai&project=SUPPORTR-X'
         },
         logiflow: {
             badge: 'OPERATIONS',
@@ -2158,7 +2620,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Instant Slack notifications for low-stock alerts'
                 ]
             },
-            ctaUrl: 'contact.html?project=LOGI-FLOW'
+            ctaUrl: 'contact.html?service=ai-automation&project=LOGI-FLOW'
         },
         audiencegen: {
             badge: 'SOCIAL & SALES',
@@ -2198,7 +2660,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '4.5x growth in qualified sales pipeline'
                 ]
             },
-            ctaUrl: 'contact.html?project=AUDIENCE-GEN'
+            ctaUrl: 'contact.html?service=sales-ai&project=AUDIENCE-GEN'
         },
         whatsappflow: {
             badge: 'SOCIAL & COMMERCE',
@@ -2239,7 +2701,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Sub-second automated Stripe payment links'
                 ]
             },
-            ctaUrl: 'contact.html?project=WHATSAPP-FLOW'
+            ctaUrl: 'contact.html?service=whatsapp-automation&project=WHATSAPP-FLOW'
         }
     };
 
@@ -2468,6 +2930,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Interactive Visual AI Workflow Generator Engine & Redesigned 5-Tab Studio
     // ==========================================
     const studioNavTabs = document.getElementById('studioNavTabs');
+    const studioTabServiceMap = {
+        crm: 'sales-ai',
+        social: 'social-automation',
+        ecom: 'ecommerce',
+        b2b: 'sales-ai',
+        education: 'ai-automation'
+    };
     if (studioNavTabs) {
         const tabBtns = studioNavTabs.querySelectorAll('.studio-tab-btn');
         tabBtns.forEach(btn => {
@@ -2490,6 +2959,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Trigger reflow for keyframe animation re-trigger
                     void targetPane.offsetWidth;
                     targetPane.classList.add('active');
+                }
+
+                // Dynamically update Workflow Studio CTA button context
+                const studioDemoCta = document.getElementById('studioDemoCtaBtn');
+                if (studioDemoCta && studioTabServiceMap[targetTab]) {
+                    studioDemoCta.setAttribute('href', `contact.html?service=${studioTabServiceMap[targetTab]}`);
                 }
 
                 if (typeof playCyberClick === 'function') {

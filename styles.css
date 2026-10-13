@@ -17988,11 +17988,307 @@ body.robotics-mode .p-chip {
     }
 }
 
+/* ==========================================
+   CONTEXT-AWARE CONTACT PAGE & CONFIGURATOR ENHANCEMENTS
+   ========================================== */
+.service-context-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 32px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(2, 132, 199, 0.05) 100%);
+    border-bottom: 1px solid rgba(37, 99, 235, 0.25);
+    transition: all 0.3s ease;
+}
 
+.service-context-banner.context-active-highlight {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(16, 185, 129, 0.06) 100%);
+    border-bottom: 2px solid #2563eb;
+}
 
+.service-context-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
+.service-context-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 
+.service-context-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.14);
+    border: 1px solid rgba(37, 99, 235, 0.35);
+    color: #1d4ed8;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
 
+.context-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulseGlowDot 1.8s infinite ease-in-out;
+}
 
+@keyframes pulseGlowDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.65; }
+}
 
+.service-context-code {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+}
 
+.service-context-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.service-context-prefix {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.service-context-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.service-context-desc {
+    font-size: 0.85rem;
+    color: #475569;
+    margin: 0;
+}
+
+.step-header-flex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.step-active-indicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    color: #1d4ed8;
+    font-size: 0.8rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.option-card-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+    margin-bottom: 8px;
+    transition: all 0.25s ease;
+}
+
+.config-option-card.selected .option-card-badge {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.config-form-always-visible {
+    display: block !important;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 2px dashed rgba(203, 213, 225, 0.85);
+}
+
+.contact-form-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.form-ready-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #059669;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.form-enquiry-context-box {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.07) 0%, rgba(15, 23, 42, 0.02) 100%);
+    border: 1.5px solid rgba(37, 99, 235, 0.35);
+    border-left: 5px solid #2563eb;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 22px;
+}
+
+.form-enquiry-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.form-enquiry-kicker {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #2563eb;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.form-enquiry-service-name {
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.form-enquiry-status-chip {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #ffffff;
+    letter-spacing: 0.6px;
+}
+
+.form-blueprint-summary-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.blueprint-pill {
+    font-size: 0.78rem;
+    padding: 5px 11px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.blueprint-pill strong {
+    color: #0f172a;
+}
+
+/* Dark Mode (body.robotics-mode) Support for Context-Aware Contact Elements */
+body.robotics-mode .service-context-banner {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3) !important;
+}
+
+body.robotics-mode .service-context-pill,
+body.robotics-mode .step-active-indicator {
+    background: rgba(0, 240, 255, 0.15) !important;
+    border-color: rgba(0, 240, 255, 0.4) !important;
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .service-context-name,
+body.robotics-mode .form-enquiry-service-name {
+    color: #ffffff !important;
+}
+
+body.robotics-mode .service-context-prefix,
+body.robotics-mode .service-context-desc {
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .option-card-badge {
+    background: rgba(15, 23, 42, 0.9) !important;
+    color: #94a3b8 !important;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+body.robotics-mode .config-option-card.selected .option-card-badge {
+    background: #00f0ff !important;
+    color: #030712 !important;
+}
+
+body.robotics-mode .config-form-always-visible {
+    border-top-color: rgba(0, 240, 255, 0.25) !important;
+}
+
+body.robotics-mode .form-enquiry-context-box {
+    background: rgba(11, 20, 38, 0.9) !important;
+    border-color: rgba(0, 240, 255, 0.4) !important;
+    border-left-color: #00f0ff !important;
+}
+
+body.robotics-mode .form-enquiry-kicker {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode .blueprint-pill {
+    background: rgba(5, 12, 26, 0.9) !important;
+    border-color: rgba(0, 240, 255, 0.25) !important;
+    color: #cbd5e1 !important;
+}
+
+body.robotics-mode .blueprint-pill strong {
+    color: #00f0ff !important;
+}
+
+body.robotics-mode #configServiceSelect {
+    background: rgba(11, 20, 38, 0.95) !important;
+    border-color: #00f0ff !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+    .service-context-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 20px;
+    }
+    .service-context-right,
+    .service-context-right .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
