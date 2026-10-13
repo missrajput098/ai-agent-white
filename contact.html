@@ -72,7 +72,7 @@
             </nav>
 
             <div class="nav-actions">
-                <a href="contact.html" class="btn btn-primary btn-sm active">Book a Demo</a>
+                <a href="contact.html?service=book-demo" class="btn btn-primary btn-sm active">Book a Demo</a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -85,12 +85,12 @@
         <div class="container subpage-hero-grid">
             <div class="subpage-hero-content">
                 <div class="breadcrumb-nav">
-                    <a href="index.html">Home</a> <span>/</span> <span>BUILD MY AI AGENT POD</span>
+                    <a href="index.html">Home</a> <span>/</span> <span id="contactHeroBreadcrumb">BUILD MY AI AGENT POD</span>
                 </div>
-                <h1 class="subpage-hero-title">
-                    Configure & Book Your <span class="text-glow">Custom AI Agent</span>
+                <h1 class="subpage-hero-title" id="contactHeroTitle">
+                    Configure & Book Your <span class="text-glow" id="contactHeroHighlight">Custom AI Agent</span>
                 </h1>
-                <p class="subpage-hero-desc">
+                <p class="subpage-hero-desc" id="contactHeroDesc">
                     Use our interactive 4-step configurator below to design your agent's role, platform integrations, and knowledge sources. Book a 1-on-1 live engineering demo.
                 </p>
             </div>
@@ -100,7 +100,7 @@
                     <img src="assets/images/robot-cta.jpg" alt="3D Robot Agent Builder" class="subpage-robot-img" style="border-radius: 16px;">
                     <div class="subpage-hud-badge">
                         <div class="hud-pulse-dot"></div>
-                        <span>BUILDER STATUS: READY TO INITIALIZE</span>
+                        <span id="contactHudBadgeText">BUILDER STATUS: READY TO INITIALIZE</span>
                     </div>
                 </div>
             </div>
@@ -111,36 +111,100 @@
     <section class="section" id="configurator">
         <div class="container" style="max-width: 950px;">
             <div class="configurator-card card-3d">
+                <!-- Context-Aware Enquiry Header Banner -->
+                <div class="service-context-banner" id="enquiryContextBanner">
+                    <div class="service-context-left">
+                        <div class="service-context-badge-row">
+                            <span class="service-context-pill" id="enquiryContextStatusTag">
+                                <span class="context-pulse-dot"></span>
+                                <span id="enquiryContextStatusText">ACTIVE ENQUIRY CONTEXT</span>
+                            </span>
+                            <span class="service-context-code" id="enquiryContextCodeTag">SERVICE // LEADR-3000</span>
+                        </div>
+                        <div class="service-context-title-row">
+                            <span class="service-context-prefix">Enquiry Regarding:</span>
+                            <strong class="service-context-name" id="enquiryContextServiceTitle">Sales & Lead Qualification AI (LEADR-3000)</strong>
+                        </div>
+                        <p class="service-context-desc" id="enquiryContextServiceDesc">
+                            Sales Lead Qualification & Calendar Booking — Your service option is active and pre-loaded in the enquiry form below.
+                        </p>
+                    </div>
+                    <div class="service-context-right">
+                        <a href="#agentBuilderFormSection" class="btn btn-primary btn-sm btn-glow" id="enquiryJumpToFormBtn">
+                            Submit Enquiry Now ↓
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Navigation Steps Tabs -->
                 <div class="configurator-nav-steps">
-                    <div class="config-step-tab active" data-step="1" id="configTab1">1. AGENT ROLE</div>
+                    <div class="config-step-tab active" data-step="1" id="configTab1">1. SERVICE & AGENT ROLE</div>
                     <div class="config-step-tab" data-step="2" id="configTab2">2. PLATFORM</div>
                     <div class="config-step-tab" data-step="3" id="configTab3">3. KNOWLEDGE</div>
                     <div class="config-step-tab" data-step="4" id="configTab4">4. SCHEDULE DEMO</div>
                 </div>
 
                 <div class="configurator-body">
-                    <!-- Step 1: Agent Role -->
+                    <!-- Step 1: Service & Agent Role -->
                     <div class="config-step-content active" id="stepContent1">
-                        <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Step 1: Choose Your Primary AI Agent Role</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Select the core capability your custom AI agent will perform.</p>
+                        <div class="step-header-flex">
+                            <div>
+                                <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Step 1: Choose Your Primary Service & AI Agent Role</h3>
+                                <p style="color: var(--text-muted); font-size: 0.95rem;">Select the core service or autonomous AI agent capability for your business.</p>
+                            </div>
+                            <span class="step-active-indicator" id="step1SelectedPill">Selected: LEADR-3000</span>
+                        </div>
 
-                        <div class="option-cards-grid">
-                            <div class="config-option-card selected">
+                        <div class="option-cards-grid" id="step1OptionsGrid">
+                            <div class="config-option-card" data-service="build-my-agent" data-agent="CUSTOM-POD" data-role-title="Build My Agent">
+                                <span class="option-card-badge">CUSTOM AI POD</span>
+                                <div class="config-option-title">Build My Agent</div>
+                                <div class="config-option-desc">Bespoke End-to-End Autonomous AI Agent Pod</div>
+                            </div>
+                            <div class="config-option-card selected" data-service="sales-ai" data-agent="LEADR-3000" data-role-title="LEADR-3000 (Sales AI)">
+                                <span class="option-card-badge">B2B & B2C SALES</span>
                                 <div class="config-option-title">LEADR-3000</div>
                                 <div class="config-option-desc">Sales Lead Qualification & Calendar Booking</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-service="customer-support-ai" data-agent="SUPPORTR-X" data-role-title="SUPPORTR-X (Support AI)">
+                                <span class="option-card-badge">24/7 CARE</span>
                                 <div class="config-option-title">SUPPORTR-X</div>
                                 <div class="config-option-desc">24/7 Omnichannel Customer Support & Orders</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-service="social-automation" data-agent="INSTAGUARD" data-role-title="INSTAGUARD (Social AI)">
+                                <span class="option-card-badge">META GRAPH API</span>
                                 <div class="config-option-title">INSTAGUARD</div>
                                 <div class="config-option-desc">Instagram DM Automation & Story Keywords</div>
                             </div>
-                            <div class="config-option-card">
-                                <div class="config-option-title">DISPATCH-BOT</div>
-                                <div class="config-option-desc">Operations PDF & ERP Workflow Automator</div>
+                            <div class="config-option-card" data-service="ai-automation" data-agent="DISPATCH-BOT" data-role-title="AI Workflow Automation">
+                                <span class="option-card-badge">WORKFLOW OPS</span>
+                                <div class="config-option-title">AI Automation</div>
+                                <div class="config-option-desc">Operations PDF, CRM & ERP Workflow Automator</div>
+                            </div>
+                            <div class="config-option-card" data-service="whatsapp-automation" data-agent="WHATSAPP-FLOW" data-role-title="WhatsApp Automation">
+                                <span class="option-card-badge">WHATSAPP API</span>
+                                <div class="config-option-title">WhatsApp Automation</div>
+                                <div class="config-option-desc">24/7 WhatsApp Sales, Catalog & Appointment Bot</div>
+                            </div>
+                            <div class="config-option-card" data-service="ecommerce" data-agent="ECOM-NEXUS" data-role-title="E-commerce AI">
+                                <span class="option-card-badge">SHOPIFY & WOO</span>
+                                <div class="config-option-title">E-commerce AI</div>
+                                <div class="config-option-desc">Cart Recovery, Order Tracking & Catalog Sync</div>
+                            </div>
+                            <div class="config-option-card" data-service="web-development" data-agent="WEB-ARCHITECT" data-role-title="AI Web Development">
+                                <span class="option-card-badge">WEB & SAAS</span>
+                                <div class="config-option-title">Web Development</div>
+                                <div class="config-option-desc">High-Conversion AI Websites & SaaS Applications</div>
+                            </div>
+                            <div class="config-option-card" data-service="voice-ai" data-agent="VOICE-NEXUS" data-role-title="VOICE-NEXUS (Voice AI)">
+                                <span class="option-card-badge">TELEPHONY AI</span>
+                                <div class="config-option-title">VOICE-NEXUS</div>
+                                <div class="config-option-desc">Inbound & Outbound Human-Grade Phone Agent</div>
+                            </div>
+                            <div class="config-option-card" data-service="data-intelligence" data-agent="DATAFLEX" data-role-title="DATAFLEX (Data AI)">
+                                <span class="option-card-badge">RAG & SQL BI</span>
+                                <div class="config-option-title">DATAFLEX</div>
+                                <div class="config-option-desc">Natural Language to SQL & Predictive Analytics</div>
                             </div>
                         </div>
                     </div>
@@ -150,20 +214,20 @@
                         <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Step 2: Select Integration Environment</h3>
                         <p style="color: var(--text-muted); font-size: 0.95rem;">Where will your AI agent interact with users or data?</p>
 
-                        <div class="option-cards-grid">
-                            <div class="config-option-card selected">
+                        <div class="option-cards-grid" id="step2OptionsGrid">
+                            <div class="config-option-card selected" data-platform="hubspot-salesforce" data-platform-title="HubSpot & Salesforce">
                                 <div class="config-option-title">HubSpot & Salesforce</div>
                                 <div class="config-option-desc">Sync contacts, deals, and notes directly</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-platform="meta-whatsapp" data-platform-title="Meta Instagram & WhatsApp">
                                 <div class="config-option-title">Meta Instagram & WhatsApp</div>
                                 <div class="config-option-desc">Official Meta Graph API messaging pipeline</div>
                             </div>
-                            <div class="config-option-card">
-                                <div class="config-option-title">Zendesk & Gorgias</div>
+                            <div class="config-option-card" data-platform="zendesk-gorgias" data-platform-title="Zendesk, Shopify & Gorgias">
+                                <div class="config-option-title">Zendesk, Shopify & Gorgias</div>
                                 <div class="config-option-desc">E-commerce support ticket & order resolution</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-platform="custom-rest" data-platform-title="Custom REST / Webhooks">
                                 <div class="config-option-title">Custom REST / Webhooks</div>
                                 <div class="config-option-desc">Connect directly to internal database APIs</div>
                             </div>
@@ -175,71 +239,142 @@
                         <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Step 3: Connect Knowledge Base & Data</h3>
                         <p style="color: var(--text-muted); font-size: 0.95rem;">What data sources should train your agent's neural memory?</p>
 
-                        <div class="option-cards-grid">
-                            <div class="config-option-card selected">
+                        <div class="option-cards-grid" id="step3OptionsGrid">
+                            <div class="config-option-card selected" data-knowledge="company-sops" data-knowledge-title="Company SOPs & PDFs">
                                 <div class="config-option-title">Company SOPs & PDFs</div>
                                 <div class="config-option-desc">Ingest training manuals, contracts & docs</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-knowledge="website-urls" data-knowledge-title="Website & Help Desk URLs">
                                 <div class="config-option-title">Website & Help Desk URLs</div>
                                 <div class="config-option-desc">Crawl live website FAQs & KB pages</div>
                             </div>
-                            <div class="config-option-card">
+                            <div class="config-option-card" data-knowledge="sql-vector-rag" data-knowledge-title="SQL Database & Vector RAG">
                                 <div class="config-option-title">SQL Database & Vector RAG</div>
                                 <div class="config-option-desc">Real-time database queries & analytics</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Step 4: Contact & Booking Form -->
+                    <!-- Step 4: Schedule Demo & Contact Form (Shown only on Step 4) -->
                     <div class="config-step-content" id="stepContent4">
-                        <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px;">Step 4: Book Your Live Demo & Blueprint Session</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Enter your contact details to schedule a live architecture walkthrough with our AI engineers.</p>
-
-                        <form id="agentBuilderForm" onsubmit="event.preventDefault(); document.getElementById('configTerminalOutput').style.display='block';">
-                            <div class="form-grid-2">
+                        <div id="agentBuilderFormSection" class="contact-form-section-wrapper">
+                            <div class="contact-form-header-row">
                                 <div>
-                                    <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Your Full Name *</label>
-                                    <input type="text" required placeholder="e.g. Alex Morgan" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                    <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;">Step 4: Book Your Live Demo & Blueprint Session</h3>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0;">Your selected service is locked in below. Enter your details to submit your enquiry immediately.</p>
                                 </div>
-                                <div>
-                                    <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Work Email Address *</label>
-                                    <input type="email" required placeholder="alex@company.com" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                <span class="form-ready-badge" id="formPreselectedBadge">✓ Service Pre-Selected</span>
+                            </div>
+
+                            <!-- Clear Enquiry Context Box inside the Contact Form -->
+                            <div class="form-enquiry-context-box" id="formEnquiryContextBox">
+                                <div class="form-enquiry-top-row">
+                                    <div class="form-enquiry-title-group">
+                                        <span class="form-enquiry-kicker">ENQUIRY REGARDING</span>
+                                        <div class="form-enquiry-service-name" id="formSelectedServiceLabel">Sales & Lead Qualification AI (LEADR-3000)</div>
+                                    </div>
+                                    <span class="form-enquiry-status-chip" id="formServiceSourceChip">ACTIVE SELECTION</span>
+                                </div>
+                                <div class="form-blueprint-summary-pills">
+                                    <span class="blueprint-pill"><strong>Service:</strong> <span id="formSummaryService">Sales & Lead Qualification AI</span></span>
+                                    <span class="blueprint-pill"><strong>Agent Role:</strong> <span id="formSummaryRole">LEADR-3000</span></span>
+                                    <span class="blueprint-pill"><strong>Platform:</strong> <span id="formSummaryPlatform">HubSpot & Salesforce</span></span>
+                                    <span class="blueprint-pill"><strong>Knowledge:</strong> <span id="formSummaryKnowledge">Company SOPs & PDFs</span></span>
                                 </div>
                             </div>
 
-                            <div class="form-grid-2">
-                                <div>
-                                    <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Company Name *</label>
-                                    <input type="text" required placeholder="e.g. Acme Enterprise" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                            <form id="agentBuilderForm" action="contact-handler.php" method="POST" novalidate>
+                                <input type="hidden" id="configSelectedServiceSlug" name="service_slug" value="sales-ai">
+                                <input type="hidden" id="configSelectedAgentCode" name="agent_code" value="LEADR-3000">
+                                <input type="hidden" id="configSelectedPlatform" name="platform" value="HubSpot & Salesforce">
+                                <input type="hidden" id="configSelectedKnowledge" name="knowledge_base" value="Company SOPs & PDFs">
+
+                                <div class="form-grid-2">
+                                    <div>
+                                        <label for="configServiceSelect" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Selected Service / Enquiry Topic *</label>
+                                        <select id="configServiceSelect" name="service" required style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 2px solid var(--primary-blue); background: rgba(37, 99, 235, 0.04); font-family: inherit; font-size: 0.95rem; font-weight: 700; color: #0f172a;">
+                                            <option value="build-my-agent">Build My Agent — Custom AI Agent Pod</option>
+                                            <option value="sales-ai" selected>Sales AI — Lead Qualification & Booking (LEADR-3000)</option>
+                                            <option value="customer-support-ai">Customer Support AI — 24/7 Omnichannel Care (SUPPORTR-X)</option>
+                                            <option value="social-automation">Social Media Automation — Instagram & DM AI (INSTAGUARD)</option>
+                                            <option value="ai-automation">AI Automation — Business & Operations Workflows (DISPATCH-BOT)</option>
+                                            <option value="whatsapp-automation">WhatsApp Automation — 24/7 WhatsApp Sales & Booking Bot</option>
+                                            <option value="ecommerce">E-commerce AI — Shopify / Order & Cart Recovery</option>
+                                            <option value="web-development">Web Development — AI Websites & Custom Web Apps</option>
+                                            <option value="voice-ai">Voice AI — Inbound & Outbound Phone Agent (VOICE-NEXUS)</option>
+                                            <option value="data-intelligence">Data Intelligence — SQL & Vector RAG Analytics (DATAFLEX)</option>
+                                            <option value="book-demo">Book a Live Architecture Demo & Strategy Call</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="contactTeamSize" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Estimated Team Size</label>
+                                        <select id="contactTeamSize" name="team_size" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                            <option>1 - 10 Employees</option>
+                                            <option>10 - 50 Employees</option>
+                                            <option>50 - 250 Employees</option>
+                                            <option>250+ Enterprise</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Estimated Team Size</label>
-                                    <select style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
-                                        <option>1 - 10 Employees</option>
-                                        <option>10 - 50 Employees</option>
-                                        <option>50 - 250 Employees</option>
-                                        <option>250+ Enterprise</option>
-                                    </select>
+
+                                <div class="form-grid-2">
+                                    <div>
+                                        <label for="contactFullName" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Your Full Name *</label>
+                                        <input type="text" id="contactFullName" name="full_name" required placeholder="e.g. Alex Morgan" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                        <span class="form-error-hint" id="errorFullName"></span>
+                                    </div>
+                                    <div>
+                                        <label for="contactWorkEmail" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Work Email Address *</label>
+                                        <input type="email" id="contactWorkEmail" name="work_email" required placeholder="alex@company.com" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                        <span class="form-error-hint" id="errorWorkEmail"></span>
+                                    </div>
                                 </div>
+
+                                <div class="form-grid-2">
+                                    <div>
+                                        <label for="contactCompanyName" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Company Name *</label>
+                                        <input type="text" id="contactCompanyName" name="company_name" required placeholder="e.g. Acme Enterprise" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                        <span class="form-error-hint" id="errorCompanyName"></span>
+                                    </div>
+                                    <div>
+                                        <label for="contactProjectNotes" style="display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 6px;">Workflow Goal / Notes (Optional)</label>
+                                        <input type="text" id="contactProjectNotes" name="project_notes" placeholder="e.g. Automate inbound leads & CRM booking" style="width: 100%; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-family: inherit; font-size: 0.95rem;">
+                                    </div>
+                                </div>
+
+                                <!-- Get response on email checkbox -->
+                                <div class="form-checkbox-row">
+                                    <label class="custom-checkbox-label" for="contactGetEmailResponse">
+                                        <input type="checkbox" id="contactGetEmailResponse" name="get_email_response" value="1" class="form-checkbox-input">
+                                        <span class="checkbox-custom-box"></span>
+                                        <span class="checkbox-label-text">
+                                            <strong>Get response on email</strong>
+                                            <span class="checkbox-sub-text">Receive an instant confirmation email at your submitted email address</span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <!-- Form Validation Error Alert -->
+                                <div id="contactFormValidationAlert" class="form-validation-alert" style="display: none;"></div>
+
+                                <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; justify-content: center;" id="configSubmitBtn">Initialize Demo Booking & Generate AI Blueprint →</button>
+                            </form>
+
+                            <!-- Sci-Fi Terminal Output / Confirmation Response on Form Submit -->
+                            <div id="configTerminalOutput" style="display: none; margin-top: 24px; background: #0f172a; border-radius: 12px; padding: 20px; font-family: monospace; color: #38bdf8; font-size: 0.88rem; border: 1px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);">
+                                <div id="terminalPrimaryMessage" style="color: #4ade80; font-weight: 800; font-size: 0.98rem; margin-bottom: 10px;">Thank you for reaching out to Factonix. We'll get back to you soon.</div>
+                                <div id="terminalServiceLine">> Enquiry Regarding: Custom AI Agent Pod</div>
+                                <div id="terminalBlueprintLine">> Blueprint Architecture: LEADR-3000 • HubSpot & Salesforce • Company SOPs & PDFs</div>
+                                <div id="terminalClientLine">> Status: Neural Engineer Assigned</div>
+                                <div id="terminalEmailStatusLine" style="margin-top: 6px; color: #e2e8f0; display: none;"></div>
                             </div>
-
-                            <button type="submit" class="btn btn-primary btn-glow" style="width: 100%; justify-content: center;" id="configSubmitBtn">Initialize Demo Booking & Generate AI Blueprint →</button>
-                        </form>
-
-                        <!-- Sci-Fi Terminal Output on Form Submit -->
-                        <div id="configTerminalOutput" style="display: none; margin-top: 24px; background: #0f172a; border-radius: 12px; padding: 20px; font-family: monospace; color: #38bdf8; font-size: 0.88rem; border: 1px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);">
-                            <div style="color: #4ade80; font-weight: 800; margin-bottom: 8px;">> [SUCCESS] AGENT POD CONFIGURATION RECEIVED & LOCKED</div>
-                            <div>> Blueprint Blueprint: Custom AI Agent Pod</div>
-                            <div>> Status: Neural Engineer Assigned</div>
-                            <div>> Confirmation email dispatched! We will meet you at your scheduled time.</div>
                         </div>
                     </div>
 
-                    <!-- Actions Bar (Next / Prev) -->
-                    <div class="config-actions-bar">
-                        <button class="btn btn-secondary btn-sm" id="configPrevBtn" style="visibility: hidden;">← Back</button>
-                        <button class="btn btn-primary btn-sm" id="configNextBtn">Continue to Step 2 →</button>
+                    <!-- Actions Bar (Next / Prev for Configurator Steps) -->
+                    <div class="config-actions-bar" id="configStepActionsBar">
+                        <button type="button" class="btn btn-secondary btn-sm" id="configPrevBtn" style="visibility: hidden;">← Previous</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="configNextBtn">Next Step →</button>
                     </div>
                 </div>
             </div>
