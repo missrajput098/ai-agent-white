@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /submissions/
+Disallow: /contact-handler.php
+
+Sitemap: https://factonix.com/sitemap.xml

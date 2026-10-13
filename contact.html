@@ -3,7 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book a Demo & Contact | Factonix Technologies</title>
+    <title>Book a Live Demo &amp; Build Your AI Agent | Factonix Technologies</title>
+    <meta name="description" content="Configure your custom AI agent blueprint and book a live architecture demo. Get an instant proposal tailored to your CRM, platforms, and business workflow goals.">
+    <meta name="keywords" content="book AI demo, hire AI engineers, custom AI agent quote, Factonix contact, build AI agent, enterprise AI proposal">
+    <meta name="author" content="Factonix Technologies">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://factonix.com/contact.html">
+    <link rel="icon" type="image/webp" href="assets/images/logo.webp">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://factonix.com/contact.html">
+    <meta property="og:site_name" content="Factonix Technologies">
+    <meta property="og:title" content="Book a Live Demo &amp; Build Your AI Agent | Factonix Technologies">
+    <meta property="og:description" content="Configure your custom AI agent blueprint and book a 1-on-1 architecture strategy session with our engineering team.">
+    <meta property="og:image" content="https://factonix.com/assets/images/logo.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Book a Live Demo &amp; Build Your AI Agent | Factonix Technologies">
+    <meta name="twitter:description" content="Configure your custom AI agent blueprint and book a 1-on-1 architecture strategy session with our engineering team.">
+    <meta name="twitter:image" content="https://factonix.com/assets/images/logo.webp">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact & AI Demo Booking - Factonix Technologies",
+      "url": "https://factonix.com/contact.html",
+      "description": "Configure your AI agent blueprint and schedule a strategy demo with Factonix AI engineers.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Factonix Technologies",
+        "url": "https://factonix.com/",
+        "logo": "https://factonix.com/assets/images/logo.webp"
+      }
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,6 +323,12 @@
                             </div>
 
                             <form id="agentBuilderForm" action="contact-handler.php" method="POST" novalidate>
+                                <!-- Anti-Spam Honeypot (Invisible to human users) -->
+                                <div style="display:none !important; position:absolute; left:-9999px;" aria-hidden="true">
+                                    <label for="websiteUrlHp">Leave this field blank</label>
+                                    <input type="text" id="websiteUrlHp" name="website_url_hp" tabindex="-1" autocomplete="off">
+                                </div>
+
                                 <input type="hidden" id="configSelectedServiceSlug" name="service_slug" value="sales-ai">
                                 <input type="hidden" id="configSelectedAgentCode" name="agent_code" value="LEADR-3000">
                                 <input type="hidden" id="configSelectedPlatform" name="platform" value="HubSpot & Salesforce">

@@ -7,6 +7,9 @@
 
 declare(strict_types=1);
 
+ini_set('display_errors', '0');
+error_reporting(E_ALL);
+
 header('Content-Type: application/json; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 
@@ -15,12 +18,13 @@ header('X-Content-Type-Options: nosniff');
 // If SMTP_USERNAME & SMTP_PASSWORD are set, emails are sent via authenticated SMTP.
 // Otherwise, PHP's native mail() function is used automatically.
 // ==========================================
-const SMTP_HOST       = 'smtp.gmail.com';
-const SMTP_PORT       = 465; // 465 for SSL, 587 for TLS
-const SMTP_USERNAME   = '';  // e.g. 'your-email@gmail.com' (or set via env FACTONIX_SMTP_USER)
-const SMTP_PASSWORD   = '';  // e.g. 16-char Gmail App Password (or set via env FACTONIX_SMTP_PASS)
-const SMTP_FROM_EMAIL = 'no-reply@factonix.com';
-const SMTP_FROM_NAME  = 'Factonix Technologies';
+const SMTP_HOST                = 'smtp.gmail.com';
+const SMTP_PORT                = 465; // 465 for SSL, 587 for TLS
+const SMTP_USERNAME            = '';  // e.g. 'your-email@gmail.com' (or set via env FACTONIX_SMTP_USER)
+const SMTP_PASSWORD            = '';  // e.g. 16-char Gmail App Password (or set via env FACTONIX_SMTP_PASS)
+const SMTP_FROM_EMAIL          = 'no-reply@factonix.com';
+const SMTP_FROM_NAME           = 'Factonix Technologies';
+const ADMIN_NOTIFICATION_EMAIL = 'contact@factonix.com'; // Admin lead recipient (or set via env FACTONIX_ADMIN_EMAIL)
 
 // Allow only POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -42,6 +46,18 @@ if (empty($input)) {
             $input = $decoded;
         }
     }
+}
+
+// Invisible Honeypot Bot Spam Protection
+if (!empty($input['website_url_hp'])) {
+    echo json_encode([
+        'success'         => true,
+        'email_requested' => false,
+        'email_sent'      => false,
+        'service_title'   => 'Custom AI Agent Pod',
+        'message'         => "Thank you for reaching out to Factonix. We'll get back to you soon.",
+    ]);
+    exit;
 }
 
 /**
@@ -262,6 +278,10 @@ $storageDir = __DIR__ . DIRECTORY_SEPARATOR . 'submissions';
 if (!is_dir($storageDir)) {
     @mkdir($storageDir, 0755, true);
 }
+$htaccessFile = $storageDir . DIRECTORY_SEPARATOR . '.htaccess';
+if (!file_exists($htaccessFile)) {
+    @file_put_contents($htaccessFile, "# Protect customer enquiries data from direct HTTP access\n<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n    Order deny,allow\n    Deny from all\n</IfModule>\n");
+}
 if (is_dir($storageDir) && is_writable($storageDir)) {
     $logFile = $storageDir . DIRECTORY_SEPARATOR . 'enquiries.json';
     $existing = [];
@@ -278,21 +298,66 @@ if (is_dir($storageDir) && is_writable($storageDir)) {
     @file_put_contents($logFile, json_encode($existing, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE), LOCK_EX);
 }
 
+// Prepare HTML-escaped summary strings
+$safeName      = htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8');
+$safeCompany   = htmlspecialchars($companyName, ENT_QUOTES, 'UTF-8');
+$safeService   = htmlspecialchars($serviceTitle, ENT_QUOTES, 'UTF-8');
+$safeAgent     = htmlspecialchars($agentCode, ENT_QUOTES, 'UTF-8');
+$safePlatform  = htmlspecialchars($platform, ENT_QUOTES, 'UTF-8');
+$safeKnowledge = htmlspecialchars($knowledgeBase, ENT_QUOTES, 'UTF-8');
+$safeTeam      = htmlspecialchars($teamSize, ENT_QUOTES, 'UTF-8');
+$safeNotes     = $projectNotes !== '' ? htmlspecialchars($projectNotes, ENT_QUOTES, 'UTF-8') : 'None specified';
+
+// Dispatch internal notification email to admin/sales team if configured
+$adminNotifyEmail = getenv('FACTONIX_ADMIN_EMAIL') ?: ADMIN_NOTIFICATION_EMAIL;
+if ($adminNotifyEmail !== '' && filter_var($adminNotifyEmail, FILTER_VALIDATE_EMAIL)) {
+    $adminSubject = "[New AI Agent Lead] {$serviceTitle} — {$fullName} ({$companyName})";
+    $adminHtml = <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<body style="margin:0;padding:20px;font-family:Arial,sans-serif;color:#0f172a;background:#f8fafc;">
+    <div style="max-width:600px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:20px;">
+        <h2 style="color:#1e3a8a;margin-top:0;">⚡ New AI Agent Enquiry Received</h2>
+        <p><strong>Name:</strong> {$safeName}</p>
+        <p><strong>Work Email:</strong> <a href="mailto:{$workEmail}">{$workEmail}</a></p>
+        <p><strong>Company:</strong> {$safeCompany} ({$safeTeam})</p>
+        <p><strong>Service Requested:</strong> {$safeService}</p>
+        <p><strong>Agent Code:</strong> {$safeAgent}</p>
+        <p><strong>Platform:</strong> {$safePlatform}</p>
+        <p><strong>Knowledge Source:</strong> {$safeKnowledge}</p>
+        <p><strong>Project Notes:</strong> {$safeNotes}</p>
+        <p><strong>Customer Requested Confirmation:</strong> " . ($getEmailResponse ? 'Yes' : 'No') . "</p>
+        <p style="font-size:12px;color:#64748b;margin-bottom:0;">Logged on {$submissionRecord['submitted_at']} | IP: {$submissionRecord['ip_address']}</p>
+    </div>
+</body>
+</html>
+HTML;
+
+    $smtpUser = getenv('FACTONIX_SMTP_USER') ?: SMTP_USERNAME;
+    $smtpPass = getenv('FACTONIX_SMTP_PASS') ?: SMTP_PASSWORD;
+    $smtpHost = getenv('FACTONIX_SMTP_HOST') ?: SMTP_HOST;
+    $smtpPort = (int)(getenv('FACTONIX_SMTP_PORT') ?: SMTP_PORT);
+
+    if ($smtpUser !== '' && $smtpPass !== '') {
+        send_via_smtp($adminNotifyEmail, $adminSubject, $adminHtml, $smtpHost, $smtpPort, $smtpUser, $smtpPass, SMTP_FROM_EMAIL, SMTP_FROM_NAME);
+    } else {
+        $adminHeaders = [
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset=UTF-8',
+            'From: ' . SMTP_FROM_NAME . " <" . SMTP_FROM_EMAIL . ">",
+            "Reply-To: {$workEmail}",
+            'X-Mailer: PHP/' . phpversion(),
+        ];
+        @mail($adminNotifyEmail, $adminSubject, $adminHtml, implode("\r\n", $adminHeaders));
+    }
+}
+
 // ==========================================
 // Conditional Email Dispatch Based on Checkbox
 // ==========================================
 $emailSent = false;
 
 if ($getEmailResponse) {
-    $safeName      = htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8');
-    $safeCompany   = htmlspecialchars($companyName, ENT_QUOTES, 'UTF-8');
-    $safeService   = htmlspecialchars($serviceTitle, ENT_QUOTES, 'UTF-8');
-    $safeAgent     = htmlspecialchars($agentCode, ENT_QUOTES, 'UTF-8');
-    $safePlatform  = htmlspecialchars($platform, ENT_QUOTES, 'UTF-8');
-    $safeKnowledge = htmlspecialchars($knowledgeBase, ENT_QUOTES, 'UTF-8');
-    $safeTeam      = htmlspecialchars($teamSize, ENT_QUOTES, 'UTF-8');
-    $safeNotes     = $projectNotes !== '' ? htmlspecialchars($projectNotes, ENT_QUOTES, 'UTF-8') : 'None specified';
-
     $subject = "We received your enquiry regarding {$serviceTitle} | Factonix Technologies";
 
     $htmlMessage = <<<HTML
