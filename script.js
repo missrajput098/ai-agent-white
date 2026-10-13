@@ -113,8 +113,90 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     // Speech Synthesis Engine for Audio Navigation
     // ==========================================
-    function speakText(text) {
-        return; // Speech synthesis disabled for natural user experience
+    let isSpeaking = false;
+    let activeUtterance = null;
+    let speechSafetyTimer = null;
+    let allowProgrammaticClick = false;
+
+    function cancelActiveSpeech() {
+        if (speechSafetyTimer) {
+            clearTimeout(speechSafetyTimer);
+            speechSafetyTimer = null;
+        }
+        activeUtterance = null;
+        isSpeaking = false;
+        if ('speechSynthesis' in window) {
+            try {
+                window.speechSynthesis.cancel();
+            } catch (e) {}
+        }
+    }
+
+    function speakText(text, onEndCallback) {
+        if (!audioEnabled || !('speechSynthesis' in window)) {
+            if (typeof onEndCallback === 'function') onEndCallback();
+            return;
+        }
+        try {
+            if (speechSafetyTimer) {
+                clearTimeout(speechSafetyTimer);
+                speechSafetyTimer = null;
+            }
+            if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+            }
+
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 1.0;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            utterance.lang = 'en-US';
+
+            activeUtterance = utterance;
+            isSpeaking = true;
+
+            let finished = false;
+            const completeSpeech = () => {
+                if (finished) return;
+                finished = true;
+                if (speechSafetyTimer) {
+                    clearTimeout(speechSafetyTimer);
+                    speechSafetyTimer = null;
+                }
+                if (activeUtterance === utterance) {
+                    activeUtterance = null;
+                }
+                isSpeaking = false;
+                if (typeof onEndCallback === 'function') {
+                    onEndCallback();
+                }
+            };
+
+            utterance.onend = completeSpeech;
+            utterance.onerror = completeSpeech;
+
+            const startTime = Date.now();
+            const maxWaitMs = Math.max(4000, Math.min(10000, text.length * 150));
+            const checkSpeechProgress = () => {
+                if (finished) return;
+                const elapsed = Date.now() - startTime;
+                const synthBusy = window.speechSynthesis.speaking || window.speechSynthesis.pending;
+                if (!synthBusy && elapsed > 400) {
+                    completeSpeech();
+                } else if (elapsed >= maxWaitMs) {
+                    completeSpeech();
+                } else {
+                    speechSafetyTimer = setTimeout(checkSpeechProgress, 150);
+                }
+            };
+            speechSafetyTimer = setTimeout(checkSpeechProgress, 500);
+
+            window.speechSynthesis.speak(utterance);
+        } catch (e) {
+            isSpeaking = false;
+            activeUtterance = null;
+            if (typeof onEndCallback === 'function') onEndCallback();
+        }
     }
 
     function getNavSpeechText(el) {
@@ -133,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lowerHref.includes('ai-agents.html') || lowerText.includes('ai agent')) {
             return 'NAVIGATE TO AI AGENTS PAGE';
         }
-        if (lowerHref.includes('#workflow-studio') || lowerText.includes('workflow studio')) {
+        if (lowerHref.includes('#workflow-studio') || lowerHref.includes('workflow-studio.html') || lowerText.includes('workflow studio')) {
             return 'NAVIGATE TO WORKFLOW STUDIO PAGE';
         }
         if (lowerHref.includes('solutions.html') || lowerText.includes('solution')) {
@@ -165,13 +247,53 @@ document.addEventListener('DOMContentLoaded', () => {
         return 'NAVIGATE TO PAGE';
     }
 
+    function performIntendedAction(clickable) {
+        if (!clickable) return;
+
+        const targetAnchor = clickable.closest('a');
+        const rawHref = targetAnchor ? targetAnchor.getAttribute('href') : clickable.getAttribute('href');
+        const href = (rawHref || '').trim();
+
+        if (href && !href.startsWith('#') && !href.toLowerCase().startsWith('javascript:')) {
+            const targetAttr = targetAnchor ? targetAnchor.getAttribute('target') : clickable.getAttribute('target');
+            if (targetAttr === '_blank') {
+                window.open(href, '_blank', 'noopener');
+                return;
+            }
+            window.location.href = href;
+            return;
+        }
+
+        allowProgrammaticClick = true;
+        try {
+            clickable.click();
+        } catch (err) {}
+        allowProgrammaticClick = false;
+
+        if (href && href.length > 1 && href.startsWith('#')) {
+            try {
+                const targetSection = document.querySelector(href);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.location.hash = href;
+                }
+            } catch (err) {}
+        }
+    }
+
+    window.addEventListener('pageshow', () => {
+        isSpeaking = false;
+        allowProgrammaticClick = false;
+    });
+
     // ==========================================
     // Floating Dock Control Logic (Sound & Mode)
     // ==========================================
     const roboticsToggleBtn = document.getElementById('roboticsModeToggle');
     const soundToggleBtn = document.getElementById('soundToggleBtn');
     const storedMode = localStorage.getItem('roboticsMode');
-    const storedAudio = localStorage.getItem('audioEnabled');
+    const storedAudio = localStorage.getItem('audioEnabled') ?? localStorage.getItem('audioSoundEnabled');
 
     function updateSoundUI(isON) {
         audioEnabled = isON;
@@ -242,62 +364,82 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storedAudio === 'true') {
         initAudio();
         updateSoundUI(true);
-    } else if (storedMode !== 'true') {
+    } else if (storedAudio === 'false' || storedMode !== 'true') {
         updateSoundUI(false);
     }
 
     if (soundToggleBtn) {
-        soundToggleBtn.addEventListener('click', () => {
+        soundToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isSpeaking && audioEnabled) {
+                cancelActiveSpeech();
+            }
             initAudio();
             const newState = !audioEnabled;
             localStorage.setItem('audioEnabled', newState ? 'true' : 'false');
+            localStorage.setItem('audioSoundEnabled', newState ? 'true' : 'false');
             updateSoundUI(newState);
             if (newState) {
                 playPowerUpSound();
+                speakText('AUDIO ENABLED');
+            } else {
+                cancelActiveSpeech();
             }
         });
     }
 
     if (roboticsToggleBtn) {
-        roboticsToggleBtn.addEventListener('click', () => {
+        roboticsToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             const currentlyActive = document.body.classList.contains('robotics-mode');
             const newState = !currentlyActive;
             localStorage.setItem('roboticsMode', newState ? 'true' : 'false');
+            if (newState) {
+                localStorage.setItem('audioEnabled', 'true');
+                localStorage.setItem('audioSoundEnabled', 'true');
+            }
             applyRoboticsMode(newState);
         });
     }
 
     document.querySelectorAll('.btn, .nav-links a, .card, .hud-card, .robotics-mode-toggle, .filter-btn, .step-nav-btn, .config-step-tab, .logo, .footer-links a').forEach(el => {
         el.addEventListener('mouseenter', () => playCyberBeep(650, 0.025));
-        el.addEventListener('click', () => {
-            playCyberClick();
-            if (audioEnabled && !el.classList.contains('sound-toggle-btn') && !el.classList.contains('robotics-mode-toggle')) {
-                const navText = getNavSpeechText(el);
-                speakText(navText);
-                const targetAnchor = el.closest('a');
-                const href = targetAnchor ? targetAnchor.getAttribute('href') : el.getAttribute('href');
-                if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
-                    sessionStorage.setItem('pendingNavSpeech', navText);
-                }
-            }
-        });
     });
 
-    // Global Fallback Click Listener for all Navigation Links & Buttons
+    // Unified Capture-Phase Click Listener: Speak Completely -> End Speech -> Perform Click/Navigation Action
     document.addEventListener('click', (e) => {
-        if (!audioEnabled) return;
-        const clickable = e.target.closest('a, button, .filter-btn, .step-nav-btn, .config-step-tab, .sim-tab-btn, .wf-preset-chip');
+        if (allowProgrammaticClick) return;
+
+        const clickable = e.target.closest('a, button, .btn, [role="button"], .filter-btn, .cs-filter-btn, .step-nav-btn, .config-step-tab, .sim-tab-btn, .wf-preset-chip, .prompt-chip, .studio-tab-btn, .cap-seg-btn, .cap-tab-btn, .side-preset-btn, .logo');
         if (!clickable) return;
-        if (clickable.classList.contains('sound-toggle-btn') || clickable.classList.contains('robotics-mode-toggle')) return;
 
-        const navText = getNavSpeechText(clickable);
-        speakText(navText);
-
-        const href = clickable.getAttribute('href') || (clickable.closest('a') ? clickable.closest('a').getAttribute('href') : '');
-        if (href && !href.startsWith('#') && !href.startsWith('javascript:')) {
-            sessionStorage.setItem('pendingNavSpeech', navText);
+        if (clickable.closest('#soundToggleBtn, .sound-dock-btn, .sound-toggle-btn, #roboticsModeToggle, .mode-dock-btn, .robotics-mode-toggle')) {
+            return;
         }
-    });
+
+        if (!audioEnabled) {
+            playCyberClick();
+            return;
+        }
+
+        // Prevent duplicate clicks, interrupted speech, and premature navigation while voice is speaking
+        if (isSpeaking || ('speechSynthesis' in window && (window.speechSynthesis.speaking || window.speechSynthesis.pending))) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            return;
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        playCyberClick();
+        const navText = getNavSpeechText(clickable);
+        speakText(navText, () => {
+            performIntendedAction(clickable);
+        });
+    }, true);
 
     // ==========================================
     // 4-Step AI Agent Configurator Wizard & Context-Aware Service Engine (contact.html)
@@ -2308,49 +2450,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // Sound FX Toggle Control & Voice Nav Execution
+    // Sound FX Toggle Control & Voice Nav Sync
     // ==========================================
     const soundToggleBtns = document.querySelectorAll('.sound-toggle-btn');
-    const storedSound = localStorage.getItem('audioSoundEnabled');
 
     function applySoundSetting(enabled) {
-        audioEnabled = enabled;
         soundToggleBtns.forEach(btn => {
             btn.innerHTML = enabled ? '🔊 AUDIO FX: ON' : '🔇 AUDIO FX: OFF';
         });
     }
 
-    if (storedSound === 'true') {
-        applySoundSetting(true);
-    } else {
-        applySoundSetting(false);
-    }
+    applySoundSetting(audioEnabled);
 
     soundToggleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isSpeaking && audioEnabled) {
+                cancelActiveSpeech();
+            }
             initAudio();
-            audioEnabled = !audioEnabled;
-            localStorage.setItem('audioSoundEnabled', audioEnabled ? 'true' : 'false');
-            applySoundSetting(audioEnabled);
-            if (audioEnabled) {
+            const newState = !audioEnabled;
+            localStorage.setItem('audioEnabled', newState ? 'true' : 'false');
+            localStorage.setItem('audioSoundEnabled', newState ? 'true' : 'false');
+            updateSoundUI(newState);
+            applySoundSetting(newState);
+            if (newState) {
                 playPowerUpSound();
                 speakText('AUDIO ENABLED');
             } else {
-                if ('speechSynthesis' in window) {
-                    window.speechSynthesis.cancel();
-                }
+                cancelActiveSpeech();
             }
         });
     });
 
-    // Check for pending speech navigation from previous page click
-    const pendingNavSpeech = sessionStorage.getItem('pendingNavSpeech');
-    if (pendingNavSpeech && (storedSound === 'true' || storedMode === 'true')) {
-        sessionStorage.removeItem('pendingNavSpeech');
-        setTimeout(() => {
-            if (audioEnabled) speakText(pendingNavSpeech);
-        }, 300);
-    }
+    sessionStorage.removeItem('pendingNavSpeech');
 
     // ==========================================
     // Interactive Live AI Agent Execution Simulator Engine
