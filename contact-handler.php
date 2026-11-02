@@ -22,9 +22,9 @@ const SMTP_HOST                = 'smtp.gmail.com';
 const SMTP_PORT                = 465; // 465 for SSL, 587 for TLS
 const SMTP_USERNAME            = '';  // e.g. 'your-email@gmail.com' (or set via env FACTONIX_SMTP_USER)
 const SMTP_PASSWORD            = '';  // e.g. 16-char Gmail App Password (or set via env FACTONIX_SMTP_PASS)
-const SMTP_FROM_EMAIL          = 'no-reply@factonix.com';
+const SMTP_FROM_EMAIL          = 'info@factonix.com';
 const SMTP_FROM_NAME           = 'Factonix Technologies';
-const ADMIN_NOTIFICATION_EMAIL = 'contact@factonix.com'; // Admin lead recipient (or set via env FACTONIX_ADMIN_EMAIL)
+const ADMIN_NOTIFICATION_EMAIL = 'info@factonix.com'; // Admin lead recipient (or set via env FACTONIX_ADMIN_EMAIL)
 
 // Allow only POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

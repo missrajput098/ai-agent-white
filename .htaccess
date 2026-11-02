@@ -1,0 +1,36 @@
+# ----------------------------------------------------------------------
+# Factonix Technologies - Apache Configuration & Clean URLs (.htaccess)
+# ----------------------------------------------------------------------
+
+# Disable Directory Browsing and avoid MultiViews conflicts with mod_rewrite
+Options -Indexes -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. Redirect external requests for index.html or index to root /
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/(?:index\.html|index)[\s\?] [NC]
+    RewriteRule ^index(?:\.html)?$ ./ [R=301,L]
+
+    # 2. Redirect external requests with .html extension to clean URL (301 Permanent Redirect)
+    # Uses %{THE_REQUEST} to ensure internal rewrites do not trigger this redirect
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+(.+?)\.html[\s\?] [NC]
+    RewriteRule ^ %1 [R=301,L,NE]
+
+    # 3. Remove trailing slashes from non-directory requests
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ $1 [R=301,L]
+
+    # 4. Internally rewrite extensionless URLs to the corresponding .html file
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f [OR]
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

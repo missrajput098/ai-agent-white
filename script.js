@@ -209,31 +209,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const lowerText = text.toLowerCase();
         const lowerHref = href.toLowerCase();
 
-        if (target.classList.contains('logo') || lowerHref === 'index.html' || lowerHref === '#' || lowerHref === './' || lowerText === 'home') {
+        if (target.classList.contains('logo') || lowerHref === 'index.html' || lowerHref === 'index' || lowerHref === '#' || lowerHref === './' || lowerHref === '/' || lowerText === 'home') {
             return 'NAVIGATE TO HOME PAGE';
         }
-        if (lowerHref.includes('ai-agents.html') || lowerText.includes('ai agent')) {
+        if (lowerHref.includes('ai-agents') || lowerText.includes('ai agent')) {
             return 'NAVIGATE TO AI AGENTS PAGE';
         }
-        if (lowerHref.includes('#workflow-studio') || lowerHref.includes('workflow-studio.html') || lowerText.includes('workflow studio')) {
+        if (lowerHref.includes('#workflow-studio') || lowerHref.includes('workflow-studio') || lowerText.includes('workflow studio')) {
             return 'NAVIGATE TO WORKFLOW STUDIO PAGE';
         }
-        if (lowerHref.includes('solutions.html') || lowerText.includes('solution')) {
+        if (lowerHref.includes('solutions') || lowerText.includes('solution')) {
             return 'NAVIGATE TO SOLUTIONS PAGE';
         }
-        if (lowerHref.includes('portfolio.html') || lowerText.includes('portfolio')) {
+        if (lowerHref.includes('portfolio') || lowerText.includes('portfolio')) {
             return 'NAVIGATE TO PORTFOLIO PAGE';
         }
-        if (lowerHref.includes('how-it-works.html') || lowerText.includes('how it works')) {
+        if (lowerHref.includes('how-it-works') || lowerText.includes('how it works')) {
             return 'NAVIGATE TO HOW IT WORKS PAGE';
         }
-        if (lowerHref.includes('case-studies.html') || lowerText.includes('case stud')) {
+        if (lowerHref.includes('case-studies') || lowerText.includes('case stud')) {
             return 'NAVIGATE TO CASE STUDIES PAGE';
         }
-        if (lowerHref.includes('about-us.html') || lowerText.includes('about us') || lowerText.includes('about')) {
+        if (lowerHref.includes('about-us') || lowerText.includes('about us') || lowerText.includes('about')) {
             return 'NAVIGATE TO ABOUT US PAGE';
         }
-        if (lowerHref.includes('contact.html') || lowerText.includes('book a demo') || lowerText.includes('contact')) {
+        if (lowerHref.includes('contact') || lowerText.includes('book a demo') || lowerText.includes('contact')) {
             return 'NAVIGATE TO BOOK A DEMO PAGE';
         }
 
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, true);
 
     // ==========================================
-    // 4-Step AI Agent Configurator Wizard & Context-Aware Service Engine (contact.html)
+    // 4-Step AI Agent Configurator Wizard & Context-Aware Service Engine (contact)
     // ==========================================
     const SERVICE_CONTEXT_MAP = {
         'build-my-agent': {
@@ -1181,7 +1181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // AI Agents Catalog Category Filter Tabs & Modal Engine (ai-agents.html)
+    // AI Agents Catalog Category Filter Tabs & Modal Engine (ai-agents)
     // ==========================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const agentPodCards = document.querySelectorAll('.agent-pod-card');
@@ -1232,7 +1232,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['HubSpot', 'Salesforce', 'Calendly', 'WhatsApp', 'Email CRM'],
             workflow: ['LEAD ARRIVES', 'AI UNDERSTANDS', 'AI QUALIFIES', 'CRM UPDATED', 'FOLLOW-UP / BOOKING'],
-            deployUrl: 'contact.html?service=sales-ai&agent=LEADR-3000'
+            deployUrl: 'contact?service=sales-ai&agent=LEADR-3000'
         },
         'supportr-x': {
             name: 'SUPPORTR-X',
@@ -1248,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Zendesk', 'Gorgias', 'Shopify', 'Intercom', 'REST APIs'],
             workflow: ['INQUIRY IN', 'INTENT & ORDER CHECK', 'KNOWLEDGE SEARCH', 'ACTION (REFUND/UPDATE)', 'RESOLVED 24/7'],
-            deployUrl: 'contact.html?service=customer-support-ai&agent=SUPPORTR-X'
+            deployUrl: 'contact?service=customer-support-ai&agent=SUPPORTR-X'
         },
         'instaguard': {
             name: 'INSTAGUARD',
@@ -1264,7 +1264,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Meta API', 'Instagram DM', 'Shopify', 'Klaviyo'],
             workflow: ['DM / COMMENT', 'TRIGGER & SENTIMENT', 'OFFER MATCHED', 'AUTO DM SENT', 'OPT-IN SAVED'],
-            deployUrl: 'contact.html?service=social-automation&agent=INSTAGUARD'
+            deployUrl: 'contact?service=social-automation&agent=INSTAGUARD'
         },
         'dispatch-bot': {
             name: 'DISPATCH-BOT',
@@ -1280,7 +1280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Zapier', 'Make', 'Slack', 'Teams', 'Webhooks'],
             workflow: ['DOC / WEBHOOK', 'OCR & PARSING', 'DATA VALIDATION', 'WORKFLOW EXECUTION', 'SLACK / CRM SYNC'],
-            deployUrl: 'contact.html?service=ai-automation&agent=DISPATCH-BOT'
+            deployUrl: 'contact?service=ai-automation&agent=DISPATCH-BOT'
         },
         'voice-nexus': {
             name: 'VOICE-NEXUS',
@@ -1296,7 +1296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Twilio', 'Retell AI', 'Phone API', 'HubSpot'],
             workflow: ['PHONE CALL', 'SPEECH-TO-TEXT', 'INTENT LOGIC', 'HUMAN VOICE SYNT', 'CALL LOGGED'],
-            deployUrl: 'contact.html?service=voice-ai&agent=VOICE-NEXUS'
+            deployUrl: 'contact?service=voice-ai&agent=VOICE-NEXUS'
         },
         'dataflex': {
             name: 'DATAFLEX',
@@ -1312,7 +1312,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             chips: ['Postgres', 'Snowflake', 'Vector DB', 'BigQuery'],
             workflow: ['NL QUESTION', 'SCHEMA & RAG LOOKUP', 'SECURE SQL GEN', 'QUERY RUN', 'INSIGHT REPORT'],
-            deployUrl: 'contact.html?service=data-intelligence&agent=DATAFLEX'
+            deployUrl: 'contact?service=data-intelligence&agent=DATAFLEX'
         }
     };
 
@@ -1429,21 +1429,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const getPageLoaderMessage = () => {
         const path = (window.location.pathname || '').toLowerCase();
-        if (path.includes('ai-agents.html')) {
+        if (path.includes('ai-agents')) {
             return "INITIALIZING AI AGENTS HUB...";
-        } else if (path.includes('how-it-works.html')) {
+        } else if (path.includes('how-it-works')) {
             return "MAPPING NEURAL WORKFLOW BLUEPRINT...";
-        } else if (path.includes('workflow-studio.html')) {
+        } else if (path.includes('workflow-studio')) {
             return "LOADING WORKFLOW STUDIO ENVIRONMENT...";
-        } else if (path.includes('solutions.html')) {
+        } else if (path.includes('solutions')) {
             return "CONFIGURING ENTERPRISE AI SOLUTIONS...";
-        } else if (path.includes('case-studies.html')) {
+        } else if (path.includes('case-studies')) {
             return "FETCHING CASE STUDIES & METRICS...";
-        } else if (path.includes('about-us.html')) {
+        } else if (path.includes('about-us')) {
             return "LOADING FACTONIX ENTERPRISE STORY...";
-        } else if (path.includes('contact.html')) {
+        } else if (path.includes('contact')) {
             return "CONNECTING TO SECURE DISPATCH CORE...";
-        } else if (path.includes('portfolio.html')) {
+        } else if (path.includes('portfolio')) {
             return "LOADING LIVE AI DEPLOYMENTS PORTFOLIO...";
         }
         return "INITIALIZING FACTONIX AI CORE...";
@@ -1500,18 +1500,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!href || href === '#' || href.startsWith('#')) return;
 
             const baseHref = href.split('#')[0].split('?')[0];
-            if (baseHref.endsWith('.html') || href === 'index.html' || href === '/') {
+            const cleanPages = ['about-us', 'ai-agents', 'case-studies', 'contact', 'how-it-works', 'portfolio', 'solutions', 'workflow-studio', 'index', './', '/'];
+            const isInternalPage = baseHref.endsWith('.html') || cleanPages.includes(baseHref) || cleanPages.some(page => baseHref.endsWith('/' + page));
+
+            if (isInternalPage) {
                 if (preloaderOverlay) {
                     let navMsg = "NAVIGATING TO FACTONIX CORE...";
-                    if (href.includes('ai-agents.html')) navMsg = "NAVIGATING TO AI AGENTS HUB...";
-                    else if (href.includes('how-it-works.html')) navMsg = "MAPPING NEURAL WORKFLOWS...";
-                    else if (href.includes('workflow-studio.html')) navMsg = "LOADING WORKFLOW STUDIO...";
-                    else if (href.includes('solutions.html')) navMsg = "CONFIGURING ENTERPRISE SOLUTIONS...";
-                    else if (href.includes('case-studies.html')) navMsg = "FETCHING CASE STUDIES & METRICS...";
-                    else if (href.includes('about-us.html')) navMsg = "LOADING FACTONIX STORY...";
-                    else if (href.includes('contact.html?service=')) navMsg = "LOCKING SERVICE CONTEXT & OPENING DISPATCH CORE...";
-                    else if (href.includes('contact.html')) navMsg = "OPENING SECURE DISPATCH CORE...";
-                    else if (href.includes('portfolio.html')) navMsg = "LOADING LIVE AI PORTFOLIO...";
+                    if (href.includes('ai-agents')) navMsg = "NAVIGATING TO AI AGENTS HUB...";
+                    else if (href.includes('how-it-works')) navMsg = "MAPPING NEURAL WORKFLOWS...";
+                    else if (href.includes('workflow-studio')) navMsg = "LOADING WORKFLOW STUDIO...";
+                    else if (href.includes('solutions')) navMsg = "CONFIGURING ENTERPRISE SOLUTIONS...";
+                    else if (href.includes('case-studies')) navMsg = "FETCHING CASE STUDIES & METRICS...";
+                    else if (href.includes('about-us')) navMsg = "LOADING FACTONIX STORY...";
+                    else if (href.includes('contact') && href.includes('service=')) navMsg = "LOCKING SERVICE CONTEXT & OPENING DISPATCH CORE...";
+                    else if (href.includes('contact')) navMsg = "OPENING SECURE DISPATCH CORE...";
+                    else if (href.includes('portfolio')) navMsg = "LOADING LIVE AI PORTFOLIO...";
 
                     e.preventDefault();
                     preloaderOverlay.classList.remove('loaded');
@@ -2663,7 +2666,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculateROISavings();
 
-    // Solutions Page ROI Telemetry Calculator Engine (solutions.html)
+    // Solutions Page ROI Telemetry Calculator Engine (solutions)
     const solTeamSlider = document.getElementById('teamSizeSlider');
     const solSalarySlider = document.getElementById('avgSalarySlider');
     const solHoursSlider = document.getElementById('hoursTaskSlider');
@@ -2842,7 +2845,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Real-time live Shopify inventory sync'
                 ]
             },
-            ctaUrl: 'contact.html?service=ecommerce&project=INSTAGUARD-360'
+            ctaUrl: 'contact?service=ecommerce&project=INSTAGUARD-360'
         },
         pipelinemax: {
             badge: 'SALES & CRM',
@@ -2883,7 +2886,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '100% automated Salesforce profile logging'
                 ]
             },
-            ctaUrl: 'contact.html?service=sales-ai&project=PIPELINE-MAX'
+            ctaUrl: 'contact?service=sales-ai&project=PIPELINE-MAX'
         },
         supportrx: {
             badge: 'SUPPORT & CX',
@@ -2924,7 +2927,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Zero human intervention for routine actions'
                 ]
             },
-            ctaUrl: 'contact.html?service=customer-support-ai&project=SUPPORTR-X'
+            ctaUrl: 'contact?service=customer-support-ai&project=SUPPORTR-X'
         },
         logiflow: {
             badge: 'OPERATIONS',
@@ -2964,7 +2967,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Instant Slack notifications for low-stock alerts'
                 ]
             },
-            ctaUrl: 'contact.html?service=ai-automation&project=LOGI-FLOW'
+            ctaUrl: 'contact?service=ai-automation&project=LOGI-FLOW'
         },
         audiencegen: {
             badge: 'SOCIAL & SALES',
@@ -3004,7 +3007,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '4.5x growth in qualified sales pipeline'
                 ]
             },
-            ctaUrl: 'contact.html?service=sales-ai&project=AUDIENCE-GEN'
+            ctaUrl: 'contact?service=sales-ai&project=AUDIENCE-GEN'
         },
         whatsappflow: {
             badge: 'SOCIAL & COMMERCE',
@@ -3045,7 +3048,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     'Sub-second automated Stripe payment links'
                 ]
             },
-            ctaUrl: 'contact.html?service=whatsapp-automation&project=WHATSAPP-FLOW'
+            ctaUrl: 'contact?service=whatsapp-automation&project=WHATSAPP-FLOW'
         }
     };
 
@@ -3308,7 +3311,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Dynamically update Workflow Studio CTA button context
                 const studioDemoCta = document.getElementById('studioDemoCtaBtn');
                 if (studioDemoCta && studioTabServiceMap[targetTab]) {
-                    studioDemoCta.setAttribute('href', `contact.html?service=${studioTabServiceMap[targetTab]}`);
+                    studioDemoCta.setAttribute('href', `contact?service=${studioTabServiceMap[targetTab]}`);
                 }
 
                 if (typeof playCyberClick === 'function') {
